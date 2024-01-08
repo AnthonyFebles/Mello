@@ -1,6 +1,6 @@
 # Mello
 
-By [Anthony Febles](https://github.com/AnthonyFebles), [James Ko](https://github.com/PorkyJames), [Rodrick Zolicoffer](https://github.com/RodrickCode97) ,[Jacob Stodtmeister](https://github.com/Stodtmeister)
+By [Anthony Febles](https://github.com/AnthonyFebles), [James Ko](https://github.com/PorkyJames), [Rodrick Zolicoffer](https://github.com/RodrickCode97), [Jacob Stodtmeister](https://github.com/Stodtmeister)
 
 
 Mello, a Trello clone, is a web-based, kanban-style, list-making application with a relaxing twist on the original. Manage projects, organize tasks, and build team collaboration--all in one place.
@@ -9,6 +9,7 @@ Mello, a Trello clone, is a web-based, kanban-style, list-making application wit
 
 <div>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="50" />
+<img src="https://devicon-website.vercel.app/api/sqlalchemy/original.svg" width="60"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" width="50" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" width="50" />

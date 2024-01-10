@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from datetime import datetime
 
 class Board(db.Model):
     __tablename__ = 'boards'
@@ -12,8 +12,8 @@ class Board(db.Model):
     color = db.Column(db.String(30), nullable=True)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.Date, nullable=False)
-    updated_at = db.Column(db.Date, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now)
+    updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     
     def to_dict(self):
         return {

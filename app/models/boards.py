@@ -18,7 +18,7 @@ class Board(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'owner_id': self.owner_id,
+            'user_id': self.user_id,
             'color': self.color,
             'name': self.name,
             'description': self.description,

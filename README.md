@@ -24,3 +24,5 @@ Mello, a Trello clone, is a web-based, kanban-style, list-making application wit
 # Index
 * [MVP List](https://github.com/AnthonyFebles/Mellow/wiki/MVP-List)
 * [API Backend Routes](https://github.com/AnthonyFebles/Mello/wiki/API-Backend-Routes)
+* [Schema](https://github.com/AnthonyFebles/Mello/wiki/Schema)
+* [User Stories](https://github.com/AnthonyFebles/Mello/wiki/User-Stories)

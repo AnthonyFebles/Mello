@@ -1,4 +1,3 @@
 from .db import db
-from .users import User
-from .boards import Board
+from .user import User
 from .db import environment, SCHEMA

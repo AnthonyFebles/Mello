@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, session,
+from flask import Blueprint, request, jsonify, session
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm

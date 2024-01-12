@@ -9,7 +9,7 @@ class List(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     board_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("boards.id")))
-    name = db.Column(db.String(80), Nullable = False)
+    name = db.Column(db.String(80), nullable = False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 

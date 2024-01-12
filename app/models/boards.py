@@ -8,14 +8,14 @@ class Board(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False, name='boards_user_id_constraint')
     color = db.Column(db.String(30), nullable=True)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
-    users = db.relationship('User', backref='boards')
-    lists = db.relationship('List', backref='board')
+    users = db.relationship('User', back_populates='boards')
+    lists = db.relationship('List', back_populates='boards')
 
     def to_dict(self):
         return {

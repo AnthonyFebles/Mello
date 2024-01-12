@@ -16,7 +16,7 @@ def seed_lists():
     db.session.add(toDo)
     db.session.add(work)
 
-    db.commit()
+    db.session.commit()
     
 
 def undo_lists():

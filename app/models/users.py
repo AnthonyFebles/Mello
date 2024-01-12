@@ -16,9 +16,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    boards = db.relationship('Board', backref='users')
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
+    boards = db.relationship('Board', backref='users')
+    comments = db.relationship('Comment', backref='users')
 
     @property
     def password(self):
@@ -38,5 +39,4 @@ class User(db.Model, UserMixin):
             'last_name':self.last_name,
             'username': self.username,
             'email': self.email
-            
         }

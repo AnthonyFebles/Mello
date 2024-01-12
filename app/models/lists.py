@@ -8,6 +8,7 @@ class List(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+#  Foreign Keys
     board_id = db.Column(db.Integer, db.ForeignKey("boards.id"))
     name = db.Column(db.String(80), Nullable = False)
     created_at = db.Column(db.DateTime, default=datetime.now)

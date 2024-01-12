@@ -18,8 +18,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
-    boards = db.relationship('Board', backref='users')
-    comments = db.relationship('Comment', backref='users')
+    boards = db.relationship('Board', back_populates='users')
+    comments = db.relationship('Comment', back_populates='users')
 
     @property
     def password(self):

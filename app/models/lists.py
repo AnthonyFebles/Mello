@@ -13,7 +13,7 @@ class List(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    board = db.relationship("Board", back_populates="lists")
+    boards = db.relationship("Board", back_populates="lists")
     cards = db.relationship("Card", back_populates="list")
 
     def to_dict(self):

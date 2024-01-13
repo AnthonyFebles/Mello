@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .comments import undo_comments, seed_comments
 from .lists import seed_lists, undo_lists
 from .cards import seed_cards, undo_cards
-
+from .boards import seed_boards, undo_boards
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,8 +23,10 @@ def seed():
         undo_comments()
         undo_cards()
         undo_lists()
+        undo_boards()
         undo_users()
     seed_users()
+    seed_boards()
     seed_lists()
     seed_cards()
     seed_comments()
@@ -37,5 +39,6 @@ def undo():
     undo_comments()
     undo_cards()
     undo_lists()
+    undo_boards()
     undo_users()
     # Add other undo functions here

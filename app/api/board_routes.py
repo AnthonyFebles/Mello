@@ -1,16 +1,16 @@
 from flask import Blueprint, jsonify, abort
 from flask_login import current_user, login_required
 
-from app.models import boards, db
+from app.models.boards import Board, db
 from ..forms.board_form import BoardForm
 
 
-bp = Blueprint("boards", __name__)
+board_routes = Blueprint("boards", __name__)
 
 
 # Create Route
 # Logged in User should be able to create a Board
-@bp.route("/boards", methods = ["POST"])
+@board_routes.route("/boards", methods = ["POST"])
 @login_required
 def create_boards():
     # Create a new instance of our BoardForm from our Forms
@@ -18,7 +18,7 @@ def create_boards():
 
     # If the form is validated on submit
     if form.validate_on_submit():
-        new_user_board = boards(
+        new_user_board = Board(
             user_id=current_user.id,
             name=form.board_title.data,
             visibility=form.visibility.data,
@@ -38,35 +38,35 @@ def create_boards():
     abort(400, {"message": "Body validation Error"})
 
 
-
-
 # Read Routes
 
-# Create another route for /boards
-# Logged in User should see
-@bp.route("/boards")
+# # Create another route for /boards
+# # Logged in User should see
+# @bp.route("/boards")
 
 
 # Create another route for /boards/:boardId for GET
-# Logged in User can see each board that they have
-@bp.route("/boards/<int:boardId>")
+# Logged in User can see the details of each Board
+@board_routes.route("/boards/<int:boardId>")
 @login_required
 def each_board_details():
     pass
 
 
 # Logged in User should be able to see their Boards in one place
-@bp.route("/boards/session")
+@board_routes.route("/boards")
 @login_required
 def read_boards():
-    user_boards = []
-    if current_user.is_authenticated():
-        query = boards.query.filter(boards.user_id == current_user.id)
+    # user_boards = []
+    # if current_user.is_authenticated():
+    #     query = boards.query.filter(boards.user_id == current_user.id)
+    return jsonify({"message": "Hello from /boards"})
+
 
 
 # Update Route
 # Logged in User should be able to update their Boards
-@bp.route("/boards/<int:boardId>", methods= ["PUT"])
+@board_routes.route("/boards/<int:boardId>", methods= ["PUT"])
 @login_required
 def update_boards():
     pass
@@ -74,11 +74,11 @@ def update_boards():
 
 # Delete Route
 # Logged in User should be able to delete their Boards
-@bp.route("/boards/<int:boardId>", methods= ["DELETE"])
-@login_required
+@board_routes.route("/boards/<int:boardId>", methods= ["DELETE"])
+# @login_required
 def delete_boards(boardId):
     # Allows us to grab the user's board based on the BoardId provided
-    user_board = boards.query.get(boardId)
+    user_board = Board.query.get(boardId)
     
     # Conditional that checks if the board that exists belongs to the current user
     if not user_board:

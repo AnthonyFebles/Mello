@@ -1,7 +1,10 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify, abort
 from flask_login import current_user, login_required
 
-from app.models import boards, lists, cards, comments
+from app.models import boards, db
+from ..forms.board_form import BoardForm
+
+
 
 bp = Blueprint("boards", __name__)
 
@@ -51,6 +54,18 @@ def update_boards():
 # Logged in User should be able to delete their Boards
 @bp.route("/boards/<int:boardId>", methods= ["DELETE"])
 @login_required
-def delete_boards():
-    pass
+def delete_boards(boardId):
+    # Allows us to grab the user's board based on the BoardId provided
+    user_board = boards.query.get(boardId)
+    
+    # Conditional that checks if the board that exists belongs to the current user
+    if not user_board or user_board.user_id != current_user.id:
+        # Something with an error message
+        abort(404, {"message": "Board not Found"})
+    
+    # Commit the deletion to the db
+    db.session.delete(boardId)
+    db.session.commit()
 
+    # Return a successful deletion response
+    return jsonify({"message": "Board has been Deleted successfully" })

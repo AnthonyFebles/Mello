@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect
+from flask import Blueprint, redirect, jsonify
 from app.forms import ListForm
 from app.models import db, List
 from .auth_routes import validation_errors_to_error_messages
@@ -17,7 +17,7 @@ def create_lists(board_id):
         new_list = List(board_id=board_id, name=name)
         db.session.add(new_list)
         db.commit()
-        return new_list.to_dict()
+        return jsonify(new_list.to_dict()), 201
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
   
 
@@ -55,5 +55,5 @@ def update_lists(list_id):
 @bp.route("/lists/<int:list_id>", methods=["DELETE"])
 def delete_lists(list_id):
     list = List.filter(List.id == list_id).delete()
-
     db.session.commit()
+    return 

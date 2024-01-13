@@ -14,7 +14,30 @@ bp = Blueprint("boards", __name__)
 @bp.route("/boards", methods = ["POST"])
 @login_required
 def create_boards():
-    pass
+    # Create a new instance of our BoardForm from our Forms
+    form = BoardForm()
+
+    # If the form is validated on submit
+    if form.validate_on_submit():
+        new_user_board = boards(
+            user_id = current_user.id
+            board_title = board_title.data
+            visibility = visibility.data
+            background_img = background_img.data
+        )
+
+        # Then once we create a new instance of our board we can 
+        # add to the db via commit
+        db.session.add(new_user_board)
+        db.session.commit()
+
+        # If all validations are good, return a created status code
+        # along with a jsonified new user board.
+        return jsonify(new_user_board.to_dict()), 201
+    
+    # if the validation fails, return an error response
+    abort(400, {"message": "Body validation Error"})
+
 
 
 
@@ -68,4 +91,4 @@ def delete_boards(boardId):
     db.session.commit()
 
     # Return a successful deletion response
-    return jsonify({"message": "Board has been Deleted successfully" })
+    return jsonify({"message": "Board has been Deleted successfully" }), 200

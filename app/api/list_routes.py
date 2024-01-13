@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, abort, request
+from flask_login import current_user, login_required
 from app.models.lists import db, List
 from ..forms.list_form import ListForm
 from .auth_routes import validation_errors_to_error_messages
@@ -27,9 +28,11 @@ list_routes = Blueprint("lists", __name__)
 # Create Route
 # Logged in User can create a List on their Board
 @list_routes.route("/boards/<int:board_id>/lists", methods=["POST"])
+@login_required
 def create_lists(board_id):
     form = ListForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    
     if form.validate_on_submit():
         board_id = board_id
         name = form.name.data
@@ -37,7 +40,8 @@ def create_lists(board_id):
         db.session.add(new_list)
         db.session.commit()
         return jsonify(new_list.to_dict()), 201
-    abort(400, {"message": "Body validation error"})
+    
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
   
 
 
@@ -45,10 +49,14 @@ def create_lists(board_id):
 # Read Route
 # Logged in User can view a List on their Board
 @list_routes.route("/boards/<int:board_id>/lists")
+@login_required
 def read_lists(board_id):
     lists = List.query.filter(List.board_id == board_id)
+    
     # new_dict = {}
-    if lists:
+    if len([list for list in lists]) > 0:
+        if lists[0].boards.user_id is not current_user.id:
+            abort(400, {"message": "Unauthorized"})
         return {"lists": [list.to_dict() for list in lists if list.board_id == board_id]}
     
 
@@ -61,31 +69,48 @@ def read_lists(board_id):
         # return jsonify(new_dict)
     
 
-    return 'Board list not found'
+    return {'errors': "list not found"}
 
 
 
 # Update Route
 # Logged in User can update a List on their Board
 @list_routes.route("/lists/<int:list_id>", methods=["PUT"])
+@login_required
 def update_lists(list_id):
+    
     form = ListForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    list = List.query.get(list_id)
-    if list:
+    current_list = List.query.get(list_id)
+    
+    if current_list.boards.user_id is not current_user.id :
+        abort(400, {"message": "Unauthorized"})
+        
+    if current_list:
         if form.validate_on_submit():
             name = form.name.data
             list.name = name
             db.session.commit()
-            return jsonify(list.to_dict())
-    abort(400, {"message": "Body validation error"})
+            return jsonify(current_list.to_dict())
+        
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 
 # Delete Route
 # Logged in User can delete a List on their Board
 @list_routes.route("/lists/<int:list_id>", methods=["DELETE"])
+@login_required
 def delete_lists(list_id):
-    list = List.query.filter(List.id == list_id).delete()
+    
+    current_list = List.query.get(list_id)
+    
+    if not current_list :
+        abort(400, {"message": "List not found"})
+    
+    if current_list.boards.user_id is not current_user.id :
+        abort(400, {"message": "Unauthorized"})
+    
+    db.session.delete(current_list)
     db.session.commit()
     return jsonify({"message": "Successfully Deleted"})

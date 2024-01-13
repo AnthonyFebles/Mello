@@ -59,7 +59,7 @@ def delete_boards(boardId):
     user_board = boards.query.get(boardId)
     
     # Conditional that checks if the board that exists belongs to the current user
-    if not user_board or user_board.user_id != current_user.id:
+    if not user_board:
         # Something with an error message
         abort(404, {"message": "Board not Found"})
     

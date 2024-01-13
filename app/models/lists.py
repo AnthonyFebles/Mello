@@ -21,6 +21,6 @@ class List(db.Model):
             'id': self.id,
             'board_id': self.board_id,
             'name': self.name,
-            'board': self.board,
+            # 'board': self.board,
             'cards': self.cards
         }

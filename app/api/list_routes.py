@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, abort
-from app.forms import ListForm
-from app.models import db, List
+from app.models.lists import db, List
+from ..forms.list_form import ListForm
 from .auth_routes import validation_errors_to_error_messages
 
 list_routes = Blueprint("lists", __name__)
@@ -27,9 +27,16 @@ def create_lists(board_id):
 # Logged in User can view a List on their Board
 @list_routes.route("/boards/<int:board_id>/lists")
 def read_lists(board_id):
-    lists = List.query.all(board_id)
+    lists = List.query.filter(List.board_id == board_id)
+    new_dict = {}
     if lists:
-        return jsonify({'lists': [list.to_dict() for list in lists]})
+        current_lists = [list for list in lists if list.board_id == board_id]
+
+        for i in range(len(current_lists)):
+            new_dict[i] = {"id":current_lists[i].id, "name":current_lists[i].name, "created_at" : current_lists[i].created_at, "updated_at": current_lists[i].updated_at }
+
+        print("_____________new dict", new_dict)
+        return jsonify(new_dict)
     return 'Board list not found'
 
 

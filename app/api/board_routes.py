@@ -20,10 +20,10 @@ def create_boards():
     # If the form is validated on submit
     if form.validate_on_submit():
         new_user_board = boards(
-            user_id = current_user.id
-            board_title = board_title.data
-            visibility = visibility.data
-            background_img = background_img.data
+            user_id=current_user.id,
+            name=form.board_title.data,
+            visibility=form.visibility.data
+            background=form.background_img.data,
         )
 
         # Then once we create a new instance of our board we can 

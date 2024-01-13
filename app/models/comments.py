@@ -23,6 +23,6 @@ class Comment(db.Model):
             'user_id': self.user_id,
             'card_id': self.card_id,
             'comment': self.comment,
-            'card': self.card,
-            'user': self.user
+            'created_at':self.created_at,
+            'updated_at':self.updated_at
         }

@@ -47,22 +47,39 @@ def create_comments(cardId):
 
 
 # Read Route
-# Logged in User should be able to view their comments in a Card
-@comments_routes.route("/cards/:cardId/comments")
-def read_comments():
-    pass
+# Logged in User should be able to view all comments in a Card
+@comments_routes.route("/cards/<int:cardId>/comments")
+@login_required
+def read_comments(cardId):
+    comments = Comment.query.filter(Comment.card_id == cardId)
+    new_dict ={}
+    if comments:
+        current_comments = [comment for comment in comments]
+        
+        for i in range(len(current_comments)):
+            current_comment = current_comments[i]
+            new_dict[i] = {"id":current_comment.id, 
+                           "user_id":current_comment.user_id, 
+                           "card_id":current_comment.card_id, 
+                           "comment":current_comment.comment, 
+                           "created_at":current_comment.created_at, 
+                           "updated_at":current_comment.updated_at}
+
+        return jsonify(new_dict)
 
 
 # Update Route
 # Logged in User should be able to update their comments in a Card
-@comments_routes.route("/comments/:commentId", methods=["PUT"])
+@comments_routes.route("/comments/<int:commentId>", methods=["PUT"])
+@login_required
 def update_comments():
     pass
 
 
 # Delete Route
 # Logged in User should be able to delete their comments
-@comments_routes.route("/comments/:commentId", methods=["DELETE"])
+@comments_routes.route("/comments/<int:commentId>", methods=["DELETE"])
+@login_required
 def delete_boards():
     pass
 

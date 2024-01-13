@@ -5,7 +5,6 @@ from app.models import boards, db
 from ..forms.board_form import BoardForm
 
 
-
 bp = Blueprint("boards", __name__)
 
 
@@ -22,7 +21,7 @@ def create_boards():
         new_user_board = boards(
             user_id=current_user.id,
             name=form.board_title.data,
-            visibility=form.visibility.data
+            visibility=form.visibility.data,
             background=form.background_img.data,
         )
 

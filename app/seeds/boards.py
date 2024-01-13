@@ -3,16 +3,18 @@ from app.models import db, Board, environment, SCHEMA
 
 def seed_boards():
     board1 = Board(
-        userId="1", color="blue", name="board_1", description="board_1 description"
+        user_id="1", color="blue", name="board_1", description="board_1 description"
     )
     board2 = Board(
-        userId="2", color="red", name="board_2", description="board_2 description"
+        user_id="2", color="red", name="board_2", description="board_2 description"
     )
     board3 = Board(
-        userId="3", color="green", name="board_3", description="board_3 description"
+        user_id="3", color="green", name="board_3", description="board_3 description"
     )
 
-    db.session.addAll([board1, board2, board3])
+    db.session.add(board1)
+    db.session.add(board2)
+    db.session.add(board3)
     db.session.commit()
 
 def undo_boards():

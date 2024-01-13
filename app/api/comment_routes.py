@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, abort, request, session
 from flask_login import current_user, login_required
+from .auth_routes import validation_errors_to_error_messages
 
 from app.models.comments import Comment, db
 from app.forms.comment_form import CommentForm
@@ -7,15 +8,6 @@ from app.forms.comment_form import CommentForm
 comments_routes = Blueprint("comments", __name__)
 
 
-def validation_errors_to_error_messages(validation_errors):
-    """
-    Simple function that turns the WTForms validation errors into a simple list
-    """
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
-    return errorMessages
 
 
 # Create Route
@@ -25,6 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
 def create_comments(cardId):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    
     if form.validate_on_submit():
         new_comment = Comment(
         user_id=current_user.id,
@@ -61,7 +54,7 @@ def read_comments(cardId):
 
         # return jsonify(new_dict)
     
-    return {'errors': "comment not found"}, 401
+    return {'errors': "comment not found"}
 
 # Update Route
 # Logged in User should be able to update their comments in a Card
@@ -71,8 +64,10 @@ def update_comments(commentId):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     comment = Comment.query.get(commentId)
+    
     if not comment:
         return jsonify({"message": "Comment not found"}), 404
+    
     if comment:
         if form.validate_on_submit():
             if comment.user_id == current_user.id :
@@ -81,6 +76,7 @@ def update_comments(commentId):
                 db.session.commit()
                 return jsonify(comment.to_dict())
             return {'errors': {'message': 'Unauthorized to edit this comment'}}, 401
+        
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -90,11 +86,13 @@ def update_comments(commentId):
 @login_required
 def delete_boards(commentId):
     comment = Comment.query.get(commentId)
-    print ("__----------------------------___________",comment)
+    
     if not comment:
         return jsonify({"message": "Comment not found"}), 404
+    
     if comment.user_id == current_user.id:
         db.session.delete(comment)
         db.session.commit()
         return jsonify({"message": "Successfully Deleted"}), 200
+    
     return {'errors': {'message': 'Unauthorized to edit this comment'}}, 401

@@ -24,6 +24,10 @@ def create_boards():
 
 # Create another route for /boards/:boardId for GET
 # Logged in User can see each board that they have
+@bp.route("/boards/<int:boardId>")
+@login_required
+def each_board_details():
+    pass
 
 
 # Logged in User should be able to see their Boards in one place
@@ -35,10 +39,9 @@ def read_boards():
         query = boards.query.filter(boards.user_id == current_user.id)
 
 
-
 # Update Route
 # Logged in User should be able to update their Boards
-@bp.route("/boards/:boardId", methods= ["PUT"])
+@bp.route("/boards/<int:boardId>", methods= ["PUT"])
 @login_required
 def update_boards():
     pass
@@ -46,7 +49,7 @@ def update_boards():
 
 # Delete Route
 # Logged in User should be able to delete their Boards
-@bp.route("/boards/:boardId", methods= ["DELETE"])
+@bp.route("/boards/<int:boardId>", methods= ["DELETE"])
 @login_required
 def delete_boards():
     pass

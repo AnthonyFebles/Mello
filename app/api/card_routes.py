@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models.cards import Card
 
 # bp = Blueprint("cards", __name__)
@@ -12,11 +12,13 @@ def get_cards(userId, boardId, listId):
     return {"cards": cards}
 
 
-# # Create Route
-# # Logged in Users can add a new card to a List
-# @card_routes.route("/", methods=["POST"])
-# def create_cards():
-#     pass
+@card_routes.route("/", methods=["POST"])
+def create_card(userId, boardId, listId):
+    data = request.get_json()
+    return data
+
+
+
 
 
 # # Read Route

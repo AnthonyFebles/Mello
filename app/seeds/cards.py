@@ -4,22 +4,22 @@ from sqlalchemy.sql import text
 
 def seed_cards():
     first = Card(
-        listId="1", description="1 card"
+        listId="1", name="first", description="1 card"
     )
     second = Card(
-        listId="1", description="1 card part 2"
+        listId="1", name="second", description="1 card part 2"
     )
     third = Card(
-        listId="1", description="2 card"
+        listId="1", name="third", description="2 card"
     )
     fourth = Card(
-        listId="1", description="2 card the second coming"
+        listId="1", name="fourth", description="2 card the second coming"
     )
     fifth = Card(
-        listId="1", description="3 card"
+        listId="1", name="fifth", description="3 card"
     )
     six = Card(
-        listId="1", description="3 card electric kazoo"
+        listId="1", name="sixth", description="3 card electric kazoo"
     )
 
     db.session.add(first)

@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from .users import shared_boards
 
 class Board(db.Model):
     __tablename__ = 'boards'
@@ -14,7 +15,8 @@ class Board(db.Model):
     description = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
-    users = db.relationship('User', back_populates='boards')
+    users = db.relationship('User', secondary=shared_boards ,back_populates='used_boards')
+    owner = db.relationship('User', back_populates='owned_boards')
     lists = db.relationship('List', back_populates='boards', cascade='all, delete-orphan')
 
     def to_dict(self):
@@ -25,5 +27,6 @@ class Board(db.Model):
             'name': self.name,
             'description': self.description,
             'users': self.users,
+            'owner': self.owner,
             'lists': self.lists
         }

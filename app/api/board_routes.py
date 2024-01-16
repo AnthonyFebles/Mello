@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, abort
+from flask import Blueprint, jsonify, abort, request
 from flask_login import current_user, login_required
 
 from app.models.boards import Board, db
@@ -13,14 +13,18 @@ board_routes = Blueprint("boards", __name__)
 @board_routes.route("/boards", methods = ["POST"])
 @login_required
 def create_boards():
+
     # Create a new instance of our BoardForm from our Forms
     form = BoardForm()
+
+    # CSRF Token authentication
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     # If the form is validated on submit
     if form.validate_on_submit():
         new_user_board = Board(
             user_id=current_user.id,
-            name=form.board_title.data,
+            title=form.board_title.data,
             visibility=form.visibility.data,
             background=form.background_img.data,
         )
@@ -38,50 +42,83 @@ def create_boards():
     abort(400, {"message": "Body validation Error"})
 
 
-# Read Routes
+# ! Read Routes
 
-# # Create another route for /boards
-# # Logged in User should see
-# @bp.route("/boards")
-
-
-# Create another route for /boards/:boardId for GET
-# Logged in User can see the details of each Board
+# Logged in User can see the details of each Board in its own page
 @board_routes.route("/boards/<int:boardId>")
 @login_required
-def each_board_details():
-    pass
+def each_board_details(boardId):
+    # Query to get the specific Board
+    board = Board.query.get(boardId)
+
+    # Edge Cases for Errors
+    if not board:
+        abort(404, {"message": "Board not found"})
+
+    if board.user_id != current_user.id:
+        abort(403, {"message": "Unauthorized"})
+
+    return jsonify(board.to_dict()), 200
 
 
 # Logged in User should be able to see their Boards in one place
 @board_routes.route("/boards")
 @login_required
 def read_boards():
-    # user_boards = []
-    # if current_user.is_authenticated():
-    #     query = boards.query.filter(boards.user_id == current_user.id)
-    return jsonify({"message": "Hello from /boards"})
+
+    user_boards = Board.query.filter_by(Board.user_id == current_user.id)
+
+    board_details = [board.to_dict() for board in user_boards]
+
+    return jsonify(board_details), 200
 
 
 
 # Update Route
 # Logged in User should be able to update their Boards
-@board_routes.route("/boards/<int:boardId>", methods= ["PUT"])
+@board_routes.route("/boards/<int:boardId>", methods=["PUT"])
 @login_required
-def update_boards():
-    pass
+def update_boards(boardId):
+    # Query to get our Board first
+    user_board = Board.query.get(boardId)
+
+    # Check if the board belong to the current user
+    if not user_board:
+        # If the board doesn't belong to the current user, throw a 404 error
+        abort(404, {"message" : "Board could not be found"})
+
+    # Create a new instance of our BoardForm
+    form = BoardForm()
+
+    # Check if the form validates on submit
+    if form.validate_on_submit():
+        # If it does validate, then update the board form info
+        user_board.title = form.board_title.data
+        user_board.visibility = form.visibility.data
+        user_board.background = form.background_img.data
+
+        # Commit the updates to the database
+        db.session.commit()
+
+        # Return a jsonified updated user_board in dictionary format with 
+        # 200 status code
+        return jsonify(user_board.to_dict()), 200
+    
+    # Return any validation errors that may have occurred
+    return jsonify(form.errors), 400
+
 
 
 # Delete Route
 # Logged in User should be able to delete their Boards
-@board_routes.route("/boards/<int:boardId>", methods= ["DELETE"])
+@board_routes.route("/boards/<int:boardId>", methods=["DELETE"])
 # @login_required
 def delete_boards(boardId):
     # Allows us to grab the user's board based on the BoardId provided
     user_board = Board.query.get(boardId)
     
     # Conditional that checks if the board that exists belongs to the current user
-    if not user_board:
+    if not user_board or user_board.id != current_user.id:
         # Something with an error message
         abort(404, {"message": "Board not Found"})
     

@@ -26,6 +26,6 @@ class Card(db.Model):
             'name': self.name,
             'description': self.description,
             'users': self.users,
-            'comments': self.comments,
-            'list': self.list
+            'comments': [comment.to_dict() for comment in self.comments],
+            'list': [self.list.to_dict()]
         }

@@ -25,7 +25,7 @@ function App() {
 					<Route path="/signup">
 						<SignupFormPage />
 					</Route>
-					<Route exact path="/">
+					<Route exact path="/boards">
 						<AllBoards />
 					</Route>
 				</Switch>

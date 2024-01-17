@@ -6,7 +6,9 @@ from app.models import db
 from app.api.auth_routes import validation_errors_to_error_messages
 
 
-card_routes = Blueprint("cards", __name__, url_prefix="/api/boards/<boardId>/lists/<listId>/cards")
+card_routes = Blueprint(
+    "cards", __name__, url_prefix="/api/boards/<boardId>/lists/<listId>/cards"
+)
 
 
 @card_routes.route("/")
@@ -20,13 +22,14 @@ def get_cards(boardId, listId):
 @login_required
 def create_card(boardId, listId):
     cardForm = CardForm()
-    cardForm['csrf_token'].data = request.cookies['csrf_token']
+    cardForm["csrf_token"].data = request.cookies["csrf_token"]
 
     if cardForm.validate_on_submit():
         new_card = Card(
             listId=listId,
             name=cardForm.name.data,
-            description=cardForm.description.data
+            description=cardForm.description.data,
+            users=[current_user],
         )
 
         db.session.add(new_card)

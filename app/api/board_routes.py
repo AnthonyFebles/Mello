@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 
 from app.models.boards import Board, db
 from ..forms.board_form import BoardForm
+from app.api.auth_routes import validation_errors_to_error_messages
 
 
 board_routes = Blueprint("boards", __name__)
@@ -24,9 +25,10 @@ def create_boards():
     if form.validate_on_submit():
         new_user_board = Board(
             user_id=current_user.id,
-            title=form.board_title.data,
-            visibility=form.visibility.data,
-            background=form.background_img.data,
+            name=form.name.data,
+            description=form.description.data,
+            # visibility=form.visibility.data,
+            color=form.color.data,
         )
 
         # Then once we create a new instance of our board we can 
@@ -39,8 +41,8 @@ def create_boards():
         return jsonify(new_user_board.to_dict()), 201
     
     # if the validation fails, return an error response
-    abort(400, {"message": "Body validation Error"})
-
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    # abort(400, {"message": "Body validation Error"})
 
 # ! Read Routes
 
@@ -48,7 +50,7 @@ def create_boards():
 @board_routes.route("/boards/<int:boardId>")
 @login_required
 def each_board_details(boardId):
-    # Query to get the specific Board
+    # Query to get the specific Board based on the ID
     board = Board.query.get(boardId)
 
     # Edge Cases for Errors
@@ -66,11 +68,17 @@ def each_board_details(boardId):
 @login_required
 def read_boards():
 
-    user_boards = Board.query.filter_by(Board.user_id == current_user.id)
+    # Get every board that exists in our db where the user_id is equal to our
+    # current user's id
+    user_boards = Board.query.filter(Board.user_id == current_user.id).all()
 
+    # Then we get each Board's detail with the information from the to_dict function
+    # for each board in the user's list of boards.
     board_details = [board.to_dict() for board in user_boards]
 
+    # Then we return the board_details jsonified with a status code of 200. 
     return jsonify(board_details), 200
+
 
 
 
@@ -79,6 +87,7 @@ def read_boards():
 @board_routes.route("/boards/<int:boardId>", methods=["PUT"])
 @login_required
 def update_boards(boardId):
+
     # Query to get our Board first
     user_board = Board.query.get(boardId)
 
@@ -90,12 +99,21 @@ def update_boards(boardId):
     # Create a new instance of our BoardForm
     form = BoardForm()
 
+    # CSRF Token authentication
+    form['csrf_token'].data = request.cookies['csrf_token']
+
     # Check if the form validates on submit
     if form.validate_on_submit():
         # If it does validate, then update the board form info
-        user_board.title = form.board_title.data
-        user_board.visibility = form.visibility.data
-        user_board.background = form.background_img.data
+        name = form.name.data
+        user_board.name=name
+
+        description = form.description.data
+        user_board.description=description
+
+        # visibility=form.visibility.data,
+        color = form.color.data
+        user_board.color=color
 
         # Commit the updates to the database
         db.session.commit()
@@ -112,18 +130,21 @@ def update_boards(boardId):
 # Delete Route
 # Logged in User should be able to delete their Boards
 @board_routes.route("/boards/<int:boardId>", methods=["DELETE"])
-# @login_required
+@login_required
 def delete_boards(boardId):
     # Allows us to grab the user's board based on the BoardId provided
     user_board = Board.query.get(boardId)
-    
+
+    print(user_board.to_dict())
+
     # Conditional that checks if the board that exists belongs to the current user
-    if not user_board or user_board.id != current_user.id:
+    if not user_board:
         # Something with an error message
-        abort(404, {"message": "Board not Found"})
+        # abort(404, {"message": "Board not Found"})
+        return {"message": "Board not Found"}
     
     # Commit the deletion to the db
-    db.session.delete(boardId)
+    db.session.delete(user_board)
     db.session.commit()
 
     # Return a successful deletion response

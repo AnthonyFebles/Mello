@@ -26,7 +26,7 @@ class Board(db.Model):
             'color': self.color,
             'name': self.name,
             'description': self.description,
-            'users': self.users,
-            'owner': self.owner,
-            'lists': self.lists
+            # 'users': self.users,
+            # 'owner': self.owner,
+            # 'lists': self.lists
         }

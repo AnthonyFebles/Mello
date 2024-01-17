@@ -2,11 +2,12 @@ from flask import Blueprint, request
 from app.models.cards import Card
 
 # bp = Blueprint("cards", __name__)
-card_routes = Blueprint("cards", __name__, url_prefix="/api/users/<userId>/boards/<boardId>/lists/<listId>/cards")
+# card_routes = Blueprint("cards", __name__, url_prefix="/api/users/<userId>/boards/<boardId>/lists/<listId>/cards")
+card_routes = Blueprint("cards", __name__, url_prefix="/api/list/<listId>/cards")
 
 
 @card_routes.route("/")
-def get_cards(userId, boardId, listId):
+def get_cards(listId):
     card_query = Card.query.filter(Card.listId == listId).all()
     cards = [card.to_dict() for card in card_query]
     return {"cards": cards}

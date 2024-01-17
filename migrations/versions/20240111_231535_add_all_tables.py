@@ -1,7 +1,7 @@
 """add all tables
 
 Revision ID: 00a64fe53844
-Revises: 
+Revises:
 Create Date: 2024-01-11 23:15:35.812626
 
 """
@@ -58,6 +58,7 @@ def upgrade():
     op.create_table('cards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('listId', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
@@ -75,7 +76,21 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    
+    op.create_table('shared_boards',
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('board_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['board_id'], ['boards.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('user_id', 'board_id')
+    )
+    op.create_table('user_cards',
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('card_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['card_id'], ['cards.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('user_id', 'card_id')
+    )
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###

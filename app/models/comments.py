@@ -27,3 +27,13 @@ class Comment(db.Model):
             'created_at':self.created_at,
             'updated_at':self.updated_at
         }
+
+    def to_dict_no_user(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'card_id': self.card_id,
+            'comment': self.comment,
+            'created_at':self.created_at,
+            'updated_at':self.updated_at
+        }

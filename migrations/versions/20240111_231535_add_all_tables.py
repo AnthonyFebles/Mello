@@ -40,7 +40,6 @@ def upgrade():
     sa.Column('boards_user_id_constraint', sa.Integer(), nullable=False),
     sa.Column('color', sa.String(length=30), nullable=True),
     sa.Column('name', sa.String(length=50), nullable=False),
-    sa.Column('description', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['boards_user_id_constraint'], ['users.id'], ),

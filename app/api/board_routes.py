@@ -144,10 +144,6 @@ def delete_boards(boardId):
         # abort(404, {"message": "Board not Found"})
         return {"message": "Board not Found"}
 
-    # Commit the deletion to the db
-    db.session.delete(user_board)
-    db.session.commit()
-
     if user_board.user_id == current_user.id:
         # Commit the deletion to the db
         db.session.delete(user_board)

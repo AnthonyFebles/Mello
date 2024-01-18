@@ -22,7 +22,6 @@ const AllBoards = () => {
 	}
 
 	// console.log(boards, "board")
-    let source_color_image;
 
 	return (
 		<>

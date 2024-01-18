@@ -26,12 +26,13 @@ def create_boards():
         new_user_board = Board(
             user_id=current_user.id,
             name=form.name.data,
-            description=form.description.data,
             # visibility=form.visibility.data,
             color=form.color.data,
+            users=[current_user],
+            owner=current_user
         )
 
-        # Then once we create a new instance of our board we can 
+        # Then once we create a new instance of our board we can
         # add to the db via commit
         db.session.add(new_user_board)
         db.session.commit()
@@ -39,7 +40,7 @@ def create_boards():
         # If all validations are good, return a created status code
         # along with a jsonified new user board.
         return jsonify(new_user_board.to_dict()), 201
-    
+
     # if the validation fails, return an error response
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     # abort(400, {"message": "Body validation Error"})
@@ -76,7 +77,7 @@ def read_boards():
     # for each board in the user's list of boards.
     board_details = [board.to_dict() for board in user_boards]
 
-    # Then we return the board_details jsonified with a status code of 200. 
+    # Then we return the board_details jsonified with a status code of 200.
     return jsonify(board_details), 200
 
 
@@ -118,10 +119,10 @@ def update_boards(boardId):
         # Commit the updates to the database
         db.session.commit()
 
-        # Return a jsonified updated user_board in dictionary format with 
+        # Return a jsonified updated user_board in dictionary format with
         # 200 status code
         return jsonify(user_board.to_dict()), 200
-    
+
     # Return any validation errors that may have occurred
     return jsonify(form.errors), 400
 
@@ -142,7 +143,7 @@ def delete_boards(boardId):
         # Something with an error message
         # abort(404, {"message": "Board not Found"})
         return {"message": "Board not Found"}
-    
+
     if user_board.user_id == current_user.id:
         # Commit the deletion to the db
         db.session.delete(user_board)

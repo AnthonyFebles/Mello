@@ -74,7 +74,7 @@ const AllBoards = () => {
 										src={`${board.color}`}
 										alt="Board Preview Image"
 										className={`board-${board.color} boards__img`}
-										title={`${board.description}`}
+										title={`${board.name}`}
 									/>
 								</NavLink>
 							</div>

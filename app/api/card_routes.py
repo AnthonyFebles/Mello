@@ -14,7 +14,7 @@ card_routes = Blueprint(
 @card_routes.route("/")
 def get_cards(boardId, listId):
     card_query = Card.query.filter(Card.listId == listId).all()
-    cards = [card.to_dict() for card in card_query]
+    cards = [card.to_dict_no_list() for card in card_query]
     return {"cards": cards}
 
 
@@ -51,7 +51,7 @@ def update_card(boardId, listId, cardId):
 
         db.session.commit()
 
-        return card.to_dict()
+        return card.to_dict_no_list()
 
     return {"errors": "Card not found"}, 404
 

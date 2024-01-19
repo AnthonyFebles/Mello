@@ -136,7 +136,7 @@ def delete_boards(boardId):
     # Allows us to grab the user's board based on the BoardId provided
     user_board = Board.query.get(boardId)
 
-    print(user_board.to_dict())
+    # print(user_board.to_dict())
 
     # Conditional that checks if the board that exists belongs to the current user
     if not user_board:

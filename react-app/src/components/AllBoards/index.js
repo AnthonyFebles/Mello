@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
+import { readLists } from "../../store/lists";
 
 const AllBoards = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getBoards());
+		dispatch(getBoards()).then(dispatch(readLists(parseInt(1))));
 	}, [dispatch]);
 
 	const boards = useSelector((state) => {

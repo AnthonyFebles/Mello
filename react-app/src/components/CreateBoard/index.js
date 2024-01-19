@@ -32,7 +32,7 @@ const NewBoard = () => {
 
 		const closeMenu = async (e) => {
 			if (!ulRef.current.contains(e.target)) {
-				await setShowMenu(false);
+				setShowMenu(false);
 			}
 		};
 

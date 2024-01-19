@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
@@ -6,10 +6,13 @@ import "./AllBoards.css";
 import NewBoard from "../CreateBoard";
 
 const AllBoards = () => {
+
 	const dispatch = useDispatch();
+
 
 	useEffect(() => {
 		dispatch(getBoards());
+        
 	}, [dispatch]);
 
 	const boards = useSelector((state) => {
@@ -21,6 +24,8 @@ const AllBoards = () => {
 		//console.log('nothing here')
 		return null;
 	}
+
+    
 
 	// console.log(boards, "board")
 
@@ -59,7 +64,7 @@ const AllBoards = () => {
 									className={`board-${board.color} boards__img__navlink`}
 								>
 									<p className="board__name">{`${board.name}`}</p>
-
+									
 									<img
 										src={`${board.color}`}
 										alt="Board "

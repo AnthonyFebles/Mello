@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = 'boards/LOAD'
 const CREATE = 'boards/CREATE'
+const UPDATE = 'boards/UPDATE'
 
 const load = (list) => ({
     type: LOAD,
@@ -12,6 +13,11 @@ const create = (boardPayLoad) => ({
 	type: CREATE,
 	boardPayLoad,
 });
+
+const update = (boardPayLoad) => ({
+    type: UPDATE,
+    boardPayLoad
+})
 
 export const getBoards = () => async (dispatch) => {
     const res = await csrfFetch('/api/boards')
@@ -47,6 +53,29 @@ export const createNewBoard = (boardPayload) => async (dispatch) => {
 		throw res;
 	}
 };
+
+export const updateBoard = (boardPayLoad) => async (dispatch) => {
+    try {
+			const response = await csrfFetch(`/api/boards${boardPayLoad.id}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(boardPayLoad),
+			});
+
+			if (response.ok) {
+				//console.log("res is ok?")
+				const updatedBoard = await response.json();
+				dispatch(update(updatedBoard));
+				return updatedBoard;
+			}
+		} catch (error) {
+			const res = await error.json();
+			//console.log(res, "error")
+			throw res;
+		}
+}
 
 const initialState = {
     list: []

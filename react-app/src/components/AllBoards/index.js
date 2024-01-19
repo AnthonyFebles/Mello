@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
+import NewBoard from "../CreateBoard";
 
 const AllBoards = () => {
 	const dispatch = useDispatch();
@@ -26,15 +27,15 @@ const AllBoards = () => {
 	return (
 		<>
 			<h1>Hello From All Boards</h1>
-			<div class="tabbed-nav__container">
-				<div class="tabbed-nav__group">
+			<div className="tabbed-nav__container">
+				<div className="tabbed-nav__group">
 					
 						<NavLink to={`/boards`} className={"tabbed-nav__link"} id="boards-tab">
 							Boards
 						</NavLink>
 					
 
-					<a class="tabbed-nav__link" id="settings-tab">
+					<a className="tabbed-nav__link" id="settings-tab" href=" ">
 						{/* Insert page for editing user details here  */}
 						Settings
 					</a>
@@ -42,20 +43,9 @@ const AllBoards = () => {
 			</div>
 
 			<div className="boards__container">
-				<div class="boards__sidebar">
-					<div class="boards__sidebar-content">
-						<p class="title">Need unlimited boards?</p>
-						<p class="description">
-							Upgrade to Business Class to get unlimited Boards and Power-ups,
-							automation, and much more.
-						</p>
-						<p class="cta">
-							<a href="" className="learn-more-link">
-								Learn More
-							</a>
-						</p>
-					</div>
-				</div>
+
+                <NewBoard/>
+				
 				<div className="boards__group">
 					{boards.toReversed().map((board) => {
 						return (
@@ -72,7 +62,7 @@ const AllBoards = () => {
 
 									<img
 										src={`${board.color}`}
-										alt="Board Preview Image"
+										alt="Board "
 										className={`board-${board.color} boards__img`}
 										title={`${board.name}`}
 									/>

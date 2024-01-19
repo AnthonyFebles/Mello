@@ -5,7 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import  AllBoards  from "./components/AllBoards"
+import AllBoards from "./components/AllBoards"
+import List from "./components/Lists";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
 					</Route>
 					<Route exact path="/boards">
 						<AllBoards />
+					</Route>
+					<Route exact path='/boards/:id'>
+						<List />
 					</Route>
 				</Switch>
 			)}

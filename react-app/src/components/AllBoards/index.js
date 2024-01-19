@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
+import NewBoard from "../CreateBoard";
 
 const AllBoards = () => {
 	const dispatch = useDispatch();
@@ -42,7 +43,9 @@ const AllBoards = () => {
 			</div>
 
 			<div className="boards__container">
-				<div class="boards__sidebar">
+
+                <NewBoard/>
+				{/* <div class="boards__sidebar">
 					<div class="boards__sidebar-content">
 						<p class="title">Need unlimited boards?</p>
 						<p class="description">
@@ -55,7 +58,7 @@ const AllBoards = () => {
 							</a>
 						</p>
 					</div>
-				</div>
+				</div> */}
 				<div className="boards__group">
 					{boards.toReversed().map((board) => {
 						return (

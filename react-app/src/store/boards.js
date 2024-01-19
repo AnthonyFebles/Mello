@@ -1,11 +1,17 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'boards/LOAD'
+const CREATE = 'boards/CREATE'
 
 const load = (list) => ({
     type: LOAD,
     list
 })
+
+const create = (boardPayLoad) => ({
+	type: CREATE,
+	boardPayLoad,
+});
 
 export const getBoards = () => async (dispatch) => {
     const res = await csrfFetch('/api/boards')
@@ -18,6 +24,29 @@ export const getBoards = () => async (dispatch) => {
 
     return res
 }
+
+export const createNewBoard = (boardPayload) => async (dispatch) => {
+	try {
+		const response = await csrfFetch(`/api/boards`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(boardPayload),
+		});
+
+		if (response.ok) {
+			//console.log("res is ok?")
+			const newBoard = await response.json();
+			dispatch(create(newBoard));
+			return newBoard;
+		}
+	} catch (error) {
+		const res = await error.json();
+		//console.log(res, "error")
+		throw res;
+	}
+};
 
 const initialState = {
     list: []

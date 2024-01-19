@@ -69,12 +69,12 @@ const NewBoard = () => {
 	};
 
 	//////////////////////////////
-    ///Test Delete Button
+    // Test Delete Button
     // const handleTest = async (e) => {
     //     e.preventDefault()
 
     //     try {
-	// 				dispatch(deleteBoard("12"))
+	// 				dispatch(deleteBoard("13"))
 	// 			} catch (data) {
 	// 				setErrors(data);
 	// 				alert(data.errors);

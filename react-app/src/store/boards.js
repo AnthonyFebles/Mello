@@ -140,7 +140,7 @@ const BoardsReducer = (state = initialState, action) => {
             // console.log(newState, "new state")
             // console.log(action, "action")
             delete newState[action.boardId]
-
+            // console.log(newState, "new state after del");
             return newState
 
 		default:

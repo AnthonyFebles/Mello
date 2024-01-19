@@ -1,4 +1,4 @@
-import { createNewBoard } from "../../store/boards";
+import { createNewBoard, deleteBoard } from "../../store/boards";
 import { getBoards } from "../../store/boards";
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -68,10 +68,23 @@ const NewBoard = () => {
         setName('')
 	};
 
-	
+	//////////////////////////////
+    ///Test Delete Button
+    // const handleTest = async (e) => {
+    //     e.preventDefault()
+
+    //     try {
+	// 				dispatch(deleteBoard("12"))
+	// 			} catch (data) {
+	// 				setErrors(data);
+	// 				alert(data.errors);
+	// 			}
+    // }
+    ////////////////////////////////
 
 	return (
 		<>
+        {/* <button onClick={handleTest}></button> */}
 			<div className="boards__sidebar">
 				<div className="boards__sidebar-content">
 					<p className="title">Create A New Board</p>

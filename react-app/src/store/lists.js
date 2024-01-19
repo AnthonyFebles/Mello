@@ -44,17 +44,18 @@ export const createLists = (board_id, payload) => async dispatch => {
     return res;
 }
 
-export const readLists = (board_id) => async (dispatch) => {
-    const res = await csrfFetch(`/boards/${board_id}/lists`)
+// export const readLists = (board_id) => async (dispatch) => {
+//     const res = await csrfFetch(`/boards/${board_id}/lists`)
 
-    if (res.ok) {
-        const lists = await res.json()
-        console.log(lists, "This is all Lists!!!!!!!!!")
-        dispatch(read(lists))
-    }
 
-    return res;
-}
+//     if (res.ok) {
+//         const lists = await res.json()
+//         console.log(lists, "This is all Lists!!!!!!!!!")
+//         dispatch(read(lists))
+//     }
+
+//     return res;
+// }
 
 
 export const updateLists = (payload, list_id) => async dispatch => {
@@ -98,21 +99,21 @@ const ListsReducer = (state = initState, action) => {
             newObj.lists[id] = action.payload
             return newObj;
         
-        case READ:
-            console.log(action, "console.log the action")
-            const allLists = {};
-            if (action.list) {
-                action.list.forEach((list) => {
-                    allLists[list.id] = list;
-                });
-                console.log(action, "console.log the action")
-                return {
-                    ...allLists,
-                    ...initState
-                }
-            } else {
-                return {...initState, lists:{...allLists},  };
-            }
+        // case READ:
+        //     console.log(action, "console.log the action")
+        //     const allLists = {};
+        //     if (action.list) {
+        //         action.list.forEach((list) => {
+        //             allLists[list.id] = list;
+        //         });
+        //         console.log(action, "console.log the action")
+        //         return {
+        //             ...allLists,
+        //             ...initState
+        //         }
+        //     } else {
+        //         return {...initState, lists:{...allLists},  };
+        //     }
         
         case UPDATE: 
             console.log(action, "console.log the action")

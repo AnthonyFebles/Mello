@@ -9,7 +9,7 @@ const AllBoards = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getBoards()).then(dispatch(readLists(parseInt(1))));
+		dispatch(getBoards());
 	}, [dispatch]);
 
 	const boards = useSelector((state) => {

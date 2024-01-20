@@ -12,94 +12,100 @@ import { csrfFetch } from "./csrf";
 
 const GET_CARDS = '/cards/LOAD'
 
-const getCards = (comment) => {
+const getCards = (cards) => {
     return {
         type: GET_CARDS,
-        comment
+        payload: cards
     }
 }
 
 export const getCardsThunk = (listId) => async (dispatch) => {
 
-    // First we fetch the data from the api route
-    const res = await csrfFetch(`/api/lists/${listId}/cards`)
-
-    // if the response is okay, then we'll grab that json data
-    // and then dispatch the loadCards action creator and then
-    // return that data
-    if (res.ok) {
-        const cards = await res.json()
-        // console.log("This is the cards", cards)
-        dispatch(getCards(listId, cards))
-        return cards
+    try {
+        // First we fetch the data from the api route
+        const res = await csrfFetch(`/api/lists/${listId}/cards`)
+    
+        // if the response is okay, then we'll grab that json data
+        // and then dispatch the loadCards action creator and then
+        // return that data
+        if (res.ok) {
+            const cards = await res.json()
+            // console.log("This is the cards", cards)
+            dispatch(getCards(listId, cards))
+            return cards
+        } 
+    } catch (error) {
+        const res = await error.json();
+        throw res;
     }
-
-    // Then we return the response
-    return res;
-}
+} 
 
 
 //! Get Each Card
 
 const GET_EACH_CARD = '/cards/LOAD'
 
-const getEachCard = (comment) => {
+const getEachCard = (card) => {
     return {
         type: GET_EACH_CARD,
-        comment
+        payload: card
     }
 }
 
 export const getEachCardThunk = (cardId) => async (dispatch) => {
 
-    // First we fetch the data from the api route
-    const res = await csrfFetch(`/api/cards/${cardId}`)
-
-    // If the res is okay, then we'll grab the json data and then
-    // dispatch the getEachCard action creator
-    if (res.ok) {
-        const eachCard = await res.json()
-        dispatch(getEachCard(cardId, eachCard))
-        return eachCard
+    try {
+        // First we fetch the data from the api route
+        const res = await csrfFetch(`/api/cards/${cardId}`)
+    
+        // If the res is okay, then we'll grab the json data and then
+        // dispatch the getEachCard action creator
+        if (res.ok) {
+            const eachCard = await res.json()
+            dispatch(getEachCard(cardId, eachCard))
+            return eachCard
+        } 
+    } catch (error) {
+        const res = await error.json();
+        throw res;
     }
-
-    //Then return the response
-    return res;
 }
 
 //! Create a New Card
 
 const POST_CARD = '/cards/POST'
 
-const addNewCard = (comment) => {
+const addNewCard = (newCard) => {
     return {
         type: POST_CARD,
-        comment
+        payload: newCard
     }
 }
 
 export const addCardThunk = (listId, cardData) => async (dispatch) => {
 
-    // Request method details
-    const requestMethod = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(cardData)
-    }
-
-    // fetch from backend api route
-    const res = csrfFetch(`api/lists/${listId}/cards`, requestMethod)
-
-    // if the response is good, we'll dispatch using the action creator
-    if (res.ok) {
-        const newCard = await res.json()
-        dispatch(addNewCard(newCard))
-        return newCard
-    } else {
-        const error = res.json()
-        return error
+    try {
+        // Request method details
+        const requestMethod = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cardData)
+        }
+    
+        // fetch from backend api route
+        const res = await csrfFetch(`api/lists/${listId}/cards`, requestMethod)
+    
+        // if the response is good, we'll dispatch using the action creator
+        if (res.ok) {
+            const newCard = await res.json()
+            dispatch(addNewCard(newCard))
+            return newCard
+        } 
+    } catch (error) {
+        const res = await error.json();
+        throw res;
     }
 
 }
@@ -111,26 +117,31 @@ const UPDATE_CARD = '/cards/PUT'
 const updateCard = (updatedCard) => {
     return {
         type: UPDATE_CARD,
-        updatedCard
+        payload: updatedCard
     }
 }
 
 export const updateCardThunk = (cardId, updatedCardInfo) => async (dispatch) => {
 
-    const requestMethod = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(updatedCardInfo)
-    }
-
-    const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
-
-    if (res.ok) {
-        const editedCard = await res.json()
-        dispatch(updateCard(editedCard))
-        return editedCard
+    try {
+        const requestMethod = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedCardInfo)
+        }
+    
+        const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
+    
+        if (res.ok) {
+            const editedCard = await res.json()
+            dispatch(updateCard(editedCard))
+            return editedCard
+        }
+    } catch (error) {
+        const res = await error.json();
+        throw res;
     }
 }
 
@@ -141,21 +152,26 @@ const DELETE_CARD = '/cards/DELETE'
 const deleteCard = (cardId) => {
     return {
         type: DELETE_CARD,
-        cardId
+        payload: cardId
     }
 }
 
 export const deleteCardThunk = (cardId) => async (dispatch) => {
 
-    const requestMethod = {
-        method: "DELETE"
-    }
-
-    const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
-
-    if (res.ok) {
-        dispatch(deleteCard(cardId))
-        return cardId;
+    try {
+        const requestMethod = {
+            method: "DELETE"
+        }
+    
+        const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
+    
+        if (res.ok) {
+            dispatch(deleteCard(cardId))
+            return cardId;
+        }
+    } catch (error) {
+        const res = await error.json();
+        throw res;
     }
 }
 
@@ -176,13 +192,24 @@ const cardsReducer = (state = initialState, action) => {
             })
             return {...state, Cards: allCards}
         case GET_EACH_CARD:
-            
+            return {
+                ...state,
+                Cards: { ...state.Cards, [action.payload.id]: action.payload}
+            }
         case POST_CARD:
-
+            return {
+                ...state,
+                Cards: { ...state.Cards, [action.payload.id]: action.payload}
+            }
         case UPDATE_CARD:
-
+            return {
+                ...state,
+                Cards: { ...state.Cards, [action.payload.id]: action.payload}
+            }
         case DELETE_CARD: 
-
+            const newState = {...state};
+            delete newState.Cards[action.payload];
+            return newState
         default:
             return state;
     }

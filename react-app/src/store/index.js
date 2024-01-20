@@ -3,15 +3,12 @@ import thunk from 'redux-thunk';
 import { restoreCSRF, csrfFetch } from "./csrf";
 import session from './session'
 import BoardsReducer from './boards';
-import ListsReducer from './lists';
-// import ListDetailReducer from './listDetail';
-
+import cardsReducer from './cards';
 
 const rootReducer = combineReducers({
   session,
   boards: BoardsReducer,
-  list: ListsReducer,
-  // listDetail: ListDetailReducer 
+  cards: cardsReducer
 });
 
 

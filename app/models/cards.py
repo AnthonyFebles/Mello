@@ -11,7 +11,7 @@ class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     listId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('lists.id')), nullable=False)
     name = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
@@ -25,7 +25,17 @@ class Card(db.Model):
             'listId': self.listId,
             'name': self.name,
             'description': self.description,
-            # 'users': self.users,
-            # 'comments': [comment.to_dict() for comment in self.comments],
-            # 'list': [self.list.to_dict()]
+            'users': [self_user.to_dict() for self_user in self.users],
+            'comments': [comment.to_dict() for comment in self.comments],
+            'list': [self.list.to_dict()]
+        }
+
+    def to_dict_no_list(self):
+        return {
+            'id': self.id,
+            'listId': self.listId,
+            'name': self.name,
+            'description': self.description,
+            'users': [self_user.to_dict() for self_user in self.users],
+            'comments': [comment.to_dict() for comment in self.comments],
         }

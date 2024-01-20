@@ -12,7 +12,6 @@ class Board(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False, name='boards_user_id_constraint')
     color = db.Column(db.String(30), nullable=True)
     name = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     users = db.relationship('User', secondary=shared_boards ,back_populates='used_boards')
@@ -25,8 +24,7 @@ class Board(db.Model):
             'user_id': self.user_id,
             'color': self.color,
             'name': self.name,
-            'description': self.description,
-            # 'users': self.users,
-            # 'owner': self.owner,
-            # 'lists': self.lists
+            'users': [user.to_dict() for user in self.users],
+            'owner': self.owner.to_dict(),
+            'lists': [list.to_dict() for list in self.lists]
         }

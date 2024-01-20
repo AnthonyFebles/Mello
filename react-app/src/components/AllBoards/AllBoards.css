@@ -40,7 +40,11 @@
   max-height: 100px;
 =======
   max-height: 130px;
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
   max-width: 180px;
   width: 20%;
   flex-shrink: 0;
@@ -54,7 +58,11 @@
  {
   color: white;
 }
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 
 .boards__sidebar-content .description {
   color: lightblue;
@@ -108,7 +116,11 @@ body {
   max-width: 264    px;
 =======
   max-width: 250px;
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
   color: white;
   width: 100%;
   display: flex;
@@ -136,7 +148,11 @@ body {
     font-size: 15px ;
     padding-left: 5%;
     margin-bottom: 5%;
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 }
 
 a {
@@ -146,4 +162,8 @@ a {
 }
 =======
 }
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)

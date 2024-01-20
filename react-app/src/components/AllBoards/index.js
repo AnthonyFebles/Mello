@@ -6,7 +6,11 @@ import "./AllBoards.css";
 <<<<<<< HEAD
 import NewBoard from "../CreateBoard";
 =======
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 
 const AllBoards = () => {
 
@@ -35,7 +39,11 @@ const AllBoards = () => {
 =======
 	// console.log(boards, "board")
     let source_color_image;
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 
 	return (
 		<>
@@ -46,7 +54,11 @@ const AllBoards = () => {
 =======
 			<div class="tabbed-nav__container">
 				<div class="tabbed-nav__group">
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 					
 						<NavLink to={`/boards`} className={"tabbed-nav__link"} id="boards-tab">
 							Boards
@@ -57,7 +69,11 @@ const AllBoards = () => {
 					<a className="tabbed-nav__link" id="settings-tab" href=" ">
 =======
 					<a class="tabbed-nav__link" id="settings-tab">
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 						{/* Insert page for editing user details here  */}
 						Settings
 					</a>
@@ -84,7 +100,11 @@ const AllBoards = () => {
 						</p>
 					</div>
 				</div>
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 				<div className="boards__group">
 					{boards.toReversed().map((board) => {
 						return (
@@ -112,7 +132,11 @@ const AllBoards = () => {
 										alt="Board Preview Image"
 										className={`board-${board.color} boards__img`}
 										title={`${board.description}`}
+<<<<<<< HEAD
 >>>>>>> 13b3df6 (all-boards-component partially done, logic is there)
+=======
+>>>>>>> a2939b8 (all-boards-component partially done, logic is there)
+>>>>>>> c5a7933 (added a comments redux store)
 									/>
 								</NavLink>
 							</div>

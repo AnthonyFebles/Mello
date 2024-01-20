@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllBoards from "./components/AllBoards"
 import List from "./components/Lists";
+import ListDetails from "./components/Lists/ListDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +32,10 @@ function App() {
 					</Route>
 					<Route exact path='/boards/:id'>
 						<List />
-					</Route>
+				  </Route>
+                	<Route exact path='/boards/:id/lists/:id'>
+                    <ListDetails />
+                </Route>
 				</Switch>
 			)}
 		</>

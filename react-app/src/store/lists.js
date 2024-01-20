@@ -11,10 +11,10 @@ const create = payload => ({
     payload
 })
 
-const read = (list) => ({
-    type: READ,
-    list
-})
+// const read = (list) => ({
+//     type: READ,
+//     list
+// })
 
 
 
@@ -29,8 +29,9 @@ const deleted = list => ({
 
 
 export const createLists = (board_id, payload) => async dispatch => {
-    const res = await csrfFetch(`/boards/${board_id}/lists`, {
-        method: 'POST',
+    console.log(board_id, payload)
+    const res = await csrfFetch(`/api/boards/${board_id}/lists`, {
+        method: "POST",
         Headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     });
@@ -59,10 +60,11 @@ export const createLists = (board_id, payload) => async dispatch => {
 
 
 export const updateLists = (payload, list_id) => async dispatch => {
-    const res = await csrfFetch(`/lists/${list_id}`, {
+   
+    const res = await csrfFetch(`/api/lists/${list_id}`, {
         method: "PUT",
         Headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: payload
     });
 
     if (res.ok) {
@@ -76,8 +78,8 @@ export const updateLists = (payload, list_id) => async dispatch => {
 }
 
 
-export const deleteList = list_id => async dispatch => {
-    const res = await csrfFetch(`/lists/${list_id}`);
+export const deleteList = (list_id) => async dispatch => {
+    const res = await csrfFetch(`/api/lists/${list_id}`);
 
     if (res.ok) {
         const data = await res.json();

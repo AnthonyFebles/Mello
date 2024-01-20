@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
-import List from "../Lists";
+
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 
 

@@ -10,35 +10,34 @@ import Card from "../Cards"
 const List = () => {
     const dispatch = useDispatch();
     const {id} = useParams()
+    const [isLoading, setIsLoading] = useState(true)
+    
+    useEffect(() => {
+        dispatch(getBoards()).then(()=> setIsLoading(false))
+    }, [dispatch])
+    
     const boardLists = useSelector((state) => state.boards);
     const lists = boardLists[id].lists
-    console.log(lists[1])
-    const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-       dispatch(getBoards()).then(()=> setIsLoading(false))
-   }, [dispatch])
 
     if(isLoading) return <h1>Loading</h1>
     return (
-        <div>
+        <div className="lists__container">
             <h1>Hello From Lists</h1>
-            {lists.toReversed().map(list => (
-                <>
-            
-                <div>
-                    <h2>{list.name}</h2>
-                </div>
+            <div className="lists__group">
+                {lists.toReversed().map(list => (
+                    <>
                     <div>
-                        <h3> cards insert</h3>
-                {/* <Card state={list.cards} />         */}
-                </div>
-                </>
-                    ))
-            }
-
-                    
-                </div>
+                        <h2>{list.name}</h2>
+                    </div>
+                        <div>
+                            <h3> cards insert</h3>
+                    {/* <Card state={list.cards} />         */}
+                    </div>
+                    </>
+                        ))
+                    }
+            </div>   
+        </div>
             )
 }
 

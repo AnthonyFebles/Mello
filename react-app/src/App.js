@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import  AllBoards  from "./components/AllBoards"
 
 function App() {
   const dispatch = useDispatch();
@@ -14,20 +15,23 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route  path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
-    </>
-  );
+		<>
+			<Navigation isLoaded={isLoaded} />
+			{isLoaded && (
+				<Switch>
+					<Route path="/login">
+						<LoginFormPage />
+					</Route>
+					<Route path="/signup">
+						<SignupFormPage />
+					</Route>
+					<Route exact path="/boards">
+						<AllBoards />
+					</Route>
+				</Switch>
+			)}
+		</>
+	);
 }
 
 export default App;

@@ -50,7 +50,7 @@ class User(db.Model, UserMixin):
             'last_name':self.last_name,
             'username': self.username,
             'email': self.email,
-            # 'used_boards': self.used_boards,
-            # 'owned_boards': self.owned_boards,
-            # 'comments': self.comments,
+            'used_boards': self.used_boards,
+            'owned_boards': self.owned_boards,
+            'comments': self.comments,
         }

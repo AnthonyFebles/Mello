@@ -103,4 +103,6 @@ def downgrade():
     op.drop_table('lists')
     op.drop_table('boards')
     op.drop_table('users')
+    op.drop_table('shared_boards')
+    op.drop_table('user_cards')
     # ### end Alembic commands ###

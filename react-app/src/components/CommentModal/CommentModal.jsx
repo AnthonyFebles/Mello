@@ -3,6 +3,7 @@ import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
 
+
 export default function CommentModal({ cardId }) {
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
@@ -26,9 +27,17 @@ export default function CommentModal({ cardId }) {
 
   return (
     <div className='commentModal'>
+      <div className='cardTitle'>
+        <img className='flashCard' src="/credit-card.png" alt="flash card" />
+        <div>
+          <h3>Card Name</h3>
+          <p>In list: list name</p>
+        </div>
+      </div>
+
       <div id="activity">
         <div className="row-container">
-          <p><i className="fa-solid fa-bars"></i>  Activity</p>
+          <p><i class="fa-sharp fa-regular fa-comments fa-lg" style={{color: 'white'}}></i>  Comments</p>
           <button>Show Details</button>
         </div>
       </div>
@@ -40,8 +49,6 @@ export default function CommentModal({ cardId }) {
           <button onClick={onRedClick}><i className="fas fa-palette" style={{color: 'red'}}></i></button>
           <button onClick={onHighlightClick}><i className="fa-solid fa-highlighter" style={{color: 'goldenrod'}}></i></button>
         </div>
-        <hr />
-
         <Editor
           className="editor"
           editorState={editorState}
@@ -54,54 +61,9 @@ export default function CommentModal({ cardId }) {
             RED: { color: 'red' },
             HIGHLIGHT: { backgroundColor: 'yellow' },
           }}
-          />
-        </div>
+        />
+      </div>
       <p>{cardId}</p>
     </div>
   );
 }
-// import React from 'react';
-// import { Editor, EditorState } from 'draft-js';
-// import 'draft-js/dist/Draft.css';
-// import './CommentModal.css';
-
-// export default function CommentModal({ cardId }) {
-//   const [editorState, setEditorState] = React.useState(() =>
-//     EditorState.createEmpty()
-//   );
-
-//   return (
-//     <div className='commentModal'>
-//       <div id="activity">
-//         <div className="row-container">
-//           <p><i class="fa-solid fa-bars"></i>  Activity</p>
-//           <button>Show Details</button>
-//         </div>
-//       </div>
-//       <div>
-//         <Editor editorState={editorState} onChange={setEditorState} placeholder="Write a comment..." />
-//       </div>
-//       {/* <div onClick={() => document.getElementById('myInput').focus()}>
-//         <Editor editorState={editorState} onChange={setEditorState} id="myInput" />
-//       </div> */}
-//       <p>{cardId}</p>
-//     </div>
-//   );
-// }
-
-// import './CommentModal.css';
-
-// export default function CommentModal({ cardId }) {
-//   return (
-//     <div className='commentModal'>
-//       <div id="activity">
-//         <div className="row-container">
-//           <p><i class="fa-solid fa-bars"></i>  Activity</p>
-//           <button>Show Details</button>
-//         </div>
-//       </div>
-//       <input type="text" placeholder="Write a comment..."/>
-//       <p>{cardId}</p>
-//     </div>
-//   );
-// }

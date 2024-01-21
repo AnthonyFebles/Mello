@@ -1,8 +1,25 @@
 #modal-content {
   width: 768px;
   height: 908px;
+  background-color: grey;
   border-radius: 15px;
   padding: 12px;
+}
+
+.cardTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cardTitle div {
+  margin-left: 10px;
+}
+
+.flashCard {
+  color: white;
+  width: 30px;
+  height: 30px;
 }
 
 #activity .row-container {
@@ -14,12 +31,23 @@
 
 .editor-container {
   border: 1px solid black;
+  background-color: black;
   padding: 6px;
 }
 
 .toolbar {
   display: flex;
+  width: 25%;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 5px;
+}
+
+.toolbar button {
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: black;
+  cursor: pointer;
 }

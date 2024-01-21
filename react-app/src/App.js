@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import  AllBoards  from "./components/AllBoards"
+import { Comments } from "./components"
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
 					<Route exact path="/boards">
 						<AllBoards />
 					</Route>
+					<Route path="/cards/:cardId/comments" component={Comments}/>
 				</Switch>
 			)}
 		</>

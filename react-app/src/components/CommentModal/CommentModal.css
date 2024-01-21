@@ -1,0 +1,25 @@
+#modal-content {
+  width: 768px;
+  height: 908px;
+  border-radius: 15px;
+  padding: 12px;
+}
+
+#activity .row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.editor-container {
+  border: 1px solid black;
+  padding: 6px;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}

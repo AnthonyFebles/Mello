@@ -24,8 +24,8 @@ class Comment(db.Model):
             'card_id': self.card_id,
             'comment': self.comment,
             'author': self.users.to_dict(),
-            'created_at':self.created_at,
-            'updated_at':self.updated_at
+            'created_at':self.created_at.strftime('%m/%d %I:%M %p'),
+            'updated_at':self.updated_at.strftime('%m/%d %I:%M %p')
         }
 
     def to_dict_no_user(self):

@@ -26,7 +26,7 @@ const remove = (boardId) => ({
 });
 
 export const getBoards = () => async (dispatch) => {
-	const res = await csrfFetch("/api/boards");
+	const res = await fetch("/api/boards");
 
 	if (res.ok) {
 		const list = await res.json();

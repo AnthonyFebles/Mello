@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCommentsByCardThunk } from "../../store/comments";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";

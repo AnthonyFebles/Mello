@@ -48,13 +48,12 @@ export default function CommentModal({ cardId }) {
     setEditorState2(RichUtils.toggleInlineStyle(editorState2, 'HIGHLIGHT'));
   }
 
-  
+
 
   return (
     <div className='commentModal'>
       <div className='cardTitle'>
-        <i class="fa-solid fa-table fa-xl" style={{color: 'white'}}></i>
-        {/* <img className='flashCard' src="/credit-card.png" alt="flash card" /> */}
+        <i class="fa-solid fa-table fa-xl" style={{color: 'lightgray'}}></i>
         <div className="title-information">
             <h3>Card Name</h3>
             <p>In list: list name</p>
@@ -62,10 +61,11 @@ export default function CommentModal({ cardId }) {
       </div>
       <div className="description">
         <div className="row-container">
-          <p><i class="fa-solid fa-align-left fa-lg" style={{color: 'white'}}></i>  Description</p>
+          <i class="fa-solid fa-align-left fa-xl" style={{color: 'lightgray'}}></i>
+          <p>Description</p>
         </div>
       </div>
-      <div className="editor-container">
+      <div className="editor-container-1">
         {clicked && (
           <>
             <div className="toolbar">
@@ -97,13 +97,16 @@ export default function CommentModal({ cardId }) {
       </div>
       { clicked && (
         <div className="button-container">
-          <button>Save</button>
-          <button onClick={() => setClicked(false)}>Cancel</button>
+          <button className='save'>Save</button>
+          <button className='cancel' onClick={() => setClicked(false)}>Cancel</button>
         </div>
       )}
       <div id="activity">
         <div className="row-container">
-          <p><i class="fa-sharp fa-regular fa-comments fa-lg" style={{color: 'white'}}></i>  Comments</p>
+          <div className='comment-icon'>
+            <i class="fa-sharp fa-regular fa-comments fa-lg" style={{color: 'lightgray'}}></i>
+            <p>Comments</p>
+          </div>
           <button>Show Details</button>
         </div>
       </div>
@@ -140,6 +143,9 @@ export default function CommentModal({ cardId }) {
           </div>
         </div>
       </div>
+      { clicked2 && (
+        <button className='save-2'>Save</button>
+      )}
       <div className="comment-block">
         <i className="fas fa-user-circle fa-2xl" />
         {Object.values(comments).map((comment) => (

@@ -10,7 +10,7 @@ class Board(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False, name='boards_user_id_constraint')
-    color = db.Column(db.String(30), nullable=True)
+    color = db.Column(db.String(255), nullable=True)
     name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)

@@ -124,6 +124,7 @@ const updateCard = (updatedCard) => {
 export const updateCardThunk = (cardId, updatedCardInfo) => async (dispatch) => {
 
     try {
+        // Request method for Editing
         const requestMethod = {
             method: "PUT",
             headers: {
@@ -132,8 +133,10 @@ export const updateCardThunk = (cardId, updatedCardInfo) => async (dispatch) => 
             body: JSON.stringify(updatedCardInfo)
         }
     
+        // fetch the api route
         const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
-    
+        
+        
         if (res.ok) {
             const editedCard = await res.json()
             dispatch(updateCard(editedCard))
@@ -192,24 +195,13 @@ const cardsReducer = (state = initialState, action) => {
             })
             return {...state, Cards: allCards}
         case GET_EACH_CARD:
-            return {
-                ...state,
-                Cards: { ...state.Cards, [action.payload.id]: action.payload}
-            }
+            
         case POST_CARD:
-            return {
-                ...state,
-                Cards: { ...state.Cards, [action.payload.id]: action.payload}
-            }
+            
         case UPDATE_CARD:
-            return {
-                ...state,
-                Cards: { ...state.Cards, [action.payload.id]: action.payload}
-            }
+            
         case DELETE_CARD: 
-            const newState = {...state};
-            delete newState.Cards[action.payload];
-            return newState
+
         default:
             return state;
     }

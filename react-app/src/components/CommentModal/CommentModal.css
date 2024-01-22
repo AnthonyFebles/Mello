@@ -31,7 +31,13 @@
 
 .editor-container {
   border: 1px solid black;
-  background-color: black;
+  background-color: darkslategray;
+  padding: 6px;
+}
+
+.editor-container-2 {
+  border: 1px solid black;
+  background-color: darkslategray;
   padding: 6px;
 }
 

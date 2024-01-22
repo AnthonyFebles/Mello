@@ -9,7 +9,6 @@ const CurrentBoard = () => {
     const board = useSelector(state => state.boardDetail)
     const { color, lists, name, owner, user_id, users } = board;
     const { id } = useParams();
-    console.log(board)
     useEffect(() => {
             dispatch(loadDetails(parseInt(id)))
     },[dispatch, id])

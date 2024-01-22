@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
-import { getBoards } from "../../store/boards";
 import { useParams } from "react-router-dom";
 import Card from "../Cards"
 import ListForm from "./create";

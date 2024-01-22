@@ -48,17 +48,16 @@ export default function CommentModal({ cardId }) {
     setEditorState2(RichUtils.toggleInlineStyle(editorState2, 'HIGHLIGHT'));
   }
 
-  // function randomColor() {
-  //   return '#' + Math.floor(Math.random() * 16777215).toString(16);
-  // }
+  
 
   return (
     <div className='commentModal'>
       <div className='cardTitle'>
-        <img className='flashCard' src="/credit-card.png" alt="flash card" />
-        <div>
-          <h3>Card Name</h3>
-          <p>In list: list name</p>
+        <i class="fa-solid fa-table fa-xl" style={{color: 'white'}}></i>
+        {/* <img className='flashCard' src="/credit-card.png" alt="flash card" /> */}
+        <div className="title-information">
+            <h3>Card Name</h3>
+            <p>In list: list name</p>
         </div>
       </div>
       <div className="description">

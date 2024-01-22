@@ -13,8 +13,6 @@ export default function Comments() {
     dispach(getCommentsByCardThunk(cardId));
   }, [dispach, cardId])
 
-  // const comments = useSelector((state) => state.comments);
-
   return (
     <div className="comments">
       <h2>Comments!</h2>
@@ -22,13 +20,6 @@ export default function Comments() {
         buttonText={"Add Comment"}
         modalComponent={<CommentModal cardId={cardId} />}
       />
-      <p>{cardId}</p>
-      {/* {Object.values(comments).map((comment) => (
-        <div key={comment.id}>
-          <h2>{comment.author.first_name} {comment.author.last_name} {comment.updated_at}</h2>
-          <h3>{comment.comment}</h3>
-        </div>
-      ) )} */}
     </div>
   );
 }

@@ -5,17 +5,33 @@
   height: 908px;
   background-color: grey;
   border-radius: 15px;
-  padding: 12px;
+  padding: 16px;
 }
 
 .cardTitle {
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* align-items: center; */
 }
 
 .cardTitle div {
   margin-left: 10px;
+}
+
+.title-information {
+  position: relative;
+  top: 5px;
+}
+
+.title-information h3 {
+  font-size: 23px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.title-information p {
+  margin-top: 0;
 }
 
 .flashCard {
@@ -28,7 +44,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .editor-container {
@@ -54,7 +70,7 @@
 .comment-container {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .comment-block i,

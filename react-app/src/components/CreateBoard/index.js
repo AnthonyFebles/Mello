@@ -18,28 +18,12 @@ const NewBoard = () => {
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState({});
 	const [showMenu, setShowMenu] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const openMenu = () => {
 			if (showMenu) return;
 			setShowMenu(true);
 		};
-    
-	useEffect(() => {
-		dispatch(getBoards());
-		if (!showMenu) return;
-
-        // click outside of un-hidden form and it will close
-
-		const closeMenu = async (e) => {
-			if (!ulRef.current.contains(e.target)) {
-				setShowMenu(false);
-			}
-		};
-
-		document.addEventListener("click", closeMenu);
-
-		return () => document.removeEventListener("click", closeMenu);
-	}, [showMenu, dispatch, name, color]);
 
 
 
@@ -62,29 +46,57 @@ const NewBoard = () => {
 		} catch (data) {
 			setErrors(data);
 			alert(data.errors);
-		}
+		}finally {
         setShowMenu(false)
         setColor(colors[getRandomInt(colors.length)]);
         setName('')
+        dispatch(getBoards())
+        }
 	};
 
-	//////////////////////////////
+	////////////////////////////
     // Test Delete Button
-    // const handleTest = async (e) => {
-    //     e.preventDefault()
+    const handleTest = async (e) => {
+        e.preventDefault()
 
-    //     try {
-	// 				dispatch(deleteBoard("13"))
-	// 			} catch (data) {
-	// 				setErrors(data);
-	// 				alert(data.errors);
-	// 			}
-    // }
-    ////////////////////////////////
+        try {
+					await dispatch(deleteBoard("6"))
+                    console.log("no error")
+						
+				} catch (data) {
+                    console.log(data.message)
+					setErrors(data.message)  
+                    alert(data.message);
+					;
+				}  finally {
+                    dispatch(getBoards())
+					.then(() => setIsLoading(false));
+                }
+    }
 
+    	useEffect(() => {
+				dispatch(getBoards()).then(() => setIsLoading(false));
+				if (!showMenu) return;
+
+				// click outside of un-hidden form and it will close
+
+				const closeMenu = async (e) => {
+					if (!ulRef.current.contains(e.target)) {
+						setShowMenu(false);
+					}
+				};
+
+				document.addEventListener("click", closeMenu);
+
+				return () => document.removeEventListener("click", closeMenu);
+			}, [dispatch, color, showMenu]);
+    //////////////////////////////
+    if (isLoading) return (
+			<h1>...Loading</h1>
+		)
 	return (
 		<>
-        {/* <button onClick={handleTest}></button> */}
+        <button onClick={handleTest}></button>
 			<div className="boards__sidebar">
 				<div className="boards__sidebar-content">
 					<p className="title">Create A New Board</p>

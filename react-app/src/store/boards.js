@@ -90,15 +90,17 @@ export const deleteBoard = (boardId) => async (dispatch) => {
 		});
 
 		if (res.ok) {
-			const board = res.json();
+			const board = await res.json();
 			dispatch(remove(boardId));
 			return board;
 		}
         return res 
 	} catch (error) {
+		// console.log(error,"ERROR ")
 		const res = await error.json();
-		//console.log(res, "error")
-		throw res;
+		// console.log(res)
+		throw (res)
+		
 	}
 };
 

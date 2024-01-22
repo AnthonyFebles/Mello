@@ -1,0 +1,122 @@
+.boards__container {
+  margin: 0 auto;
+  padding: 32px;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.boards__board {
+  background-color: rgba(255, 255, 255, 0.11);
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-weight: bold;
+  height: 100px;
+  margin: 0 8px 16px;
+  max-width: 320px;
+  padding: 4px 8px;
+  position: relative;
+  color: white;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.boards__group {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.boards__sidebar {
+  background-color: #6c547b;
+  border-radius: 3px;
+  margin: 0 32px 32px 0;
+  padding: 0 20px 32px 20px;
+  max-height: 100px;
+  max-width: 180px;
+  width: 20%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 220px;
+}
+
+
+.boards__sidebar-content .description {
+  color: lightblue;
+}
+
+.tabbed-nav__container {
+  background-color: #f4f5f7;
+}
+
+.tabbed-nav__group {
+  border-bottom: 1px solid #dfe1e6;
+  display: flex;
+  justify-content: center;
+}
+
+.tabbed-nav__link {
+  background-color: white;
+  border: 1px solid #dfe1e6;
+  border-bottom: 0;
+  border-radius: 2px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 10px;
+  margin: 0 5px;
+  color: #172b4d;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    margin: 0px;
+}
+
+@media screen and (min-width: 500px) {
+  .tabbed-nav__group * {
+    display: flex;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 501px) {
+  .tabbed-nav__group,
+  .tabbed-nav__link {
+    display: block;
+  }
+}
+
+.boards__img {
+  height: 100px;
+  max-width: 264    px;
+  color: white;
+  width: 100%;
+  display: flex;
+  border-radius: 4px;
+}
+
+.boards__img__navlink:hover{
+    opacity: 0.85;
+}
+
+.board__name {
+    background-color: #6c547b;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 15px ;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-left: 3%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}

@@ -21,4 +21,5 @@ class List(db.Model):
             'id': self.id,
             'board_id': self.board_id,
             'name': self.name,
+            'cards': [card.to_dict_no_list() for card in self.cards]
         }

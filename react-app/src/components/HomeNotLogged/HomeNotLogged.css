@@ -1,0 +1,118 @@
+/* Styles for Not Logged In Home Page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+h1 {
+    color: #333;
+}
+
+.title-desc-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title-desc-card h1 {
+    margin: 0;
+    color: #555;
+    font-size: 2.5rem;
+}
+
+.title-desc-card p {
+    color: #777;
+    font-size: 1rem;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 320px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-form h2 {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 93%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c6bc0;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.form-group button:hover {
+    background-color: #3949ab;
+}
+
+.login-form a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5c6bc0;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+.signup-button {
+    margin-top: 20px;
+}
+
+.signup-button button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #42b72a;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.signup-button button:hover {
+    background-color: #2e7d32;
+}
+
+.demo-login{
+    font-style: italic;
+    text-decoration: underline;
+}

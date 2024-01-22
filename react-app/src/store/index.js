@@ -4,10 +4,12 @@ import { restoreCSRF, csrfFetch } from "./csrf";
 import session from './session'
 import BoardsReducer from './boards';
 import cardsReducer from './cards';
+import ListsReducer from './lists';
 
 const rootReducer = combineReducers({
   session,
   boards: BoardsReducer,
+  lists: ListsReducer,
   cards: cardsReducer
 });
 

@@ -33,7 +33,7 @@ function App() {
 					<Route exact path='/boards/:id'>
 						<List />
 				  </Route>
-                	<Route exact path='/boards/:id/lists/:id'>
+                	<Route exact path='/lists/:id'>
                     <ListDetails />
                 </Route>
 				</Switch>

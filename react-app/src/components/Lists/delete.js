@@ -1,30 +1,40 @@
 import React, {useState, useEffect } from "react";
 import {  useDispatch } from "react-redux";
-import { deleteList } from "../../store/lists";
+import { deleteList, readLists } from "../../store/lists";
 import { useHistory } from "react-router-dom"
 import { useModal } from "../../context/Modal";
 import { getBoards } from "../../store/boards";
 import './Lists.css'
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const DeleteIt = (info) => {
     const dispatch = useDispatch();
-    const { list_id, board_id} = info.info;
-    console.log(list_id)
+    const { list_id, board_id } = info.info;
     const history = useHistory();
-    const closeModal = useModal();
+    const {closeModal} = useModal();
 
     const [isLoading, setIsLoading] = useState('')
+    const [errors, setErrors] = useState('')
 
     // handles
-    const handle_delete = e => {
+    const handle_delete = async e => {
         e.preventDefault();
-        dispatch(deleteList(parseInt((list_id)))).then(() => dispatch(getBoards())).then(closeModal);
-     //!   history.push(`/lists`)
+        setErrors({});
+
+        try {
+            dispatch(deleteList(parseInt(list_id))).then(() => dispatch(readLists(board_id))).then(Redirect(`/boards/${board_id}`))
+        }catch (data) {
+            setErrors(data)
+            alert(data.errors)
+        } finally {
+            closeModal();
+            // Redirect(`/boards/${board_id}`)
+        }
     }
     useEffect(() => {
         return dispatch(getBoards()).then(() => setIsLoading(false));
-    }, [dispatch, list_id])
+    }, [dispatch])
 
     if (isLoading) { <h1>...Loading</h1> }
     return (

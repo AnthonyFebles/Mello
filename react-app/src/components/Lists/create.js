@@ -11,15 +11,13 @@ import './Lists.css';
 
 const ListForm = (info) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const { board_id } = info;
     const boardId = parseInt(board_id);
    
    
 
-    let userId
-    if (sessionUser) userId = sessionUser.id;
+
 
     //state 
     const [name, setName] = useState('');
@@ -33,32 +31,29 @@ const ListForm = (info) => {
     //handles 
     const handleName = e => setName(e.target.value);
 
+    // payload
+
+    const payload = {
+        name
+    };
 
     const handleSubmit = async e => {
         e.preventDefault();
-
-        const payload = {
-            board_id:boardId,
-            name
-        };
-
-        let createdList;
-
-        createdList = await dispatch(createLists(boardId, payload)).then(dispatch(getBoards())).catch(
-            async res => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            }).then(closeModal)
-        
-        if (!createdList) return createdList;
-
-        history.push(`/lists/${boardId}`)
-
-    }
+        setErrors({});
+        try {
+            dispatch(createLists(boardId, payload)).then(() => dispatch(readLists(boardId)))
+        } catch (data) {
+            setErrors({ data })
+            alert(data.errors);
+        }
+        closeModal();
+        setName('')
+        }
    
     useEffect(() => {
-    
-    }, [dispatch])
+        dispatch(readLists(boardId));
+       
+    }, [dispatch, boardId])
 
 
     return (

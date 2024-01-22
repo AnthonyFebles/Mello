@@ -1,65 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { updateLists } from '../../store/lists';
-import {getBoards} from '../../store/boards'
-import * as sessionActions from '../../store/session';
+import { readLists, updateLists } from '../../store/lists';
 import {useModal} from '../../context/Modal'
+import { Redirect } from 'react-router-dom';
 
 
 const UpdateList = (info) => {
 const dispatch = useDispatch();
-const history = useHistory();
-const sessionUser = useSelector(state => state.session.user);
-const { list_id, list_name , board_id } = info.info;
-console.log(list_id)
+const { list_id, list_name, board_id } = info.info;
+const listId = parseInt(list_id)
 
-    const listId = parseInt(list_id)
-  
-const boardId = parseInt(board_id)
-let userId
-if (sessionUser) userId = sessionUser.id;
 
 //state 
 const [name, setName] = useState('');
 const [errors, setErrors] = useState('');
 const { closeModal } = useModal();
 
-
-//reset 
-    const reset = () => setName(list_name) 
+const payload = {
+    name
+};
 
 //handles 
 const handleName = e => setName(e.target.value);
 
+const handleSubmit = async (e) => {
+        setErrors({});
+        e.preventDefault();
+        
+        try {
+            await dispatch(updateLists(payload, listId)).then(() => dispatch(readLists(board_id))).then(Redirect(`/boards/${board_id}`));
+            
+        } catch (data) {
+            setErrors({data});
+            alert(data.errors)
+        } finally {
+            closeModal();
+        }
 
-const handleSubmit = async e => {
-    e.preventDefault();
 
-    const payload = {
-        userId,
-        listId,
-        name
-    };
-
-    let createdList;
-
-    createdList = await dispatch(updateLists(payload, list_id)).then(dispatch(getBoards())).catch(
-   
-        async res => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        }).then(closeModal)
-    
-    if (!createdList) return createdList;
-
-    history.push(`/lists/${list_id}`)
 
 }
 
 useEffect(() => {
-
-}, [dispatch])
+ dispatch(readLists(board_id))
+}, [dispatch, board_id])
 
 
 return (
@@ -73,7 +57,7 @@ return (
                         value={name}
                         onChange={handleName}
                         name='name'
-                        placeholder='List Name'
+                        placeholder={list_name}
                         required
                     />
                 </label>

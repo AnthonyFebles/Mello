@@ -40,7 +40,7 @@ const List = () => {
     if (listsArr[0].length < 1)  return <OpenModalButton buttonText="Create A List" onButtonClick={closeMenu} modalComponent={<ListForm board_id={id} />} />
         return (
         <div className="lists__container">
-            <h1>Hello From Lists</h1>
+            <h1> Lists</h1>
             <OpenModalButton buttonText="Create A List" onButtonClick={closeMenu} modalComponent={<ListForm board_id={id} />} />
             <div className="lists__group">
                 {listsArr.toReversed().map(list => (

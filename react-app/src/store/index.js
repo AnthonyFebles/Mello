@@ -5,11 +5,15 @@ import session from './session'
 import BoardsReducer from './boards';
 import cardsReducer from './cards';
 import ListsReducer from './lists';
+import BoardDetailReducer from './boardDetail';
+import ListDetailReducer from './listDetail';
 
 const rootReducer = combineReducers({
   session,
   boards: BoardsReducer,
+  boardDetail: BoardDetailReducer,
   lists: ListsReducer,
+  listDetail: ListDetailReducer,
   cards: cardsReducer
 });
 

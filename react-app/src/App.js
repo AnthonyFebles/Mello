@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import AllBoards from "./components/AllBoards"
 import List from "./components/Lists";
 import ListDetails from "./components/Lists/ListDetails";
+import CurrentBoard from "./components/BoardDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function App() {
 						<AllBoards />
 					</Route>
 					<Route exact path='/boards/:id'>
-						<List />
+						<CurrentBoard />
 				  </Route>
                 	<Route exact path='/lists/:id'>
                     <ListDetails />

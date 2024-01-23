@@ -1,12 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createCommentThunk } from '../../store/comments';
 
 
 export default function CommentModal({ cardId }) {
+  const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments);
+  const userId = useSelector((state) => state.session.user.id);
+
 
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -20,7 +24,17 @@ export default function CommentModal({ cardId }) {
   const commentText = editorState2.getCurrentContent()
   const newComment = commentText.getPlainText()
 
+  useEffect(() => {
+    const comment = {
+      card_id: cardId,
+      user_id: userId,
+      comment: newComment
+    }
 
+    dispatch(createCommentThunk(cardId, comment))
+  }, [dispatch])
+
+  console.log('COMMENTS', comments);
   const [clicked, setClicked] = useState(false)
   const [clicked2, setClicked2] = useState(false)
 

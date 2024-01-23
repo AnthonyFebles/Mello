@@ -30,8 +30,8 @@ export const getCommentsByCardThunk = (cardId) => async (dispatch) => {
   }
 }
 
-export const createCommentThunk = (comment) => async (dispatch) => {
-  const res = await csrfFetch(`/api/cards/${comment.cardId}/comments`, {
+export const createCommentThunk = (cardId, comment) => async (dispatch) => {
+  const res = await csrfFetch(`/api/cards/${cardId}/comments`, {
     method: 'POST',
     body: JSON.stringify(comment)
   })

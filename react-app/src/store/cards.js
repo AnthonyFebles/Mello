@@ -19,11 +19,11 @@ const getCards = (cards) => {
     }
 }
 
-export const getCardsThunk = (listId) => async (dispatch) => {
+export const getCardsThunk = (boardId,listId) => async (dispatch) => {
 
-    try {
+    // try {
         // First we fetch the data from the api route
-        const res = await csrfFetch(`/api/lists/${listId}/cards`)
+        const res = await csrfFetch(`/api/boards/${boardId}/lists/${listId}/cards`)
     
         // if the response is okay, then we'll grab that json data
         // and then dispatch the loadCards action creator and then
@@ -31,13 +31,13 @@ export const getCardsThunk = (listId) => async (dispatch) => {
         if (res.ok) {
             const cards = await res.json()
             // console.log("This is the cards", cards)
-            dispatch(getCards(listId, cards))
+            dispatch(getCards(cards))
             return cards
         } 
-    } catch (error) {
-        const res = await error.json();
-        throw res;
-    }
+    // } catch (error) {
+        // const res = await error.json();
+        // throw res;
+    // }
 } 
 
 
@@ -190,17 +190,21 @@ const cardsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_CARDS: 
             const allCards = {};
-            action.payload.forEach(card => {
+            const cards = action.payload.cards;
+            cards.forEach(card => {
                 allCards[card.id] = card
             })
             return {...state, Cards: allCards}
         case GET_EACH_CARD:
-            
+            return {...state}
         case POST_CARD:
+            return {...state}
             
         case UPDATE_CARD:
+            return {...state}
             
         case DELETE_CARD: 
+        return {...state}
 
         default:
             return state;

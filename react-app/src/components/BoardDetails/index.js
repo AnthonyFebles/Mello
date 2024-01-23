@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import List from "../Lists";
 import { loadDetails } from "../../store/boardDetail";
+import { getCardsThunk } from "../../store/cards";
 
 const CurrentBoard = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const CurrentBoard = () => {
     const { color, lists, name, owner, user_id, users } = board;
     const { id } = useParams();
     useEffect(() => {
-            dispatch(loadDetails(parseInt(id)))
+            dispatch(loadDetails(parseInt(id))).then(() => dispatch(getCardsThunk(parseInt(id), parseInt(id))))
     },[dispatch, id])
     return (
         <div>

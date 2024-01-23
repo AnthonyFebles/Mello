@@ -8,6 +8,7 @@ import Card from "../Cards"
 import ListForm from "./create";
 import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
+import { getCardsThunk } from "../../store/cards";
 
 const List = () => {
     const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const List = () => {
                     </div>
                         <div className="cards">
                             <h3> cards insert</h3>
-                    {/* <Card state={list.cards} />         */}
+                    {/* <Card state={list.id} />         */}
                     </div>
                     </div>
                         ))

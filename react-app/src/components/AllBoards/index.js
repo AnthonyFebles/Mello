@@ -39,7 +39,7 @@ const AllBoards = () => {
     if (boards.length > 0)  
 	return (
 		<>
-			<h1>Hello From All Boards</h1>
+			
 			<div className="tabbed-nav__container">
 				<div className="tabbed-nav__group">
 					

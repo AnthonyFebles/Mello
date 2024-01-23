@@ -24,7 +24,9 @@ export default function CommentModal({ cardId }) {
   const commentText = editorState2.getCurrentContent()
   const newComment = commentText.getPlainText()
 
-  useEffect(() => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
     const comment = {
       card_id: cardId,
       user_id: userId,
@@ -32,7 +34,11 @@ export default function CommentModal({ cardId }) {
     }
 
     dispatch(createCommentThunk(cardId, comment))
-  }, [dispatch])
+    setEditorState2(EditorState.createEmpty())
+  }
+
+  console.log('COMMENTS', comments);
+
 
   console.log('COMMENTS', comments);
   const [clicked, setClicked] = useState(false)
@@ -164,7 +170,7 @@ export default function CommentModal({ cardId }) {
         </div>
       </div>
       { clicked2 && (
-        <button className='save-2'>Save</button>
+        <button onClick={handleSubmit} className='save-2'>Save</button>
       )}
       <div className="comment-block">
         <i className="fas fa-user-circle fa-2xl" />

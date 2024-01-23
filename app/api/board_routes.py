@@ -28,7 +28,7 @@ def create_boards():
             name=form.name.data,
             # visibility=form.visibility.data,
             color=form.color.data,
-            users=[current_user],
+            # users=[current_user],
             owner=current_user
         )
 

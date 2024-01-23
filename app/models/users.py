@@ -8,10 +8,10 @@ from datetime import datetime
 #     db.Column('board_id', db.Integer, db.ForeignKey(add_prefix_for_prod('boards.id')), primary_key=True)
 # )
 
-user_cards = db.Table('user_cards', db.Model.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
-    db.Column('card_id', db.Integer, db.ForeignKey(add_prefix_for_prod('cards.id')), primary_key=True)
-)
+# user_cards = db.Table('user_cards', db.Model.metadata,
+#     db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
+#     db.Column('card_id', db.Integer, db.ForeignKey(add_prefix_for_prod('cards.id')), primary_key=True)
+# )
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     # used_boards = db.relationship('Board', secondary=shared_boards ,back_populates='users')
     owned_boards = db.relationship('Board', back_populates='owner', cascade='all, delete-orphan')
-    cards = db.relationship('Card', secondary=user_cards, back_populates='users')
+    # cards = db.relationship('Card', secondary=user_cards, back_populates='users')
     comments = db.relationship('Comment', back_populates='users', cascade='all, delete-orphan')
 
     @property

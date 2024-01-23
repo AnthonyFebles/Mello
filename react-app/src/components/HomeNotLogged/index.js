@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
@@ -8,6 +9,20 @@ function HomeNotLogged() {
 
 const dispatch = useDispatch()
 const history = useHistory()
+
+//! useStates
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+const [errors, setErrors] = useState([])
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const data = await dispatch(login(email, password));
+    if (data) {
+        setErrors(data);
+    }
+};
 
 const handleDemoLogin = () => {
     
@@ -22,6 +37,11 @@ const handleDemoLogin = () => {
     })
 };
 
+
+const handleSignUp = () => {
+    history.push('/signup')
+}
+
     return (
         <>
             <h1> Not Logged In Home Page </h1>
@@ -33,15 +53,19 @@ const handleDemoLogin = () => {
 
             <div className="login-form">
                 <h2> Log In </h2>
-                <form>
+                <form onSubmit = {handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="email">Email or phone number</label>
-                        <input type="text" id="email" name="email" />
+                        <label htmlFor="email">Email</label>
+                        <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" />
+                        <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+
+                    <div className="form-errors">
+                        {errors.map((error, index) => <div key={index}>{error}</div>)}
                     </div>
 
                     <div className="form-group">
@@ -49,7 +73,7 @@ const handleDemoLogin = () => {
                     </div>
 
                     <div className="signup-button">
-                        <button> Sign Up </button>
+                        <button onClick={handleSignUp}> Sign Up </button>
                     </div>
 
                 </form>

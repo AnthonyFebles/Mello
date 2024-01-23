@@ -1,23 +1,39 @@
-/* Styles for Not Logged In Home Page */
 /* body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
 } */
 
-h1 {
-    color: #333;
+.mello-image img{
+    max-width: 500px; 
+    max-height: 500px; 
+    object-fit: contain; 
+    border-radius: 30%;
+    margin-right: 80px;
+
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; 
+    padding: 40px; 
+    height: 100vh;
+    background-color: #f4f4f4; 
+}
+
+
 .title-desc-card {
+    max-width: 350px;
+    text-align: center;
     background: #ffffff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-bottom: 20px;
+    
 }
 
 .title-desc-card h1 {
@@ -26,19 +42,31 @@ h1 {
     font-size: 2.5rem;
 }
 
-.title-desc-card p {
-    color: #777;
-    font-size: 1rem;
+.title-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    max-width: 350px;
+}
+
+.title-desc-card,
+.login-form {
+    width: 150%; 
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin: 10px 0;
 }
 
 .login-form {
-    width: 100%;
-    max-width: 320px;
+    width: 135%;
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    justify-content: center;
 }
 
 .login-form h2 {
@@ -106,6 +134,7 @@ h1 {
     color: white;
     font-size: 1rem;
     cursor: pointer;
+    width: 100%;
 }
 
 .signup-button button:hover {
@@ -115,4 +144,24 @@ h1 {
 .demo-login{
     font-style: italic;
     text-decoration: underline;
+    margin-top: 25px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .mello-image img {
+        max-width: 200px; /* Smaller image for mobile devices */
+        max-height: 200px;
+        border-radius: 20%; /* Less rounded on small screens */
+    }
+
+    .title-login-container {
+        width: 90%; /* Allow the container to be responsive */
+    }
 }

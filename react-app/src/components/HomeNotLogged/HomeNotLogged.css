@@ -1,11 +1,9 @@
-/* Styles for Not Logged In Home Page */
-/* body {
+body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-} */
+}
 
 h1 {
     color: #333;
@@ -33,12 +31,13 @@ h1 {
 
 .login-form {
     width: 100%;
-    max-width: 320px;
+    max-width: 50%;
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    justify-content: center;
 }
 
 .login-form h2 {

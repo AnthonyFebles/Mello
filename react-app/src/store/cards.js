@@ -194,18 +194,32 @@ const cardsReducer = (state = initialState, action) => {
             cards.forEach(card => {
                 allCards[card.id] = card
             })
-            return {...state, Cards: allCards}
+            return {
+                ...state, 
+                Cards: allCards
+            }
         case GET_EACH_CARD:
-            return {...state}
+            const card = action.payload
+            return {
+                ...state,
+                Cards: {...state.Cards, [card.id]: card }
+            }
         case POST_CARD:
-            return {...state}
-            
+            const newCard = action.payload;
+            return {
+                ...state,
+                cards: { ...state.Cards, [newCard.id]: newCard }
+            };
         case UPDATE_CARD:
-            return {...state}
-            
+            const updatedCard = action.payload;
+            return {
+                ...state,
+                cards: { ...state.Cards, [updatedCard.id]: updatedCard }
+            };
         case DELETE_CARD: 
-        return {...state}
-
+            const newState = {...state};
+            delete newState.Cards[action.payload]
+            return newState;
         default:
             return state;
     }

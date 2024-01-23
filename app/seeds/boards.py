@@ -3,13 +3,13 @@ from app.models import db, Board, environment, SCHEMA
 
 def seed_boards():
     board1 = Board(
-        user_id="1", color="blue", name="board_1"
+        user_id="1", color="https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn", name="board_1"
     )
     board2 = Board(
-        user_id="2", color="red", name="board_2"
+        user_id="2", color="https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain", name="board_2"
     )
     board3 = Board(
-        user_id="3", color="green", name="board_3"
+        user_id="3", color="https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain", name="board_3"
     )
 
     db.session.add(board1)

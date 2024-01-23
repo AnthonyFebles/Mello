@@ -28,7 +28,7 @@ def create_boards():
             name=form.name.data,
             # visibility=form.visibility.data,
             color=form.color.data,
-            users=[current_user],
+            # users=[current_user],
             owner=current_user
         )
 
@@ -136,13 +136,13 @@ def delete_boards(boardId):
     # Allows us to grab the user's board based on the BoardId provided
     user_board = Board.query.get(boardId)
 
-    print(user_board.to_dict())
+    # print(user_board.to_dict())
 
     # Conditional that checks if the board that exists belongs to the current user
     if not user_board:
         # Something with an error message
         # abort(404, {"message": "Board not Found"})
-        return {"message": "Board not Found"}
+        return jsonify({"message": "Board does not exist"}), 400
 
     if user_board.user_id == current_user.id:
         # Commit the deletion to the db

@@ -6,12 +6,11 @@
 } */
 
 .mello-image img{
-    max-width: 500px; 
-    max-height: 500px; 
+    max-width: 475px; 
+    max-height: 475px; 
     object-fit: contain; 
     border-radius: 30%;
     margin-right: 80px;
-
 }
 
 .container {
@@ -144,7 +143,7 @@
 .demo-login{
     font-style: italic;
     text-decoration: underline;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 /* Media Queries */
@@ -156,12 +155,12 @@
     }
 
     .mello-image img {
-        max-width: 200px; /* Smaller image for mobile devices */
+        max-width: 200px; 
         max-height: 200px;
-        border-radius: 20%; /* Less rounded on small screens */
+        border-radius: 20%; 
     }
 
     .title-login-container {
-        width: 90%; /* Allow the container to be responsive */
+        width: 90%; 
     }
 }

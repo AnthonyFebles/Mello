@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
-from .users import user_cards
+# from .users import user_cards
 
 class Card(db.Model):
     __tablename__ = 'cards'
@@ -15,7 +15,7 @@ class Card(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
-    users = db.relationship("User", secondary=user_cards, back_populates="cards")
+    # users = db.relationship("User", secondary=user_cards, back_populates="cards")
     comments = db.relationship("Comment", back_populates="card", cascade='all, delete-orphan')
     list = db.relationship("List", back_populates="cards")
 
@@ -25,7 +25,7 @@ class Card(db.Model):
             'listId': self.listId,
             'name': self.name,
             'description': self.description,
-            'users': [self_user.to_dict() for self_user in self.users],
+            # 'users': [self_user.to_dict() for self_user in self.users],
             'comments': [comment.to_dict() for comment in self.comments],
             'list': [self.list.to_dict()]
         }
@@ -36,6 +36,6 @@ class Card(db.Model):
             'listId': self.listId,
             'name': self.name,
             'description': self.description,
-            'users': [self_user.to_dict() for self_user in self.users],
+            # 'users': [self_user.to_dict() for self_user in self.users],
             'comments': [comment.to_dict() for comment in self.comments],
         }

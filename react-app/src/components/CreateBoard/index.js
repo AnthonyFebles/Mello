@@ -33,7 +33,7 @@ const NewBoard = () => {
 	};
 
     //if show menu is false, the hidden classname will be added. 
-    const ulClassName = "profile-dropdown" + (showMenu ? " " : " hidden");
+    const ulClassName = "new__board-dropdown" + (showMenu ? " " : " hidden");
 
     //updates color on submit to a new random one, catches errors and alerts them.
     //creates a new board and updates the db
@@ -146,7 +146,7 @@ const NewBoard = () => {
 						<ul className="board__images__ul">
 							<li className="board__images__li">
 								<div>
-									<img src={color} height="100px" width="155px" alt="Theme" />
+									<img src={color} height="100px" width="180px" alt="Theme" />
 								</div>
 							</li>
 						</ul>

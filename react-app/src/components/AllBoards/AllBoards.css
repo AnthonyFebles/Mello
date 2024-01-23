@@ -1,7 +1,7 @@
 .boards__container {
 	margin: 0 auto;
 	padding: 32px;
-	max-width: 1400px;
+	max-width: 1920px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -9,11 +9,12 @@
 }
 
 .outer__boards__container {
-	background-color: #172b4d;
+	background-color: #0a162c;
+	height: 100vh;
 }
 
 .boards__board {
-	background-color: rgba(255, 255, 255, 0.11);
+  min-width: 200px;	
 	border-radius: 3px;
 	box-sizing: border-box;
 	font-weight: bold;
@@ -33,6 +34,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 80%;
+  justify-content: space-between;
 }
 
 .boards__sidebar {
@@ -101,7 +103,10 @@ body {
 	width: 100%;
 	display: flex;
 	border-radius: 4px;
+	background-color: transparent;
 }
+
+
 
 .boards__img__navlink:hover {
 	opacity: 0.85;

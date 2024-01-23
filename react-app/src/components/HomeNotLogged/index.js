@@ -44,45 +44,52 @@ const handleSignUp = () => {
 
     return (
         <>
-            <h1> Not Logged In Home Page </h1>
 
-            <div className="title-desc-card">
-                <h1> Mello </h1>
-                <p> A clone of an organizational Website named Trello but with a Lo-Fi / Calming Twist </p>
+        <div className="container">
+            <div className="mello-image">
+                <img src="/melloimage.png" alt="mello img" />
             </div>
 
-            <div className="login-form">
-                <h2> Log In </h2>
-                <form onSubmit = {handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
+            <div className="title-login-container">
+                <div className="title-desc-card">
+                    <h1> mello </h1>
+                </div>
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </div>
+                <div className="login-form">
 
                     <div className="form-errors">
                         {errors.map((error, index) => <div key={index}>{error}</div>)}
                     </div>
 
-                    <div className="form-group">
-                        <button type="submit">Log In</button>   
+                    <form onSubmit = {handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        </div>
+
+
+                        <div className="form-group">
+                            <button type="submit">Log In</button>   
+                        </div>
+
+                        <div className="signup-button">
+                            <button onClick={handleSignUp}> Sign Up </button>
+                        </div>
+
+                    </form>
+
+                    <div className="demo-login">
+                        <button onClick={handleDemoLogin}>Demo-Login</button>
                     </div>
-
-                    <div className="signup-button">
-                        <button onClick={handleSignUp}> Sign Up </button>
-                    </div>
-
-                </form>
-
-                <div className="demo-login">
-                    <button onClick={handleDemoLogin}>Demo-Login</button>
-                </div>
+            </div>
 
             </div>
+        </div>
 
         </>
     )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
@@ -14,6 +14,13 @@ export default function CommentModal({ cardId }) {
   const [editorState2, setEditorState2] = useState(() =>
     EditorState.createEmpty()
   );
+
+  const descriptionText = editorState.getCurrentContent()
+  const newDescription = descriptionText.getPlainText()
+  const commentText = editorState2.getCurrentContent()
+  const newComment = commentText.getPlainText()
+
+
   const [clicked, setClicked] = useState(false)
   const [clicked2, setClicked2] = useState(false)
 
@@ -47,7 +54,6 @@ export default function CommentModal({ cardId }) {
   const onHighlightClick2 = () => {
     setEditorState2(RichUtils.toggleInlineStyle(editorState2, 'HIGHLIGHT'));
   }
-
 
 
   return (

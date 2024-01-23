@@ -23,3 +23,24 @@ export default function Comments() {
     </div>
   );
 }
+
+
+// const createComment = (comment) => {
+//   return {
+//     type: CREATE_COMMENT,
+//     comment
+//   }
+// }
+
+// export const addCommentThunk = (cardId, text) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/cards/${cardId}/comments`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(text)
+//   })
+
+//   if (res.ok) {
+//     const newComment = await res.json()
+//     console.log('NEWWWWWW', newComment);
+//   }
+// }

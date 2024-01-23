@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const GET_COMMENTS_BY_CARD = 'GET_COMMENTS_BY_CARD'
-// const CREATE_COMMENT = 'CREATE_COMMENT'
+const CREATE_COMMENT = 'CREATE_COMMENT'
 // const UPDATE_COMMENT = 'UPDATE_COMMENT'
 // const DELETE_COMMENT = 'DELETE_COMMENT'
 
@@ -12,12 +12,34 @@ const getCommentsByCardId = (comments) => {
     }
 }
 
+export const createComment = (comment) => {
+    return {
+        type: CREATE_COMMENT,
+        comment
+    }
+}
+
 export const getCommentsByCardThunk = (cardId) => async (dispatch) => {
   const res = await csrfFetch(`/api/cards/${cardId}/comments`)
 
   if (res.ok) {
     const comments = await res.json()
     dispatch(getCommentsByCardId(comments.comments))
+  } else {
+    console.log('ERROR')
+  }
+}
+
+export const createCommentThunk = (comment) => async (dispatch) => {
+  const res = await csrfFetch(`/api/cards/${comment.cardId}/comments`, {
+    method: 'POST',
+    body: JSON.stringify(comment)
+  })
+
+  if (res.ok) {
+    const newComment = await res.json()
+    console.log('NEW COMMENT', newComment);
+    dispatch(createComment(newComment))
   } else {
     console.log('ERROR')
   }
@@ -34,6 +56,11 @@ const commentReducer = (state = {}, action) => {
             })
             console.log(newState);
           return newState
+        case CREATE_COMMENT:
+            return {
+                ...state,
+                [action.comment.id]: action.comment
+            }
         default:
             return state
     }

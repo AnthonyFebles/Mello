@@ -7,21 +7,6 @@ from .auth_routes import validation_errors_to_error_messages
 list_routes = Blueprint("lists", __name__)
 
 
-# @app.route("/students")
-# def get_students():
-#     students = Student.query.all()
-#     return {"students": [student.to_dict() for user in users]}
-
-
-# @app.route("/students/<int:id>")
-# def get_user_by_id(id):
-#     student = Student.query.get(1)
-#     return student.to_dict()
-
-# @app.route("/cohorts/<int:id>")
-# def get_cohort(id):
-#     cohort = Cohort.query.get(id)
-#     return cohort.to_dict()
 
 
 
@@ -89,7 +74,7 @@ def update_lists(list_id):
     if current_list:
         if form.validate_on_submit():
             name = form.name.data
-            list.name = name
+            current_list.name = name
             db.session.commit()
             return jsonify(current_list.to_dict())
 
@@ -102,7 +87,7 @@ def update_lists(list_id):
 @list_routes.route("/lists/<int:list_id>", methods=["DELETE"])
 @login_required
 def delete_lists(list_id):
-
+   
     current_list = List.query.get(list_id)
 
     if not current_list :

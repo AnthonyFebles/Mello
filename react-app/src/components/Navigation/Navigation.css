@@ -1,7 +1,73 @@
+nav, .right__side__nav {
+  padding-right: 5px;
+  display: flex;
+}
+
+ul {
+  margin: 0px ;
+  padding: 0px;
+}
+
+span {
+  align-self: center;
+  padding: 0px 0px 0px 1vw;
+  
+}
+.nav__boards {
+  color: white;
+  font-size: 20px;
+}
+
 .profile-dropdown {
   position: absolute;
+  right: 20px;
+  margin-top: 15px;
+  font-size:15px
+;}
+
+.header-nav__trello-logo {
+  justify-content: center;
 }
 
 .hidden {
   display: none;
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+nav {
+	justify-content: space-between;
+
+}
+
+.right-side-nav{
+ 
+	display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+}
+
+header {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding-bottom: 5px;
+  justify-content: space-between;
+	margin-bottom: 1px;
+  background-color: rgb(25, 27, 27);
+  display: flex;
+  padding-right: 30px;
+  padding-left:25px;
+}
+
+a, li {
+  text-align: center;
+}
+
+.header-nav__button {
+  color: white;
+  font-size: 20px;
 }

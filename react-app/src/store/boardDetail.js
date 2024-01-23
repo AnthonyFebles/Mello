@@ -29,7 +29,7 @@ const BoardDetailReducer = (state = initState, action) => {
     switch (action.type) {
         case GET_DETAILS:
             const details = action.board;
-            console.log(details)
+            // console.log(details)
             return {...state, ...details}
         default:
             return state;

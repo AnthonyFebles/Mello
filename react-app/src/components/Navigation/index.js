@@ -33,8 +33,8 @@ function Navigation({ isLoaded }) {
 				<span>
 					<a class="header-nav__link">
 						<div class="header-nav__button" id="search">
+							<i class="fas fa-search"></i>{" "}
 							<input type="search" value="search" />
-							<i class="fas fa-search"></i>
 						</div>
 					</a>
 				</span>

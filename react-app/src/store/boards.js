@@ -26,7 +26,7 @@ const remove = (boardId) => ({
 });
 
 export const getBoards = () => async (dispatch) => {
-	const res = await fetch("/api/boards");
+	const res = await csrfFetch("/api/boards");
 
 	if (res.ok) {
 		const list = await res.json();
@@ -48,13 +48,15 @@ export const createNewBoard = (boardPayload) => async (dispatch) => {
 		});
 
 		if (response.ok) {
-			//console.log("res is ok?")
+			console.log("res is ok?", response)
 			const newBoard = await response.json();
 			dispatch(create(newBoard));
 			return newBoard;
 		}
 	} catch (error) {
-		const res = await error.json();
+		const res = await error;
+		console.log("res not ok")
+		console.log(res, "this is the res ************")
 		//console.log(res, "error")
 		throw res;
 	}

@@ -18,28 +18,12 @@ const NewBoard = () => {
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState({});
 	const [showMenu, setShowMenu] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const openMenu = () => {
 			if (showMenu) return;
 			setShowMenu(true);
 		};
-    
-	useEffect(() => {
-		dispatch(getBoards());
-		if (!showMenu) return;
-
-        // click outside of un-hidden form and it will close
-
-		const closeMenu = async (e) => {
-			if (!ulRef.current.contains(e.target)) {
-				setShowMenu(false);
-			}
-		};
-
-		document.addEventListener("click", closeMenu);
-
-		return () => document.removeEventListener("click", closeMenu);
-	}, [showMenu, dispatch, name, color]);
 
 
 
@@ -49,7 +33,7 @@ const NewBoard = () => {
 	};
 
     //if show menu is false, the hidden classname will be added. 
-    const ulClassName = "profile-dropdown" + (showMenu ? " " : " hidden");
+    const ulClassName = "new__board-dropdown" + (showMenu ? " " : " hidden");
 
     //updates color on submit to a new random one, catches errors and alerts them.
     //creates a new board and updates the db
@@ -62,29 +46,57 @@ const NewBoard = () => {
 		} catch (data) {
 			setErrors(data);
 			alert(data.errors);
-		}
+		}finally {
         setShowMenu(false)
         setColor(colors[getRandomInt(colors.length)]);
         setName('')
+        dispatch(getBoards())
+        }
 	};
 
-	//////////////////////////////
+	////////////////////////////
     // Test Delete Button
-    // const handleTest = async (e) => {
-    //     e.preventDefault()
+    const handleTest = async (e) => {
+        e.preventDefault()
 
-    //     try {
-	// 				dispatch(deleteBoard("13"))
-	// 			} catch (data) {
-	// 				setErrors(data);
-	// 				alert(data.errors);
-	// 			}
-    // }
-    ////////////////////////////////
+        try {
+					await dispatch(deleteBoard("6"))
+                    console.log("no error")
+						
+				} catch (data) {
+                    console.log(data.message)
+					setErrors(data.message)  
+                    alert(data.message);
+					;
+				}  finally {
+                    dispatch(getBoards())
+					.then(() => setIsLoading(false));
+                }
+    }
 
+    	useEffect(() => {
+				dispatch(getBoards()).then(() => setIsLoading(false));
+				if (!showMenu) return;
+
+				// click outside of un-hidden form and it will close
+
+				const closeMenu = async (e) => {
+					if (!ulRef.current.contains(e.target)) {
+						setShowMenu(false);
+					}
+				};
+
+				document.addEventListener("click", closeMenu);
+
+				return () => document.removeEventListener("click", closeMenu);
+			}, [dispatch, color, showMenu]);
+    //////////////////////////////
+    if (isLoading) return (
+			<h1>...Loading</h1>
+		)
 	return (
 		<>
-        {/* <button onClick={handleTest}></button> */}
+        <button onClick={handleTest}></button>
 			<div className="boards__sidebar">
 				<div className="boards__sidebar-content">
 					<p className="title">Create A New Board</p>
@@ -134,7 +146,7 @@ const NewBoard = () => {
 						<ul className="board__images__ul">
 							<li className="board__images__li">
 								<div>
-									<img src={color} height="100px" width="155px" alt="Theme" />
+									<img src={color} height="100px" width="180px" alt="Theme" />
 								</div>
 							</li>
 						</ul>

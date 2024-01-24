@@ -28,7 +28,7 @@ def create_boards():
             name=form.name.data,
             # visibility=form.visibility.data,
             color=form.color.data,
-            users=[current_user],
+            # users=[current_user],
             owner=current_user
         )
 
@@ -142,7 +142,7 @@ def delete_boards(boardId):
     if not user_board:
         # Something with an error message
         # abort(404, {"message": "Board not Found"})
-        return {"message": "Board not Found"}
+        return jsonify({"message": "Board does not exist"}), 400
 
     if user_board.user_id == current_user.id:
         # Commit the deletion to the db

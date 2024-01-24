@@ -1,0 +1,166 @@
+/* body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+} */
+
+.mello-image img{
+    max-width: 475px; 
+    max-height: 475px; 
+    object-fit: contain; 
+    border-radius: 30%;
+    margin-right: 80px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; 
+    padding: 40px; 
+    height: 100vh;
+    background-color: #f4f4f4; 
+}
+
+
+.title-desc-card {
+    max-width: 350px;
+    text-align: center;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+.title-desc-card h1 {
+    margin: 0;
+    color: #555;
+    font-size: 2.5rem;
+}
+
+.title-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    max-width: 350px;
+}
+
+.title-desc-card,
+.login-form {
+    width: 150%; 
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin: 10px 0;
+}
+
+.login-form {
+    width: 135%;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    justify-content: center;
+}
+
+.login-form h2 {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 93%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c6bc0;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.form-group button:hover {
+    background-color: #3949ab;
+}
+
+.login-form a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5c6bc0;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+.signup-button {
+    margin-top: 20px;
+}
+
+.signup-button button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #42b72a;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.signup-button button:hover {
+    background-color: #2e7d32;
+}
+
+.demo-login{
+    font-style: italic;
+    text-decoration: underline;
+    margin-top: 15px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .mello-image img {
+        max-width: 200px; 
+        max-height: 200px;
+        border-radius: 20%; 
+    }
+
+    .title-login-container {
+        width: 90%; 
+    }
+}

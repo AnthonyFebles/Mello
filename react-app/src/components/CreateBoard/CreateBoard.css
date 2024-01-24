@@ -37,17 +37,22 @@
     z-index: 2;
     background-color: #6c547b;
     border-radius: 3px;
-    padding: 10px 20px 32px 20px;
+    border: solid black 2px;
+    padding: 20px 20px 32px 20px;
     max-width: 180px;
+    min-width: 180px;
     width: 20%;
     flex-shrink: 0;
     flex-grow: 0;
     flex-basis: 220px;
-    padding-left: 10px;
+    text-align: center;
+    justify-content: space-around;
 }
 
 .board__images__li {
   position: relative;
+  padding-top: 4px;
+  margin: 0 auto;
 }
 
 .board__images__ul {

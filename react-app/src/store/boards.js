@@ -48,13 +48,15 @@ export const createNewBoard = (boardPayload) => async (dispatch) => {
 		});
 
 		if (response.ok) {
-			//console.log("res is ok?")
+			console.log("res is ok?", response)
 			const newBoard = await response.json();
 			dispatch(create(newBoard));
 			return newBoard;
 		}
 	} catch (error) {
-		const res = await error.json();
+		const res = await error;
+		console.log("res not ok")
+		console.log(res, "this is the res ************")
 		//console.log(res, "error")
 		throw res;
 	}
@@ -90,15 +92,17 @@ export const deleteBoard = (boardId) => async (dispatch) => {
 		});
 
 		if (res.ok) {
-			const board = res.json();
+			const board = await res.json();
 			dispatch(remove(boardId));
 			return board;
 		}
         return res 
 	} catch (error) {
+		// console.log(error,"ERROR ")
 		const res = await error.json();
-		//console.log(res, "error")
-		throw res;
+		// console.log(res)
+		throw (res)
+		
 	}
 };
 

@@ -7,6 +7,12 @@
   padding: 20px;
 }
 
+.commentModal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .cardTitle {
   display: flex;
   flex-direction: row;
@@ -81,7 +87,7 @@
 .editor-container {
   background-color: rgb(74, 74, 74);
   padding: 6px;
-  width: 70%;
+  width: 94%;
   border-radius: 5px;
 }
 

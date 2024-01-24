@@ -35,7 +35,7 @@ const List = () => {
     const ulRef = useRef();
     const closeMenu = () => setShowMenu(false)
 
-    if (isLoading) return <h1>...Loading</h1>
+    if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
     
     if (listsArr[0].length < 1)  return <OpenModalButton buttonText="Create A List" onButtonClick={closeMenu} modalComponent={<ListForm board_id={id} />} />
         return (

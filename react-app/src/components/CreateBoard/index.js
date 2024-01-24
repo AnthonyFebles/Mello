@@ -91,9 +91,7 @@ const NewBoard = () => {
 				return () => document.removeEventListener("click", closeMenu);
 			}, [dispatch, color, showMenu]);
     //////////////////////////////
-    if (isLoading) return (
-			<h1>...Loading</h1>
-		)
+    if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 	return (
 		<>
         <button onClick={handleTest}></button>

@@ -92,7 +92,7 @@ const AllBoards = () => {
 	};
 
 	// console.log(boards, "board")
-	if (isLoading) return <h1>...Loading</h1>;
+	if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
 	if (boards.length > 0)
 		return (

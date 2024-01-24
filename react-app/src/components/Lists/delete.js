@@ -36,7 +36,7 @@ const DeleteIt = (info) => {
         return dispatch(getBoards()).then(() => setIsLoading(false));
     }, [dispatch])
 
-    if (isLoading) { <h1>...Loading</h1> }
+    if (isLoading) { <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>; }
     return (
         <div className="deleteContainer">
             <h1>Confirm Delete</h1>

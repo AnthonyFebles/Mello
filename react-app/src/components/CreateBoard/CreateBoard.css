@@ -61,3 +61,8 @@
     padding-left: 0;
     
 }
+
+.new__board-dropdown {
+  position: absolute;
+  z-index: 3;
+}

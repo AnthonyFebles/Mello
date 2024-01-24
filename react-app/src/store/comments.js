@@ -86,30 +86,30 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
 }
 
 const commentReducer = (state = {}, action) => {
-    switch (action.type) {
-        case GET_COMMENTS_BY_CARD:
-          let newState = {}
-          action.comments.forEach(comment => {
-            newState[comment.id] = comment
-          })
-          return newState
-        case CREATE_COMMENT:
-          return {
-            ...state,
-            [action.comment.id]: action.comment
-          }
-        case UPDATE_COMMENT:
-          return {
-            ...state,
-            [action.comment.id]: action.comment
-          }
-        case DELETE_COMMENT:
-          let newState2 = {...state}
-          delete newState2[action.commentId]
-          return newState2
-        default:
-          return state
-    }
+  switch (action.type) {
+    case GET_COMMENTS_BY_CARD:
+      let newState = {}
+      action.comments.forEach(comment => {
+        newState[comment.id] = comment
+      })
+      return newState
+    case CREATE_COMMENT:
+      return {
+        ...state,
+        [action.comment.id]: action.comment
+      }
+    case UPDATE_COMMENT:
+      return {
+        ...state,
+        [action.comment.id]: action.comment
+      }
+    case DELETE_COMMENT:
+      let newState2 = {...state}
+      delete newState2[action.commentId]
+      return newState2
+    default:
+      return state
+  }
 }
 
 export default commentReducer

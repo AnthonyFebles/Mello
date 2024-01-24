@@ -4,16 +4,13 @@ import { deleteCommentThunk, updateCommentThunk } from "../../store/comments";
 export default function UserComment({ comment }) {
   const dispatch = useDispatch()
   const deleteComment = (e) => {
-    console.log('COMMENT', comment);
     e.preventDefault()
     dispatch(deleteCommentThunk(comment.id))
   }
 
   const editComment = (e) => {
     e.preventDefault()
-    console.log('ORIGINAL COMMENT', comment);
     const update = prompt('Edit your comment', comment.comment)
-    // console.log('newComment', update);
 
     const newComment = {
       id: comment.id,
@@ -21,12 +18,9 @@ export default function UserComment({ comment }) {
       card_id: comment.card_id,
       comment: update,
     }
-    console.log('newComment', newComment);
 
-    // console.log('testing testing', comment);
     dispatch(updateCommentThunk(newComment))
   }
-
 
   return (<div className='comment_insert' key={comment.id}>
       <i className="fas fa-user-circle fa-2xl" />

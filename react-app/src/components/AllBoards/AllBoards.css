@@ -18,7 +18,7 @@
 	border-radius: 3px;
 	box-sizing: border-box;
 	font-weight: bold;
-	height: 100px;
+	height: 200px;
 	margin: 0 8px 16px;
 	max-width: 320px;
 	padding: 4px 8px;
@@ -34,7 +34,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 80%;
-  justify-content: space-between;
+  
 }
 
 .boards__sidebar {
@@ -97,7 +97,7 @@ body {
 }
 
 .boards__img {
-	height: 100px;
+	height: 200px;
 	max-width: 264 px;
 	color: white;
 	width: 100%;
@@ -111,6 +111,36 @@ body {
 .boards__img__navlink:hover {
 	opacity: 0.85;
 }
+
+.fa-ellipsis {
+  text-align: end;
+  justify-content: end;
+  justify-self: end;
+  align-items: end;
+  color: #dfe1e6;
+}
+
+.board-options__button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+}
+
+.boards__img__navlink:not(:hover) .board-options__button {
+  display: none;
+}
+
+.board__options {
+  /* display: none; */
+  z-index: 4;
+  position: absolute;
+  right: -100px;
+}
+
+
 
 .board__name {
 	background-color: #6c547b;
@@ -127,4 +157,30 @@ body {
 a {
 	color: black;
 	text-decoration: none;
+}
+
+.boards__options {
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.update__board-dropdown {
+    position: absolute;
+    display: flex;
+    color: white;
+    z-index: 5;
+    background-color: #6c547b;
+    border-radius: 3px;
+    border: solid black 2px;
+    padding: 20px 20px 32px 20px;
+    max-width: 180px;
+    min-width: 180px;
+    width: 20%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 220px;
+    text-align: center;
+    justify-content: space-around;
 }

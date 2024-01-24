@@ -64,7 +64,7 @@ export const createNewBoard = (boardPayload) => async (dispatch) => {
 
 export const updateBoard = (boardPayLoad) => async (dispatch) => {
 	try {
-		const response = await csrfFetch(`/api/boards${boardPayLoad.id}`, {
+		const response = await csrfFetch(`/api/boards/${boardPayLoad.id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
@@ -75,7 +75,7 @@ export const updateBoard = (boardPayLoad) => async (dispatch) => {
 		if (response.ok) {
 			//console.log("res is ok?")
 			const updatedBoard = await response.json();
-			dispatch(update(updatedBoard));
+			dispatch(update(boardPayLoad));
 			return updatedBoard;
 		}
 	} catch (error) {
@@ -131,7 +131,7 @@ const BoardsReducer = (state = initialState, action) => {
 
 				return {
 					...allBoards,
-					...state,
+					
 					list: sortList(action.list),
 				};
 			} else

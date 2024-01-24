@@ -29,10 +29,7 @@ span {
   justify-content: center;
 }
 
-.new__board-dropdown {
-  position: absolute;
-  z-index: 3;
-}
+
 
 .hidden {
   display: none;

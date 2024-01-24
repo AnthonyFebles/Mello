@@ -109,8 +109,8 @@ def update_boards(boardId):
         name = form.name.data
         user_board.name=name
 
-        description = form.description.data
-        user_board.description=description
+        # description = form.description.data
+        # user_board.description=description
 
         # visibility=form.visibility.data,
         color = form.color.data
@@ -124,7 +124,7 @@ def update_boards(boardId):
         return jsonify(user_board.to_dict()), 200
 
     # Return any validation errors that may have occurred
-    return jsonify(form.errors), 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 

@@ -113,7 +113,8 @@ const ListsReducer = (state = initState, action) => {
             const allLists = {};
             if (action.list) {
                 const list = action.list.lists
-                if(!list) return {...state}
+                //Return an empty state(instead of the current state) if there are no lists to load
+                if(!list) return {...initState}
                list.forEach((list) => {
                     allLists[list.id] = list;
                 });

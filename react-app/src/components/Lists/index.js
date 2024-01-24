@@ -10,13 +10,19 @@ import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
 
+
+
+
 const List = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [showMenu, setShowMenu] = useState(false)
     const lists = useSelector(state => state.lists)
-     const listsArr = Object.values(lists) 
+    const listsArr = Object.values(lists) 
+    
+    
+  
   
     
 
@@ -35,7 +41,7 @@ const List = () => {
     const ulRef = useRef();
     const closeMenu = () => setShowMenu(false)
 
-    if (isLoading) return <h1>...Loading</h1>
+    if (isLoading) return <div className="preloader "></div>
     
     if (listsArr[0].length < 1)  return <OpenModalButton buttonText="Create A List" onButtonClick={closeMenu} modalComponent={<ListForm board_id={id} />} />
         return (

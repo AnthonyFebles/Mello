@@ -8,11 +8,11 @@ ul {
   padding: 0px;
 }
 
-span {
+/* span {
   align-self: center;
   padding: 0px 0px 0px 1vw;
-  
-}
+
+} */
 .nav__boards {
   color: white;
   font-size: 20px;
@@ -47,7 +47,7 @@ nav {
 }
 
 .right-side-nav{
- 
+
 	display: flex;
   flex-direction: row;
   justify-content: space-around;

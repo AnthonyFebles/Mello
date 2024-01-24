@@ -1,4 +1,69 @@
-.list{
-border: 1px solid black
-
+.lists__container{
+/* border: 12px solid #715DF2; */
+border-radius: 8px;
+background-image: url('../../resources/images/stacked-waves-haikei.svg');
+background-attachment: absolute;
+background-size: cover;
+height: 100vh;
 }
+
+.lists__group {
+    display: flex;
+    border: 4px solid #9b6af7;
+    justify-content: space-around;
+    height: 80vh;
+    width: 80vw;
+    margin: 12px auto;
+    border-radius: 20px;
+
+  
+}
+
+.list{
+    border: 10px solid #161515;
+    background-color: rgba(149, 94, 250, 0.304);
+    text-align: center;
+    margin: 12px 0;
+    width: 20%;
+    border-radius: 25px;
+}
+.preloader{
+    height: 50%;
+    width: 50%;
+}
+
+.list:hover {
+    animation: shake 0.7s;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 2px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+  .lists__group:hover .list:not(:hover){
+    filter: blur(20%);
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  }
+
+ .preloader{
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150"><rect fill="%231B191B" width="100%" height="100%"/><path fill="none" stroke="%239B6AF7" stroke-width="20" stroke-linecap="round" stroke-dasharray="300 385" stroke-dashoffset="0" d="M275 75c0 31-27 50-50 50-58 0-92-100-150-100-28 0-50 22-50 50s23 50 50 50c58 0 92-100 150-100 24 0 50 19 50 50Z"><animate attributeName="stroke-dashoffset" calcMode="spline" dur="3.1" values="685;-685" keySplines="0 0 1 1" repeatCount="indefinite"></animate></path></svg>') ;
+  
+    background-attachment: absolute;
+    margin: 0 auto;
+    background-size: cover;
+    height: 80vh;
+    width: 65%;
+    z-index: 5;
+ }

@@ -11,6 +11,9 @@ import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
 
+
+
+
 const List = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();

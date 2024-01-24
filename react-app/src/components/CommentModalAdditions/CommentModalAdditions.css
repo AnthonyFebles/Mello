@@ -1,6 +1,7 @@
 .additions p {
   margin-bottom: 4px;
   margin-top: 20px;
+  color: #e6e6fa;
 }
 
 .additions-container,
@@ -24,9 +25,11 @@
 .additions-container-2 div {
   display: flex;
   align-items: center;
-  background-color: darkgray;
+  color: #2c2a31;
+  background-color: #db7093;
   width: 160px;
   height: 32px;
+  border-radius: 5px;
 }
 
 .additions-container div i,
@@ -36,6 +39,6 @@
 
 .additions-container div:hover,
 .additions-container-2 div:hover {
-  background-color: rgb(187, 187, 187);
+  background-color: #bc6180;
   cursor: pointer;
 }

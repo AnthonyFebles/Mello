@@ -2,7 +2,8 @@
   position: absolute;
   top: 50px;
   width: 768px;
-  background-color: grey;
+  /* background: linear-gradient(to right, #1a141e, #6c547b); */
+  background: linear-gradient(to right, #0a162c, rgb(104, 154, 171));
   border-radius: 15px;
   padding: 20px;
 }
@@ -30,23 +31,23 @@
 }
 
 .title-information h3 {
-  color: lightgray;
+  color: #e6e6fa;
   font-size: 23px;
   font-weight: 600;
   margin: 0;
 }
 
 .title-information p {
-  color: lightgray;
+  color: #e6e6fa;
   margin-top: 0;
   font-size: 13px;
 }
 
-.flashCard {
-  color: white;
+/* .flashCard {
+  color: lightgray;
   width: 30px;
   height: 30px;
-}
+} */
 
 #activity .row-container {
   display: flex;
@@ -63,7 +64,7 @@
 
 .row-container button {
   border: none;
-  color: lightgray;
+  color: #e6e6fa;
   background-color: rgb(107, 107, 107);
   padding: 5px;
   cursor: pointer;
@@ -77,7 +78,7 @@
 }
 
 .row-container p {
-  color: lightgray;
+  color: #e6e6fa;
   font-size: 16px;
   font-weight: 600;
   margin-left: 10px;
@@ -85,7 +86,8 @@
 
 .editor-container-1,
 .editor-container {
-  background-color: rgb(74, 74, 74);
+  /* background-color: rgb(74, 74, 74); */
+  background-color: #535b6b;
   padding: 6px;
   width: 94%;
   border-radius: 5px;
@@ -108,35 +110,35 @@
   margin-top: 6px;
   padding: 8px 16px;
   border: none;
-  background-color: gray;
+  background-color: pink;
   cursor: pointer;
   font-weight: 600;
   border-radius: 5px;
 }
 
 .button-container .save {
-  background-color: rgb(84, 84, 255);
+  background-color: lightblue;
   margin-right: 6px;
 }
 
 .save-2 {
-  background-color: rgb(84, 84, 255);
+  background-color: lightblue;
   margin-left: 36px;
   cursor: pointer;
   margin-bottom: 40px;
 }
 
 .button-container .cancel {
-  color: lightgray;
+  color: black;
 }
 
 .save-2:hover,
 .button-container .save:hover {
-  background-color: aquamarine;
+  background-color: rgb(105, 167, 187);
 }
 
 .button-container .cancel:hover {
-  background-color: rgb(169, 169, 169);
+  background-color: rgb(213, 159, 168);
 }
 
 .comment-block {
@@ -181,13 +183,13 @@
 }
 
 .toolbar button {
-  color: white;
+  color: #e6e6fa;
   height: 32px;
   width: 32px;
-  border: 1px solid black;
+  border: 1px solid #e6e6fa;
   border-radius: 5px;
   padding: 5px;
-  background-color: slategray;
+  background-color: rgba(112, 128, 144, 0);
   cursor: pointer;
 }
 
@@ -203,7 +205,7 @@
 }
 
 .name_date h2 {
-  color: lightgray;
+  color: #e6e6fa;
   font-size: 15px;
   margin-top: 0;
   margin-right: 10px;
@@ -212,7 +214,7 @@
 }
 
 .name_date span {
-  color: lightgray;
+  color: #e6e6fa;
   font-size: 11px;
 }
 
@@ -220,15 +222,16 @@
   margin-top: 0;
   width: 510px;
   padding: 6px;
-  background-color: #282828;
-  color: lightgray;
+  border: 1px solid #db7093;
+  background-color: #2c2a31;
+  color: #e6e6fa;
   margin-left: 10px;
   margin-bottom: 2px;
   border-radius: 5px;
 }
 
 hr {
-  border-color: rgb(173, 173, 173);
+  border-color: #e6e6fa;
 }
 
 .edit-delete-btn {
@@ -243,11 +246,11 @@ hr {
   width: 48px;
   font-size: smaller;
   border: none;
-  background-color: grey;
-  color: lightgray;
+  background-color: rgba(128, 128, 128, 0);
+  color: #e6e6fa;
   cursor: pointer;
 }
 
 .edit-delete-btn span {
-  color : lightgray;
+  color : #e6e6fa;
 }

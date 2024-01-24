@@ -76,7 +76,7 @@ export default function CommentModal({ cardId }) {
     <div className='commentModal'>
       <div className="commentModal-body">
         <div className='cardTitle'>
-          <i class="fa-solid fa-table fa-xl" style={{color: 'lightgray'}}></i>
+          <i class="fa-solid fa-table fa-xl" style={{color: '#e6e6fa'}}></i>
           <div className="title-information">
               <h3>Card Name</h3>
               <p>In list: list name</p>
@@ -84,7 +84,7 @@ export default function CommentModal({ cardId }) {
         </div>
         <div className="description">
           <div className="row-container">
-            <i class="fa-solid fa-align-left fa-xl" style={{color: 'lightgray'}}></i>
+            <i class="fa-solid fa-align-left fa-xl" style={{color: '#e6e6fa'}}></i>
             <p>Description</p>
           </div>
         </div>
@@ -127,14 +127,14 @@ export default function CommentModal({ cardId }) {
         <div id="activity">
           <div className="row-container">
             <div className='comment-icon'>
-              <i class="fa-sharp fa-regular fa-comments fa-lg" style={{color: 'lightgray'}}></i>
+              <i class="fa-sharp fa-regular fa-comments fa-lg" style={{color: '#e6e6fa'}}></i>
               <p>Comments</p>
             </div>
             <button onClick={showDetails}>Show Details</button>
           </div>
         </div>
         <div className="comment-container">
-          <i className="fas fa-user-circle fa-2xl" />
+          <i className="fas fa-user-circle fa-2xl" style={{color: '#e6e6fa'}} />
           <div className="editor-container">
             {clicked2 && (
               <>

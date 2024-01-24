@@ -23,7 +23,7 @@ export default function UserComment({ comment }) {
   }
 
   return (<div className='comment_insert' key={comment.id}>
-      <i className="fas fa-user-circle fa-2xl" />
+      <i className="fas fa-user-circle fa-2xl" style={{color: '#e6e6fa'}}/>
       <div className='comment_info'>
         <div className='name_date'>
           <h2>{comment.author.first_name} {comment.author.last_name}</h2>

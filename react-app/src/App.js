@@ -19,31 +19,37 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-const showNavbar = location.pathname !== "/not-logged"
+const showNavbar = !["/", "/signup"].includes(location.pathname);
 
   return (
 		<>
 			{showNavbar && <Navigation isLoaded={isLoaded} />}
 			{isLoaded && (
 				<Switch>
-					<Route path="/not-logged">
-						<HomeNotLogged />
-					</Route>
 					<Route path="/login">
 						<LoginFormPage />
 					</Route>
+
 					<Route path="/signup">
 						<SignupFormPage />
 					</Route>
+
 					<Route exact path="/boards">
 						<AllBoards />
 					</Route>
+
 					<Route exact path='/boards/:id'>
 						<CurrentBoard />
-				  </Route>
+				  	</Route>
+
                 	<Route exact path='/lists/:id'>
-                    <ListDetails />
-                </Route>
+                    	<ListDetails />
+                	</Route>
+
+					<Route exact path="/">
+						<HomeNotLogged />
+					</Route>
+
 				</Switch>
 			)}
 		</>

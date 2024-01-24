@@ -4,13 +4,15 @@ import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCommentThunk } from '../../store/comments';
+import UserComment from '../UserComment/UserComment';
 
 
 export default function CommentModal({ cardId }) {
   const dispatch = useDispatch();
+  const [clicked, setClicked] = useState(false)
+  const [clicked2, setClicked2] = useState(false)
   const comments = useSelector((state) => state.comments);
   const userId = useSelector((state) => state.session.user.id);
-
 
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -19,13 +21,13 @@ export default function CommentModal({ cardId }) {
     EditorState.createEmpty()
   );
 
-  const descriptionText = editorState.getCurrentContent()
-  const newDescription = descriptionText.getPlainText()
-  const commentText = editorState2.getCurrentContent()
-  const newComment = commentText.getPlainText()
+  // const descriptionText = editorState.getCurrentContent()
+  // const newDescription = descriptionText.getPlainText()
+  //! const newDescription = editorState.getCurrentContent().getPlainText()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const newComment = editorState2.getCurrentContent().getPlainText()
 
     const comment = {
       card_id: cardId,
@@ -37,12 +39,6 @@ export default function CommentModal({ cardId }) {
     setEditorState2(EditorState.createEmpty())
   }
 
-  console.log('COMMENTS', comments);
-
-
-  console.log('COMMENTS', comments);
-  const [clicked, setClicked] = useState(false)
-  const [clicked2, setClicked2] = useState(false)
 
   const onBoldClick = () => {
     setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
@@ -169,21 +165,35 @@ export default function CommentModal({ cardId }) {
           </div>
         </div>
       </div>
+      { !clicked2 && (<><br /><br /><br /></>)}
       { clicked2 && (
-        <button onClick={handleSubmit} className='save-2'>Save</button>
+        <>
+          <button onClick={handleSubmit} className='save-2'>Save</button>
+          <hr />
+        </>
       )}
-      <div className="comment-block">
-        <i className="fas fa-user-circle fa-2xl" />
-        {Object.values(comments).map((comment) => (
-          <div className='comment_info' key={comment.id}>
-            <div className='name_date'>
-              <h2>{comment.author.first_name} {comment.author.last_name}</h2>
-              <span>{comment.updated_at}</span>
-            </div>
-            <p>{comment.comment}</p>
-          </div>
-        ))}
-      </div>
+      {Object.values(comments).map((comment) => (
+        <UserComment comment={comment} />
+      ))}
     </div>
   );
 }
+
+    // function UserComment({ comment }) {
+    //   return (<div className='comment_insert' key={comment.id}>
+    //       <i className="fas fa-user-circle fa-2xl" />
+    //       <div className='comment_info'>
+    //         <div className='name_date'>
+    //           <h2>{comment.author.first_name} {comment.author.last_name}</h2>
+    //           <span>{comment.updated_at}</span>
+    //         </div>
+    //         <p>{comment.comment}</p>
+    //         <div className='edit-delete-btn'>
+    //           <button>Edit</button>
+    //           <span> · </span>
+    //           <button>Delete</button>
+    //         </div>
+    //         <hr />
+    //       </div>
+    //     </div>);
+    // }

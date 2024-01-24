@@ -2,7 +2,6 @@
   position: absolute;
   top: 50px;
   width: 768px;
-  height: 908px;
   background-color: grey;
   border-radius: 15px;
   padding: 20px;
@@ -84,6 +83,7 @@
   background-color: rgb(74, 74, 74);
   padding: 6px;
   width: 70%;
+  border-radius: 5px;
 }
 
 .editor-container-1 {
@@ -118,6 +118,7 @@
   background-color: rgb(84, 84, 255);
   margin-left: 36px;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 
 .button-container .cancel {
@@ -141,7 +142,7 @@
 .comment-container {
   display: flex;
   flex-direction: row;
-  /* margin: 10px; */
+  /* margin-bottom: 40px; */
 }
 
 .comment-block i,
@@ -154,6 +155,16 @@
   flex-direction: column;
   justify-content: center;
   height: 27px;
+}
+
+.comment_insert {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.comment_insert i {
+  margin-top: 8px;
 }
 
 .toolbar {
@@ -192,6 +203,7 @@
   margin-top: 0;
   margin-right: 10px;
   margin-bottom: 0;
+  margin-left: 6px;
 }
 
 .name_date span {
@@ -203,10 +215,34 @@
   margin-top: 0;
   width: 510px;
   padding: 6px;
-  background-color: #3d3d3d;
+  background-color: #282828;
   color: lightgray;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  border-radius: 5px;
 }
 
 hr {
   border-color: rgb(173, 173, 173);
+}
+
+.edit-delete-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80px;
+  margin-left: 5px;
+}
+
+.edit-delete-btn button {
+  width: 48px;
+  font-size: smaller;
+  border: none;
+  background-color: grey;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.edit-delete-btn span {
+  color : lightgray;
 }

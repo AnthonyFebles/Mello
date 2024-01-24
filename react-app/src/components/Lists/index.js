@@ -9,6 +9,7 @@ import ListForm from "./create";
 import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
+import CommentModal from "../CommentModal/CommentModal";
 
 const List = () => {
 	const dispatch = useDispatch();
@@ -94,12 +95,12 @@ const List = () => {
 						<div className="cards">
 							<h3>
 								{list.cards ? (
-									list.cards.map((card) => {
+									list.cards.toReversed().map((card) => {
 										return (
 											<div className="card__container">
 												<OpenModalButton
-                                                buttonText={card.name}>
-                                                
+                                                buttonText={card.name}
+                                                modalComponent={<CommentModal cardId={card.id} />}>
                                                 </OpenModalButton>
 											</div>
 										);

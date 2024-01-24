@@ -9,6 +9,7 @@ import CommentModalAdditions from '../CommentModalAdditions/CommentModalAddition
 
 
 export default function CommentModal({ cardId }) {
+  
   const dispatch = useDispatch();
   const [clicked, setClicked] = useState(false)
   const [clicked2, setClicked2] = useState(false)

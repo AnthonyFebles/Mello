@@ -10,13 +10,19 @@ import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
 
+
+
+
 const List = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [showMenu, setShowMenu] = useState(false)
     const lists = useSelector(state => state.lists)
-     const listsArr = Object.values(lists) 
+    const listsArr = Object.values(lists) 
+    
+    
+  
   
     
 

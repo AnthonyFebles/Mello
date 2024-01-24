@@ -1,0 +1,11 @@
+.header{
+    background-color: #1B191B;
+    height: 100vh;
+}
+h1{
+    padding-top:10px;
+    margin-left: 10px;
+    color: rgb(162, 114, 252);
+    font-weight: bolder;
+    font-size: 30px;
+}

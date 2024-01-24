@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import List from "../Lists";
 import { loadDetails } from "../../store/boardDetail";
 import { getCardsThunk } from "../../store/cards";
+import './BoardDetails.css'
 
 const CurrentBoard = () => {
     const dispatch = useDispatch();
@@ -14,9 +15,9 @@ const CurrentBoard = () => {
             dispatch(loadDetails(parseInt(id))).then(() => dispatch(getCardsThunk(parseInt(id), parseInt(id))))
     },[dispatch, id])
     return (
-        <div>
-            <h1>{name}</h1>
-            <List />
+        <div className="header" >
+            <h1 >{name}</h1>
+            <List  />
         </div>
     )
 }

@@ -1,0 +1,44 @@
+.additions p {
+  margin-bottom: 4px;
+  margin-top: 20px;
+  color: #e6e6fa;
+}
+
+.additions-container,
+.additions-container-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 286px;
+}
+
+.additions-container-2 {
+  height: 203px;
+}
+
+.additions-container p,
+.additions-container-2 p {
+  margin-bottom: 0;
+}
+
+.additions-container div,
+.additions-container-2 div {
+  display: flex;
+  align-items: center;
+  color: #2c2a31;
+  background-color: #db7093;
+  width: 160px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+.additions-container div i,
+.additions-container-2 div i {
+  margin: 10px;
+}
+
+.additions-container div:hover,
+.additions-container-2 div:hover {
+  background-color: #bc6180;
+  cursor: pointer;
+}

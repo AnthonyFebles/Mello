@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { deleteCommentThunk, updateCommentThunk } from "../../store/comments";
+import RippleButton from "../RippleButton/RippleButton";
 
 export default function UserComment({ comment }) {
   const dispatch = useDispatch()
@@ -32,7 +33,7 @@ export default function UserComment({ comment }) {
         </div>
         <p>{comment.comment}</p>
         <div className='edit-delete-btn'>
-          <button onClick={editComment}>Edit</button>
+          <RippleButton onClick={editComment}>Edit</RippleButton>
           <span> · </span>
           <button onClick={deleteComment}>Delete</button>
         </div>

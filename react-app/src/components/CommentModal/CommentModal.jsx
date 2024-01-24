@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createCommentThunk } from '../../store/comments';
 import UserComment from '../UserComment/UserComment';
 import CommentModalAdditions from '../CommentModalAdditions/CommentModalAdditions';
+import RippleButton from '../RippleButton/RippleButton';
 
 
 export default function CommentModal({ cardId }) {
@@ -70,6 +71,8 @@ export default function CommentModal({ cardId }) {
   const onHighlightClick2 = () => {
     setEditorState2(RichUtils.toggleInlineStyle(editorState2, 'HIGHLIGHT'));
   }
+
+  const buttonRef = useRef(null);
 
   return (
     <div className='commentModal'>
@@ -168,7 +171,7 @@ export default function CommentModal({ cardId }) {
         { !clicked2 && (<><br /><br /><br /></>)}
         { clicked2 && (
           <>
-            <button onClick={handleSubmit} className='save-2'>Save</button>
+            <RippleButton onClick={handleSubmit} className='save-2'>Save</RippleButton>
             <hr />
           </>
         )}

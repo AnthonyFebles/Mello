@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import '/draft-js/dist/Draft.css';
 import './CommentModal.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCommentThunk } from '../../store/comments';

@@ -22,8 +22,9 @@ export default function UserComment({ comment }) {
     dispatch(updateCommentThunk(newComment))
   }
 
-  return (<div className='comment_insert' key={comment.id}>
-      <i className="fas fa-user-circle fa-2xl" />
+  return (
+    <div className='comment_insert' key={comment.id}>
+      <i className="fas fa-user-circle fa-2xl" style={{color: '#e6e6fa'}}/>
       <div className='comment_info'>
         <div className='name_date'>
           <h2>{comment.author.first_name} {comment.author.last_name}</h2>
@@ -37,5 +38,6 @@ export default function UserComment({ comment }) {
         </div>
         <hr />
       </div>
-    </div>);
+    </div>
+  );
 }

@@ -4,14 +4,14 @@ import { useDispatch } from "react-redux";
 import { colors} from "../Colors";
 import { useModal } from "../../context/Modal";
 import "./UpdateBoard.css";
-import { useHistory } from "react-router-dom";
+
 
 const UpdateBoard = ({ id, color, name }) => {
 	const dispatch = useDispatch();
 
 	const ulRef = useRef();
 
-    const history = useHistory()
+    
 	const [newColor, setNewColor] = useState(color);
 	const [newName, setNewName] = useState(name);
 	const [errors, setErrors] = useState({});
@@ -39,7 +39,7 @@ const UpdateBoard = ({ id, color, name }) => {
             await dispatch(getBoards()) 
         }
 
-        await dispatch(getBoards())
+        dispatch(getBoards())
         // return history.push(`/boards/${id}`)
     }
 
@@ -54,7 +54,7 @@ const UpdateBoard = ({ id, color, name }) => {
 				<div ></div>
 				<form className="new__board__form" onSubmit={handleSubmit} ref={ulRef}>
 					<label>
-						Name of your new board
+						Board Name
 						<input
 							type="text"
 							value={newName}

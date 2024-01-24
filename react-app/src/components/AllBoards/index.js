@@ -9,6 +9,7 @@ import {colors} from "../Colors"
 import OpenModalButton from "../OpenModalButton"
 
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
+import DeleteBoard from "../DeleteBoards";
 
 const AllBoards = () => {
 	const dispatch = useDispatch();
@@ -156,7 +157,10 @@ const AllBoards = () => {
 																modalComponent={<UpdateBoard id ={board.id} color={board.color} name={board.name} />} />
 															</li>
 															<li>
-																<button>Delete Board</button>
+																<OpenModalButton 
+																className={'delete__board-button'}
+																buttonText={'Delete Board'} 
+																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
 															</li>
 														</ul>
 														

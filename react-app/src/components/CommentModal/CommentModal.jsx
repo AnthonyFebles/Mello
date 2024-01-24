@@ -20,7 +20,6 @@ export default function CommentModal({ cardId }) {
   );
   const comments = useSelector((state) => state.comments);
   const userId = useSelector((state) => state.session.user.id);
-
   // const newDescription = editorState.getCurrentContent().getPlainText()
 
   const handleSubmit = (e) => {
@@ -173,8 +172,8 @@ export default function CommentModal({ cardId }) {
             <hr />
           </>
         )}
-        {Object.values(comments).map((comment) => (
-          <UserComment comment={comment} />
+        {Object.values(comments).reverse().map((comment) => (
+          <UserComment key={comment.id} comment={comment} />
         ))}
       </div>
       <CommentModalAdditions />

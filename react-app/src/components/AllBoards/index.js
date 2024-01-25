@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBoards, updateBoard } from "../../store/boards";
+import { getBoards} from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
 import NewBoard from "../CreateBoard";
 import UpdateBoard from "../UpdateBoard";
-import { colors } from "../Colors";
+// import { colors } from "../Colors";
 import OpenModalButton from "../OpenModalButton";
 
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
+// import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import DeleteBoard from "../DeleteBoards";
 
 const AllBoards = () => {
@@ -17,16 +17,16 @@ const AllBoards = () => {
 	const ulRef = useRef();
 
 	const [isLoading, setIsLoading] = useState(true);
-	const [color, setColor] = useState("");
-	const [name, setName] = useState("");
-	const [errors, setErrors] = useState({});
-	const [showUpdateMenu, setShowUpdateMenu] = useState(false);
+	// const [color, setColor] = useState("");
+	// const [name, setName] = useState("");
+	// const [errors, setErrors] = useState({});
+	// const [showUpdateMenu, setShowUpdateMenu] = useState(false);
 	const [targetBoard, setTargetBoard] = useState("");
 
-	const openUpdate = () => {
-		if (showUpdateMenu) return;
-		setShowUpdateMenu(true);
-	};
+	// const openUpdate = () => {
+	// 	if (showUpdateMenu) return;
+	// 	setShowUpdateMenu(true);
+	// };
 
 	const boards = useSelector((state) => {
 		//console.log(state, "STATE");
@@ -40,8 +40,8 @@ const AllBoards = () => {
 			if (ulRef.current) {
 				if (!ulRef.current.contains(e.target)) {
 					setTargetBoard(0);
-					setShowUpdateMenu(false);
-					dispatch(getBoards());
+					// setShowUpdateMenu(false);
+					// dispatch(getBoards());
 				}
 			}
 		};
@@ -51,35 +51,35 @@ const AllBoards = () => {
 		return () => {
 			document.removeEventListener("click", closeOptions);
 		};
-	}, [dispatch, targetBoard]);
+	}, [dispatch]);
 
-	const updateClassName =
-		"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
+	// const updateClassName =
+	// 	"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
 
-	const boardPayLoad = {
-		color,
-		name,
-	};
+	// const boardPayLoad = {
+	// 	color,
+	// 	name,
+	// };
 
-	const handleUpdate = async (e) => {
-		setErrors({});
-		e.preventDefault();
+	// const handleUpdate = async (e) => {
+	// 	setErrors({});
+	// 	e.preventDefault();
 
-		try {
-			dispatch(updateBoard(boardPayLoad));
-		} catch (data) {
-			setErrors(data);
-			alert(data.errors);
-		} finally {
-			setShowUpdateMenu(false);
-			setName("");
-			setColor("");
-			dispatch(getBoards());
-		}
-	};
+	// 	try {
+	// 		dispatch(updateBoard(boardPayLoad));
+	// 	} catch (data) {
+	// 		setErrors(data);
+	// 		alert(data.errors);
+	// 	} finally {
+	// 		setShowUpdateMenu(false);
+	// 		setName("");
+	// 		setColor("");
+	// 		dispatch(getBoards());
+	// 	}
+	// };
 
 	const handleMoreOptions = async (e) => {
-		setErrors({});
+		// setErrors({});
 		setTargetBoard(e.target.className.split(" ")[2]);
 		e.stopPropagation();
 		e.preventDefault();

@@ -89,7 +89,7 @@ const NewBoard = () => {
 				document.addEventListener("click", closeMenu);
 
 				return () => document.removeEventListener("click", closeMenu);
-			}, [dispatch, color, showMenu]);
+			}, [dispatch]);
     //////////////////////////////
     if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 	return (

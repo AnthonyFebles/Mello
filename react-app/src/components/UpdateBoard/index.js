@@ -30,13 +30,13 @@ const UpdateBoard = ({ id, color, name }) => {
 
         try {
             await dispatch(updateBoard(boardPayLoad))
-            await dispatch(getBoards());
+            //await dispatch(getBoards());
             closeModal()
         } catch (data) {
             setErrors(data)
             alert(data.errors)
         } finally {
-            await dispatch(getBoards()) 
+            //await dispatch(getBoards()) 
         }
 
         dispatch(getBoards())
@@ -45,7 +45,7 @@ const UpdateBoard = ({ id, color, name }) => {
 
     useEffect (() => {
         dispatch(getBoards())
-    }, [dispatch, newName, newColor])
+    }, [dispatch])
 
 
 	return (

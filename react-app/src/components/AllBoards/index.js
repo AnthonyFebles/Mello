@@ -93,7 +93,7 @@ const AllBoards = () => {
 	if (boards.length > 0)
 		return (
 			<>
-				<div className="tabbed-nav__container">
+				{/* <div className="tabbed-nav__container">
 					<div className="tabbed-nav__group">
 						<NavLink
 							to={`/boards`}
@@ -104,11 +104,11 @@ const AllBoards = () => {
 						</NavLink>
 
 						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-							{/* Insert page for editing user details here  */}
+							
 							Settings
 						</a>
 					</div>
-				</div>
+				</div> */}
 				<div className="outer__boards__container">
 					<div className="boards__container">
 						<NewBoard />

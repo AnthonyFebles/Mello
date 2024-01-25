@@ -22,7 +22,7 @@ const List = () => {
 	if (listsArr.length > 1) {
 		listsArr.pop();
 	}
-	console.log(listsArr, "*****listArr state.lists");
+	// console.log(listsArr, "*****listArr state.lists");
 
 	useEffect(() => {
 		dispatch(readLists(parseInt(id))).then(() => setIsLoading(false));

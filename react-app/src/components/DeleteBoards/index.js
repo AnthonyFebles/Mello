@@ -25,10 +25,10 @@ const DeleteBoard = ({id, name}) => {
 					setErrors(data);
 					alert(data.errors);
 				} finally {
-					await dispatch(getBoards());
+					//await dispatch(getBoards());
 				}
 
-				dispatch(getBoards());
+				//dispatch(getBoards());
         
     }
 

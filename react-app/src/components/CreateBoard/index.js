@@ -4,15 +4,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import "./CreateBoard.css";
 import { colors, getRandomInt } from "../Colors";
+import Testing from "../Testing/Testing";
 
 
 
 
 const NewBoard = () => {
 	const dispatch = useDispatch();
-	
+
 	const ulRef = useRef();
-    
+
 
 	const [color, setColor] = useState(colors[getRandomInt(colors.length)]);
 	const [name, setName] = useState("");
@@ -32,7 +33,7 @@ const NewBoard = () => {
 		name,
 	};
 
-    //if show menu is false, the hidden classname will be added. 
+    //if show menu is false, the hidden classname will be added.
     const ulClassName = "new__board-dropdown" + (showMenu ? " " : " hidden");
 
     //updates color on submit to a new random one, catches errors and alerts them.
@@ -40,7 +41,7 @@ const NewBoard = () => {
 	const handleSubmit = async (e) => {
         setErrors({});
 		e.preventDefault();
-		
+
 		try {
 			await dispatch(createNewBoard(boardPayLoad));
 		} catch (data) {
@@ -56,23 +57,23 @@ const NewBoard = () => {
 
 	////////////////////////////
     // Test Delete Button
-    // const handleTest = async (e) => {
-    //     e.preventDefault()
+    const handleTest = async (e) => {
+        e.preventDefault()
 
-    //     try {
-	// 				await dispatch(deleteBoard("6"))
-    //                 console.log("no error")
-						
-	// 			} catch (data) {
-    //                 console.log(data.message)
-	// 				setErrors(data.message)  
-    //                 alert(data.message);
-	// 				;
-	// 			}  finally {
-    //                 dispatch(getBoards())
-	// 				.then(() => setIsLoading(false));
-    //             }
-    // }
+        try {
+					await dispatch(deleteBoard("6"))
+                    console.log("no error")
+
+				} catch (data) {
+                    console.log(data.message)
+					setErrors(data.message)
+                    alert(data.message);
+					;
+				}  finally {
+                    dispatch(getBoards())
+					.then(() => setIsLoading(false));
+                }
+    }
 
     	useEffect(() => {
 				dispatch(getBoards()).then(() => setIsLoading(false));
@@ -94,7 +95,7 @@ const NewBoard = () => {
     if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 	return (
 		<>
-        {/* <button onClick={handleTest}></button> */}
+        <button onClick={handleTest}></button>
 			<div className="boards__sidebar">
 				<div className="boards__sidebar-content">
 					<p className="title">Create A New Board</p>
@@ -138,7 +139,7 @@ const NewBoard = () => {
 								);
 							})}
 						</select>
-                        {/* work around the getting images on the select field. Will show an updated 
+                        {/* work around the getting images on the select field. Will show an updated
                         image thanks to the useEffect whenever a new "Color" is selected from the
                         select onChange func */}
 						<ul className="board__images__ul">

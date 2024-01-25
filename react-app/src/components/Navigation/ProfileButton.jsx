@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
-
+import SignupFormModal from "../SignupFormModal"
 import { useHistory } from "react-router-dom"
 
 function ProfileButton({ user }) {
@@ -36,10 +35,8 @@ function ProfileButton({ user }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout())
-	.then(() => {
-		history.push('/');
-	});
+    dispatch(logout());
+		history.push("/");
   };
 
 	const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -47,17 +44,22 @@ function ProfileButton({ user }) {
 
 	return (
 		<>
-			<button onClick={openMenu}>
-				<i className="fas fa-user-circle" />
-			</button>
+			<i onClick={openMenu} className="fas fa-user-circle fa-2x user-icon" style={{color: '#e6e6fa'}} />
 			<ul className={ulClassName} ref={ulRef}>
 				{user ? (
 					<>
-						<li>{user.username}</li>
-						<li>{user.email}</li>
-						<li>
-							<button onClick={handleLogout}>Log Out</button>
-						</li>
+						<p className="account-text">Account</p>
+						<div className="user-info">
+							<i onClick={openMenu} className="fas fa-user-circle fa-3x" style={{color: '#e6e6fa'}} />
+							<div className="name-email">
+								<p>{user.username}</p>
+								<p>{user.email}</p>
+							</div>
+						</div>
+						<li>Switch accounts</li>
+						<li>Manage account</li>
+						<hr />
+						<li onClick={handleLogout}>Logout</li>
 					</>
 				) : (
 					<>

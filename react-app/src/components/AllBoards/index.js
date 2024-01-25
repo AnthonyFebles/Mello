@@ -46,12 +46,15 @@ const AllBoards = () => {
 			}
 		};
 
+
 		document.addEventListener("click", closeOptions);
 
+
 		return () => {
-			document.removeEventListener("click", closeOptions);
-		};
-	}, [dispatch]);
+			document.removeEventListener("click", closeOptions)
+
+	};
+	}, [dispatch, targetBoard]);
 
 	// const updateClassName =
 	// 	"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
@@ -104,7 +107,6 @@ const AllBoards = () => {
 						</NavLink>
 
 						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-							
 							Settings
 						</a>
 					</div>
@@ -160,18 +162,15 @@ const AllBoards = () => {
 															</li>
 															<li>
 																<OpenModalButton
-																	className={"delete__board-button"}
-																	buttonText={"Delete Board"}
-																	modalComponent={
-																		<DeleteBoard
-																			id={board.id}
-																			name={board.name}
-																		/>
-																	}
-																/>
+																className={'delete__board-button'}
+																buttonText={'Delete Board'}
+																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
 															</li>
 														</ul>
+
 													</div>
+
+
 												) : (
 													<div> </div>
 												)}

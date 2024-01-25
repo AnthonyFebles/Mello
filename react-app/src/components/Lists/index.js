@@ -55,7 +55,7 @@ const List = () => {
 		);
 	return (
 		<div className="lists__container">
-			<h1> Lists</h1>
+			<h1 className="list__head"> Lists</h1>
 			<OpenModalButton
 				buttonText="Create A List"
 				onButtonClick={closeMenu}
@@ -93,14 +93,10 @@ const List = () => {
 							}
                         /> */}
                         <div>
-                            <h2>{list.name}</h2>
+                            <h2 className="list__name">{list.name}</h2>
                         </div>
                         
-                        <UpdateDelete info={{
-										board_id: id,
-										list_id: list.id,
-										list_name: list.name,
-									}} />
+                       
 
 						<div className="cards">
 							<h3>
@@ -120,7 +116,12 @@ const List = () => {
 								)}
 							</h3>
 							{/* <Card state={list.id} />         */}
-						</div>
+                        </div>
+                        <UpdateDelete info={{
+										board_id: id,
+										list_id: list.id,
+										list_name: list.name,
+									}} />
 					</div>
 				))}
 			</div>

@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
 from app.models.cards import Card
 from app.forms.card_form import CardForm
@@ -11,14 +11,14 @@ card_routes = Blueprint(
 )
 
 
-@card_routes.route("/")
+@card_routes.route("")
 def get_cards(boardId, listId):
     card_query = Card.query.filter(Card.listId == listId).all()
     cards = [card.to_dict_no_list() for card in card_query]
     return {"cards": cards}
 
 
-@card_routes.route("/", methods=["POST"])
+@card_routes.route("", methods=["POST"])
 @login_required
 def create_card(boardId, listId):
     cardForm = CardForm()
@@ -26,18 +26,19 @@ def create_card(boardId, listId):
 
     if cardForm.validate_on_submit():
         new_card = Card(
+            # user_id=current_user.id,
             listId=listId,
             name=cardForm.name.data,
             description=cardForm.description.data,
-            users=[current_user],
+            # users=[current_user],
         )
 
         db.session.add(new_card)
         db.session.commit()
 
-        return new_card.to_dict()
+        return jsonify(new_card.to_dict()), 201
 
-    return {"errors": validation_errors_to_error_messages(cardForm.errors)}, 401
+    return {"errors": validation_errors_to_error_messages(cardForm.errors)}, 400
 
 
 @card_routes.route("/<cardId>", methods=["PUT"])

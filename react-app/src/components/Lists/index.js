@@ -11,9 +11,7 @@ import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
 import UpdateDelete from "../DeleteUpdate";
-
-
-
+import AddCards from "../AddCards";
 
 const List = () => {
 	const dispatch = useDispatch();
@@ -25,7 +23,7 @@ const List = () => {
 	if (listsArr.length > 1) {
 		listsArr.pop();
 	}
-	console.log(listsArr, "*****listArr state.lists");
+	// console.log(listsArr, "*****listArr state.lists");
 
 	useEffect(() => {
 		dispatch(readLists(parseInt(id))).then(() => setIsLoading(false));
@@ -45,13 +43,19 @@ const List = () => {
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
-	if (listsArr[0].length < 1)
+	// console.log(Object.values(listsArr[0]).length < 1, "LSTARRRRRRRR")
+
+	if (Object.values(listsArr[0]).length < 1)
 		return (
-			<OpenModalButton
-				buttonText="Create A List"
-				onButtonClick={closeMenu}
-				modalComponent={<ListForm board_id={id} />}
-			/>
+			<div className="lists__container">
+				<h1> Lists</h1>
+				<OpenModalButton
+					buttonText="Create A List"
+					onButtonClick={closeMenu}
+					modalComponent={<ListForm board_id={id} />}
+				/>
+				<div className="lists__group"></div>
+			</div>
 		);
 	return (
 		<div className="lists__container">
@@ -103,11 +107,11 @@ const List = () => {
 								{list.cards ? (
 									list.cards.toReversed().map((card) => {
 										return (
-											<div className="card__container">
+											<div className="card__container" key={card.id}>
 												<OpenModalButton
-                                                buttonText={card.name}
-                                                modalComponent={<CommentModal cardId={card.id} />}>
-                                                </OpenModalButton>
+													buttonText={card.name}
+													modalComponent={<CommentModal cardId={card.id} />}
+												></OpenModalButton>
 											</div>
 										);
 									})
@@ -115,6 +119,12 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
+							<OpenModalButton
+								buttonText={"Add New Card"}
+								className={"new__card__modal-button"}
+								modalComponent={<AddCards listId={list.id} boardId={id} />}
+							/>
+
 							{/* <Card state={list.id} />         */}
                         </div>
                         <UpdateDelete info={{

@@ -42,7 +42,7 @@ const NewBoard = () => {
 		e.preventDefault();
 		
 		try {
-			dispatch(createNewBoard(boardPayLoad));
+			await dispatch(createNewBoard(boardPayLoad));
 		} catch (data) {
 			setErrors(data);
 			alert(data.errors);
@@ -56,23 +56,23 @@ const NewBoard = () => {
 
 	////////////////////////////
     // Test Delete Button
-    const handleTest = async (e) => {
-        e.preventDefault()
+    // const handleTest = async (e) => {
+    //     e.preventDefault()
 
-        try {
-					await dispatch(deleteBoard("6"))
-                    console.log("no error")
+    //     try {
+	// 				await dispatch(deleteBoard("6"))
+    //                 console.log("no error")
 						
-				} catch (data) {
-                    console.log(data.message)
-					setErrors(data.message)  
-                    alert(data.message);
-					;
-				}  finally {
-                    dispatch(getBoards())
-					.then(() => setIsLoading(false));
-                }
-    }
+	// 			} catch (data) {
+    //                 console.log(data.message)
+	// 				setErrors(data.message)  
+    //                 alert(data.message);
+	// 				;
+	// 			}  finally {
+    //                 dispatch(getBoards())
+	// 				.then(() => setIsLoading(false));
+    //             }
+    // }
 
     	useEffect(() => {
 				dispatch(getBoards()).then(() => setIsLoading(false));
@@ -89,12 +89,12 @@ const NewBoard = () => {
 				document.addEventListener("click", closeMenu);
 
 				return () => document.removeEventListener("click", closeMenu);
-			}, [dispatch, color, showMenu]);
+			}, [dispatch]);
     //////////////////////////////
     if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 	return (
 		<>
-        <button onClick={handleTest}></button>
+        {/* <button onClick={handleTest}></button> */}
 			<div className="boards__sidebar">
 				<div className="boards__sidebar-content">
 					<p className="title">Create A New Board</p>

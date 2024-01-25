@@ -12,7 +12,7 @@ const CurrentBoard = () => {
     const { color, lists, name, owner, user_id, users } = board;
     const { id } = useParams();
     useEffect(() => {
-            dispatch(loadDetails(parseInt(id))).then(() => dispatch(getCardsThunk(parseInt(id), parseInt(id))))
+            dispatch(loadDetails((id)))
     },[dispatch, id])
     return (
         <div className="header" >

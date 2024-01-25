@@ -65,7 +65,7 @@ const List = () => {
 				{listsArr.toReversed().map((list) => (
 					<div className="list" key={list.id}>
 						{/* <NavLink to={`/boards/${parseInt(id)}/lists/${parseInt(id)}`}>Edit List</NavLink> */}
-						<OpenModalButton
+						{/* <OpenModalButton
 							buttonText="Edit List"
 							onButtonClick={closeMenu}
 							modalComponent={
@@ -91,11 +91,17 @@ const List = () => {
 									}}
 								/>
 							}
-						/>
+                        /> */}
+                        <div>
+                            <h2>{list.name}</h2>
+                        </div>
+                        
+                        <UpdateDelete info={{
+										board_id: id,
+										list_id: list.id,
+										list_name: list.name,
+									}} />
 
-						<div>
-							<h2>{list.name}</h2>
-						</div>
 						<div className="cards">
 							<h3>
 								{list.cards ? (

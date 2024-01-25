@@ -9,6 +9,24 @@ header {
   height: 48px;
 }
 
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-bar button {
+  margin-left: 20px;
+  width: 68px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+  color: #e6e6fa;
+  background-color: #005d9b;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .logo-name {
   display: flex;
   flex-direction: row;

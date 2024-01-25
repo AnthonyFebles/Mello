@@ -10,9 +10,9 @@ import { colors, getRandomInt } from "../Colors";
 
 const NewBoard = () => {
 	const dispatch = useDispatch();
-	
+
 	const ulRef = useRef();
-    
+
 
 	const [color, setColor] = useState(colors[getRandomInt(colors.length)]);
 	const [name, setName] = useState("");
@@ -32,7 +32,7 @@ const NewBoard = () => {
 		name,
 	};
 
-    //if show menu is false, the hidden classname will be added. 
+    //if show menu is false, the hidden classname will be added.
     const ulClassName = "new__board-dropdown" + (showMenu ? " " : " hidden");
 
     //updates color on submit to a new random one, catches errors and alerts them.
@@ -40,7 +40,7 @@ const NewBoard = () => {
 	const handleSubmit = async (e) => {
         setErrors({});
 		e.preventDefault();
-		
+
 		try {
 			dispatch(createNewBoard(boardPayLoad));
 		} catch (data) {
@@ -62,10 +62,10 @@ const NewBoard = () => {
         try {
 					await dispatch(deleteBoard("6"))
                     console.log("no error")
-						
+
 				} catch (data) {
                     console.log(data.message)
-					setErrors(data.message)  
+					setErrors(data.message)
                     alert(data.message);
 					;
 				}  finally {
@@ -138,7 +138,7 @@ const NewBoard = () => {
 								);
 							})}
 						</select>
-                        {/* work around the getting images on the select field. Will show an updated 
+                        {/* work around the getting images on the select field. Will show an updated
                         image thanks to the useEffect whenever a new "Color" is selected from the
                         select onChange func */}
 						<ul className="board__images__ul">

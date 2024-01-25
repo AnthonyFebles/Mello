@@ -17,6 +17,7 @@ function Navigation({ isLoaded }) {
 						<p>mello</p>
 					</div>
 				</NavLink>
+				<button className="create">Create</button>
 			</nav>
 			<div className="right_side_nav">
 				<span className="search-container">

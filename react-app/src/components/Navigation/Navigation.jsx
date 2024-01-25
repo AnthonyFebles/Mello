@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
-import CreateBoard from "../CreateBoard/index"
+// import CreateBoard from "../CreateBoard/index"
 import { colors, getRandomInt } from "../Colors";
 import { createNewBoard, getBoards } from "../../store/boards";
 import Testing from "../Testing/Testing";
@@ -28,7 +28,25 @@ function Navigation({ isLoaded }) {
 			setShowMenu(true);
 		};
 
+		////////////////////////////
+    // Test Delete Button
+    // const handleTest = async (e) => {
+    //     e.preventDefault()
 
+    //     try {
+		// 			await dispatch(deleteBoard("6"))
+    //                 console.log("no error")
+
+		// 		} catch (data) {
+    //                 console.log(data.message)
+		// 			setErrors(data.message)
+    //                 alert(data.message);
+		// 			;
+		// 		}  finally {
+    //                 dispatch(getBoards())
+		// 			.then(() => setIsLoading(false));
+    //             }
+    // }
 
 	const boardPayLoad = {
 		color,

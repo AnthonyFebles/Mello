@@ -10,27 +10,27 @@ function Navigation({ isLoaded }) {
 	return (
 		<header>
 			<nav className="nav-bar">
-				<ul>
-					<li class="header-nav__home">
-						<NavLink exact to="/">
-							<img
-								class="header-nav__trello-logo"
-								id="trello-logo"
-								src="https://www.logo.wine/a/logo/Trello/Trello-Logo.wine.svg"
-								width={100}
-								height={35}
-							/>
-						</NavLink>
-					</li>
-				</ul>
-				<span>
-					<NavLink exact to="/boards" className="nav__boards">
-						Boards
-					</NavLink>
-				</span>
+				<NavLink exact to="/">
+					<div className="logo-name">
+						<i class="fa-brands fa-trello fa-xl" style={{color: 'white'}}></i>
+						<p>mello</p>
+					</div>
+				</NavLink>
+					{/* <img
+						class="header-nav__trello-logo"
+						id="trello-logo"
+						src="https://www.logo.wine/a/logo/Trello/Trello-Logo.wine.svg"
+						width={100}
+						height={35}
+					/> */}
+
+				<NavLink exact to="/boards" className="nav__boards">
+					Boards
+				</NavLink>
 			</nav>
 			<div className="right__side__nav">
-				<span>
+				{/* Extras */}
+				{/* <span>
 					<a class="header-nav__link">
 						<div class="header-nav__button" id="search">
 							<i class="fas fa-search"></i>{" "}
@@ -51,7 +51,7 @@ function Navigation({ isLoaded }) {
 							<i class="fas fa-info-circle"></i>
 						</div>
 					</a>
-				</span>
+				</span> */}
 				{isLoaded && (
 					<span>
 						<ProfileButton user={sessionUser} />

@@ -47,13 +47,13 @@ const AllBoards = () => {
 			}
 		};
 
-		
+
 		document.addEventListener("click", closeOptions);
-		
+
 
 		return () => {
-			document.removeEventListener("click", closeOptions) 
-			
+			document.removeEventListener("click", closeOptions)
+
 	};
 	}, [dispatch, targetBoard]);
 
@@ -97,7 +97,7 @@ const AllBoards = () => {
 	if (boards.length > 0)
 		return (
 			<>
-				<div className="tabbed-nav__container">
+				{/* <div className="tabbed-nav__container">
 					<div className="tabbed-nav__group">
 						<NavLink
 							to={`/boards`}
@@ -108,11 +108,10 @@ const AllBoards = () => {
 						</NavLink>
 
 						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-							{/* Insert page for editing user details here  */}
 							Settings
 						</a>
 					</div>
-				</div>
+				</div> */}
 				<div className="outer__boards__container">
 					<div className="boards__container">
 						<NewBoard />
@@ -147,7 +146,7 @@ const AllBoards = () => {
 													/>
 												</NavLink>
 												{targetBoard == board.id ? (
-													
+
 													<div className={`board__options`} ref={ulRef}>
 														<ul ref={ulRef}>
 															<li>
@@ -157,16 +156,16 @@ const AllBoards = () => {
 																modalComponent={<UpdateBoard id ={board.id} color={board.color} name={board.name} />} />
 															</li>
 															<li>
-																<OpenModalButton 
+																<OpenModalButton
 																className={'delete__board-button'}
-																buttonText={'Delete Board'} 
+																buttonText={'Delete Board'}
 																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
 															</li>
 														</ul>
-														
+
 													</div>
-													
-													
+
+
 												) : (
 													<div> </div>
 												)}

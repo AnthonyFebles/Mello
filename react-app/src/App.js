@@ -4,9 +4,8 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
-import Navigation from "./components/Navigation";
 import  AllBoards  from "./components/AllBoards"
-import { Comments } from "./components"
+import { Comments, Navigation } from "./components"
 import HomeNotLogged from "./components/HomeNotLogged";
 import List from "./components/Lists";
 import ListDetails from "./components/Lists/ListDetails";

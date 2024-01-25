@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -22,6 +23,7 @@ function Navigation({ isLoaded }) {
 					<input type="search" name="search" id="search" placeholder="Search"/>
 					<i className="fa-sharp fa-solid fa-magnifying-glass search-icon" style={{color: '#e6e6fa71'}}></i>
 				</span>
+				<SpotifyPlayer />
 				<i class="fa-regular fa-bell fa-lg" style={{color: '#e6e6fa71'}}></i>
 				<i class="fa-regular fa-circle-question fa-lg" style={{color: '#e6e6fa71'}}></i>
 				{isLoaded && (

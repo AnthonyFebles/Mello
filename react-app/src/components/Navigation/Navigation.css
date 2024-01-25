@@ -1,7 +1,6 @@
 header {
   justify-content: space-between;
-  /* background-color: #532545; */
-  background: radial-gradient(circle, #532545, #140029);
+  background: radial-gradient(circle, #532545, #0e001d);
   border-bottom: 1px solid #53254581;
   display: flex;
   flex-direction: row;
@@ -28,7 +27,11 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 340px;
+}
+
+.right_side_nav i {
+  cursor: pointer;
 }
 
 .user-icon:hover {

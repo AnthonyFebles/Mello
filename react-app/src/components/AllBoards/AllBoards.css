@@ -184,3 +184,47 @@ a {
     text-align: center;
     justify-content: space-around;
 }
+
+/* ! Board Options Styling */
+
+.board__options ul {
+    background-color: #333;
+    border-radius: 4px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.board__options li {
+    color: white;
+    padding: 8px 12px; 
+    font-size: 14px;
+    cursor: pointer;
+    background: none; 
+}
+
+.board__options li:hover {
+    background-color: #444;
+}
+
+.board__options li:not(:last-child) {
+    border-bottom: 1px solid #555; 
+}
+
+.update__board-button,
+.delete__board-button {
+    display: block;
+    width: 100%; 
+    text-align: left;
+    border: none;
+    color: white; 
+    padding: 8px 12px; 
+    background: none; 
+    cursor: pointer; 
+}
+
+.update__board-button:hover,
+.delete__board-button:hover {
+    background-color: #444; 
+}

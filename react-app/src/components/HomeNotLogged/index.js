@@ -38,7 +38,7 @@ const handleDemoLogin = () => {
 };
 
 const handleSignUp = () => {
-    history.push('/signup')
+    history.push('/signup');
 }
 
     return (

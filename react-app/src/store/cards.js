@@ -82,7 +82,7 @@ const addNewCard = (newCard) => {
     }
 }
 
-export const addCardThunk = (listId, cardData) => async (dispatch) => {
+export const addCardThunk = (listId, boardId, cardData) => async (dispatch) => {
 
     try {
         // Request method details
@@ -95,7 +95,7 @@ export const addCardThunk = (listId, cardData) => async (dispatch) => {
         }
     
         // fetch from backend api route
-        const res = await csrfFetch(`api/lists/${listId}/cards`, requestMethod)
+        const res = await csrfFetch(`api/boards/${boardId}/lists/${listId}/cards`, requestMethod)
     
         // if the response is good, we'll dispatch using the action creator
         if (res.ok) {

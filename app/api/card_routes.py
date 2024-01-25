@@ -29,7 +29,7 @@ def create_card(boardId, listId):
             listId=listId,
             name=cardForm.name.data,
             description=cardForm.description.data,
-            users=[current_user],
+            # users=[current_user],
         )
 
         db.session.add(new_card)

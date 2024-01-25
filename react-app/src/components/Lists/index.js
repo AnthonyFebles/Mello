@@ -10,6 +10,7 @@ import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
+import AddCards from "../AddCards";
 
 
 
@@ -112,6 +113,14 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
+                            <OpenModalButton
+                            buttonText={"Add New Card"}
+                            className={"new__card__modal-button"}
+                            modalComponent={<AddCards listId={list.id}/>}
+                            >
+                            
+
+                            </OpenModalButton>
 							{/* <Card state={list.id} />         */}
 						</div>
 					</div>

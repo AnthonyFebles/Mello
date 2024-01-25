@@ -1,10 +1,11 @@
 .lists__container{
 /* border: 12px solid #715DF2; */
 border-radius: 8px;
-background-image: url('../../resources/images/stacked-waves-haikei.svg');
+/* background-image: url('../../resources/images/stacked-waves-haikei.svg'); */
 background-attachment: absolute;
 background-size: cover;
 height: 100vh;
+
 }
 
 .lists__group {

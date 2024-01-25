@@ -14,7 +14,7 @@ import CommentModal from "../CommentModal/CommentModal";
 
 
 
-const List = () => {
+const List = ({board}) => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 	const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +41,9 @@ const List = () => {
 	const ulRef = useRef();
 	const closeMenu = () => setShowMenu(false);
 
+
+    console.log(board.color, "BOOOOOOOOOOOOOOOOOOARD")
+
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
@@ -53,7 +56,12 @@ const List = () => {
 			/>
 		);
 	return (
-		<div className="lists__container">
+		<div
+			className="lists__container"
+			style={{
+				backgroundImage: `url(${board.color})`,
+			}}
+		>
 			<h1> Lists</h1>
 			<OpenModalButton
 				buttonText="Create A List"
@@ -102,9 +110,9 @@ const List = () => {
 										return (
 											<div className="card__container">
 												<OpenModalButton
-                                                buttonText={card.name}
-                                                modalComponent={<CommentModal cardId={card.id} />}>
-                                                </OpenModalButton>
+													buttonText={card.name}
+													modalComponent={<CommentModal cardId={card.id} />}
+												></OpenModalButton>
 											</div>
 										);
 									})
@@ -113,6 +121,9 @@ const List = () => {
 								)}
 							</h3>
 							{/* <Card state={list.id} />         */}
+						</div>
+						<div className="create__card__button-container">
+							<button>Create a Card</button>
 						</div>
 					</div>
 				))}

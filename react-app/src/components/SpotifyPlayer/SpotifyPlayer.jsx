@@ -23,7 +23,7 @@ function SpotifyPlayer() {
           },
         }}
       >
-        <iframe width="230px" height="200px" src="https://www.youtube.com/embed/fnVlN327sn0?si=HLhN8Ot_hQBH7-Sf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="230px" height="200px" src="https://www.youtube-nocookie.com/embed/fnVlN327sn0?si=lHe1YkNFnLdkUlzN&amp;start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <button onClick={() => setModalIsVisible(false)}>Close</button>
       </Modal>
       <i onClick={handleClick} class="fa-regular fa-circle-play fa-lg" style={{color: '#e6e6fa71'}}></i>

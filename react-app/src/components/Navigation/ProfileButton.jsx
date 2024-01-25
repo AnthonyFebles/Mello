@@ -4,8 +4,6 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
 import { useHistory } from "react-router-dom"
 
 function ProfileButton({ user }) {
@@ -37,15 +35,8 @@ function ProfileButton({ user }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-<<<<<<< HEAD:react-app/src/components/Navigation/ProfileButton.js
-    dispatch(logout())
-	.then(() => {
-		history.push('/');
-	});
-=======
     dispatch(logout());
 		history.push("/");
->>>>>>> Navigation:react-app/src/components/Navigation/ProfileButton.jsx
   };
 
 	const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");

@@ -30,27 +30,22 @@ const showNavbar = !["/", "/signup"].includes(location.pathname);
 					<Route path="/login">
 						<LoginFormPage />
 					</Route>
-
 					<Route path="/signup">
 						<SignupFormPage />
 					</Route>
-
 					<Route exact path="/boards">
 						<AllBoards />
 					</Route>
-
 					<Route exact path='/boards/:id'>
 						<CurrentBoard />
-				  	</Route>
-
-                	<Route exact path='/lists/:id'>
-                    	<ListDetails />
-                	</Route>
-
+					</Route>
+					<Route exact path='/lists/:id'>
+							<ListDetails />
+					</Route>
+					<Route path="/cards/:cardId/comments" component={Comments} />
 					<Route exact path="/">
 						<HomeNotLogged />
 					</Route>
-
 				</Switch>
 			)}
 		</>

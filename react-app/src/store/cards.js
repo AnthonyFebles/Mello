@@ -82,7 +82,7 @@ const addNewCard = (newCard) => {
     }
 }
 
-export const addCardThunk = (listId, boardId, cardData) => async (dispatch) => {
+export const addCardThunk = (listId, boardId, payload) => async (dispatch) => {
 
     try {
         // Request method details
@@ -91,19 +91,21 @@ export const addCardThunk = (listId, boardId, cardData) => async (dispatch) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(cardData)
+            body: JSON.stringify(payload)
         }
     
         // fetch from backend api route
-        const res = await csrfFetch(`api/boards/${boardId}/lists/${listId}/cards`, requestMethod)
+        const res = await csrfFetch(`/api/boards/${boardId}/lists/${listId}/cards`, requestMethod)
     
         // if the response is good, we'll dispatch using the action creator
         if (res.ok) {
             const newCard = await res.json()
+            
             dispatch(addNewCard(newCard))
             return newCard
         } 
     } catch (error) {
+        console.log(error, "THUNK ERROR")
         const res = await error.json();
         throw res;
     }
@@ -204,12 +206,12 @@ const cardsReducer = (state = initialState, action) => {
                 ...state,
                 Cards: {...state.Cards, [card.id]: card }
             }
-        case POST_CARD:
-            const newCard = action.payload;
-            return {
-                ...state,
-                cards: { ...state.Cards, [newCard.id]: newCard }
-            };
+        // case POST_CARD:
+        //     const newCard = action.payload;
+        //     return {
+        //         ...state,
+        //         cards: { ...state.Cards, [newCard.id]: newCard }
+        //     };
         case UPDATE_CARD:
             const updatedCard = action.payload;
             return {

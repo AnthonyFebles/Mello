@@ -116,7 +116,7 @@ const List = () => {
                             <OpenModalButton
                             buttonText={"Add New Card"}
                             className={"new__card__modal-button"}
-                            modalComponent={<AddCards listId={list.id}/>}
+                            modalComponent={<AddCards listId={list.id} boardId={id}/>}
                             >
                             
 

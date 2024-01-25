@@ -9,10 +9,10 @@ import './BoardDetails.css'
 const CurrentBoard = () => {
     const dispatch = useDispatch();
     const board = useSelector(state => state.boardDetail)
-    const { color, lists, name, owner, user_id, users } = board;
-    const { id } = useParams();
+    const { color, lists, name, owner, user_id, users, id } = board;
+    // const { id } = useParams();
     useEffect(() => {
-            dispatch(loadDetails(parseInt(id))).then(() => dispatch(getCardsThunk(parseInt(id), parseInt(id))))
+            dispatch(loadDetails((id))).then(() => dispatch(getCardsThunk(parseInt(id), parseInt(id))))
     },[dispatch, id])
     return (
         <div className="header" >

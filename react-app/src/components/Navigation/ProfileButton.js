@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom"
 
 function ProfileButton({ user }) {
 	const dispatch = useDispatch();
-	// const history = useHistory();
+	const history = useHistory();
 	const [showMenu, setShowMenu] = useState(false);
 	const ulRef = useRef();
 

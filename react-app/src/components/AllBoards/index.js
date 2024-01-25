@@ -58,7 +58,7 @@ const AllBoards = () => {
 	}, [dispatch, targetBoard]);
 
 
-	const updateClassName = "update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
+	// const updateClassName = "update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
 
 
 	// const boardPayLoad = {

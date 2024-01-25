@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import "./CreateBoard.css";
 import { colors, getRandomInt } from "../Colors";
+import Testing from "../Testing/Testing";
 
 
 
@@ -56,23 +57,23 @@ const NewBoard = () => {
 
 	////////////////////////////
     // Test Delete Button
-    const handleTest = async (e) => {
-        e.preventDefault()
+    // const handleTest = async (e) => {
+    //     e.preventDefault()
 
-        try {
-					await dispatch(deleteBoard("6"))
-                    console.log("no error")
+    //     try {
+		// 			await dispatch(deleteBoard("6"))
+    //                 console.log("no error")
 
-				} catch (data) {
-                    console.log(data.message)
-					setErrors(data.message)
-                    alert(data.message);
-					;
-				}  finally {
-                    dispatch(getBoards())
-					.then(() => setIsLoading(false));
-                }
-    }
+		// 		} catch (data) {
+    //                 console.log(data.message)
+		// 			setErrors(data.message)
+    //                 alert(data.message);
+		// 			;
+		// 		}  finally {
+    //                 dispatch(getBoards())
+		// 			.then(() => setIsLoading(false));
+    //             }
+    // }
 
     	useEffect(() => {
 				dispatch(getBoards()).then(() => setIsLoading(false));
@@ -94,9 +95,8 @@ const NewBoard = () => {
     if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 	return (
 		<>
-        <button onClick={handleTest}></button>
+        {/* <button onClick={handleTest}></button> */}
 			<div className="boards__sidebar">
-				<div className="boards__sidebar-content">
 					<p className="title">Create A New Board</p>
 					<p className="description side_bar_description">
 						<button
@@ -106,57 +106,51 @@ const NewBoard = () => {
 							<i className="fa-solid fa-plus"></i>
 						</button>
 					</p>
-				</div>
 			</div>
-			<div className={`new__board__container ${ulClassName}`}>
-				<div className={ulClassName} ref={ulRef}></div>
-				<form className="new__board__form" onSubmit={handleSubmit} ref={ulRef}>
-					<label>
-						Name of your new board
-						<input
-							type="text"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-							required
-						/>
-					</label>
-					<label>
-						Select Your Theme
-						<select value={color} onChange={(e) => setColor(e.target.value)}>
-                            {/* Map through an array of themes and make an option for each one  */}
-							{colors.map((color_option, index) => {
-								return (
-									<option
-										key={color_option}
-										value={color_option}
-										label={
-											`Theme ${index + 1}`
-										}
-									>
-										Theme
-									</option>
-								);
-							})}
-						</select>
-                        {/* work around the getting images on the select field. Will show an updated
-                        image thanks to the useEffect whenever a new "Color" is selected from the
-                        select onChange func */}
-						<ul className="board__images__ul">
-							<li className="board__images__li">
-								<div>
-									<img src={color} height="100px" width="180px" alt="Theme" />
-								</div>
-							</li>
-						</ul>
-					</label>
-					{errors && <p>{errors.errors}</p>}
-					<button className="Submit" type="submit">
-						Create New Board
-					</button>
-				</form>
-			</div>
+			<Testing ulClassName={ulClassName} ulRef={ulRef} handleSubmit={handleSubmit} name={name} setName={setName} color={color} setColor={setColor} errors={errors}  />
 		</>
 	);
 };
 
 export default NewBoard;
+
+    // function Testing({ulClassName, ulRef, handleSubmit, name, e, setName, color, setColor, color_option, index, errors}) {
+    //   return (<div className={`new__board__container ${ulClassName}`}>
+		// 		<div className={ulClassName} ref={ulRef}></div>
+		// 		<form className="new__board__form" onSubmit={handleSubmit} ref={ulRef}>
+		// 			<label>
+		// 				Name of your new board
+		// 				<input type="text" value={name} onChange={e => setName(e.target.value)} required />
+		// 			</label>
+		// 			<label>
+		// 				Select Your Theme
+		// 				<select value={color} onChange={e => setColor(e.target.value)}>
+    //                         {
+    //       /* Map through an array of themes and make an option for each one  */
+    //     }
+		// 					{colors.map((color_option, index) => {
+    //       return <option key={color_option} value={color_option} label={`Theme ${index + 1}`}>
+		// 								Theme
+		// 							</option>;
+    //     })}
+		// 				</select>
+    //                     {
+    //     /* work around the getting images on the select field. Will show an updated
+    //     image thanks to the useEffect whenever a new "Color" is selected from the
+    //     select onChange func */
+    //   }
+		// 				<ul className="board__images__ul">
+		// 					<li className="board__images__li">
+		// 						<div>
+		// 							<img src={color} height="100px" width="180px" alt="Theme" />
+		// 						</div>
+		// 					</li>
+		// 				</ul>
+		// 			</label>
+		// 			{errors && <p>{errors.errors}</p>}
+		// 			<button className="Submit" type="submit">
+		// 				Create New Board
+		// 			</button>
+		// 		</form>
+		// 	</div>);
+    // }

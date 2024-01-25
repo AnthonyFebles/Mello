@@ -1,17 +1,25 @@
 .spotify-modal {
-  color: lightsteelblue; /* text color */
-  background: white; /* background color */
-  padding: 20px; /* padding */
-  border-radius: 4px; /* border radius */
-  width: 500px; /* width */
-  height: 600px; /* height */
+  color: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 4px;
+  width: 291px;
+  height: 214px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* center the modal */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.spotify-modal-overlay {
-  background-color: rgba(0, 0, 0, 0.75); /* semi-transparent black */
+.spotify-modal button {
+  border: none;
+  background-color: rgb(255, 79, 79);
 }
 
+.spotify-modal button:hover {
+  cursor: pointer;
+}

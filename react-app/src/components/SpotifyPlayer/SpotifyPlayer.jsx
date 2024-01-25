@@ -16,9 +16,14 @@ function SpotifyPlayer() {
         isOpen={true}
         onRequestClose={() => setModalIsVisible(false)}
         contentLabel="Spotify Player"
-        style={{ overlay: { display: modalIsVisible ? 'block' : 'none' } }}
+        style={{
+          overlay: {
+            display: modalIsVisible ? 'block' : 'none',
+            backgroundColor: '#00436a96'
+          },
+        }}
       >
-        <iframe title="song" src="https://open.spotify.com/embed/track/1kWkf0peH8Hj8saQY3KoPq?utm_source=generator&theme=0&autoplay=1" width="300" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        <iframe width="230px" height="200px" src="https://www.youtube.com/embed/fnVlN327sn0?si=HLhN8Ot_hQBH7-Sf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <button onClick={() => setModalIsVisible(false)}>Close</button>
       </Modal>
       <i onClick={handleClick} class="fa-regular fa-circle-play fa-lg" style={{color: '#e6e6fa71'}}></i>

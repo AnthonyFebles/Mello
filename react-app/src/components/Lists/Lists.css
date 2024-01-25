@@ -6,7 +6,10 @@ background-attachment: absolute;
 background-size: cover;
 height: 100vh;
 }
-
+.component__name{
+    color: #9b6af7;
+    margin-left: 5px
+}
 .lists__group {
     display: flex;
     border: 4px solid #9b6af7;

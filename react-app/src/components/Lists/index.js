@@ -9,6 +9,7 @@ import ListForm from "./create";
 import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
+import UpdateDelete from "../DeleteUpdate";
 
 
 
@@ -46,23 +47,23 @@ const List = () => {
     if (listsArr[0].length < 1)  return <OpenModalButton buttonText="Create A List" onButtonClick={closeMenu} modalComponent={<ListForm board_id={id} />} />
         return (
         <div className="lists__container">
-            <h1> Lists</h1>
+            <h1 className="component__name"> Lists</h1>
             <OpenModalButton buttonText="Create A List" onButtonClick={closeMenu} modalComponent={<ListForm board_id={id} />} />
             <div className="lists__group">
                 {listsArr.toReversed().map(list => (
                     <div className="list" key={list.id}>
-                      
-                        {/* <NavLink to={`/boards/${parseInt(id)}/lists/${parseInt(id)}`}>Edit List</NavLink> */}
-                        <OpenModalButton buttonText="Edit List" onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: id, list_id: list.id, list_name: list.name }} />} />
-                        
-                        <OpenModalButton buttonText="Delete List" onButtonClick={closeMenu} modalComponent={<DeleteIt info={{board_id:id, list_id: list.id, list_name: list.name }} />} />
-
-                    <div>
                         <h2>{list.name}</h2>
-                    </div>
                         <div className="cards">
                             <h3> cards insert</h3>
                     {/* <Card state={list.id} />         */}
+                    </div>
+                      <UpdateDelete info={{ board_id: id, list_id: list.id, list_name: list.name }}/>
+                        {/* <NavLink to={`/boards/${parseInt(id)}/lists/${parseInt(id)}`}>Edit List</NavLink> */}
+                        {/* <OpenModalButton buttonText="Edit List" onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: id, list_id: list.id, list_name: list.name }} />} />
+                        
+                        <OpenModalButton buttonText="Delete List" onButtonClick={closeMenu} modalComponent={<DeleteIt info={{board_id:id, list_id: list.id, list_name: list.name }} />} /> */}
+
+                    <div>
                     </div>
                     </div>
                         ))

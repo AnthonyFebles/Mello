@@ -59,10 +59,14 @@ header {
 	padding-bottom: 5px;
   justify-content: space-between;
 	margin-bottom: 1px;
-  background-color: rgb(25, 27, 27);
+  /* background-color: rgb(25, 27, 27); */
+  background-color: #1a141e;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   padding-right: 30px;
   padding-left:25px;
+  height: 48px;
 }
 
 a, li {
@@ -72,4 +76,18 @@ a, li {
 .header-nav__button {
   color: white;
   font-size: 20px;
+}
+
+.logo-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* background-color: white; */
+}
+
+.logo-name p {
+  font-weight: bold;
+  font-size: 20px;
+  color: #e6e6fa;
+  margin-left: 10px;
 }

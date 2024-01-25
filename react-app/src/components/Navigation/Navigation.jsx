@@ -10,52 +10,22 @@ function Navigation({ isLoaded }) {
 	return (
 		<header>
 			<nav className="nav-bar">
-				<NavLink exact to="/">
+				<NavLink exact to="/boards">
 					<div className="logo-name">
-						<i class="fa-brands fa-trello fa-xl" style={{color: 'white'}}></i>
+						<i class="fa-brands fa-trello fa-xl" style={{color: '#e6e6fa'}}></i>
 						<p>mello</p>
 					</div>
 				</NavLink>
-					{/* <img
-						class="header-nav__trello-logo"
-						id="trello-logo"
-						src="https://www.logo.wine/a/logo/Trello/Trello-Logo.wine.svg"
-						width={100}
-						height={35}
-					/> */}
-
-				<NavLink exact to="/boards" className="nav__boards">
-					Boards
-				</NavLink>
 			</nav>
-			<div className="right__side__nav">
-				{/* Extras */}
-				{/* <span>
-					<a class="header-nav__link">
-						<div class="header-nav__button" id="search">
-							<i class="fas fa-search"></i>{" "}
-							<input type="search" value="search" />
-						</div>
-					</a>
+			<div className="right_side_nav">
+				<span className="search-container">
+					<input type="search" name="search" id="search" placeholder="Search"/>
+					<i className="fa-sharp fa-solid fa-magnifying-glass search-icon" style={{color: '#e6e6fa71'}}></i>
 				</span>
-				<span>
-					<a class="header-nav__link">
-						<div class="header-nav__button" id="alerts">
-							<i class="far fa-bell"></i>
-						</div>
-					</a>
-				</span>
-				<span>
-					<a class="header-nav__link">
-						<div class="header-nav__button" id="info">
-							<i class="fas fa-info-circle"></i>
-						</div>
-					</a>
-				</span> */}
+				<i class="fa-regular fa-bell fa-lg" style={{color: '#e6e6fa71'}}></i>
+				<i class="fa-regular fa-circle-question fa-lg" style={{color: '#e6e6fa71'}}></i>
 				{isLoaded && (
-					<span>
-						<ProfileButton user={sessionUser} />
-					</span>
+					<ProfileButton user={sessionUser} />
 				)}
 			</div>
 		</header>

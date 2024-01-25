@@ -46,15 +46,20 @@ const AllBoards = () => {
 			}
 		};
 
+
+
 		document.addEventListener("click", closeOptions);
 
-		return () => {
-			document.removeEventListener("click", closeOptions);
-		};
-	}, [dispatch]);
 
-	// const updateClassName =
-	// 	"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
+		return () => {
+			document.removeEventListener("click", closeOptions)
+
+	};
+	}, [dispatch, targetBoard]);
+
+
+	const updateClassName = "update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
+
 
 	// const boardPayLoad = {
 	// 	color,
@@ -94,6 +99,7 @@ const AllBoards = () => {
 		return (
 			<>
 				{/* <div className="tabbed-nav__container">
+				{/* <div className="tabbed-nav__container">
 					<div className="tabbed-nav__group">
 						<NavLink
 							to={`/boards`}
@@ -104,7 +110,7 @@ const AllBoards = () => {
 						</NavLink>
 
 						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-							
+
 							Settings
 						</a>
 					</div>
@@ -143,6 +149,7 @@ const AllBoards = () => {
 													/>
 												</NavLink>
 												{targetBoard == board.id ? (
+
 													<div className={`board__options`} ref={ulRef}>
 														<ul ref={ulRef}>
 															<li>
@@ -160,18 +167,15 @@ const AllBoards = () => {
 															</li>
 															<li>
 																<OpenModalButton
-																	className={"delete__board-button"}
-																	buttonText={"Delete Board"}
-																	modalComponent={
-																		<DeleteBoard
-																			id={board.id}
-																			name={board.name}
-																		/>
-																	}
-																/>
+																className={'delete__board-button'}
+																buttonText={'Delete Board'}
+																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
 															</li>
 														</ul>
+
 													</div>
+
+
 												) : (
 													<div> </div>
 												)}

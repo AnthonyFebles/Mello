@@ -41,12 +41,11 @@ const ListForm = (info) => {
         e.preventDefault();
         setErrors({});
         try {
-            dispatch(createLists(boardId, payload)).then(() => dispatch(readLists(boardId)))
+           await dispatch(createLists(boardId, payload)).then(() => dispatch(readLists(boardId))).then(() => closeModal())
         } catch (data) {
-            setErrors({ data })
-            alert(data.errors);
+            setErrors({ ...data })
         }
-        closeModal();
+        
         setName('')
         }
    
@@ -59,9 +58,9 @@ const ListForm = (info) => {
     return (
         <div>
             <form onSubmit={handleSubmit} className='list_form_container'>
-                <p>{errors.name}</p>
+            {errors && <p>{errors.errors}</p>}
                 <section>
-                    <label for={name}> Name for list {errors.name}
+                    <label for={name}> Name for list 
                         <input 
                             type='text'
                             value={name}

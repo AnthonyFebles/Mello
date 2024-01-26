@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
+import "../AllBoards/AllBoards.css"
 import { useParams } from "react-router-dom";
 import Card from "../Cards";
 import ListForm from "./create";
@@ -49,7 +50,8 @@ const List = () => {
 		return (
 			<div className="lists__container">
 				<h1> Lists</h1>
-				<OpenModalButton
+                <OpenModalButton
+                    className={'delete__board-button'}
 					buttonText="Create A List"
 					onButtonClick={closeMenu}
 					modalComponent={<ListForm board_id={id} />}

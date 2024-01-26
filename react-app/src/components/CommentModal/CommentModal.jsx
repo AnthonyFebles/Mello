@@ -3,18 +3,19 @@ import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCommentThunk } from '../../store/comments';
+import { createCommentThunk, getCommentsByCardThunk } from '../../store/comments';
 import UserComment from '../UserComment/UserComment';
-import { deleteCardThunk, updateCardThunk } from '../../store/cards'
+import { deleteCardThunk, getCardsThunk, updateCardThunk } from '../../store/cards'
 import { useModal } from '../../context/Modal'
 import CommentModalAdditions from '../CommentModalAdditions/CommentModalAdditions';
 import SpotifyPlayer from '../SpotifyPlayer/SpotifyPlayer';
 import { readLists } from '../../store/lists';
 
-export default function CommentModal({ boardId, cardId, listName, cardName, cardDesc }) {
+export default function CommentModal({ boardId, cardId, listName, cardName, cardDesc, cardComments }) {
   
   const card = cardId
   const id = boardId
+
   
    const { closeModal } = useModal();
   
@@ -30,11 +31,13 @@ export default function CommentModal({ boardId, cardId, listName, cardName, card
   const [editorState2, setEditorState2] = useState(() =>
     EditorState.createEmpty()
   );
-  const comments = useSelector((state) => state.comments);
+
+  // console.log(stateComments, "SVBFYIOVYIOVSOBOABDSO STATE COMMENTS")
+  const comments = useSelector((state) => state.comments) || cardComments
   const userId = useSelector((state) => state.session.user.id);
   // const newDescription = editorState.getCurrentContent().getPlainText()
 
-  
+  // console.log(comments, "COMMENTSSSSSSSSSSSSSSSSSSS")
 
   //console.log(editorState.getCurrentContent().getPlainText('\u0001'), "editor STateTETSETDAASGDYuiagsyui")
   const payload = {
@@ -87,7 +90,7 @@ export default function CommentModal({ boardId, cardId, listName, cardName, card
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const newComment = editorState2.getCurrentContent().getPlainText()
 
@@ -97,8 +100,9 @@ export default function CommentModal({ boardId, cardId, listName, cardName, card
       comment: newComment
     }
 
-    dispatch(createCommentThunk(cardId, comment))
+    await dispatch(createCommentThunk(cardId, comment))
     setEditorState2(EditorState.createEmpty())
+    await dispatch(readLists(id))
   }
 
   function showDetails() {
@@ -138,7 +142,7 @@ export default function CommentModal({ boardId, cardId, listName, cardName, card
 
   useEffect(() => {
 		dispatch(readLists(parseInt(id)));
-		
+		dispatch(getCommentsByCardThunk(cardId))
 	}, [dispatch]);
 
   return (

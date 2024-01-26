@@ -119,6 +119,7 @@ const List = () => {
 															boardId={id}
 															cardId={card.id}
 															cardDesc={card.description}
+															cardComments={card.comments}
 														/>
 													}
 												></OpenModalButton>

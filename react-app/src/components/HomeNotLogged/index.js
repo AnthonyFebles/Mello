@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+
 
 import './HomeNotLogged.css'
 
@@ -9,16 +10,19 @@ function HomeNotLogged() {
 
 const dispatch = useDispatch()
 const history = useHistory()
+const sessionUser = useSelector((state) => state.session.user);
 
 //! useStates
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [errors, setErrors] = useState([])
 
+if (sessionUser) return <Redirect to="/boards" />;
+
 const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(email, password))
+    .then(() => history.push('/boards'));
     if (data) {
         setErrors(data);
     }

@@ -1,35 +1,61 @@
 *{
     font-family: 'Coiny', system-ui;
 }
+/* ?Color classes  */
 
+/* default  */
+.default_component_name_color{
+    color: #4D3AC1;
+}
+.default_list__head{
+    color: #689AAB;
+}
 
+.default_list__name{
+    color: #FEA60F;
+}
+
+.default_list__group{
+    border: 4px solid #4D3AC1; 
+}
+
+.default_lists{
+    border: 10px solid #161515;
+    background-color: rgba(188, 97, 128, 0.5);
+}
+
+.default_image{
+    background-image: url('../../resources/images/default.svg');
+}
+
+.imageOne__image {
+   background-image: url('../../resources/images/colorOne.svg');
+}
+.imageFour__image {
+    background-image: url('../../resources/images/colorFour.svg');
+}
 .lists__container{
 /* border: 12px solid #715DF2; */
 border-radius: 8px;
-background-image: url('../../resources/images/blob-scene-haikeiThree.svg');
 background-attachment: absolute;
 background-size: cover;
-height: 100vh;
+height: 100vh; 
 }
 .component__name{
-    color: #4D3AC1;
+    
     margin-left: 5px
 }
 .list__head{
-    color: #689AAB;
+   
    margin-left: 10px;
    margin-bottom: 15px;
    padding-top: -15px;
 
 }
 
-.list__name{
-    color: #FEA60F;
-  
-}
 .lists__group {
     display: flex;
-    border: 4px solid #4D3AC1;
+    /* border: 4px solid #4D3AC1; */
     justify-content: space-around;
     height: 80vh;
     width: 80vw;
@@ -40,8 +66,8 @@ height: 100vh;
 }
 
 .list{
-    border: 10px solid #161515;
-    background-color: rgba(188, 97, 128, 0.5);
+    /* border: 10px solid #161515;
+    background-color: rgba(188, 97, 128, 0.5); */
     text-align: center;
     margin: 12px 0;
     width: 20%;

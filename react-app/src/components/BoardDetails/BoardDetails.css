@@ -1,6 +1,7 @@
 .header{
     background-color: #1B191B;
-    height: 100vh;
+   
+
 }
 .header > h1{
     padding-top:10px;
@@ -12,6 +13,5 @@
    
   
     
-    
-    
+ 
 }

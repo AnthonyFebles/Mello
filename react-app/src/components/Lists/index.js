@@ -101,8 +101,8 @@ const List = () => {
                         <div>
                             <h2 className="list__name">{list.name}</h2>
                         </div>
-                        
-                       
+
+
 
 						<div className="cards">
 							<h3>
@@ -130,19 +130,17 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
-
-							{/* <Card state={list.id} />         */}
-                        </div>
+						</div>
 							<OpenModalButton
 								buttonText={<i class="fa-solid fa-plus"></i>}
 								className={"new__card__modal-button icon"}
 								modalComponent={<AddCards listId={list.id} boardId={id} />}
 							/>
-                        <UpdateDelete info={{
-										board_id: id,
-										list_id: list.id,
-										list_name: list.name,
-									}} /> 
+							<UpdateDelete info={{
+								board_id: id,
+								list_id: list.id,
+								list_name: list.name,
+							}} />
 					</div>
 				))}
 			</div>

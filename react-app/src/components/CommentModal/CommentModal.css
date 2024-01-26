@@ -1,0 +1,262 @@
+#modal-content {
+  position: absolute;
+  top: 50px;
+  width: 768px;
+  /* background: linear-gradient(to right, #1a141e, #6c547b); */
+  background: linear-gradient(to right, #0a162c, rgb(104, 154, 171));
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.commentModal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.cardTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 45px;
+}
+
+.cardTitle div {
+  margin-left: 10px;
+}
+
+.title-information {
+  position: relative;
+  top: 16px;
+}
+
+.title-information h3 {
+  color: #e6e6fa;
+  font-size: 23px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.title-information p {
+  color: #e6e6fa;
+  margin-top: 0;
+  font-size: 13px;
+}
+
+/* .flashCard {
+  color: lightgray;
+  width: 30px;
+  height: 30px;
+} */
+
+#activity .row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 545px;
+}
+
+.comment-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.row-container button {
+  border: none;
+  color: #e6e6fa;
+  background-color: rgba(107, 107, 107, 0);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.row-container p {
+  color: #e6e6fa;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.editor-container-1,
+.editor-container {
+  /* background-color: rgb(74, 74, 74); */
+  background-color: #535b6b;
+  padding: 6px;
+  width: 94%;
+  border-radius: 5px;
+}
+
+.editor-container-1 {
+  margin-left: 29px;
+}
+
+.button-container {
+  margin-left: 51px;
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  justify-content: space-around;
+}
+
+.save-2,
+.button-container button {
+  margin-top: 6px;
+  padding: 8px 16px;
+  border: none;
+  background-color: pink;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.button-container .save {
+  background-color: lightblue;
+  margin-right: 6px;
+}
+
+.save-2 {
+  background-color: lightblue;
+  margin-left: 36px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.button-container .cancel {
+  color: black;
+}
+
+.save-2:hover,
+.button-container .save:hover {
+  background-color: rgb(105, 167, 187);
+}
+
+.button-container .cancel:hover {
+  background-color: rgb(213, 159, 168);
+}
+
+.comment-block {
+  margin-top: 30px;
+}
+
+.comment-block,
+.comment-container {
+  display: flex;
+  flex-direction: row;
+  /* margin-bottom: 40px; */
+}
+
+.comment-block i,
+.comment-container i {
+  margin-right: 10px;
+}
+
+.comment-block i {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 27px;
+}
+
+.comment_insert {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.comment_insert i {
+  margin-top: 8px;
+}
+
+.toolbar {
+  display: flex;
+  width: 40%;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.toolbar button {
+  color: #e6e6fa;
+  height: 32px;
+  width: 32px;
+  border: 1px solid #e6e6fa;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(112, 128, 144, 0);
+  cursor: pointer;
+}
+
+.toolbar button i {
+  margin: auto;
+}
+
+.name_date {
+  display: flex;
+  flex-direction: row;
+  align-items:flex-end;
+  margin: 5px;
+}
+
+.name_date h2 {
+  color: #e6e6fa;
+  font-size: 15px;
+  margin-top: 0;
+  margin-right: 10px;
+  margin-bottom: 0;
+  margin-left: 6px;
+}
+
+.name_date span {
+  color: #e6e6fa;
+  font-size: 11px;
+}
+
+.comment_info p {
+  margin-top: 0;
+  width: 510px;
+  padding: 6px;
+  border: 1px solid #db7093;
+  background-color: #2c2a31;
+  color: #e6e6fa;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
+hr {
+  border-color: #e6e6fa;
+}
+
+.edit-delete-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80px;
+  margin-left: 5px;
+}
+
+.edit-delete-btn button {
+  width: 48px;
+  font-size: smaller;
+  border: none;
+  background-color: rgba(128, 128, 128, 0);
+  color: #e6e6fa;
+  cursor: pointer;
+}
+
+.edit-delete-btn span {
+  color : #e6e6fa;
+}
+
+.title-input {
+  background-color: transparent;
+  color: #e6e6fa;
+  border: none;
+}

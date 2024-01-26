@@ -1,0 +1,17 @@
+.editDelete-dropDown{
+position: absolute;
+
+}
+
+.hidden{
+    display: none;
+    
+   
+}
+
+.icon{
+    background-color: #689AAB;
+    border: 4px solid black;
+    border-radius: 15px;
+    padding-top: 6px;
+}

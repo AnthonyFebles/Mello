@@ -7,21 +7,6 @@ from .auth_routes import validation_errors_to_error_messages
 list_routes = Blueprint("lists", __name__)
 
 
-# @app.route("/students")
-# def get_students():
-#     students = Student.query.all()
-#     return {"students": [student.to_dict() for user in users]}
-
-
-# @app.route("/students/<int:id>")
-# def get_user_by_id(id):
-#     student = Student.query.get(1)
-#     return student.to_dict()
-
-# @app.route("/cohorts/<int:id>")
-# def get_cohort(id):
-#     cohort = Cohort.query.get(id)
-#     return cohort.to_dict()
 
 
 
@@ -32,7 +17,7 @@ list_routes = Blueprint("lists", __name__)
 def create_lists(board_id):
     form = ListForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    
+
     if form.validate_on_submit():
         board_id = board_id
         name = form.name.data
@@ -40,9 +25,9 @@ def create_lists(board_id):
         db.session.add(new_list)
         db.session.commit()
         return jsonify(new_list.to_dict()), 201
-    
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-  
+
 
 
 
@@ -52,13 +37,13 @@ def create_lists(board_id):
 @login_required
 def read_lists(board_id):
     lists = List.query.filter(List.board_id == board_id)
-    
+
     # new_dict = {}
     if len([list for list in lists]) > 0:
         if lists[0].boards.user_id is not current_user.id:
             abort(400, {"message": "Unauthorized"})
         return {"lists": [list.to_dict() for list in lists if list.board_id == board_id]}
-    
+
 
 #  if needed cards and board in to_dict()
         # current_lists = [list.to_dict() for list in lists if list.board_id == board_id]
@@ -67,7 +52,7 @@ def read_lists(board_id):
 
         # print("_____________new dict", new_dict)
         # return jsonify(new_dict)
-    
+
 
     return {'errors': "list not found"}
 
@@ -78,21 +63,21 @@ def read_lists(board_id):
 @list_routes.route("/lists/<int:list_id>", methods=["PUT"])
 @login_required
 def update_lists(list_id):
-    
+
     form = ListForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     current_list = List.query.get(list_id)
-    
+
     if current_list.boards.user_id is not current_user.id :
         abort(400, {"message": "Unauthorized"})
-        
+
     if current_list:
         if form.validate_on_submit():
             name = form.name.data
-            list.name = name
+            current_list.name = name
             db.session.commit()
             return jsonify(current_list.to_dict())
-        
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -102,15 +87,15 @@ def update_lists(list_id):
 @list_routes.route("/lists/<int:list_id>", methods=["DELETE"])
 @login_required
 def delete_lists(list_id):
-    
+   
     current_list = List.query.get(list_id)
-    
+
     if not current_list :
         abort(400, {"message": "List not found"})
-    
+
     if current_list.boards.user_id is not current_user.id :
         abort(400, {"message": "Unauthorized"})
-    
+
     db.session.delete(current_list)
     db.session.commit()
     return jsonify({"message": "Successfully Deleted"})

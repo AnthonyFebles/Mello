@@ -60,7 +60,7 @@ function Navigation({ isLoaded }) {
 	const handleSubmit = async (e) => {
         setErrors({});
 		e.preventDefault();
-
+		
 		try {
 			dispatch(createNewBoard(boardPayLoad));
 		} catch (data) {

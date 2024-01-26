@@ -27,6 +27,14 @@ header {
   font-weight: 600;
 }
 
+.nav-bar .Submit {
+  width: 275px;
+  margin: 0 auto;
+  background-color: #e16f4e;
+  color: #433434;
+  margin-bottom: 8px;
+}
+
 .logo-name {
   display: flex;
   flex-direction: row;

@@ -46,24 +46,24 @@ const AllBoards = () => {
 			}
 		};
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 		document.addEventListener("click", closeOptions);
 
 		return () => {
 			document.removeEventListener("click", closeOptions);
 		};
 	}, [dispatch]);
-=======
+// =======
 
-		document.addEventListener("click", closeOptions);
+// 		document.addEventListener("click", closeOptions);
 
 
-		return () => {
-			document.removeEventListener("click", closeOptions)
+// 		return () => {
+// 			document.removeEventListener("click", closeOptions)
 
-	};
-	}, [dispatch, targetBoard]);
->>>>>>> 335b1e4 (working on navbar)
+// 	};
+// 	}, [dispatch, targetBoard]);
+// >>>>>>> 335b1e4 (working on navbar)
 
 	// const updateClassName =
 	// 	"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
@@ -116,10 +116,10 @@ const AllBoards = () => {
 						</NavLink>
 
 						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-<<<<<<< HEAD
+// <<<<<<< HEAD
 							
-=======
->>>>>>> 335b1e4 (working on navbar)
+// =======
+// >>>>>>> 335b1e4 (working on navbar)
 							Settings
 						</a>
 					</div>
@@ -158,10 +158,10 @@ const AllBoards = () => {
 													/>
 												</NavLink>
 												{targetBoard == board.id ? (
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 
->>>>>>> 335b1e4 (working on navbar)
+// >>>>>>> 335b1e4 (working on navbar)
 													<div className={`board__options`} ref={ulRef}>
 														<ul ref={ulRef}>
 															<li>
@@ -179,7 +179,7 @@ const AllBoards = () => {
 															</li>
 															<li>
 																<OpenModalButton
-<<<<<<< HEAD
+// <<<<<<< HEAD
 																	className={"delete__board-button"}
 																	buttonText={"Delete Board"}
 																	modalComponent={
@@ -192,17 +192,17 @@ const AllBoards = () => {
 															</li>
 														</ul>
 													</div>
-=======
-																className={'delete__board-button'}
-																buttonText={'Delete Board'}
-																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
-															</li>
-														</ul>
+// =======
+														// 		className={'delete__board-button'}
+														// 		buttonText={'Delete Board'}
+														// 		modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
+														// 	</li>
+														// </ul>
 
-													</div>
+													// </div>
 
 
->>>>>>> 335b1e4 (working on navbar)
+// >>>>>>> 335b1e4 (working on navbar)
 												) : (
 													<div> </div>
 												)}

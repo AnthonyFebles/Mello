@@ -8,8 +8,8 @@ import UpdateBoard from "../UpdateBoard";
 import { colors } from "../Colors";
 import OpenModalButton from "../OpenModalButton";
 
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import DeleteBoard from "../DeleteBoards";
+import { useHistory } from "react-router-dom";
 
 const AllBoards = () => {
 	const dispatch = useDispatch();
@@ -22,6 +22,10 @@ const AllBoards = () => {
 	const [errors, setErrors] = useState({});
 	const [showUpdateMenu, setShowUpdateMenu] = useState(false);
 	const [targetBoard, setTargetBoard] = useState("");
+
+	const sessionUser = useSelector((state) => state.session.user);
+
+	const history=useHistory()
 
 	const openUpdate = () => {
 		if (showUpdateMenu) return;
@@ -46,6 +50,8 @@ const AllBoards = () => {
 			}
 		};
 
+	if (!sessionUser) return history.push('/');
+
 
 
 		document.addEventListener("click", closeOptions);
@@ -55,7 +61,7 @@ const AllBoards = () => {
 			document.removeEventListener("click", closeOptions)
 
 	};
-	}, [dispatch, targetBoard, targetBoard]);
+	}, [dispatch]);
 
 
 	// const updateClassName = "update__board-dropdown" + (showUpdateMenu ? " " : " hidden");

@@ -254,3 +254,9 @@ hr {
 .edit-delete-btn span {
   color : #e6e6fa;
 }
+
+.title-input {
+  background-color: transparent;
+  color: #e6e6fa;
+  border: none;
+}

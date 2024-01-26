@@ -6,10 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createCommentThunk } from '../../store/comments';
 import UserComment from '../UserComment/UserComment';
 import CommentModalAdditions from '../CommentModalAdditions/CommentModalAdditions';
+import SpotifyPlayer from '../SpotifyPlayer/SpotifyPlayer';
 
 
 export default function CommentModal({ cardId }) {
-  
+
   const dispatch = useDispatch();
   const [clicked, setClicked] = useState(false)
   const [clicked2, setClicked2] = useState(false)

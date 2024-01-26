@@ -119,19 +119,19 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
-							<OpenModalButton
-								buttonText={"Add New Card"}
-								className={"new__card__modal-button"}
-								modalComponent={<AddCards listId={list.id} boardId={id} />}
-							/>
 
 							{/* <Card state={list.id} />         */}
                         </div>
+							<OpenModalButton
+								buttonText={<i class="fa-solid fa-plus"></i>}
+								className={"new__card__modal-button icon"}
+								modalComponent={<AddCards listId={list.id} boardId={id} />}
+							/>
                         <UpdateDelete info={{
 										board_id: id,
 										list_id: list.id,
 										list_name: list.name,
-									}} />
+									}} /> 
 					</div>
 				))}
 			</div>

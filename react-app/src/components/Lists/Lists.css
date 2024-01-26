@@ -1,15 +1,34 @@
+*{
+    font-family: 'Coiny', system-ui;
+}
+
+
 .lists__container{
 /* border: 12px solid #715DF2; */
 border-radius: 8px;
-background-image: url('../../resources/images/stacked-waves-haikei.svg');
+background-image: url('../../resources/images/blob-scene-haikeiThree.svg');
 background-attachment: absolute;
 background-size: cover;
 height: 100vh;
 }
+.component__name{
+    color: #4D3AC1;
+    margin-left: 5px
+}
+.list__head{
+    color: #689AAB;
+    font-family: 'Coiny', system-ui;
 
+}
+
+.list__name{
+    color: #FEA60F;
+    font-family: 'Coiny', system-ui;
+    
+}
 .lists__group {
     display: flex;
-    border: 4px solid #9b6af7;
+    border: 4px solid #4D3AC1;
     justify-content: space-around;
     height: 80vh;
     width: 80vw;
@@ -21,7 +40,7 @@ height: 100vh;
 
 .list{
     border: 10px solid #161515;
-    background-color: rgba(149, 94, 250, 0.304);
+    background-color: rgba(188, 97, 128, 0.5);
     text-align: center;
     margin: 12px 0;
     width: 20%;
@@ -52,7 +71,7 @@ height: 100vh;
   }
 
   .lists__group:hover .list:not(:hover){
-    filter: blur(20%);
+    filter: blur(10%);
     color: transparent;
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
   }

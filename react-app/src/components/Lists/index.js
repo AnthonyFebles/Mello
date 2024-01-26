@@ -10,6 +10,7 @@ import DeleteIt from "./delete";
 import { readLists } from "../../store/lists";
 import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
+import UpdateDelete from "../DeleteUpdate";
 import AddCards from "../AddCards";
 
 const List = () => {
@@ -58,7 +59,7 @@ const List = () => {
 		);
 	return (
 		<div className="lists__container">
-			<h1> Lists</h1>
+			<h1 className="list__head"> Lists</h1>
 			<OpenModalButton
 				buttonText="Create A List"
 				onButtonClick={closeMenu}
@@ -68,7 +69,7 @@ const List = () => {
 				{listsArr.toReversed().map((list) => (
 					<div className="list" key={list.id}>
 						{/* <NavLink to={`/boards/${parseInt(id)}/lists/${parseInt(id)}`}>Edit List</NavLink> */}
-						<OpenModalButton
+						{/* <OpenModalButton
 							buttonText="Edit List"
 							onButtonClick={closeMenu}
 							modalComponent={
@@ -94,11 +95,13 @@ const List = () => {
 									}}
 								/>
 							}
-						/>
+                        /> */}
+                        <div>
+                            <h2 className="list__name">{list.name}</h2>
+                        </div>
+                        
+                       
 
-						<div>
-							<h2>{list.name}</h2>
-						</div>
 						<div className="cards">
 							<h3>
 								{list.cards ? (
@@ -116,14 +119,19 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
-							<OpenModalButton
-								buttonText={"Add New Card"}
-								className={"new__card__modal-button"}
-								modalComponent={<AddCards listId={list.id} boardId={id} />}
-							/>
 
 							{/* <Card state={list.id} />         */}
-						</div>
+                        </div>
+							<OpenModalButton
+								buttonText={<i class="fa-solid fa-plus"></i>}
+								className={"new__card__modal-button icon"}
+								modalComponent={<AddCards listId={list.id} boardId={id} />}
+							/>
+                        <UpdateDelete info={{
+										board_id: id,
+										list_id: list.id,
+										list_name: list.name,
+									}} /> 
 					</div>
 				))}
 			</div>

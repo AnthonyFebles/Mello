@@ -6,6 +6,7 @@ import { readLists } from "../../store/lists"
 
 export default function Cards({ listId, boardId }) {
   const dispatch = useDispatch()
+  const [clickedAdd, setClickedAdd] = useState(false)
 
   const list = listId.toString()
   const board = boardId.toString()
@@ -51,43 +52,47 @@ export default function Cards({ listId, boardId }) {
   }, [dispatch, board])
 
   return (
-    <div className="new-card">
-      <form onSubmit={handleSubmit}>
-        <div className="new-card__header">
-          <h1 className="new-card__title">New Card</h1>
-        </div>
-        <div className="new-card__body">
-          <div className="new-card__form">
-            <div className="new-card__form-group">
-              <label className="new-card__form-label">Name</label>
-              <input
-                className="new-card__form-input"
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              ></input>
-            </div>
-            <div className="new-card__form-group">
-              <label className="new-card__form-label">Description</label>
-              <textarea
-                className="new-card__form-input"
-                type="text"
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              ></textarea>
-            </div>
+    <>
+    <div className="add-a-card">
+      <div className="card-cover">
+        <div className="card-info">
+          <div onClick={() => setClickedAdd(!clickedAdd)} className="add">
+            {!clickedAdd && (
+              <>
+                <div className="testing">
+                  <i class="fa-solid fa-plus"></i>
+                  <p>Add a card</p>
+                </div>
+              </>
+            )}
+            {clickedAdd && (
+              <form onSubmit={handleSubmit}>
+              <div className="new-card__body">
+                <div className="new-card__form">
+                  <div className="new-card__form-group">
+                    <label className="new-card__form-label">Name</label>
+                    <input
+                      className="new-card__form-input"
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    ></input>
+                  </div>
+                </div>
+              </div>
+              <div className="new-card__footer">
+                <button className="new-card__btn" type="submit">
+                  Add Card
+                </button>
+              </div>
+            </form>
+            )}
           </div>
         </div>
-        <div className="new-card__footer">
-          <button className="new-card__btn" type="submit">
-            Add Card
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
+    </>
   )
 }

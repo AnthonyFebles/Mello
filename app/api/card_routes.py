@@ -41,7 +41,7 @@ def create_card(boardId, listId):
     return {"errors": validation_errors_to_error_messages(cardForm.errors)}, 400
 
 
-@card_routes.route("/<cardId>", methods=["PUT"])
+@card_routes.route("<cardId>", methods=["PUT"])
 @login_required
 def update_card(boardId, listId, cardId):
     card = Card.query.get(cardId)
@@ -57,7 +57,7 @@ def update_card(boardId, listId, cardId):
     return {"errors": "Card not found"}, 404
 
 
-@card_routes.route("/<cardId>", methods=["DELETE"])
+@card_routes.route("<cardId>", methods=["DELETE"])
 @login_required
 def delete_card(boardId, listId, cardId):
     card = Card.query.get(cardId)

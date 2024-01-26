@@ -110,7 +110,15 @@ const List = () => {
 											<div className="card__container" key={card.id}>
 												<OpenModalButton
 													buttonText={card.name}
-													modalComponent={<CommentModal cardId={card.id} />}
+													modalComponent={
+														<CommentModal
+															cardName={card.name}
+															listName={list.name}
+															boardId={id}
+															cardId={card.id}
+															cardDesc={card.description}
+														/>
+													}
 												></OpenModalButton>
 											</div>
 										);

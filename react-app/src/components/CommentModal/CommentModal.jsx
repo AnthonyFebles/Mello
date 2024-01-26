@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import './CommentModal.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCommentThunk } from '../../store/comments';
 import UserComment from '../UserComment/UserComment';
+import { deleteCardThunk, updateCardThunk } from '../../store/cards'
+import { useModal } from '../../context/Modal'
 import CommentModalAdditions from '../CommentModalAdditions/CommentModalAdditions';
 import SpotifyPlayer from '../SpotifyPlayer/SpotifyPlayer';
+import { readLists } from '../../store/lists';
 
-
-export default function CommentModal({ cardId }) {
-
+export default function CommentModal({ boardId, cardId, listName, cardName, cardDesc }) {
+  
+  const card = cardId
+  const id = boardId
+  
+   const { closeModal } = useModal();
+  
   const dispatch = useDispatch();
+  const lists = useSelector((state) => state.lists)
+  const [name, setName] = useState(cardName)
+  const [description, setDescription] = useState(cardDesc)
   const [clicked, setClicked] = useState(false)
   const [clicked2, setClicked2] = useState(false)
   const [editorState, setEditorState] = useState(() =>
@@ -23,6 +33,59 @@ export default function CommentModal({ cardId }) {
   const comments = useSelector((state) => state.comments);
   const userId = useSelector((state) => state.session.user.id);
   // const newDescription = editorState.getCurrentContent().getPlainText()
+
+  
+
+  //console.log(editorState.getCurrentContent().getPlainText('\u0001'), "editor STateTETSETDAASGDYuiagsyui")
+  const payload = {
+    name,
+    description
+  }
+
+  const handleDelete = async (e) => {
+     e.preventDefault()
+      try{
+      await dispatch(deleteCardThunk(card)).then(() => closeModal())
+      await dispatch(readLists(id))
+      } catch (error) {
+        alert(error)
+        console.log(error)
+      } finally {
+        
+      }
+      
+  }
+
+  const handleNameChange = (e) => {
+    e.preventDefault()
+    setName(e.target.value)
+  }
+
+  const handleNameUpdate = async (e) => {
+    e.preventDefault()
+    try {
+      await dispatch(updateCardThunk(cardId, payload ))
+      await dispatch(readLists(id))
+    } catch(error) {
+      console.log(error)
+      alert(error)
+    }
+  }
+
+
+   const handleDescriptionUpdate = async (e) => {
+    e.preventDefault()
+    try {
+      setDescription(editorState.getCurrentContent().getPlainText('\u0001'))
+      console.log(description, "DESSSSSSSSSSSSCCCCCCCCCCCCC")
+      await dispatch(updateCardThunk(cardId, payload ))
+      await dispatch(readLists(id))
+      setClicked(false)
+    } catch(error) {
+      console.log(error)
+      alert(error)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -73,14 +136,24 @@ export default function CommentModal({ cardId }) {
     setEditorState2(RichUtils.toggleInlineStyle(editorState2, 'HIGHLIGHT'));
   }
 
+  useEffect(() => {
+		dispatch(readLists(parseInt(id)));
+		
+	}, [dispatch]);
+
   return (
     <div className='commentModal'>
       <div className="commentModal-body">
         <div className='cardTitle'>
           <i class="fa-solid fa-table fa-xl" style={{color: '#e6e6fa'}}></i>
           <div className="title-information">
-              <h3>Card Name</h3>
-              <p>In list: list name</p>
+              <input type="text" 
+              value={name}
+              onChange={(e) => handleNameChange(e)}
+              onBlur={handleNameUpdate}
+              className='title-input'
+              />
+              <p>In list: {listName}</p>
           </div>
         </div>
         <div className="description">
@@ -108,7 +181,8 @@ export default function CommentModal({ cardId }) {
               onFocus={() => setClicked(true)}
               editorState={editorState}
               onChange={setEditorState}
-              placeholder="Add a more detailed description..."
+              onBlur={handleDescriptionUpdate}
+              placeholder={description}
               customStyleMap={{
                 BOLD: { fontWeight: 'bold' },
                 ITALIC: { fontStyle: 'italic' },
@@ -121,7 +195,7 @@ export default function CommentModal({ cardId }) {
         </div>
         { clicked && (
           <div className="button-container">
-            <button className='save'>Save</button>
+            <button className='save' onClick={handleDescriptionUpdate}>Save</button>
             <button className='cancel' onClick={() => setClicked(false)}>Cancel</button>
           </div>
         )}
@@ -178,7 +252,62 @@ export default function CommentModal({ cardId }) {
           <UserComment key={comment.id} comment={comment} />
         ))}
       </div>
-      <CommentModalAdditions />
+      <div className='additions'>
+      <p>Add to card</p>
+      <div className='additions-container'>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-regular fa-user" style={{color: '#2c2a31'}}></i>
+          Members
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-tag" style={{color: '#2c2a31'}}></i>
+          Labels
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-check" style={{color: '#2c2a31'}}></i>
+          Checklists
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-calendar" style={{color: '#2c2a31'}}></i>
+          Dates
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-paperclip" style={{color: '#2c2a31'}}></i>
+          Attachments
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-image" style={{color: '#2c2a31'}}></i>
+          Cover
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-columns" style={{color: '#2c2a31'}}></i>
+          Custom Fields
+        </div>
+      </div>
+      <p>Actions</p>
+      <div className='additions-container-2'>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-arrow-right" style={{color: '#2c2a31'}}></i>
+          Move
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-copy" style={{color: '#2c2a31'}}></i>
+          Copy
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-columns" style={{color: '#2c2a31'}}></i>
+          Make Template
+        </div>
+        <div onClick={handleDelete}>
+          <i class="fa-solid fa-archive" style={{color: '#2c2a31'}}></i>
+          Delete
+        </div>
+        <div onClick={() => alert('Feature coming soon')}>
+          <i class="fa-solid fa-share" style={{color: '#2c2a31'}}></i>
+          Share
+        </div>
+      </div>
+    </div>
     </div>
   );
 }

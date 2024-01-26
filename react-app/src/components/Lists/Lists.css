@@ -17,14 +17,15 @@ height: 100vh;
 }
 .list__head{
     color: #689AAB;
-    font-family: 'Coiny', system-ui;
+   margin-left: 10px;
+   margin-bottom: 15px;
+   padding-top: -15px;
 
 }
 
 .list__name{
     color: #FEA60F;
-    font-family: 'Coiny', system-ui;
-    
+  
 }
 .lists__group {
     display: flex;

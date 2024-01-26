@@ -13,6 +13,8 @@ import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
 import UpdateDelete from "../DeleteUpdate";
 import AddCards from "../AddCards";
+import './Cards.css'
+import Cards from "./Cards";
 
 const List = () => {
 	const dispatch = useDispatch();
@@ -131,6 +133,7 @@ const List = () => {
 								)}
 							</h3>
 						</div>
+						<Cards listId={list.id} boardId={id} />
 							<OpenModalButton
 								buttonText={<i class="fa-solid fa-plus"></i>}
 								className={"new__card__modal-button icon"}

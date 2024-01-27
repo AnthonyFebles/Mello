@@ -102,7 +102,7 @@ const List = (boardColor) => {
     }
 
 	
-	if (listsArr[0].length > 1) {
+	if (Object.values(listsArr[0]).length > 1) {
 		listsArr.pop();
 	}
 	

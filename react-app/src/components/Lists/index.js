@@ -46,7 +46,7 @@ const List = (boardColor) => {
             break;
                 
         case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
-            listImage = 'imageThree__image'
+            listImage = 'imageSix__image'
             break;
 
         case "https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn":
@@ -56,10 +56,12 @@ const List = (boardColor) => {
         
         case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
     
-        listImage = 'imageFive__image'
+        listImage = 'imageThree__image'
+        
             break;
+        
         case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
-        listImage = 'imageSix__image'
+        listImage = 'imageFive__image'
             break;
         default:
             listImage = 'default_image';

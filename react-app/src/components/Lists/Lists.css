@@ -63,13 +63,15 @@
 #AE84D8 */
 .imageTwo__image { background-image: url('../../resources/images/colorTwo.svg');}
 
-.imageTwo__component_name_color{
+/* .imageTwo__component_name_color{
 
 }
 .imageTwo__list__head
 .imageTwo__list__name
 .imageTwo__list__group
-.imageTwo__lists
+.imageTwo__lists */
+
+
 /* image 3 */
 /* 
 #3D3789
@@ -79,7 +81,9 @@
 #443797
 #122768 
 */
-.imageThree__image { background-image: url('../../resources/images/colorThree.svg');}
+.imageThree__image { 
+    background-image: url('../../resources/images/colorThree.svg');
+}
 
 
 /* image 4 */
@@ -115,7 +119,7 @@ E397B8
 
 /*  Image 6 */
 .imageSix__image {
-    background-image: url('../../resources/images/colorSix.svg');
+  background-image: url('../../resources/images/colorSix.svg');
 }
 /* 
 #893F43

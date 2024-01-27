@@ -21,11 +21,6 @@ const NewBoard = () => {
 	const [showMenu, setShowMenu] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const openMenu = () => {
-			if (showMenu) return;
-			setShowMenu(true);
-		};
-
 
 
 	const boardPayLoad = {
@@ -46,6 +41,7 @@ const NewBoard = () => {
 			await dispatch(createNewBoard(boardPayLoad));
 			setShowMenu(false)
 		} catch (data) {
+			console.log(data, "DAAAAAAAAAAAAAATTTTAAA")
 			setErrors(data);
 			alert(data.errors);
 		}finally {

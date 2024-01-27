@@ -38,7 +38,7 @@ function Navigation({ isLoaded }) {
     e.preventDefault()
 
     try {
-      dispatch(createNewBoard(boardPayLoad))
+      	await dispatch(createNewBoard(boardPayLoad))
     } catch (data) {
       setErrors(data)
       alert(data.errors)

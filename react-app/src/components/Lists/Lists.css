@@ -1,6 +1,12 @@
 *{
     font-family: 'Coiny', system-ui;
 }
+
+.create__list-button{
+    color: red;
+    border-radius: 5px;
+}
+
 /* ?Color classes  */
 
 /* default  */

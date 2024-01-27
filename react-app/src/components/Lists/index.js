@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
-import "../AllBoards/AllBoards.css"
+
 import { useParams } from "react-router-dom";
 import Card from "../Cards";
 import ListForm from "./create";
@@ -100,7 +100,7 @@ const List = (boardColor) => {
 			<div className={`lists__container ${listImage}`}>
 				<h1> Lists</h1>
                 <OpenModalButton
-                    className={'delete__board-button'}
+                    className={'create__list-button'}
 					buttonText="Create A List"
 					onButtonClick={closeMenu}
 					modalComponent={<ListForm board_id={id} />}

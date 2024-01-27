@@ -2,6 +2,10 @@
     font-family: 'Coiny', system-ui;
 }
 
+/* .cardClass{
+    overflow: hidden;
+} */
+
 
 .create_list_button{
     background-color: #161515;
@@ -109,7 +113,8 @@ height: 100vh;
 
 .lists__group {
     display: flex;
-
+	flex-direction: row;
+	flex-wrap: wrap;
     justify-content: space-around;
     height: 80vh;
     width: 80vw;

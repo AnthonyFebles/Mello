@@ -24,7 +24,7 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field", 
+				"Confirm Password field must be the same as the Password field",
 			]);
 		}
 	};
@@ -33,7 +33,6 @@ function SignupFormModal() {
 		<>
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
-					
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>

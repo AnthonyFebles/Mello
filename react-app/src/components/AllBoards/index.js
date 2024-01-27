@@ -44,7 +44,7 @@ const AllBoards = () => {
 		return () => {
 			document.removeEventListener("click", closeOptions);
 		};
-	}, [dispatch]);
+	}, [dispatch, history, sessionUser]);
 
 	const handleMoreOptions = async (e) => {
 		setTargetBoard(e.target.className.split(" ")[2]);

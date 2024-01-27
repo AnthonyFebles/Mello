@@ -6,7 +6,9 @@
   border: 1px solid yellow;
   width: 100%;
   height: 100%;
+
 }
+
 
 .card__container button {
   border: 1px solid red;
@@ -16,7 +18,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 277px;
+  width: auto;
   height: fit-content;
   box-shadow: 0 0 10px 2px #c0a4aa;
   border-radius: 5px;

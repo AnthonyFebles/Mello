@@ -34,35 +34,66 @@ const List = (boardColor) => {
     let listNameColor;
     let listGroup;
     let listColor;
-    let defaultImage;
+  
 
     switch (color) {
         case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
-            listImage = "imageOne__image"
+			listImage = "imageOne__image"
+			 nameColor = "imageOne__Component_name_color"
+			 listHeadColor = "imageOne__head"
+			 listNameColor = "imageOne__list__name"
+			 listGroup = "imageOne__list__group"
+			 listColor = "imageOne__lists"
             break;
 
             case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
 
-            listImage = 'imageTwo__image'
+			listImage = 'imageTwo__image'
+			nameColor = "imageTwo__Component_name_color"
+			listHeadColor = "imageTwo__list__head"
+			listNameColor = "imageTwo__list__name"
+			listGroup = "imageTwo__list__group"
+			listColor = "imageTwo__lists"
             break;
                 
         case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
-            listImage = 'imageSix__image'
+			listImage = 'imageSix__image'
+			nameColor = "imageThree__Component_name_color"
+			listHeadColor = "imageThree__list__head"
+			listNameColor = "imageThree__list__name"
+			listGroup = "imageThree__list__group"
+			listColor = "imageThree__lists"
             break;
 
         case "https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn":
-            listImage = 'imageFour__image'
+			listImage = 'imageFour__image'
+			nameColor = "imageFour__list__Component_name_color"
+			listHeadColor = "imageFour__list__head"
+			listNameColor = "imageFour__list__name"
+			listGroup = "imageFour__list__group"
+			listColor = "imageFour__lists"
             
             break;
         
         case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
     
-        listImage = 'imageThree__image'
+			listImage = 'imageThree__image'
+			nameColor = "imageFive__list__Component_name_color"
+			listHeadColor = "imageFive__list__head"
+			listNameColor = "imageFive__list__name"
+			listGroup = "imageFive__list__group"
+			listColor = "imageFive__lists"
         
             break;
         
         case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
-        listImage = 'imageFive__image'
+			listImage = 'imageFive__image'
+			nameColor = "imageSix__list__Component_name_color"
+			listHeadColor = "imageSix__list__head"
+			listNameColor = "imageSix__list__name"
+			listGroup = "imageSix__list__group"
+			listColor = "imageSix__lists"
+			
             break;
         default:
             listImage = 'default_image';

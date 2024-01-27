@@ -23,12 +23,9 @@ const handleLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     // console.log(data) *currently undefined
-
     if (data) {
         setErrors(data);
-    } else {
-        setErrors(['Testing']);
-    }
+    } 
 };
 
 const handleDemoLogin = () => {

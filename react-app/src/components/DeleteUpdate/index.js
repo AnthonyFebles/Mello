@@ -55,6 +55,7 @@ const UpdateDelete = (info) => {
 					}
 				/>
 
+<<<<<<< HEAD
 				<OpenModalButton
 					buttonText="Delete List"
 					onButtonClick={closeMenu}
@@ -72,5 +73,28 @@ const UpdateDelete = (info) => {
 		</>
 	);
 };
+=======
+    };
+    return (
+        <>
+
+            <button onClick={openMenu} className={'icon'}>
+            <i class="fa-solid fa-bars" ></i>
+
+
+
+            </button>
+
+                <div  ref={ulRef} className={className}>
+                    <OpenModalButton buttonText="Edit List"  className={'create_list_button'} onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: board_id, list_id: list_id, list_name: list_name }} />} />
+
+                  <OpenModalButton buttonText="Delete List"  onButtonClick={closeMenu} className={'create_list_button'} modalComponent={<DeleteIt info={{board_id: board_id, list_id: list_id, list_name: list_name }} />} />
+                </div>
+
+
+        </>
+    )
+}
+>>>>>>> 5e89d49de734b97efb607174dce3ce4167d30fa1
 
 export default UpdateDelete;

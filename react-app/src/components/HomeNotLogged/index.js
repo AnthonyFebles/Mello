@@ -21,12 +21,11 @@ if (sessionUser) return <Redirect to="/boards" />;
 
 const handleLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password))
-    .then(() => history.push('/boards'));
+    const data = await dispatch(login(email, password));
+    // console.log(data) *currently undefined
     if (data) {
         setErrors(data);
-        
-    }
+    } 
 };
 
 const handleDemoLogin = () => {
@@ -62,9 +61,12 @@ const handleSignUp = () => {
 
                 <div className="login-form">
 
-                    <div className="form-errors">
-                        {errors.map((error, index) => <div key={index}>{error}</div>)}
-                    </div>
+                <ul>
+                    {console.log(errors)}
+                {errors.map((error, idx) => (
+                    <div key={idx}>{error}</div>
+                ))}
+                </ul>
 
                     <form onSubmit={handleLogin}>
                         <div className="form-group">

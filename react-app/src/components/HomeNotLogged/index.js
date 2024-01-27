@@ -25,6 +25,7 @@ const handleLogin = async (e) => {
     .then(() => history.push('/boards'));
     if (data) {
         setErrors(data);
+        
     }
 };
 
@@ -65,27 +66,27 @@ const handleSignUp = () => {
                         {errors.map((error, index) => <div key={index}>{error}</div>)}
                     </div>
 
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="text" required id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" required id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
 
                         <div className="form-group">
-                            <button type="submit" onClick={handleLogin}>Log In</button>   
-                        </div>
-
-                        <div className="signup-button">
-                            <button onClick={handleSignUp}> Sign Up </button>
+                            <button type="submit">Log In</button>   
                         </div>
 
                     </form>
+
+                    <div className="signup-button">
+                        <button onClick={handleSignUp}> Sign Up </button>
+                    </div>
 
                     <div className="demo-login">
                         <button onClick={handleDemoLogin}>Demo-Login</button>

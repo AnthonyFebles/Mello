@@ -8,8 +8,11 @@ import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import { colors, getRandomInt } from "../Colors";
 import { createNewBoard, getBoards } from "../../store/boards";
 import Testing from "../Testing/Testing";
+import { useHistory } from "react-router-dom";
 
 function Navigation({ isLoaded }) {
+	const history = useHistory();
+
 	const sessionUser = useSelector((state) => state.session.user);
 
 	const dispatch = useDispatch();
@@ -90,6 +93,11 @@ function Navigation({ isLoaded }) {
 
 		return () => document.removeEventListener("click", closeMenu);
 	}, [dispatch, color, showMenu]);
+
+	if (!sessionUser) return (
+		<>{history.push('/')}</>
+	);
+
 //////////////////////////////
 	if (isLoading) return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 

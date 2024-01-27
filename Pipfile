@@ -26,6 +26,7 @@ werkzeug = "==2.2.2"
 wtforms = "==3.0.1"
 pylint = "*"
 greenlet = "==1.1.0"
+email-validator = "*"
 
 [dev-packages]
 

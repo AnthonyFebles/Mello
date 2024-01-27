@@ -66,7 +66,7 @@ colors[5]:
 
 
 
-//default:
+default:
 	#4D3AC1
 	#689AAB
 	#FEA60F

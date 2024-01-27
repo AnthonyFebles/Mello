@@ -97,7 +97,7 @@ const List = (boardColor) => {
 	if (Object.values(listsArr[0]).length < 1)
 		return (
 			<div className={`lists__container ${listImage}`}>
-				<h1> Lists</h1>
+				<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
 				<OpenModalButton
 					className={"create_list_button"}
 					buttonText="Create A List"

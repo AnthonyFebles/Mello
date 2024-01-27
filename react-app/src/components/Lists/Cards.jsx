@@ -8,7 +8,7 @@ export default function Cards({ listId, boardId }) {
   const dispatch = useDispatch()
   const [clickedAdd, setClickedAdd] = useState(false)
 
-  const list = listId.toString()
+  const list = listId;
   const board = boardId.toString()
 
   const { closeModal } = useModal()

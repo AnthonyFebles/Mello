@@ -2,7 +2,19 @@
     font-family: 'Coiny', system-ui;
 }
 /* ?Color classes  */
+.create_list_button{
+    background-color: #161515;
+    border-radius: 5px;
+    color: white;
+    border-bottom: 1px solid whitesmoke; 
+    background: none; 
+    border: none;
+    cursor: pointer; 
+}
 
+.create_list_button:hover {
+    background-color: #656565; 
+}
 /* default  */
 .default_component_name_color{
     color: #4D3AC1;
@@ -29,24 +41,96 @@
 }
 
 /* Image 1 */
+/* #545391
+#638FAD
+#FBC5B8
+#3685A4
+#D7759E
+#39436F */
 
 .imageOne__image { background-image: url('../../resources/images/colorOne.svg');}
+
 .imageOne__Component_name_color {
     color: white;
 }
 
 /* Image 2 */
+/* #1B3990
+#E68FD5
+#BE5EAD
+#BF6FCB
+#443797
+#AE84D8 */
+.imageTwo__image { background-image: url('../../resources/images/colorTwo.svg');}
+
+/* .imageTwo__component_name_color{
+
+}
+.imageTwo__list__head
+.imageTwo__list__name
+.imageTwo__list__group
+.imageTwo__lists */
 
 
 /* image 3 */
+/* 
+#3D3789
+#BE5EAD
+#F6BFD4
+#E68FD5
+#443797
+#122768 
+*/
+.imageThree__image { 
+    background-image: url('../../resources/images/colorThree.svg');
+}
 
 
 /* image 4 */
+
+/* 
+80A2B4
+A56CA6
+CE78AF
+19487B
+E397B8
+13618C
+ */
+
 .imageFour__image {
     background-image: url('../../resources/images/colorFour.svg');
 }
 
 /* Image 5 */
+/* 
+#6D5485
+#4885A4
+#4F547F
+#CC89AB
+#A99BB4
+#F6BDB7
+ */
+.imageFive__image {
+    background-image: url('../../resources/images/colorFive.svg');
+
+}
+
+
+
+/*  Image 6 */
+.imageSix__image {
+  background-image: url('../../resources/images/colorSix.svg');
+}
+/* 
+#893F43
+#832A2F
+#A87368
+#5A3435
+#30242E
+#B83C36
+ */
+
+
 .lists__container{
 /* border: 12px solid #715DF2; */
 border-radius: 8px;

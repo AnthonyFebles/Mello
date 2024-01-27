@@ -10,18 +10,18 @@ import './deleteUpdate.css'
 
 
 const UpdateDelete = (info) => {
-   
+
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
     const {board_id, list_id, list_name } = info.info
 
     const history = useHistory();
-    
+
     const openMenu = () => {
 		if (showMenu) return;
 		setShowMenu(true);
     };
-    
+
     useEffect(() => {
         if (!showMenu) return;
         const closeMenu = e => {
@@ -35,29 +35,29 @@ const UpdateDelete = (info) => {
         document.addEventListener('click', closeMenu);
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
-    
+
     const className = showMenu ? "" : "hidden";
     const closeMenu = () => {
-        
+
         setShowMenu(false)
-       
+
     };
     return (
         <>
-            
+
             <button onClick={openMenu} className={'icon'}>
             <i class="fa-solid fa-bars" ></i>
-           
 
-                
+
+
             </button>
-             
+
                 <div  ref={ulRef} className={className}>
-                    <OpenModalButton buttonText="Edit List"   onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: board_id, list_id: list_id, list_name: list_name }} />} /> 
-                        
+                    <OpenModalButton buttonText="Edit List"   onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: board_id, list_id: list_id, list_name: list_name }} />} />
+
                   <OpenModalButton buttonText="Delete List"  onButtonClick={closeMenu} modalComponent={<DeleteIt info={{board_id: board_id, list_id: list_id, list_name: list_name }} />} />
                 </div>
-                
+
 
         </>
     )

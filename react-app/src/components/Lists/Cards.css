@@ -16,16 +16,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  position: relative;
   width: 100%;
-  height: 30px;
   height: fit-content;
   border: 1px solid #e6e6fa71;
   border-radius: 5px;
+  margin: 5px 0 10px 0;
 }
 
-.testing {
+.add-card-button {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,14 +33,45 @@
   border-radius: 5px;
 }
 
-.testing .fa-plus {
+.add-card-button .fa-plus {
   margin: 7px;
 }
 
-.testing p {
+.add-card-button p {
   margin: 0;
 }
 
-.testing:hover {
+.add-card-button:hover {
   background-color: #e6e6fa71;
 }
+
+.card-form {
+  width: 100%;
+  z-index: 2;
+}
+
+.new-card-add-info input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  background-color: #e6e6fa71;
+  border-radius: 5px;
+  margin: 0 0 7px 0;
+}
+
+#description {
+  height: 50px;
+}
+
+.fa-xmark {
+  margin: 7px;
+  cursor: pointer;
+}
+
+.new-card-btn {
+  cursor: pointer;
+}
+

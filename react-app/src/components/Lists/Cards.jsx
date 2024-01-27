@@ -18,9 +18,9 @@ export default function Cards({ listId, boardId }) {
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
-  let cards = useSelector((state) => {
-    return state.cards.Cards
-  })
+  // let cards = useSelector((state) => {
+  //   return state.cards.Cards
+  // })
 
   const payload = {
     listId,
@@ -31,21 +31,18 @@ export default function Cards({ listId, boardId }) {
   const handleSubmit = async (e) => {
     setErrors({})
     e.preventDefault()
+    setClickedAdd(false)
 
     try {
       await dispatch(addCardThunk(list, board, payload))
     } catch (data) {
       setErrors(data)
-      console.log(data, 'DATAAAAAAAAAAAAAAA')
       alert(data.errors)
     } finally {
       dispatch(readLists(board))
       closeModal()
     }
   }
-
-  console.log(cards, 'state.cards ******************')
-  console.log(board, list, 'board and list ******')
 
   useEffect(() => {
     dispatch(readLists(board)).then(() => setIsLoading(false))
@@ -56,38 +53,46 @@ export default function Cards({ listId, boardId }) {
     <div className="add-a-card">
       <div className="card-cover">
         <div className="card-info">
-          <div onClick={() => setClickedAdd(!clickedAdd)} className="add">
+          <div onClick={() => setClickedAdd(true)} className="add">
             {!clickedAdd && (
               <>
-                <div className="testing">
-                  <i class="fa-solid fa-plus"></i>
+                <div className="add-card-button">
+                  <i class="fa-solid fa-plus fa-lg"></i>
                   <p>Add a card</p>
                 </div>
               </>
             )}
             {clickedAdd && (
-              <form onSubmit={handleSubmit}>
-              <div className="new-card__body">
-                <div className="new-card__form">
-                  <div className="new-card__form-group">
-                    <label className="new-card__form-label">Name</label>
-                    <input
-                      className="new-card__form-input"
-                      type="text"
-                      name="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                    ></input>
-                  </div>
+              <form className="card-form" onSubmit={handleSubmit}>
+                <div className="new-card-add-info">
+                  <input
+                    className="new-card-name"
+                    name="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter a title for this card..."
+                    required
+                  />
+                  <input
+                    className="new-card-description"
+                    id="description"
+                    type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Add a more detailed description..."
+                    required
+                  />
                 </div>
-              </div>
-              <div className="new-card__footer">
-                <button className="new-card__btn" type="submit">
-                  Add Card
-                </button>
-              </div>
-            </form>
+                <div className="card-form-button">
+                  {errors && <p>{errors.errors}</p>}
+                  <button className="new-card-btn" type="submit">Add Card</button>
+                  <i className="fa-solid fa-xmark fl-lg" onClick={(e) => {
+                    e.stopPropagation()
+                    setClickedAdd(false)
+                  } }></i>
+                </div>
+              </form>
             )}
           </div>
         </div>

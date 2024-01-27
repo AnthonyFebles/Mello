@@ -136,7 +136,10 @@ export const updateCardThunk = (cardId, updatedCardInfo) => async (dispatch) => 
         }
     
         // fetch the api route
-        const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
+        const res = await csrfFetch(
+					`/api/boards/<boardId>/lists/<listId>/cards/${cardId}`,
+					requestMethod
+				);
         
         
         if (res.ok) {
@@ -168,14 +171,19 @@ export const deleteCardThunk = (cardId) => async (dispatch) => {
             method: "DELETE"
         }
     
-        const res = await csrfFetch(`api/cards/${cardId}`, requestMethod)
+        const res = await csrfFetch(
+					`/api/boards/<boardId>/lists/<listId>/cards/${cardId}`,
+					requestMethod
+				);
     
         if (res.ok) {
+            console.log(res, "RESSSSSSSS")
             dispatch(deleteCard(cardId))
             return cardId;
         }
     } catch (error) {
         const res = await error.json();
+        console.log(error)
         throw res;
     }
 }

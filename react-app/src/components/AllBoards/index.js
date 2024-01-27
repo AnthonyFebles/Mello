@@ -8,8 +8,8 @@ import UpdateBoard from "../UpdateBoard";
 import { colors } from "../Colors";
 import OpenModalButton from "../OpenModalButton";
 
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import DeleteBoard from "../DeleteBoards";
+import { useHistory } from "react-router-dom";
 
 const AllBoards = () => {
 	const dispatch = useDispatch();
@@ -22,6 +22,10 @@ const AllBoards = () => {
 	const [errors, setErrors] = useState({});
 	const [showUpdateMenu, setShowUpdateMenu] = useState(false);
 	const [targetBoard, setTargetBoard] = useState("");
+
+	const sessionUser = useSelector((state) => state.session.user);
+
+	const history=useHistory()
 
 	const openUpdate = () => {
 		if (showUpdateMenu) return;
@@ -46,15 +50,24 @@ const AllBoards = () => {
 			}
 		};
 
+	if (!sessionUser) return history.push('/');
+
+
+
 		document.addEventListener("click", closeOptions);
 
-		return () => {
-			document.removeEventListener("click", closeOptions);
-		};
-	}, [dispatch, targetBoard]);
 
-	const updateClassName =
-		"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
+		return () => {
+			document.removeEventListener("click", closeOptions)
+
+	};
+	}, [dispatch]);
+
+
+	// const updateClassName = "update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
+
+	// const updateClassName =
+	// 	"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
 
 	const boardPayLoad = {
 		color,
@@ -90,9 +103,11 @@ const AllBoards = () => {
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
-	return (
-		<>
-			{/* <div className="tabbed-nav__container">
+	if (boards.length > 0)
+		return (
+			<>
+				{/* <div className="tabbed-nav__container">
+				{/* <div className="tabbed-nav__container">
 					<div className="tabbed-nav__group">
 						<NavLink
 							to={`/boards`}
@@ -103,7 +118,7 @@ const AllBoards = () => {
 						</NavLink>
 
 						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-							
+
 							Settings
 						</a>
 					</div>
@@ -129,58 +144,62 @@ const AllBoards = () => {
 												<button
 													className="board-options__button"
 													onClick={handleMoreOptions}
-												>
-													<i
-														className={`fa-solid fa-ellipsis ${board.id} `}
-													></i>
-												</button>
-												<img
-													src={`${board.color}`}
-													alt="Board "
-													className={`board-${board.color} boards__img`}
-													title={`${board.name}`}
 												/>
-											</NavLink>
-											{targetBoard == board.id ? (
-												<div className={`board__options`} ref={ulRef}>
-													<ul ref={ulRef}>
-														<li>
-															<OpenModalButton
-																className={"update__board-button"}
-																buttonText={`Update Board`}
-																modalComponent={
-																	<UpdateBoard
-																		id={board.id}
-																		color={board.color}
-																		name={board.name}
-																	/>
-																}
-															/>
-														</li>
-														<li>
-															<OpenModalButton
-																className={"delete__board-button"}
-																buttonText={"Delete Board"}
-																modalComponent={
-																	<DeleteBoard
-																		id={board.id}
-																		name={board.name}
-																	/>
-																}
-															/>
-														</li>
-													</ul>
-												</div>
-											) : (
-												<div> </div>
-											)}
-										</div>
-									</>
-								);
-						})}
+													<p className="board__name">{`${board.name}`}</p>
+													<button
+														className="board-options__button"
+														onClick={handleMoreOptions}
+													>
+														<i
+															className={`fa-solid fa-ellipsis ${board.id} `}
+														></i>
+													</button>
+													<img
+														src={`${board.color}`}
+														alt="Board "
+														className={`board-${board.color} boards__img`}
+														title={`${board.name}`}
+													/>
+												</NavLink>
+												{targetBoard == board.id ? (
+
+													<div className={`board__options`} ref={ulRef}>
+														<ul ref={ulRef}>
+															<li>
+																<OpenModalButton
+																	className={"update__board-button"}
+																	buttonText={`Update Board`}
+																	modalComponent={
+																		<UpdateBoard
+																			id={board.id}
+																			color={board.color}
+																			name={board.name}
+																		/>
+																	}
+																/>
+															</li>
+															<li>
+																<OpenModalButton
+																className={'delete__board-button'}
+																buttonText={'Delete Board'}
+																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
+															</li>
+														</ul>
+
+													</div>
+
+
+												) : (
+													<div> </div>
+												)}
+											</div>
+										</>
+									);
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
+			
 		</>
 	);
 };

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
+import "../AllBoards/AllBoards.css"
 import { useParams } from "react-router-dom";
 import Card from "../Cards";
 import ListForm from "./create";
@@ -49,7 +50,8 @@ const List = () => {
 		return (
 			<div className="lists__container">
 				<h1> Lists</h1>
-				<OpenModalButton
+                <OpenModalButton
+                    className={'delete__board-button'}
 					buttonText="Create A List"
 					onButtonClick={closeMenu}
 					modalComponent={<ListForm board_id={id} />}
@@ -99,8 +101,8 @@ const List = () => {
                         <div>
                             <h2 className="list__name">{list.name}</h2>
                         </div>
-                        
-                       
+
+
 
 						<div className="cards">
 							<h3>
@@ -110,7 +112,16 @@ const List = () => {
 											<div className="card__container" key={card.id}>
 												<OpenModalButton
 													buttonText={card.name}
-													modalComponent={<CommentModal cardId={card.id} />}
+													modalComponent={
+														<CommentModal
+															cardName={card.name}
+															listName={list.name}
+															boardId={id}
+															cardId={card.id}
+															cardDesc={card.description}
+															cardComments={card.comments}
+														/>
+													}
 												></OpenModalButton>
 											</div>
 										);
@@ -119,19 +130,17 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
-
-							{/* <Card state={list.id} />         */}
-                        </div>
+						</div>
 							<OpenModalButton
 								buttonText={<i class="fa-solid fa-plus"></i>}
 								className={"new__card__modal-button icon"}
 								modalComponent={<AddCards listId={list.id} boardId={id} />}
 							/>
-                        <UpdateDelete info={{
-										board_id: id,
-										list_id: list.id,
-										list_name: list.name,
-									}} /> 
+							<UpdateDelete info={{
+								board_id: id,
+								list_id: list.id,
+								list_name: list.name,
+							}} />
 					</div>
 				))}
 			</div>

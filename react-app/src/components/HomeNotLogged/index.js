@@ -19,7 +19,7 @@ const [errors, setErrors] = useState([])
 
 if (sessionUser) return <Redirect to="/boards" />;
 
-const handleSubmit = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password))
     .then(() => history.push('/boards'));
@@ -40,6 +40,7 @@ const handleDemoLogin = () => {
         history.push('/boards');
     })
 };
+
 
 const handleSignUp = () => {
     history.push('/signup');
@@ -64,7 +65,7 @@ const handleSignUp = () => {
                         {errors.map((error, index) => <div key={index}>{error}</div>)}
                     </div>
 
-                    <form onSubmit = {handleSubmit}>
+                    <form>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -77,7 +78,7 @@ const handleSignUp = () => {
 
 
                         <div className="form-group">
-                            <button type="submit">Log In</button>   
+                            <button type="submit" onClick={handleLogin}>Log In</button>   
                         </div>
 
                         <div className="signup-button">

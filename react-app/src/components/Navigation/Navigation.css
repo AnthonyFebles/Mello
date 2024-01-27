@@ -25,6 +25,15 @@ header {
   background-color: #0f4163;
   font-size: 15px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-bar .Submit {
+  width: 275px;
+  margin: 0 auto;
+  background-color: #e16f4e;
+  color: #433434;
+  margin-bottom: 8px;
 }
 
 .logo-name {

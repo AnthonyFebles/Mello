@@ -1,36 +1,3 @@
-/* .side_bar_description {
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-} */
-
-
-/* .boards__sidebar {
-    color: white;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-}
-
-.boards__sidebar-content {
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-} */
-
-/* .hidden {
-    display: none;
-    visibility: hidden;
-} */
-
 .new__board__form {
     display: flex;
     flex-direction: column;
@@ -44,7 +11,6 @@
 }
 
 .new__board__form input {
-    /* font-size: 10px; */
     width: 275px;
     height: 30px;
     border-radius: 5px;
@@ -76,19 +42,40 @@
     margin-bottom: 3px;
 }
 
+@keyframes shadow-color-animation {
+    0% {
+        box-shadow: 0 0 10px 2px #c0a4aa;
+    }
+    20% {
+        box-shadow: 0 0 10px 2px #ffdbe2;
+    }
+    40% {
+        box-shadow: 0 0 10px 2px #92b9dd;
+    }
+    60% {
+        box-shadow: 0 0 10px 2px #275f96;
+    }
+    80% {
+        box-shadow: 0 0 10px 2px #ff8181;
+    }
+    100% {
+        box-shadow: 0 0 10px 2px #9b9fab;
+    }
+}
+
 .new__board__container {
     display: flex;
     color: white;
     background-color: #0a2c43;
     border-radius: 5px;
-    border: solid black 2px;
     padding: 10px;
     width: 304px;
     height: fit-content;
     text-align: center;
     justify-content: space-around;
-    top: 48px;
+    top: 56px;
     left: 18px;
+    animation: shadow-color-animation 8s infinite;
 }
 
 .background-container-parent {
@@ -122,7 +109,14 @@
     width: 83px;
     cursor: pointer;
     border-radius: 5px;
-    /* transition: all 0.3s ease-in-out; */
+}
+
+.theme-image.clicked {
+    box-shadow: 0 0 10px 4px rgb(22, 146, 255);
+}
+
+.theme-image.clicked:hover {
+    box-shadow: 0 0 10px 4px rgb(22, 146, 255);
 }
 
 .theme-image:hover {
@@ -133,7 +127,6 @@
     list-style: none;
     text-align: center;
     padding-left: 0;
-
 }
 
 .new__board-dropdown {

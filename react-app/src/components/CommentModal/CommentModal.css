@@ -2,7 +2,6 @@
   position: absolute;
   top: 50px;
   width: 768px;
-  /* background: linear-gradient(to right, #1a141e, #6c547b); */
   background: linear-gradient(to right, #0a162c, rgb(104, 154, 171));
   border-radius: 15px;
   padding: 20px;
@@ -12,6 +11,26 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.title-input {
+  font-size: 25px;
+  width: fit-content;
+  margin-left: 14px;
+  height: 28px;
+}
+
+.title-input:hover {
+  cursor: pointer;
+}
+
+.fa-pen-to-square {
+  position: absolute;
+  left: 0%;
+  top: 23%;
+  transform: translateY(-50%);
+  color: #e6e6fa;
+  font-size: 11px;
 }
 
 .cardTitle {
@@ -30,24 +49,18 @@
   top: 16px;
 }
 
-.title-information h3 {
+/* .title-information h3 {
   color: #e6e6fa;
   font-size: 23px;
   font-weight: 600;
   margin: 0;
-}
+} */
 
 .title-information p {
   color: #e6e6fa;
   margin-top: 0;
   font-size: 13px;
 }
-
-/* .flashCard {
-  color: lightgray;
-  width: 30px;
-  height: 30px;
-} */
 
 #activity .row-container {
   display: flex;
@@ -86,11 +99,13 @@
 
 .editor-container-1,
 .editor-container {
-  /* background-color: rgb(74, 74, 74); */
   background-color: #535b6b;
   padding: 6px;
   width: 94%;
+  width: 510px;
+  height: fit-content;
   border-radius: 5px;
+  overflow: auto;
 }
 
 .editor-container-1 {
@@ -149,12 +164,12 @@
 .comment-container {
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 40px; */
 }
 
 .comment-block i,
 .comment-container i {
   margin-right: 10px;
+  margin-top: 17px;
 }
 
 .comment-block i {
@@ -171,7 +186,7 @@
 }
 
 .comment_insert i {
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 .toolbar {

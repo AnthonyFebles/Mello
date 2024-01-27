@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBoards, updateBoard } from "../../store/boards";
+import { getBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
 import NewBoard from "../CreateBoard";
 import UpdateBoard from "../UpdateBoard";
-import { colors } from "../Colors";
 import OpenModalButton from "../OpenModalButton";
-
 import DeleteBoard from "../DeleteBoards";
 import { useHistory } from "react-router-dom";
 
@@ -17,23 +15,13 @@ const AllBoards = () => {
 	const ulRef = useRef();
 
 	const [isLoading, setIsLoading] = useState(true);
-	const [color, setColor] = useState("");
-	const [name, setName] = useState("");
-	const [errors, setErrors] = useState({});
-	const [showUpdateMenu, setShowUpdateMenu] = useState(false);
 	const [targetBoard, setTargetBoard] = useState("");
 
 	const sessionUser = useSelector((state) => state.session.user);
 
-	const history=useHistory()
-
-	const openUpdate = () => {
-		if (showUpdateMenu) return;
-		setShowUpdateMenu(true);
-	};
+	const history = useHistory();
 
 	const boards = useSelector((state) => {
-		//console.log(state, "STATE");
 		return state.boards.list.map((boardId) => state.boards[boardId]);
 	});
 
@@ -44,107 +32,55 @@ const AllBoards = () => {
 			if (ulRef.current) {
 				if (!ulRef.current.contains(e.target)) {
 					setTargetBoard(0);
-					setShowUpdateMenu(false);
 					dispatch(getBoards());
 				}
 			}
 		};
 
-	if (!sessionUser) return history.push('/');
-
-
+		if (!sessionUser) return <>{history.push("/")}</>;
 
 		document.addEventListener("click", closeOptions);
 
-
 		return () => {
-			document.removeEventListener("click", closeOptions)
-
-	};
+			document.removeEventListener("click", closeOptions);
+		};
 	}, [dispatch]);
 
-
-	// const updateClassName = "update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
-
-	// const updateClassName =
-	// 	"update__board-dropdown" + (showUpdateMenu ? " " : " hidden");
-
-	const boardPayLoad = {
-		color,
-		name,
-	};
-
-	const handleUpdate = async (e) => {
-		setErrors({});
-		e.preventDefault();
-
-		try {
-			dispatch(updateBoard(boardPayLoad));
-		} catch (data) {
-			setErrors(data);
-			alert(data.errors);
-		} finally {
-			setShowUpdateMenu(false);
-			setName("");
-			setColor("");
-			dispatch(getBoards());
-		}
-	};
-
 	const handleMoreOptions = async (e) => {
-		setErrors({});
 		setTargetBoard(e.target.className.split(" ")[2]);
 		e.stopPropagation();
 		e.preventDefault();
 		dispatch(getBoards());
 	};
 
-	// console.log(boards, "board")
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
 	if (boards.length > 0)
 		return (
 			<>
-				{/* <div className="tabbed-nav__container">
-				{/* <div className="tabbed-nav__container">
-					<div className="tabbed-nav__group">
-						<NavLink
-							to={`/boards`}
-							className={"tabbed-nav__link"}
-							id="boards-tab"
-						>
-							Boards
-						</NavLink>
-
-						<a className="tabbed-nav__link" id="settings-tab" href=" ">
-
-							Settings
-						</a>
-					</div>
-				</div> */}
-			<div className="outer__boards__container">
-				<div className="boards__container">
-					<NewBoard />
-					<div className="boards__group">
-						{boards.toReversed().map((board) => {
-							if (board)
-								return (
-									<>
-										<div
-											key={board.id}
-											className={`board-${board.color} boards__board`}
-											id={`board-${board.id}`}
-										>
-											<NavLink
-												to={`/boards/${board.id}`}
-												className={`board-${board.color} boards__img__navlink`}
+				<div className="outer__boards__container">
+					<div className="boards__container">
+						<NewBoard />
+						<div className="boards__group">
+							{boards.toReversed().map((board) => {
+								if (board)
+									return (
+										<>
+											<div
+												key={board.id}
+												className={`board-${board.color} boards__board`}
+												id={`board-${board.id}`}
 											>
-												<p className="board__name">{`${board.name}`}</p>
-												<button
-													className="board-options__button"
-													onClick={handleMoreOptions}
-												/>
+												<NavLink
+													to={`/boards/${board.id}`}
+													className={`board-${board.color} boards__img__navlink`}
+												>
+													<p className="board__name">{`${board.name}`}</p>
+													<button
+														className="board-options__button"
+														onClick={handleMoreOptions}
+													/>
 													<p className="board__name">{`${board.name}`}</p>
 													<button
 														className="board-options__button"
@@ -162,7 +98,6 @@ const AllBoards = () => {
 													/>
 												</NavLink>
 												{targetBoard == board.id ? (
-
 													<div className={`board__options`} ref={ulRef}>
 														<ul ref={ulRef}>
 															<li>
@@ -180,15 +115,18 @@ const AllBoards = () => {
 															</li>
 															<li>
 																<OpenModalButton
-																className={'delete__board-button'}
-																buttonText={'Delete Board'}
-																modalComponent={<DeleteBoard id={board.id} name={board.name}/>}/>
+																	className={"delete__board-button"}
+																	buttonText={"Delete Board"}
+																	modalComponent={
+																		<DeleteBoard
+																			id={board.id}
+																			name={board.name}
+																		/>
+																	}
+																/>
 															</li>
 														</ul>
-
 													</div>
-
-
 												) : (
 													<div> </div>
 												)}
@@ -199,9 +137,23 @@ const AllBoards = () => {
 						</div>
 					</div>
 				</div>
-			
-		</>
-	);
+			</>
+		);
+
+	if (boards.length == 0)
+		return (
+			<>
+				<div className="outer__boards__container">
+					<div className="boards__container">
+						<NewBoard />
+						<h1 style={{ color: "white" }}>
+							You don't have any boards...you should create one the top left
+						</h1>
+						<div className="boards__group"></div>
+					</div>
+				</div>
+			</>
+		);
 };
 
 export default AllBoards;

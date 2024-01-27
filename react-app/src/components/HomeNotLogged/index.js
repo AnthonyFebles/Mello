@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+
 
 import './HomeNotLogged.css'
 
@@ -9,19 +10,22 @@ function HomeNotLogged() {
 
 const dispatch = useDispatch()
 const history = useHistory()
+const sessionUser = useSelector((state) => state.session.user);
 
 //! useStates
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [errors, setErrors] = useState([])
 
-const handleSubmit = async (e) => {
+if (sessionUser) return <Redirect to="/boards" />;
+
+const handleLogin = async (e) => {
     e.preventDefault();
-    setErrors([]);
     const data = await dispatch(login(email, password));
+    // console.log(data) *currently undefined
     if (data) {
         setErrors(data);
-    }
+    } 
 };
 
 const handleDemoLogin = () => {
@@ -36,6 +40,7 @@ const handleDemoLogin = () => {
         history.push('/boards');
     })
 };
+
 
 const handleSignUp = () => {
     history.push('/signup');
@@ -56,19 +61,22 @@ const handleSignUp = () => {
 
                 <div className="login-form">
 
-                    <div className="form-errors">
-                        {errors.map((error, index) => <div key={index}>{error}</div>)}
-                    </div>
+                <ul>
+                    {console.log(errors)}
+                {errors.map((error, idx) => (
+                    <div key={idx}>{error}</div>
+                ))}
+                </ul>
 
-                    <form onSubmit = {handleSubmit}>
+                    <form onSubmit={handleLogin}>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="text" required id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" required id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
 
@@ -76,11 +84,11 @@ const handleSignUp = () => {
                             <button type="submit">Log In</button>   
                         </div>
 
-                        <div className="signup-button">
-                            <button onClick={handleSignUp}> Sign Up </button>
-                        </div>
-
                     </form>
+
+                    <div className="signup-button">
+                        <button onClick={handleSignUp}> Sign Up </button>
+                    </div>
 
                     <div className="demo-login">
                         <button onClick={handleDemoLogin}>Demo-Login</button>

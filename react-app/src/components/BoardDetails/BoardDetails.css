@@ -1,6 +1,7 @@
 .header{
     background-color: #1B191B;
-    height: 100vh;
+   
+
 }
 .header > h1{
     padding-top:10px;
@@ -9,9 +10,8 @@
     font-weight: bolder;
     font-size: 30px;
     margin-top: 0;
-    font-family: 'Bungee Shade', sans-serif;
+   
   
-    text-align: center;
     
-    
+ 
 }

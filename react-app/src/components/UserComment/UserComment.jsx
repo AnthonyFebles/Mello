@@ -2,12 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentThunk, updateCommentThunk } from "../../store/comments";
 
 export default function UserComment({ comment }) {
-  console.log('COMMENT', comment.user_id);
   const user = useSelector(state => state.session.user)
-  console.log('USER', user.id);
-
-
   const dispatch = useDispatch()
+
   const deleteComment = (e) => {
     e.preventDefault()
     dispatch(deleteCommentThunk(comment.id))
@@ -24,7 +21,12 @@ export default function UserComment({ comment }) {
       comment: update,
     }
 
-    dispatch(updateCommentThunk(newComment))
+    if (newComment.comment.length > 100) {
+      alert('Comment must be less than 100 characters')
+      return
+    } else {
+      dispatch(updateCommentThunk(newComment))
+    }
   }
 
   return (

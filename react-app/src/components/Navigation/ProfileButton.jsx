@@ -55,8 +55,8 @@ function ProfileButton({ user }) {
 								<p>{user.email}</p>
 							</div>
 						</div>
-						<li>Switch accounts</li>
-						<li>Manage account</li>
+						<li onClick={() => alert('Feature coming soon...')}>Switch accounts</li>
+						<li onClick={() => alert('Feature coming soon...')}>Manage account</li>
 						<hr />
 						<li onClick={handleLogout}>Logout</li>
 					</>

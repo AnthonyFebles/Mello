@@ -1,3 +1,5 @@
+
+
 #modal-content {
   position: absolute;
   top: 50px;
@@ -82,7 +84,10 @@
   background-color: #535b6b;
   padding: 6px;
   width: 94%;
+  width: 510px;
+  height: fit-content;
   border-radius: 5px;
+  overflow: auto;
 }
 
 .editor-container-1 {

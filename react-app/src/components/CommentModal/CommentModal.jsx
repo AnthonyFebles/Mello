@@ -44,14 +44,9 @@ export default function CommentModal({
     EditorState.createEmpty()
   )
 
-  // console.log(stateComments, "SVBFYIOVYIOVSOBOABDSO STATE COMMENTS")
   const comments = useSelector((state) => state.comments) || cardComments
   const userId = useSelector((state) => state.session.user.id)
-  // const newDescription = editorState.getCurrentContent().getPlainText()
 
-  // console.log(comments, "COMMENTSSSSSSSSSSSSSSSSSSS")
-
-  //console.log(editorState.getCurrentContent().getPlainText('\u0001'), "editor STateTETSETDAASGDYuiagsyui")
   const payload = {
     name,
     description,
@@ -64,7 +59,6 @@ export default function CommentModal({
       await dispatch(readLists(id))
     } catch (error) {
       alert(error)
-      console.log(error)
     } finally {
     }
   }
@@ -80,16 +74,19 @@ export default function CommentModal({
       await dispatch(updateCardThunk(cardId, payload))
       await dispatch(readLists(id))
     } catch (error) {
-      console.log(error)
       alert(error)
     }
   }
 
   const handleDescriptionUpdate = async (e) => {
     e.preventDefault()
+
+    if (editorState.getCurrentContent().getPlainText().length > 255) {
+      alert('Description must be less than 255 characters')
+      return
+    }
     try {
       setDescription(editorState.getCurrentContent().getPlainText('\u0001'))
-      console.log(description, 'DESSSSSSSSSSSSCCCCCCCCCCCCC')
       await dispatch(updateCardThunk(cardId, payload))
       await dispatch(readLists(id))
       setClicked(false)
@@ -103,11 +100,17 @@ export default function CommentModal({
     e.preventDefault()
     const newComment = editorState2.getCurrentContent().getPlainText()
 
+    if (newComment.length > 100) {
+      alert('Comment must be less than 100 characters')
+      return
+    }
+
     const comment = {
       card_id: cardId,
       user_id: userId,
       comment: newComment,
     }
+
 
     await dispatch(createCommentThunk(cardId, comment))
     setEditorState2(EditorState.createEmpty())
@@ -158,6 +161,7 @@ export default function CommentModal({
         <div className="cardTitle">
           <i class="fa-solid fa-table fa-xl" style={{ color: '#e6e6fa' }}></i>
           <div className="title-information">
+            <i class="fa-regular fa-pen-to-square"></i>
             <input
               type="text"
               value={name}

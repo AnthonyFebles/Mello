@@ -96,13 +96,12 @@ export const deleteBoard = (boardId) => async (dispatch) => {
 			dispatch(remove(boardId));
 			return board;
 		}
-        return res 
+		return res;
 	} catch (error) {
 		// console.log(error,"ERROR ")
 		const res = await error.json();
 		// console.log(res)
-		throw (res)
-		
+		throw res;
 	}
 };
 
@@ -131,7 +130,7 @@ const BoardsReducer = (state = initialState, action) => {
 
 				return {
 					...allBoards,
-					
+
 					list: sortList(action.list),
 				};
 			} else
@@ -139,13 +138,13 @@ const BoardsReducer = (state = initialState, action) => {
 					...allBoards,
 					...state,
 				};
-        case DELETE:
-            const newState = {...state}
-            // console.log(newState, "new state")
-            // console.log(action, "action")
-            delete newState[action.boardId]
-            // console.log(newState, "new state after del");
-            return newState
+		case DELETE:
+			const newState = { ...state };
+			// console.log(newState, "new state")
+			// console.log(action, "action")
+			delete newState[action.boardId];
+			// console.log(newState, "new state after del");
+			return newState;
 
 		default:
 			return state;

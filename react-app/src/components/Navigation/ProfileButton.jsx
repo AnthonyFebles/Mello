@@ -4,7 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
 	const dispatch = useDispatch();
@@ -33,30 +33,42 @@ function ProfileButton({ user }) {
 		return () => document.removeEventListener("click", closeMenu);
 	}, [showMenu]);
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    dispatch(logout()).then(() => history.push("/"));
-  };
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(logout()).then(() => history.push("/"));
+	};
 
 	const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 	const closeMenu = () => setShowMenu(false);
 
 	return (
 		<>
-			<i onClick={openMenu} className="fas fa-user-circle fa-2x user-icon" style={{color: '#e6e6fa'}} />
+			<i
+				onClick={openMenu}
+				className="fas fa-user-circle fa-2x user-icon"
+				style={{ color: "#e6e6fa" }}
+			/>
 			<ul className={ulClassName} ref={ulRef}>
 				{user ? (
 					<>
 						<p className="account-text">Account</p>
 						<div className="user-info">
-							<i onClick={openMenu} className="fas fa-user-circle fa-3x" style={{color: '#e6e6fa'}} />
+							<i
+								onClick={openMenu}
+								className="fas fa-user-circle fa-3x"
+								style={{ color: "#e6e6fa" }}
+							/>
 							<div className="name-email">
 								<p>{user.username}</p>
 								<p>{user.email}</p>
 							</div>
 						</div>
-						<li onClick={() => alert('Feature coming soon...')}>Switch accounts</li>
-						<li onClick={() => alert('Feature coming soon...')}>Manage account</li>
+						<li onClick={() => alert("Feature coming soon...")}>
+							Switch accounts
+						</li>
+						<li onClick={() => alert("Feature coming soon...")}>
+							Manage account
+						</li>
 						<hr />
 						<li onClick={handleLogout}>Logout</li>
 					</>

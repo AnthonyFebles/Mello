@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addCardThunk, getCardsThunk } from "../../store/cards";
+import { useDispatch } from "react-redux";
+import { addCardThunk } from "../../store/cards";
 import { readLists } from "../../store/lists";
 import { useModal } from "../../context/Modal";
 
@@ -8,52 +8,42 @@ const AddCards = ({ listId, boardId }) => {
 	const dispatch = useDispatch();
 
 	const list = listId.toString();
-    const board = boardId.toString();
+	const board = boardId.toString();
 
-    
+	const { closeModal } = useModal();
 
-   const { closeModal } = useModal();
+	const [name, setName] = useState("");
+	const [description, setDescription] = useState("");
+	const [errors, setErrors] = useState({});
 
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [errors, setErrors] = useState({});
-	const [isLoading, setIsLoading] = useState(true);
+	const payload = {
+		listId,
+		name,
+		description,
+	};
 
-	let cards = useSelector((state) => {
-		return state.cards.Cards;
-	});
+	const handleSubmit = async (e) => {
+		setErrors({});
+		e.preventDefault();
 
-    const payload = {
-        listId,
-       name,
-       description 
-    }
+		try {
+			await dispatch(addCardThunk(list, board, payload));
+		} catch (data) {
+			setErrors(data);
+			// console.log(data, "DATAAAAAAAAAAAAAAA")
+			alert(data.errors);
+		} finally {
+			dispatch(readLists(board));
+			closeModal();
+		}
+	};
 
-    const handleSubmit = async (e) => {
-        setErrors({})
-        e.preventDefault()
-
-        try {
-            await dispatch(addCardThunk(list, board, payload))
-        } catch (data) {
-            setErrors(data)
-            console.log(data, "DATAAAAAAAAAAAAAAA")
-            alert(data.errors)
-        } finally {
-            dispatch(readLists(board))
-            closeModal()
-        }
-    }
-
-	console.log(cards, "state.cards ******************");
-	console.log(board, list, "board and list ******")
+	// console.log(cards, "state.cards ******************");
+	// console.log(board, list, "board and list ******")
 
 	useEffect(() => {
-		dispatch(readLists(board)).then(() => setIsLoading(false));
-	}, [dispatch]);
-
-
-	
+		dispatch(readLists(board));
+	}, [dispatch, board]);
 
 	return (
 		<div className="new__cards-container">

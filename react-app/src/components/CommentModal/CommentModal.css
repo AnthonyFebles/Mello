@@ -2,7 +2,6 @@
   position: absolute;
   top: 50px;
   width: 768px;
-  /* background: linear-gradient(to right, #1a141e, #6c547b); */
   background: linear-gradient(to right, #0a162c, rgb(104, 154, 171));
   border-radius: 15px;
   padding: 20px;
@@ -43,12 +42,6 @@
   font-size: 13px;
 }
 
-/* .flashCard {
-  color: lightgray;
-  width: 30px;
-  height: 30px;
-} */
-
 #activity .row-container {
   display: flex;
   flex-direction: row;
@@ -86,7 +79,6 @@
 
 .editor-container-1,
 .editor-container {
-  /* background-color: rgb(74, 74, 74); */
   background-color: #535b6b;
   padding: 6px;
   width: 94%;
@@ -149,12 +141,12 @@
 .comment-container {
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 40px; */
 }
 
 .comment-block i,
 .comment-container i {
   margin-right: 10px;
+  margin-top: 17px;
 }
 
 .comment-block i {
@@ -171,7 +163,7 @@
 }
 
 .comment_insert i {
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 .toolbar {
@@ -253,4 +245,10 @@ hr {
 
 .edit-delete-btn span {
   color : #e6e6fa;
+}
+
+.title-input {
+  background-color: transparent;
+  color: #e6e6fa;
+  border: none;
 }

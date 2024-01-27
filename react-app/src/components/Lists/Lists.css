@@ -1,46 +1,86 @@
 *{
     font-family: 'Coiny', system-ui;
 }
+/* ?Color classes  */
+
+/* default  */
+.default_component_name_color{
+    color: #4D3AC1;
+}
+.default_list__head{
+    color: #689AAB;
+}
+
+.default_list__name{
+    color: #FEA60F;
+}
+
+.default_list__group{
+    border: 4px solid #4D3AC1; 
+}
+
+.default_lists{
+    border: 10px solid #161515;
+    background-color: rgba(188, 97, 128, 0.5);
+}
+
+.default_image{
+    background-image: url('../../resources/images/default.svg');
+}
+
+/* Image 1 */
+
+.imageOne__image { background-image: url('../../resources/images/colorOne.svg');}
+.imageOne__Component_name_color {
+    color: white;
+}
+
+/* Image 2 */
 
 
+/* image 3 */
+
+
+/* image 4 */
+.imageFour__image {
+    background-image: url('../../resources/images/colorFour.svg');
+}
+
+/* Image 5 */
 .lists__container{
 /* border: 12px solid #715DF2; */
 border-radius: 8px;
-background-image: url('../../resources/images/blob-scene-haikeiThree.svg');
 background-attachment: absolute;
 background-size: cover;
-height: 100vh;
+height: 100vh; 
 }
 .component__name{
-    color: #4D3AC1;
+    
     margin-left: 5px
 }
 .list__head{
-    color: #689AAB;
-    font-family: 'Coiny', system-ui;
+   
+   margin-left: 10px;
+   margin-bottom: 15px;
+   padding-top: -15px;
 
 }
 
-.list__name{
-    color: #FEA60F;
-    font-family: 'Coiny', system-ui;
-    
-}
 .lists__group {
     display: flex;
-    border: 4px solid #4D3AC1;
+    /* border: 4px solid #4D3AC1; */
     justify-content: space-around;
     height: 80vh;
     width: 80vw;
     margin: 12px auto;
     border-radius: 20px;
 
-  
+
 }
 
 .list{
-    border: 10px solid #161515;
-    background-color: rgba(188, 97, 128, 0.5);
+    /* border: 10px solid #161515;
+    background-color: rgba(188, 97, 128, 0.5); */
     text-align: center;
     margin: 12px 0;
     width: 20%;
@@ -55,7 +95,7 @@ height: 100vh;
     animation: shake 0.7s;
     animation-iteration-count: 1;
   }
-  
+
   @keyframes shake {
     0% { transform: translate(1px, 2px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -78,7 +118,7 @@ height: 100vh;
 
  .preloader{
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150"><rect fill="%231B191B" width="100%" height="100%"/><path fill="none" stroke="%239B6AF7" stroke-width="20" stroke-linecap="round" stroke-dasharray="300 385" stroke-dashoffset="0" d="M275 75c0 31-27 50-50 50-58 0-92-100-150-100-28 0-50 22-50 50s23 50 50 50c58 0 92-100 150-100 24 0 50 19 50 50Z"><animate attributeName="stroke-dashoffset" calcMode="spline" dur="3.1" values="685;-685" keySplines="0 0 1 1" repeatCount="indefinite"></animate></path></svg>') ;
-  
+
     background-attachment: absolute;
     margin: 0 auto;
     background-size: cover;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
+import "../AllBoards/AllBoards.css"
 import { useParams } from "react-router-dom";
 import Card from "../Cards";
 import ListForm from "./create";
@@ -12,14 +13,65 @@ import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
 import UpdateDelete from "../DeleteUpdate";
 import AddCards from "../AddCards";
+import './Cards.css'
+import Cards from "./Cards";
 
-const List = () => {
-	const dispatch = useDispatch();
+const List = (boardColor) => {
+    const dispatch = useDispatch();
 	const { id } = useParams();
 	const [isLoading, setIsLoading] = useState(true);
 	const [showMenu, setShowMenu] = useState(false);
 	const lists = useSelector((state) => state.lists);
 	const listsArr = Object.values(lists);
+    const color  = boardColor.boardColor;
+    console.log(boardColor.boardColor)
+
+    //! Color stuff
+    let nameColor;
+    let listImage;
+    let listHeadColor;
+    let listNameColor;
+    let listGroup;
+    let listColor;
+    let defaultImage;
+
+    switch (color) {
+        case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
+            listImage = "imageOne__image"
+            break;
+        
+            case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
+   
+            
+            break;
+        
+        case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
+
+            break;
+        
+        case "https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn":
+            listImage = 'imageFour__image'
+
+            break;
+        
+        case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
+    
+            
+            break;
+        case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
+
+            break;
+        default:
+            listImage = 'default_image';
+            nameColor = 'default_component_name_color';
+           listHeadColor = 'default_list__head';
+           listNameColor = 'default_list__name';
+            listColor = 'default_lists'
+            listGroup = 'default_list__group'
+            
+    }
+
+
 	if (listsArr.length > 1) {
 		listsArr.pop();
 	}
@@ -47,9 +99,10 @@ const List = () => {
 
 	if (Object.values(listsArr[0]).length < 1)
 		return (
-			<div className="lists__container">
+			<div className={`lists__container ${listImage}`}>
 				<h1> Lists</h1>
-				<OpenModalButton
+                <OpenModalButton
+                    className={'delete__board-button'}
 					buttonText="Create A List"
 					onButtonClick={closeMenu}
 					modalComponent={<ListForm board_id={id} />}
@@ -58,16 +111,16 @@ const List = () => {
 			</div>
 		);
 	return (
-		<div className="lists__container">
-			<h1 className="list__head"> Lists</h1>
+		<div className={`lists__container ${listImage}`}>
+			<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
 			<OpenModalButton
 				buttonText="Create A List"
 				onButtonClick={closeMenu}
 				modalComponent={<ListForm board_id={id} />}
 			/>
-			<div className="lists__group">
+			<div className={`lists__group ${listGroup}`}>
 				{listsArr.toReversed().map((list) => (
-					<div className="list" key={list.id}>
+					<div className={`list ${listColor}`} key={list.id}>
 						{/* <NavLink to={`/boards/${parseInt(id)}/lists/${parseInt(id)}`}>Edit List</NavLink> */}
 						{/* <OpenModalButton
 							buttonText="Edit List"
@@ -97,10 +150,10 @@ const List = () => {
 							}
                         /> */}
                         <div>
-                            <h2 className="list__name">{list.name}</h2>
+                            <h2 className={listNameColor}>{list.name}</h2>
                         </div>
-                        
-                       
+
+
 
 						<div className="cards">
 							<h3>
@@ -110,7 +163,16 @@ const List = () => {
 											<div className="card__container" key={card.id}>
 												<OpenModalButton
 													buttonText={card.name}
-													modalComponent={<CommentModal cardId={card.id} />}
+													modalComponent={
+														<CommentModal
+															cardName={card.name}
+															listName={list.name}
+															boardId={id}
+															cardId={card.id}
+															cardDesc={card.description}
+															cardComments={card.comments}
+														/>
+													}
 												></OpenModalButton>
 											</div>
 										);
@@ -119,19 +181,18 @@ const List = () => {
 									<div></div>
 								)}
 							</h3>
-
-							{/* <Card state={list.id} />         */}
-                        </div>
+						</div>
+						<Cards listId={list.id} boardId={id} />
 							<OpenModalButton
 								buttonText={<i class="fa-solid fa-plus"></i>}
 								className={"new__card__modal-button icon"}
 								modalComponent={<AddCards listId={list.id} boardId={id} />}
 							/>
-                        <UpdateDelete info={{
-										board_id: id,
-										list_id: list.id,
-										list_name: list.name,
-									}} /> 
+							<UpdateDelete info={{
+								board_id: id,
+								list_id: list.id,
+								list_name: list.name,
+							}} />
 					</div>
 				))}
 			</div>

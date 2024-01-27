@@ -101,8 +101,8 @@ const List = (boardColor) => {
             
     }
 
-
-	if (listsArr.length > 1) {
+	
+	if (listsArr[0].length > 1) {
 		listsArr.pop();
 	}
 	

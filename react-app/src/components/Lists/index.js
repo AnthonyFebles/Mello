@@ -4,6 +4,7 @@ import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
 
+
 import { useParams } from "react-router-dom";
 import Card from "../Cards";
 import ListForm from "./create";
@@ -13,6 +14,8 @@ import { getCardsThunk } from "../../store/cards";
 import CommentModal from "../CommentModal/CommentModal";
 import UpdateDelete from "../DeleteUpdate";
 import AddCards from "../AddCards";
+import './Cards.css'
+import Cards from "./Cards";
 
 const List = (boardColor) => {
     const dispatch = useDispatch();
@@ -37,27 +40,29 @@ const List = (boardColor) => {
         case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
             listImage = "imageOne__image"
             break;
-        
-            case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
-   
-            
-            break;
-        
-        case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
 
+            case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
+
+            listImage = 'imageTwo__image'
             break;
-        
+                
+        case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
+            listImage = 'imageSix__image'
+            break;
+
         case "https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn":
             listImage = 'imageFour__image'
-
+            
             break;
         
         case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
     
-            
+        listImage = 'imageThree__image'
+        
             break;
+        
         case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
-
+        listImage = 'imageFive__image'
             break;
         default:
             listImage = 'default_image';
@@ -100,7 +105,7 @@ const List = (boardColor) => {
 			<div className={`lists__container ${listImage}`}>
 				<h1> Lists</h1>
                 <OpenModalButton
-                    className={'create__list-button'}
+                    className={"create_list_button"}
 					buttonText="Create A List"
 					onButtonClick={closeMenu}
 					modalComponent={<ListForm board_id={id} />}
@@ -180,6 +185,7 @@ const List = (boardColor) => {
 								)}
 							</h3>
 						</div>
+						<Cards listId={list.id} boardId={id} />
 							<OpenModalButton
 								buttonText={<i class="fa-solid fa-plus"></i>}
 								className={"new__card__modal-button icon"}

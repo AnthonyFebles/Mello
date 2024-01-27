@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+
 
 import './HomeNotLogged.css'
 
@@ -9,16 +10,19 @@ function HomeNotLogged() {
 
 const dispatch = useDispatch()
 const history = useHistory()
+const sessionUser = useSelector((state) => state.session.user);
 
 //! useStates
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [errors, setErrors] = useState([])
 
-const handleSubmit = async (e) => {
+if (sessionUser) return <Redirect to="/boards" />;
+
+const handleLogin = async (e) => {
     e.preventDefault();
-    setErrors([]);
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(email, password))
+    .then(() => history.push('/boards'));
     if (data) {
         setErrors(data);
     }
@@ -36,6 +40,7 @@ const handleDemoLogin = () => {
         history.push('/boards');
     })
 };
+
 
 const handleSignUp = () => {
     history.push('/signup');
@@ -60,7 +65,7 @@ const handleSignUp = () => {
                         {errors.map((error, index) => <div key={index}>{error}</div>)}
                     </div>
 
-                    <form onSubmit = {handleSubmit}>
+                    <form>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -73,7 +78,7 @@ const handleSignUp = () => {
 
 
                         <div className="form-group">
-                            <button type="submit">Log In</button>   
+                            <button type="submit" onClick={handleLogin}>Log In</button>   
                         </div>
 
                         <div className="signup-button">

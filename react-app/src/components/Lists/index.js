@@ -45,22 +45,22 @@ const List = (boardColor) => {
 
             listImage = 'imageTwo__image'
             break;
-                
+
         case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
             listImage = 'imageSix__image'
             break;
 
         case "https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn":
             listImage = 'imageFour__image'
-            
+
             break;
-        
+
         case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
-    
+
         listImage = 'imageThree__image'
-        
+
             break;
-        
+
         case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
         listImage = 'imageFive__image'
             break;
@@ -71,7 +71,7 @@ const List = (boardColor) => {
            listNameColor = 'default_list__name';
             listColor = 'default_lists'
             listGroup = 'default_list__group'
-            
+
     }
 
 
@@ -161,22 +161,27 @@ const List = (boardColor) => {
 						<div className="cards">
 							<h3>
 								{list.cards ? (
-									list.cards.toReversed().map((card) => {
+									list.cards.map((card) => {
 										return (
 											<div className="card__container" key={card.id}>
-												<OpenModalButton
-													buttonText={card.name}
-													modalComponent={
-														<CommentModal
-															cardName={card.name}
-															listName={list.name}
-															boardId={id}
-															cardId={card.id}
-															cardDesc={card.description}
-															cardComments={card.comments}
-														/>
-													}
-												></OpenModalButton>
+												<>
+													<div className="newCardInformation">
+														{card.name}
+													</div>
+													{/* <OpenModalButton
+														buttonText={card.name + 'hi'}
+														modalComponent={
+															<CommentModal
+																cardName={card.name}
+																listName={list.name}
+																boardId={id}
+																cardId={card.id}
+																cardDesc={card.description}
+																cardComments={card.comments}
+															/>
+														}
+													/> */}
+												</>
 											</div>
 										);
 									})

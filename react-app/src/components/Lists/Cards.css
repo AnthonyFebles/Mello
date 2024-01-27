@@ -140,3 +140,18 @@
 .new__card__modal-button {
   display: none;
 }
+
+/*! Card Styling ------------------------------------------------------------------- */
+
+.newCardInformation {
+  display: flex;
+  flex-direction: column;
+  height: 64px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  background-color: rgb(202, 123, 123);
+  border-radius: 5px;
+  color: white;
+}

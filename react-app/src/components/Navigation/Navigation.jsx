@@ -60,14 +60,14 @@ function Navigation({ isLoaded }) {
 	const handleSubmit = async (e) => {
         setErrors({});
 		e.preventDefault();
-		
+		setShowMenu(false)
 		try {
-			dispatch(createNewBoard(boardPayLoad));
+			await dispatch(createNewBoard(boardPayLoad));
 		} catch (data) {
 			setErrors(data);
+			// console.log(data, "DATTTATATATATTATATATATAT")
 			alert(data.errors);
 		}finally {
-        setShowMenu(false)
         setColor(colors[getRandomInt(colors.length)]);
         setName('')
         dispatch(getBoards())

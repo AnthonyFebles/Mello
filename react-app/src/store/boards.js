@@ -48,15 +48,15 @@ export const createNewBoard = (boardPayload) => async (dispatch) => {
 		});
 
 		if (response.ok) {
-			console.log("res is ok?", response)
+			// console.log("res is ok?", response)
 			const newBoard = await response.json();
 			dispatch(create(newBoard));
 			return newBoard;
 		}
 	} catch (error) {
-		const res = await error;
-		console.log("res not ok")
-		console.log(res, "this is the res ************")
+		const res = await error.json();
+		// console.log("res not ok")
+		// console.log(res, "this is the res ************")
 		//console.log(res, "error")
 		throw res;
 	}

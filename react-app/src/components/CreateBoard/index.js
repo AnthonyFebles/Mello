@@ -44,11 +44,11 @@ const NewBoard = () => {
 
 		try {
 			await dispatch(createNewBoard(boardPayLoad));
+			setShowMenu(false)
 		} catch (data) {
 			setErrors(data);
 			alert(data.errors);
 		}finally {
-        setShowMenu(false)
         setColor(colors[getRandomInt(colors.length)]);
         setName('')
         dispatch(getBoards())

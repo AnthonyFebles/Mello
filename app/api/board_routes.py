@@ -42,7 +42,7 @@ def create_boards():
         return jsonify(new_user_board.to_dict()), 201
 
     # if the validation fails, return an error response
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
     # abort(400, {"message": "Body validation Error"})
 
 # ! Read Routes

@@ -2,6 +2,10 @@
     font-family: 'Coiny', system-ui;
 }
 
+/* .cardClass{
+    overflow: hidden;
+} */
+
 
 .create_list_button{
     background-color: #161515;
@@ -94,10 +98,6 @@ border-radius: 8px;
 background-attachment: absolute;
 background-size: cover;
 height: 100vh; 
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: center;
 }
 .component__name{
     
@@ -113,7 +113,8 @@ justify-content: center;
 
 .lists__group {
     display: flex;
-
+	flex-direction: row;
+	flex-wrap: wrap;
     justify-content: space-around;
     height: 80vh;
     width: 80vw;

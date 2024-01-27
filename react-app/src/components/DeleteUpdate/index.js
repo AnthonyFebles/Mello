@@ -53,9 +53,9 @@ const UpdateDelete = (info) => {
             </button>
 
                 <div  ref={ulRef} className={className}>
-                    <OpenModalButton buttonText="Edit List"   onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: board_id, list_id: list_id, list_name: list_name }} />} />
+                    <OpenModalButton buttonText="Edit List"  className={'create_list_button'} onButtonClick={closeMenu} modalComponent={<UpdateList info={{ board_id: board_id, list_id: list_id, list_name: list_name }} />} />
 
-                  <OpenModalButton buttonText="Delete List"  onButtonClick={closeMenu} modalComponent={<DeleteIt info={{board_id: board_id, list_id: list_id, list_name: list_name }} />} />
+                  <OpenModalButton buttonText="Delete List"  onButtonClick={closeMenu} className={'create_list_button'} modalComponent={<DeleteIt info={{board_id: board_id, list_id: list_id, list_name: list_name }} />} />
                 </div>
 
 

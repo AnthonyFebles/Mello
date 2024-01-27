@@ -16,21 +16,24 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: 277px;
   height: fit-content;
-  border: 1px solid #e6e6fa71;
+  box-shadow: 0 0 10px 2px #c0a4aa;
   border-radius: 5px;
-  margin: 5px 0 10px 0;
+  margin: 14px auto;
+  cursor: pointer;
 }
 
 .add-card-button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  background-color: #ffffff3d;
+  margin: 5px;
 }
 
 .add-card-button .fa-plus {
@@ -39,6 +42,7 @@
 
 .add-card-button p {
   margin: 0;
+  font-size: 15px;
 }
 
 .add-card-button:hover {
@@ -47,7 +51,18 @@
 
 .card-form {
   width: 100%;
-  z-index: 2;
+  border-radius: 5px;
+  background-color: #0a2c43;
+  padding: 5px 8px;
+}
+
+.card-form-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0 5px 0;
+  margin-top: 8px;
 }
 
 .new-card-add-info input {
@@ -56,22 +71,72 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: fit-content;
-  background-color: #e6e6fa71;
+  padding: 5px;
+  background-color: #ffffff;
   border-radius: 5px;
-  margin: 0 0 7px 0;
+  margin: 5px 0 7px 0;
+  border: none;
 }
 
-#description {
-  height: 50px;
+.new-card-name,
+.new-card-description {
+  color: black;
+  font-size: 14px;
+}
+.new-card-name::placeholder,
+.new-card-description::placeholder {
+  color: #3a3a3a;
+  font-size: 14px;
 }
 
-.fa-xmark {
-  margin: 7px;
+.cancel-containers {
+  height: 30px;
+  width: 30px;
+  border: 1px solid red;
   cursor: pointer;
+}
+
+.cancel-containers:hover {
+  background-color: #e6e6fa;
 }
 
 .new-card-btn {
+  background-color: #e16f4e;
+  border: none;
   cursor: pointer;
+  color: #433434;
+  width: 84px;
+  height: 32px;
+  border-radius: 5px;
 }
 
+.new-card-btn:hover {
+  background-color: #954833;
+  color: #ffffff;
+}
+
+.cancel-new-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;;
+  background-color: #e6e6fa00;
+  border: none;
+  cursor: pointer;
+  color: white;
+  width: 32px;
+  height: 32px;
+  padding: 10px;
+  font-size: 18px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+.cancel-new-card:hover {
+  background-color: #bf3f3f;
+  color: #433434;
+}
+
+.new__card__modal-button {
+  display: none;
+}

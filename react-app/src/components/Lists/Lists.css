@@ -28,12 +28,25 @@
     background-image: url('../../resources/images/default.svg');
 }
 
-.imageOne__image {
-   background-image: url('../../resources/images/colorOne.svg');
+/* Image 1 */
+
+.imageOne__image { background-image: url('../../resources/images/colorOne.svg');}
+.imageOne__Component_name_color {
+    color: white;
 }
+
+/* Image 2 */
+
+
+/* image 3 */
+
+
+/* image 4 */
 .imageFour__image {
     background-image: url('../../resources/images/colorFour.svg');
 }
+
+/* Image 5 */
 .lists__container{
 /* border: 12px solid #715DF2; */
 border-radius: 8px;

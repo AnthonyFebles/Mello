@@ -161,6 +161,7 @@ export default function CommentModal({
         <div className="cardTitle">
           <i class="fa-solid fa-table fa-xl" style={{ color: '#e6e6fa' }}></i>
           <div className="title-information">
+            <i class="fa-regular fa-pen-to-square"></i>
             <input
               type="text"
               value={name}

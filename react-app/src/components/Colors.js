@@ -9,7 +9,6 @@ export const colors = [
 	"https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain",
 ];
 
-
 // ? Colors for each link in array
 
 /*
@@ -80,6 +79,3 @@ export function getRandomInt(max) {
 }
 
 export const random = getRandomInt(colors.length);
-
-
-

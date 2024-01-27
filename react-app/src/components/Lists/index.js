@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import UpdateList from "./update";
 import "./Lists.css";
-
-
 import { useParams } from "react-router-dom";
 import Card from "../Cards";
 import ListForm from "./create";
@@ -25,7 +23,6 @@ const List = (boardColor) => {
 	const lists = useSelector((state) => state.lists);
 	const listsArr = Object.values(lists);
     const color  = boardColor.boardColor;
-    console.log(boardColor.boardColor)
 
     //! Color stuff
     let nameColor;
@@ -35,7 +32,6 @@ const List = (boardColor) => {
     let listGroup;
     let listColor;
   
-
     switch (color) {
         case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
 			listImage = "imageOne__image"
@@ -109,7 +105,7 @@ const List = (boardColor) => {
 	if (listsArr.length > 1) {
 		listsArr.pop();
 	}
-	// console.log(listsArr, "*****listArr state.lists");
+	
 
 	useEffect(() => {
 		dispatch(readLists(parseInt(id))).then(() => setIsLoading(false));
@@ -129,7 +125,7 @@ const List = (boardColor) => {
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
-	// console.log(Object.values(listsArr[0]).length < 1, "LSTARRRRRRRR")
+	
 
 	if (Object.values(listsArr[0]).length < 1)
 		return (
@@ -149,6 +145,7 @@ const List = (boardColor) => {
 			<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
 			<OpenModalButton
 				buttonText="Create A List"
+				className={'create_list_button'}
 				onButtonClick={closeMenu}
 				modalComponent={<ListForm board_id={id} />}
 			/>

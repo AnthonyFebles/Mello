@@ -2,12 +2,7 @@
     font-family: 'Coiny', system-ui;
 }
 
-.create__list-button{
-    color: red;
-    border-radius: 5px;
-}
 
-/* ?Color classes  */
 .create_list_button{
     background-color: #161515;
     border-radius: 5px;
@@ -21,124 +16,80 @@
 .create_list_button:hover {
     background-color: #656565; 
 }
-/* default  */
-.default_component_name_color{
-    color: #4D3AC1;
-}
-.default_list__head{
-    color: #689AAB;
-}
 
-.default_list__name{
-    color: #FEA60F;
-}
+/* ? Color classes  */
+/* !default  */
+.default_component_name_color{ color: #4D3AC1;}
+.default_list__head{ color: #689AAB;}
+.default_list__name{color: #FEA60F;}
+.default_list__group{border: 4px solid #4D3AC1; }
+.default_lists{border: 10px solid #161515; background-color: rgba(188, 97, 128, 0.5);}
+.default_image{ background-image: url('../../resources/images/default.svg');}
 
-.default_list__group{
-    border: 4px solid #4D3AC1; 
-}
-
-.default_lists{
-    border: 10px solid #161515;
-    background-color: rgba(188, 97, 128, 0.5);
-}
-
-.default_image{
-    background-image: url('../../resources/images/default.svg');
-}
-
-/* Image 1 */
-/* #545391
-#638FAD
-#FBC5B8
-#3685A4
-#D7759E
-#39436F */
+/* !Image 1 */
 
 .imageOne__image { background-image: url('../../resources/images/colorOne.svg');}
+.imageOne__Component_name_color { color:#638FAD ; }
+.imageOne__head{color:#FBC5B8 }
+.imageOne__list__name{color: #3685A4;}
+.imageOne__list__group{ border: 4px solid #39436F; }
+.imageOne__lists{ border: 10px solid #D7759E;
+    background-color: rgba(188, 97, 128, 0.5);}
 
-.imageOne__Component_name_color {
-    color: white;
-}
 
-/* Image 2 */
-/* #1B3990
-#E68FD5
-#BE5EAD
-#BF6FCB
-#443797
-#AE84D8 */
+/* !Image 2 */
+
 .imageTwo__image { background-image: url('../../resources/images/colorTwo.svg');}
-
-/* .imageTwo__component_name_color{
-
-}
-.imageTwo__list__head
-.imageTwo__list__name
-.imageTwo__list__group
-.imageTwo__lists */
+.imageTwo__component_name_color{ color:#1B3990; }
+.imageTwo__list__head{color: #BE5EAD;}
+.imageTwo__list__name{ color: #BF6FCB;}
+.imageTwo__list__group{border: 4px solid #E68FD5;}
+.imageTwo__lists{ border: 10px solid #443797 ;
+    background-color: rgba(188, 97, 128, 0.5);}
 
 
-/* image 3 */
-/* 
-#3D3789
-#BE5EAD
-#F6BFD4
-#E68FD5
-#443797
-#122768 
-*/
-.imageThree__image { 
-    background-image: url('../../resources/images/colorThree.svg');
-}
-
-
-/* image 4 */
-
-/* 
-80A2B4
-A56CA6
-CE78AF
-19487B
-E397B8
-13618C
- */
-
-.imageFour__image {
-    background-image: url('../../resources/images/colorFour.svg');
-}
-
-/* Image 5 */
-/* 
-#6D5485
-#4885A4
-#4F547F
-#CC89AB
-#A99BB4
-#F6BDB7
- */
-.imageFive__image {
-    background-image: url('../../resources/images/colorFive.svg');
-
-}
+/* !image 3 */
+.imageThree__image {  background-image: url('../../resources/images/colorThree.svg');}
+.imageThree__component_name_color{color: #3D3789 ; }
+.imageThree__list__head{color: #443797;}
+.imageThree__list__name{color: #122768  ;}
+.imageThree__list__group{border: 4px solid #122768 ;}
+.imageThree__lists{ border: 10px solid #BE5EAD;
+    background-color: rgba(188, 97, 128, 0.5);}
 
 
 
-/*  Image 6 */
+/* !image 4 */
+.imageFour__image {background-image: url('../../resources/images/colorFour.svg');}
+    .imageFour__component_name_color{color:#CE78AF ; }
+    .imageFour__list__head{color:#E397B8 ;}
+    .imageFour__list__name{color:#80A2B4 ;}
+    .imageFour__list__group{border: 4px solid  #19487B;}
+    .imageFour__lists{ border: 10px solid #13618C; background-color: rgba(188, 97, 128, 0.5);}
+
+
+
+/*! Image 5 */
+.imageFive__image {background-image: url('../../resources/images/colorFive.svg');}
+.imageFive__component_name_color{ color: #CC89AB;}
+.imageFive__list__head{color:#F6BDB7 ;}
+.imageFive__list__name{color:#8561a5;}
+.imageFive__list__group{border: 4px solid #4885A4;}
+.imageFive__lists { border: 10px solid #6D5485; background-color: rgba(188, 97, 128, 0.5);}
+
+
+/*  !Image 6 */
 .imageSix__image {
-  background-image: url('../../resources/images/colorSix.svg');
-}
-/* 
-#893F43
-#832A2F
-#A87368
-#5A3435
-#30242E
-#B83C36
- */
+  background-image: url('../../resources/images/colorSix.svg');}
+.imageSix__component_name_color{color: #A87368;  }
+.imageSix__list__head{color: #30242E;}
+.imageSix__list__name{color: #3d2828;}
+.imageSix__list__group{border: 4px solid #843935 ;}
+.imageSix__lists{ border: 10px solid #161515; background-color: rgba(131, 42, 47, 0.5);}
 
 
 .lists__container{
-/* border: 12px solid #715DF2; */
+
 border-radius: 8px;
 background-attachment: absolute;
 background-size: cover;
@@ -158,7 +109,7 @@ height: 100vh;
 
 .lists__group {
     display: flex;
-    /* border: 4px solid #4D3AC1; */
+
     justify-content: space-around;
     height: 80vh;
     width: 80vw;
@@ -169,8 +120,7 @@ height: 100vh;
 }
 
 .list{
-    /* border: 10px solid #161515;
-    background-color: rgba(188, 97, 128, 0.5); */
+   
     text-align: center;
     margin: 12px 0;
     width: 20%;

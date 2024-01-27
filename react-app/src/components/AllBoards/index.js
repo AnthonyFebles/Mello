@@ -37,7 +37,7 @@ const AllBoards = () => {
 			}
 		};
 
-		if (!sessionUser) return history.push("/");
+		if (!sessionUser) return <>{history.push("/")}</>;
 
 		document.addEventListener("click", closeOptions);
 

@@ -128,7 +128,7 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #42b72a;
+    background-color: #fdb52c;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -136,7 +136,7 @@
 }
 
 .signup-button button:hover {
-    background-color: #2e7d32;
+    background-color: #d68d00;
 }
 
 .demo-login{

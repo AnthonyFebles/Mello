@@ -8,13 +8,14 @@
 
 
 .create_list_button{
-    background-color: #161515;
+    background-color: #13618d;
     border-radius: 5px;
     color: white;
-    border-bottom: 1px solid whitesmoke;
-    background: none;
     border: none;
     cursor: pointer;
+    margin-left: 18px;
+    width: 120px;
+    height: 30px;
 }
 
 .create_list_button:hover {
@@ -105,7 +106,7 @@ height: 100vh;
 }
 .list__head{
 
-   margin-left: 10px;
+   margin-left: 18px;
    margin-bottom: 15px;
    padding-top: -15px;
 

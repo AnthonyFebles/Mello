@@ -19,9 +19,13 @@ export default function CommentModal({
 	cardName,
 	cardDesc,
 	cardComments,
+	cards
 }) {
 	const card = cardId;
 	const id = boardId;
+
+	console.log('CARDS', cards);
+	console.log('CARDSSSSSSSS', cards.id);
 
 	const { closeModal } = useModal();
 
@@ -48,11 +52,12 @@ export default function CommentModal({
 	const handleDelete = async (e) => {
 		e.preventDefault();
 		try {
-			await dispatch(deleteCardThunk(card)).then(() => closeModal());
+			await dispatch(deleteCardThunk(card));
+			closeModal();
 			await dispatch(readLists(id));
 		} catch (error) {
+			console.log('hi');
 			alert(error);
-		} finally {
 		}
 	};
 
@@ -108,8 +113,6 @@ export default function CommentModal({
 		setEditorState2(EditorState.createEmpty());
 		await dispatch(readLists(id));
 	};
-
-	function showDetails() {}
 
 	const onBoldClick = () => {
 		setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));

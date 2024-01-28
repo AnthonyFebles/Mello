@@ -106,7 +106,6 @@ const List = (boardColor) => {
 	if (listsArr.length > 1) {
 		listsArr.pop();
 	}
-	// console.log(listsArr, "*****listArr state.lists");
 
 	useEffect(() => {
 		dispatch(readLists(parseInt(id))).then(() => setIsLoading(false));
@@ -125,8 +124,6 @@ const List = (boardColor) => {
 
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
-
-	// console.log(Object.values(listsArr[0]).length < 1, "LSTARRRRRRRR")
 
 	if (Object.values(listsArr[0]).length < 1)
 		return (
@@ -160,25 +157,8 @@ const List = (boardColor) => {
 						<div className="cards">
 							<h3>
 								{list.cards ? (
-									list.cards.toReversed().map((card) => {
-										return <AddCards card={card} list={list} />;
-										// return (
-										// 	<div className="card__container" key={card.id}>
-										// 		<OpenModalButton
-										// 			buttonText={card.name}
-										// 			modalComponent={
-										// 				<CommentModal
-										// 					cardName={card.name}
-										// 					listName={list.name}
-										// 					boardId={id}
-										// 					cardId={card.id}
-										// 					cardDesc={card.description}
-										// 					cardComments={card.comments}
-										// 				/>
-										// 			}
-										// 		></OpenModalButton>
-										// 	</div>
-										// );
+									list.cards.map((card) => {
+										return <AddCards card={card} list={list} id={id} />;
 									})
 								) : (
 									<div></div>

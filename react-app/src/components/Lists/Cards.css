@@ -1,26 +1,10 @@
-.card__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid yellow;
-  width: 100%;
-  height: 100%;
-
-}
-
-
-.card__container button {
-  border: 1px solid red;
-}
-
 .add {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: auto;
+  width: 95%;
   height: fit-content;
-  box-shadow: 0 0 10px 2px #c0a4aa;
+  box-shadow: 0 0 6px 1px black;
   border-radius: 5px;
   margin: 14px auto;
   cursor: pointer;
@@ -34,7 +18,6 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background-color: #ffffff3d;
   margin: 5px;
 }
 
@@ -48,7 +31,7 @@
 }
 
 .add-card-button:hover {
-  background-color: #e6e6fa71;
+  box-shadow: 0 0 15px 1px #845c71;
 }
 
 .card-form {

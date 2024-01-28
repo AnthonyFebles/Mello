@@ -1,7 +1,7 @@
 #modal-content {
   position: absolute;
   top: 50px;
-  width: 768px;
+  width: 636px;
   background: linear-gradient(to right, #0a162c, rgb(104, 154, 171));
   border-radius: 15px;
   padding: 20px;
@@ -18,6 +18,7 @@
   width: fit-content;
   margin-left: 14px;
   height: 28px;
+  color: #e6e6fa;
 }
 
 .title-input:hover {
@@ -48,13 +49,6 @@
   position: relative;
   top: 16px;
 }
-
-/* .title-information h3 {
-  color: #e6e6fa;
-  font-size: 23px;
-  font-weight: 600;
-  margin: 0;
-} */
 
 .title-information p {
   color: #e6e6fa;
@@ -274,4 +268,24 @@ hr {
   background-color: transparent;
   color: #e6e6fa;
   border: none;
+}
+
+.delete-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #dc3939;
+  color: #252525;
+  margin: 10px auto 0;
+  text-align: center;
+}
+
+.delete-card:hover {
+  background-color: #b82b2b;
+  cursor: pointer;
+  box-shadow: 0 0 5px #ff0000;
 }

@@ -206,7 +206,7 @@ export default function CommentModal({
 							editorState={editorState}
 							onChange={setEditorState}
 							onBlur={handleDescriptionUpdate}
-							placeholder={description}
+							placeholder={description ? description : "Add a description..."}
 							customStyleMap={{
 								BOLD: { fontWeight: "bold" },
 								ITALIC: { fontStyle: "italic" },
@@ -236,7 +236,7 @@ export default function CommentModal({
 							></i>
 							<p>Comments</p>
 						</div>
-						<button onClick={showDetails}>Show Details</button>
+						{/* <button onClick={showDetails}>Show Details</button> */}
 					</div>
 				</div>
 				<div className="comment-container">
@@ -288,13 +288,7 @@ export default function CommentModal({
 						</div>
 					</div>
 				</div>
-				{!clicked2 && (
-					<>
-						<br />
-						<br />
-						<br />
-					</>
-				)}
+				{!clicked2 && (<><br /><br /><br /></>)}
 				{clicked2 && (
 					<>
 						<button onClick={handleSubmit} className="save-2">
@@ -307,9 +301,14 @@ export default function CommentModal({
 					.reverse()
 					.map((comment) => (
 						<UserComment key={comment.id} comment={comment} />
-					))}
+				))}
+				<div className="delete-card" onClick={handleDelete}>Delete card</div>
 			</div>
-			<div className="additions">
+			{/* <div className="additions">
+				<div onClick={handleDelete}>
+					<i class="fa-solid fa-archive" style={{ color: "#2c2a31" }}></i>
+					Delete
+				</div>
 				<p>Add to card</p>
 				<div className="additions-container">
 					<div onClick={() => alert("Feature coming soon")}>
@@ -355,16 +354,12 @@ export default function CommentModal({
 						<i class="fa-solid fa-columns" style={{ color: "#2c2a31" }}></i>
 						Make Template
 					</div>
-					<div onClick={handleDelete}>
-						<i class="fa-solid fa-archive" style={{ color: "#2c2a31" }}></i>
-						Delete
-					</div>
 					<div onClick={() => alert("Feature coming soon")}>
 						<i class="fa-solid fa-share" style={{ color: "#2c2a31" }}></i>
 						Share
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

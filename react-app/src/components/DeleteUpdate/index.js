@@ -40,11 +40,11 @@ const UpdateDelete = (info) => {
 				<i class="fa-solid fa-bars"></i>
 			</button>
 
-			<div ref={ulRef} className={className}>
+			<div ref={ulRef} className={`${className} list-modal-container`}>
 				<OpenModalButton
 					buttonText="Edit List"
 					onButtonClick={closeMenu}
-					className={'create_list_button'}
+					className={'create_list_button2'}
 					modalComponent={
 						<UpdateList
 							info={{
@@ -59,7 +59,7 @@ const UpdateDelete = (info) => {
 				<OpenModalButton
 					buttonText="Delete List"
 					onButtonClick={closeMenu}
-					className={'create_list_button'}
+					className={'create_list_button2'}
 					modalComponent={
 						<DeleteIt
 							info={{

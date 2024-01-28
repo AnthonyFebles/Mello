@@ -18,6 +18,29 @@
     height: 36px;
 }
 
+#list-modal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.create_list_button2 {
+    background-color: #23344d;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 36px;
+    margin: 5px;
+}
+
+.create_list_button2:hover {
+    background-color: #0e4a6c;
+}
+
 .create_list_button:hover {
     background-color: #656565;
 }

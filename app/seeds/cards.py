@@ -4,22 +4,34 @@ from sqlalchemy.sql import text
 
 def seed_cards():
     first = Card(
-        listId="1", name="first", description="1 card"
+        listId="1", name="Pass group project", description="1 card"
     )
     second = Card(
-        listId="1", name="second", description="1 card part 2"
+        listId="1", name="Graduate", description="1 card part 2"
     )
     third = Card(
-        listId="2", name="third", description="2 card"
+        listId="1", name="Get a job", description="This is a card description"
     )
     fourth = Card(
-        listId="2", name="fourth", description="2 card the second coming"
+        listId="1", name="Become rich!", description="$$$$$$$$$"
     )
     fifth = Card(
-        listId="3", name="fifth", description="3 card"
+        listId="2", name="Why is Render being dumb?", description="2 card"
     )
-    six = Card(
-        listId="3", name="sixth", description="3 card electric kazoo"
+    sixth = Card(
+        listId="2", name="What about second breakfast?", description="2 card the second coming"
+    )
+    seventh = Card(
+        listId="3", name="People", description="3 card"
+    )
+    eighth = Card(
+        listId="3", name="Information", description="3 card electric kazoo"
+    )
+    ninth = Card(
+        listId="3", name="Tools", description="3 card"
+    )
+    tenth = Card(
+        listId="4", name="Airbnb", description="4 card"
     )
 
     db.session.add(first)
@@ -27,7 +39,11 @@ def seed_cards():
     db.session.add(third)
     db.session.add(fourth)
     db.session.add(fifth)
-    db.session.add(six)
+    db.session.add(sixth)
+    db.session.add(seventh)
+    db.session.add(eighth)
+    db.session.add(ninth)
+    db.session.add(tenth)
     db.session.commit()
 
 

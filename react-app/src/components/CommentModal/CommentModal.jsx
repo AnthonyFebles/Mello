@@ -22,32 +22,30 @@ export default function CommentModal({
 	cardComments,
 	cards,
 }) {
-	const card = cardId;
-	const id = boardId;
-
-	// console.log('CARDS', cards);
-	// console.log('CARDSSSSSSSS', cards.id);
-
-	const { closeModal } = useModal();
-
-	const lists = useSelector((state) => {
-		return Object.values(state.lists);
-	});
-
 	const dispatch = useDispatch();
+	const { closeModal } = useModal();
 	const [name, setName] = useState(cardName);
 	const [description, setDescription] = useState(cardDesc);
 	const [list, setList] = useState(listId);
 	const [showMenu, setShowMenu] = useState(false);
 	const [clicked, setClicked] = useState(false);
 	const [clicked2, setClicked2] = useState(false);
+	const [hidden, setHidden] = useState(false);
 	const [editorState, setEditorState] = useState(() =>
 		EditorState.createEmpty()
-	);
-	const [editorState2, setEditorState2] = useState(() =>
+		);
+		const [editorState2, setEditorState2] = useState(() =>
 		EditorState.createEmpty()
-	);
+		);
 
+
+	console.log('HIDDEN', hidden);
+	const lists = useSelector((state) => {
+		return Object.values(state.lists);
+	});
+
+	const card = cardId;
+	const id = boardId;
 	const comments = useSelector((state) => state.comments) || cardComments;
 	const userId = useSelector((state) => state.session.user.id);
 
@@ -195,7 +193,7 @@ export default function CommentModal({
 				<div className="cardTitle">
 					<i class="fa-solid fa-table fa-xl" style={{ color: "#e6e6fa" }}></i>
 					<div className="title-information">
-						<i class="fa-regular fa-pen-to-square"></i>
+						{/* <i class="fa-regular fa-pen-to-square"></i> */}
 						<input
 							type="text"
 							value={name}
@@ -350,28 +348,43 @@ export default function CommentModal({
 					.map((comment) => (
 						<UserComment key={comment.id} comment={comment} />
 					))}
-				<div className="delete-card" onClick={handleDelete}>
-					Delete card
-				</div>
-				<div className={`move-card`} onClick={openMenu}>
-					<i class="fa-solid fa-arrow-right"></i>
-					Move
-				</div>
-				<div ref={ulRef} className={`${className}`}>
-					<div className="move-list__container">
-						{lists.map((list) => {
-							if (list.id)
-								return (
-									<div
-										className={`move-lists`}
-										onClick={() => handleListUpdate(list.id)}
-									>
-										{list.name}
-									</div>
-								);
-						})}
+					<div className="comment-btn-container">
+						<div className="delete-card comment-btn" onClick={handleDelete}>
+							<i class="fa-regular fa-trash-alt"></i>
+							Delete card
+						</div>
+						<div className={`move-card comment-btn`} onClick={() => { openMenu(); setHidden(!hidden); }}>
+							<i class="fa-solid fa-arrow-right"></i>
+							Move
+						</div>
 					</div>
-				</div>
+					<div ref={ulRef} className={`${className}`}>
+						<div className="move-list__container">
+							<>
+							{hidden && (
+								<div className="destination">
+									<p>Move to list...</p>
+									<div className="list-options">
+										{lists.map((list) => {
+											if (hidden && list.id) {
+												return (
+													<div
+														className={`move-lists`}
+														onClick={() => handleListUpdate(list.id)}
+													>
+														{list.name}
+													</div>
+												);
+											} else {
+												return null;
+											}
+										})}
+									</div>
+								</div>
+							)}
+							</>
+						</div>
+					</div>
 			</div>
 			{/* <div className="additions">
 				<div onClick={handleDelete}>

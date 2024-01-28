@@ -289,3 +289,52 @@ hr {
   cursor: pointer;
   box-shadow: 0 0 5px #ff0000;
 }
+
+.move-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #5c05ad;
+  color: #ede1e1;
+  margin: 10px auto 0;
+  text-align: center;
+}
+
+.move-card:hover {
+  background-color: #450680;
+  cursor: pointer;
+  box-shadow: 0 0 5px #6608bf;
+}
+
+.move-list__container {
+  justify-content: space-between;
+  max-width: 600px;;
+  justify-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.move-lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #ad8305;
+  color: #ede1e1;
+  margin: 5px 5px;
+  text-align: center;
+}
+
+.move-lists:hover {
+  background-color: #806806;
+  cursor: pointer;
+  box-shadow: 0 0 5px #bfa008;
+}

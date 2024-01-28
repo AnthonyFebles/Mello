@@ -141,11 +141,13 @@ export const updateCardThunk =
 
 			if (res.ok) {
 				const editedCard = await res.json();
+				console.log(editedCard, "edited card")
 				dispatch(updateCard(editedCard));
 				return editedCard;
 			}
 		} catch (error) {
 			const res = await error.json();
+			console.log(res, "error")
 			throw res;
 		}
 	};

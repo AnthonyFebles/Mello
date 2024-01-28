@@ -24,6 +24,13 @@ def seed_lists():
     toDo3 = List(board_id=3, name="To-Do")
 
     work3 = List(board_id=3, name="Work")
+    
+    groceries4 = List(board_id=4, name="Inside Chores")
+
+    toDo4 = List(board_id=4, name="Outside Chores")
+
+    work4 = List(board_id=4, name="Done")
+    
 
 
     db.session.add(groceries)
@@ -36,6 +43,10 @@ def seed_lists():
     db.session.add(groceries2)
     db.session.add(toDo2)
     db.session.add(work2)
+    db.session.add(groceries4)
+    db.session.add(toDo4)
+    db.session.add(work4)
+    
 
     db.session.commit()
 

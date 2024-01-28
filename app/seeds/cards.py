@@ -33,6 +33,33 @@ def seed_cards():
     tenth = Card(
         listId="4", name="Airbnb", description="4 card"
     )
+    eleventh = Card(
+        listId="11", name="Clean Litter Box", description="Somebody's gotta do it"
+    )
+    card12 = Card(
+        listId="11", name="Take Out The Trash", description="Somebody's gotta do it"
+    )
+    card13 = Card(
+        listId="11", name="Fold Laundry", description="Somebody's gotta do it"
+    )
+    card14 = Card(
+        listId="12", name="Put the Trash Out", description="Somebody's gotta do it"
+    )
+    card15 = Card(
+        listId="12", name="Mow The Lawn", description="Somebody's gotta do it"
+    )
+    card16 = Card(
+        listId="12", name="Touch Grass", description="Good for you"
+    )
+    card17 = Card(
+        listId="11", name="Mop The Floor", description="Somebody's gotta do it"
+    )
+    card18 = Card(
+        listId="13", name="Watch Lord of The Rings Trilogy", description="Director's Cut"
+    )
+    card19 = Card(
+        listId="13", name="Wash Clothes", description="Somebody's gotta do it"
+    )
 
     db.session.add(first)
     db.session.add(second)
@@ -44,6 +71,15 @@ def seed_cards():
     db.session.add(eighth)
     db.session.add(ninth)
     db.session.add(tenth)
+    db.session.add(eleventh)
+    db.session.add(card12)
+    db.session.add(card13)
+    db.session.add(card14)
+    db.session.add(card15)
+    db.session.add(card16)
+    db.session.add(card17)
+    db.session.add(card18)
+    db.session.add(card19)
     db.session.commit()
 
 

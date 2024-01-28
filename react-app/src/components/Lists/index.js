@@ -148,7 +148,7 @@ const List = (boardColor) => {
 				modalComponent={<ListForm board_id={id} />}
 			/>
 			<div className={`lists__group ${listGroup}`}>
-				{listsArr.toReversed().map((list) => (
+				{listsArr.map((list) => (
 					<div className={`list ${listColor}`} key={list.id}>
 						<div>
 							<h2 className={listNameColor}>{list.name}</h2>

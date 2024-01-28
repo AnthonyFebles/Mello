@@ -15,6 +15,7 @@ import { readLists } from "../../store/lists";
 export default function CommentModal({
 	boardId,
 	cardId,
+	listId,
 	listName,
 	cardName,
 	cardDesc,
@@ -32,6 +33,7 @@ export default function CommentModal({
 	const dispatch = useDispatch();
 	const [name, setName] = useState(cardName);
 	const [description, setDescription] = useState(cardDesc);
+	const [list, setList] = useState(listId)
 	const [clicked, setClicked] = useState(false);
 	const [clicked2, setClicked2] = useState(false);
 	const [editorState, setEditorState] = useState(() =>

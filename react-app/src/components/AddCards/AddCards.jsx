@@ -24,6 +24,7 @@ export default function AddCards({ card, list, id }) {
             <CommentModal
               cardName={card.name}
               listName={list.name}
+              listId={list.id}
               boardId={id}
               cardId={card.id}
               cardDesc={card.description}

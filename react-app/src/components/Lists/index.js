@@ -12,9 +12,9 @@ import { readLists } from "../../store/lists";
 
 import CommentModal from "../CommentModal/CommentModal";
 import UpdateDelete from "../DeleteUpdate";
-import AddCards from "../AddCards";
 import "./Cards.css";
 import Cards from "./Cards";
+import AddCards from "../AddCards/AddCards";
 
 const List = (boardColor) => {
 	const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const List = (boardColor) => {
 			listGroup = "imageTwo__list__group"
 			listColor = "imageTwo__lists"
             break;
-                
+
         case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
 			listImage = 'imageSix__image'
 			nameColor = "imageThree__Component_name_color"
@@ -70,20 +70,20 @@ const List = (boardColor) => {
 			listNameColor = "imageFour__list__name"
 			listGroup = "imageFour__list__group"
 			listColor = "imageFour__lists"
-            
+
             break;
-        
+
         case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
-    
+
 			listImage = 'imageThree__image'
 			nameColor = "imageFive__list__Component_name_color"
 			listHeadColor = "imageFive__list__head"
 			listNameColor = "imageFive__list__name"
 			listGroup = "imageFive__list__group"
 			listColor = "imageFive__lists"
-        
+
             break;
-        
+
         case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
 			listImage = 'imageFive__image'
 			nameColor = "imageSix__list__Component_name_color"
@@ -91,7 +91,7 @@ const List = (boardColor) => {
 			listNameColor = "imageSix__list__name"
 			listGroup = "imageSix__list__group"
 			listColor = "imageSix__lists"
-			
+
             break;
         default:
             listImage = 'default_image';
@@ -100,7 +100,7 @@ const List = (boardColor) => {
            listNameColor = 'default_list__name';
             listColor = 'default_lists'
             listGroup = 'default_list__group'
-            
+
     }
 
 	if (listsArr.length > 1) {
@@ -161,23 +161,24 @@ const List = (boardColor) => {
 							<h3>
 								{list.cards ? (
 									list.cards.toReversed().map((card) => {
-										return (
-											<div className="card__container" key={card.id}>
-												<OpenModalButton
-													buttonText={card.name}
-													modalComponent={
-														<CommentModal
-															cardName={card.name}
-															listName={list.name}
-															boardId={id}
-															cardId={card.id}
-															cardDesc={card.description}
-															cardComments={card.comments}
-														/>
-													}
-												></OpenModalButton>
-											</div>
-										);
+										return <AddCards card={card} list={list} />;
+										// return (
+										// 	<div className="card__container" key={card.id}>
+										// 		<OpenModalButton
+										// 			buttonText={card.name}
+										// 			modalComponent={
+										// 				<CommentModal
+										// 					cardName={card.name}
+										// 					listName={list.name}
+										// 					boardId={id}
+										// 					cardId={card.id}
+										// 					cardDesc={card.description}
+										// 					cardComments={card.comments}
+										// 				/>
+										// 			}
+										// 		></OpenModalButton>
+										// 	</div>
+										// );
 									})
 								) : (
 									<div></div>
@@ -185,11 +186,6 @@ const List = (boardColor) => {
 							</h3>
 						</div>
 						<Cards listId={list.id} boardId={id} />
-						<OpenModalButton
-							buttonText={<i class="fa-solid fa-plus"></i>}
-							className={"new__card__modal-button icon"}
-							modalComponent={<AddCards listId={list.id} boardId={id} />}
-						/>
 						<UpdateDelete
 							info={{
 								board_id: id,

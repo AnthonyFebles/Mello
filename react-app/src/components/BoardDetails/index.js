@@ -18,7 +18,7 @@ const CurrentBoard = () => {
 		dispatch(loadDetails(id));
 	}, [dispatch, id]);
 
-	if (!sessionUser) return history.push("/");
+	if (!sessionUser) return <>{history.push("/")}</>;
 
 	return (
 		<div className="header">

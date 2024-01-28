@@ -145,6 +145,7 @@ const List = (boardColor) => {
 		<div className={`lists__container ${listImage}`}>
 			<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
 			<OpenModalButton
+				className={'create_list_button'}
 				buttonText="Create A List"
 				onButtonClick={closeMenu}
 				modalComponent={<ListForm board_id={id} />}

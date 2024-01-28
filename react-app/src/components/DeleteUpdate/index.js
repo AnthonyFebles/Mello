@@ -44,6 +44,7 @@ const UpdateDelete = (info) => {
 				<OpenModalButton
 					buttonText="Edit List"
 					onButtonClick={closeMenu}
+					className={'create_list_button'}
 					modalComponent={
 						<UpdateList
 							info={{
@@ -58,6 +59,7 @@ const UpdateDelete = (info) => {
 				<OpenModalButton
 					buttonText="Delete List"
 					onButtonClick={closeMenu}
+					className={'create_list_button'}
 					modalComponent={
 						<DeleteIt
 							info={{

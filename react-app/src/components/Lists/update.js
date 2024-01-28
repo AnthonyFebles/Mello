@@ -45,11 +45,8 @@ const UpdateList = (info) => {
 		<div>
 			<form onSubmit={handleSubmit} className="list_form_container">
 				<p>{errors.name}</p>
-				<section>
-					<label for={name}>
-						{" "}
-						Name for list {errors.name}
 						<input
+							className="list_form_input"
 							type="text"
 							value={name}
 							onChange={handleName}
@@ -57,9 +54,7 @@ const UpdateList = (info) => {
 							placeholder={list_name}
 							required
 						/>
-					</label>
-				</section>
-				<button type="submit" className="submitButton">
+				<button type="submit" className="submitButton2">
 					{" "}
 					Update List
 				</button>

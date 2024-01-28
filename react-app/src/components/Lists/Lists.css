@@ -8,13 +8,14 @@
 
 
 .create_list_button{
-    background-color: #161515;
+    background-color: #13618d;
     border-radius: 5px;
     color: white;
-    border-bottom: 1px solid whitesmoke;
-    background: none;
     border: none;
     cursor: pointer;
+    margin-left: 18px;
+    width: 150px;
+    height: 36px;
 }
 
 .create_list_button:hover {
@@ -105,7 +106,7 @@ height: 100vh;
 }
 .list__head{
 
-   margin-left: 10px;
+   margin-left: 18px;
    margin-bottom: 15px;
    padding-top: -15px;
 
@@ -171,3 +172,106 @@ height: 100vh;
     width: 65%;
     z-index: 5;
  }
+
+.new-list-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.new-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-list p {
+    margin: 0 0 0 5px;
+    font-size: 14px;
+}
+
+.submitButton {
+    margin-left: 10px;
+}
+
+.list_form_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_form_input {
+    /* border: 1px solid red; */
+    width: 70%;
+}
+
+.submitButton {
+    border: none;
+    cursor: pointer;
+    background-color: #e16f4e;
+    color: white;
+    height: 27px;
+    border-radius: 5px;
+    width: 80px;
+    font-size: 14px;
+}
+
+.submitButton2 {
+    border: none;
+    cursor: pointer;
+    background-color: #e16f4e;
+    color: white;
+    height: 27px;
+    border-radius: 5px;
+    width: 120px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.submitButton:hover {
+    background-color: #656565;
+}
+
+.deleteContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteContainer h2 {
+    margin: 0;
+    color: #e6e6fa;
+    font-size: 23px;
+}
+.deleteContainer p {
+    margin: 0 0 10px 0;
+    color: #e6e6fa;
+}
+
+.yes-btn {
+    border: none;
+    background-color: #529752;
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.yes-btn:hover {
+    background-color: #3f743f;
+}
+
+.no-btn {
+    border: none;
+    background-color: #c84242;
+    width: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-btn:hover {
+    background-color: #a63b3b;
+}

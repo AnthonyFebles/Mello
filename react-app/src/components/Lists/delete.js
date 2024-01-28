@@ -41,11 +41,11 @@ const DeleteIt = (info) => {
 	}
 	return (
 		<div className="deleteContainer">
-			<h1>Confirm Delete</h1>
+			<h2>Confirm Delete</h2>
 			<p>Are you sure you would like to delete this list </p>
 			<div>
-				<button onClick={handle_delete}>Yes</button>
-				<button onClick={closeModal}>No</button>
+				<button className="yes-btn" onClick={handle_delete}>Yes</button>
+				<button className="no-btn" onClick={closeModal}>No</button>
 			</div>
 		</div>
 	);

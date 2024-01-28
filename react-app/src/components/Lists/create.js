@@ -50,23 +50,17 @@ const ListForm = (info) => {
 		<div>
 			<form onSubmit={handleSubmit} className="list_form_container">
 				{errors && <p>{errors.errors}</p>}
-				<section>
-					<label for={name}>
-						{" "}
-						Name for list
-						<input
-							type="text"
-							value={name}
-							onChange={handleName}
-							name="name"
-							placeholder="List Name"
-							required
-						/>
-					</label>
-				</section>
+				<input
+					className="list_form_input"
+					type="text"
+					value={name}
+					onChange={handleName}
+					name="name"
+					placeholder="Enter list title..."
+					required
+				/>
 				<button type="submit" className="submitButton">
-					{" "}
-					Create List
+					Add list
 				</button>
 			</form>
 		</div>

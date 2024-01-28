@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
 import "./CommentModal.css";
@@ -20,20 +20,25 @@ export default function CommentModal({
 	cardName,
 	cardDesc,
 	cardComments,
-	cards
+	cards,
 }) {
 	const card = cardId;
 	const id = boardId;
 
-	console.log('CARDS', cards);
-	console.log('CARDSSSSSSSS', cards.id);
+	// console.log('CARDS', cards);
+	// console.log('CARDSSSSSSSS', cards.id);
 
 	const { closeModal } = useModal();
+
+	const lists = useSelector((state) => {
+		return Object.values(state.lists);
+	});
 
 	const dispatch = useDispatch();
 	const [name, setName] = useState(cardName);
 	const [description, setDescription] = useState(cardDesc);
-	const [list, setList] = useState(listId)
+	const [list, setList] = useState(listId);
+	const [showMenu, setShowMenu] = useState(false);
 	const [clicked, setClicked] = useState(false);
 	const [clicked2, setClicked2] = useState(false);
 	const [editorState, setEditorState] = useState(() =>
@@ -49,6 +54,16 @@ export default function CommentModal({
 	const payload = {
 		name,
 		description,
+		listId: list,
+	};
+
+	const ulRef = useRef();
+
+	const closeMenu = () => setShowMenu(false);
+
+	const openMenu = () => {
+		if (showMenu) return;
+		setShowMenu(true);
 	};
 
 	const handleDelete = async (e) => {
@@ -58,7 +73,7 @@ export default function CommentModal({
 			closeModal();
 			await dispatch(readLists(id));
 		} catch (error) {
-			console.log('hi');
+			console.log("hi");
 			alert(error);
 		}
 	};
@@ -66,6 +81,26 @@ export default function CommentModal({
 	const handleNameChange = (e) => {
 		e.preventDefault();
 		setName(e.target.value);
+	};
+
+	console.log(list, "list");
+
+	const handleListUpdate = async (listId) => {
+		setList(listId);
+		closeMenu();
+
+		const payload = {
+			name,
+			description,
+			listId: listId,
+		};
+
+		try {
+			await dispatch(updateCardThunk(cardId, payload));
+			dispatch(readLists(id));
+		} catch (error) {
+			alert(error);
+		}
 	};
 
 	const handleNameUpdate = async (e) => {
@@ -146,6 +181,8 @@ export default function CommentModal({
 	const onHighlightClick2 = () => {
 		setEditorState2(RichUtils.toggleInlineStyle(editorState2, "HIGHLIGHT"));
 	};
+
+	const className = showMenu ? "" : " hidden";
 
 	useEffect(() => {
 		dispatch(readLists(parseInt(id)));
@@ -293,7 +330,13 @@ export default function CommentModal({
 						</div>
 					</div>
 				</div>
-				{!clicked2 && (<><br /><br /><br /></>)}
+				{!clicked2 && (
+					<>
+						<br />
+						<br />
+						<br />
+					</>
+				)}
 				{clicked2 && (
 					<>
 						<button onClick={handleSubmit} className="save-2">
@@ -306,8 +349,29 @@ export default function CommentModal({
 					.reverse()
 					.map((comment) => (
 						<UserComment key={comment.id} comment={comment} />
-				))}
-				<div className="delete-card" onClick={handleDelete}>Delete card</div>
+					))}
+				<div className="delete-card" onClick={handleDelete}>
+					Delete card
+				</div>
+				<div className={`move-card`} onClick={openMenu}>
+					<i class="fa-solid fa-arrow-right"></i>
+					Move
+				</div>
+				<div ref={ulRef} className={`${className}`}>
+					<div className="move-list__container">
+						{lists.map((list) => {
+							if (list.id)
+								return (
+									<div
+										className={`move-lists`}
+										onClick={() => handleListUpdate(list.id)}
+									>
+										{list.name}
+									</div>
+								);
+						})}
+					</div>
+				</div>
 			</div>
 			{/* <div className="additions">
 				<div onClick={handleDelete}>

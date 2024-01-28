@@ -24,7 +24,7 @@ const List = (boardColor) => {
 	const lists = useSelector((state) => state.lists);
 	const listsArr = Object.values(lists);
 	const color = boardColor.boardColor;
-	console.log(boardColor.boardColor);
+	//console.log(boardColor.boardColor);
 
 	//! Color stuff
 	let nameColor;

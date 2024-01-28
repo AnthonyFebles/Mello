@@ -38,8 +38,6 @@ export default function CommentModal({
 		EditorState.createEmpty()
 		);
 
-
-	console.log('HIDDEN', hidden);
 	const lists = useSelector((state) => {
 		return Object.values(state.lists);
 	});
@@ -80,9 +78,7 @@ export default function CommentModal({
 		e.preventDefault();
 		setName(e.target.value);
 	};
-
-	console.log(list, "list");
-
+	
 	const handleListUpdate = async (listId) => {
 		setList(listId);
 		closeMenu();

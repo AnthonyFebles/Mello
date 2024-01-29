@@ -45,11 +45,15 @@ def create_card(boardId, listId):
 @login_required
 def update_card(boardId, listId, cardId):
     card = Card.query.get(cardId)
+    print('HELLLLLLO', request.get_json())
+    print('COLOR', request.json.get('background_color'))
+
 
     if card:
         card.name = request.json.get("name", card.name)
         card.description = request.json.get("description", card.description)
         card.listId = request.json.get("listId", card.listId)
+        card['background_color'] = request.json.get("background_color", card['background_color'])
 
         db.session.commit()
 

@@ -12,6 +12,7 @@ class Card(db.Model):
     listId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('lists.id')), nullable=False)
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(255), nullable=True)
+    background_color = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
@@ -36,6 +37,7 @@ class Card(db.Model):
             'listId': self.listId,
             'name': self.name,
             'description': self.description,
+            'background_color': self.background_color,
             # 'users': [self_user.to_dict() for self_user in self.users],
             'comments': [comment.to_dict() for comment in self.comments],
         }

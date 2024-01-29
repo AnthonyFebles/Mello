@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import OpenModalButton from '../OpenModalButton'
 import CommentModal from '../CommentModal/CommentModal'
 import './AddCards.css'
 
 export default function AddCards({ card, list, id }) {
   const [cover, setCover] = useState(false)
+  // useEffect(() => {
+  //   console.log(card);
+  // }, [card])
 
   return (
     <>
@@ -29,7 +32,8 @@ export default function AddCards({ card, list, id }) {
               cardId={card.id}
               cardDesc={card.description}
               cardComments={card.comments}
-              cards={card}
+              setCover={setCover}
+              cardInfo={card}
             />
           }
         />

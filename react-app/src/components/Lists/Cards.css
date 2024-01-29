@@ -70,8 +70,8 @@
 }
 .new-card-name::placeholder,
 .new-card-description::placeholder {
-  color: #3a3a3a;
-  font-size: 14px;
+  color: #959595;
+  font-size: 12px;
 }
 
 .cancel-containers {

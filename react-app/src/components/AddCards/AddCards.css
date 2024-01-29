@@ -1,7 +1,10 @@
 .card-cover {
+  display: absolute;
   width: 96%;
   height: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-bottom: none;
+  background-color: red;
   margin: 0 auto 0 auto;
   border-radius: 5px 5px 0 0;
 }

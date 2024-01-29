@@ -12,16 +12,7 @@ import { deleteCardThunk, updateCardThunk } from "../../store/cards";
 import { useModal } from "../../context/Modal";
 import { readLists } from "../../store/lists";
 
-export default function CommentModal({
-	boardId,
-	cardId,
-	listId,
-	listName,
-	cardName,
-	cardDesc,
-	cardComments,
-	cards,
-}) {
+export default function CommentModal({boardId, cardId, listId, listName, cardName, cardDesc, cardComments, setCover, cardInfo}) {
 	const dispatch = useDispatch();
 	const { closeModal } = useModal();
 	const [name, setName] = useState(cardName);
@@ -41,6 +32,9 @@ export default function CommentModal({
 	const lists = useSelector((state) => {
 		return Object.values(state.lists);
 	});
+
+	console.log('LISTS', lists);
+
 
 	const card = cardId;
 	const id = boardId;
@@ -78,7 +72,7 @@ export default function CommentModal({
 		e.preventDefault();
 		setName(e.target.value);
 	};
-	
+
 	const handleListUpdate = async (listId) => {
 		setList(listId);
 		closeMenu();
@@ -183,6 +177,13 @@ export default function CommentModal({
 		dispatch(getCommentsByCardThunk(cardId));
 	}, [dispatch, cardId, id]);
 
+	async function testClick() {
+		setCover(true);
+		cardInfo['background_color'] = 'red';
+		console.log('CARDINFO', cardInfo);
+		await dispatch(updateCardThunk(cardId, cardInfo));
+	}
+
 	return (
 		<div className="commentModal">
 			<div className="commentModal-body">
@@ -198,6 +199,7 @@ export default function CommentModal({
 							className="title-input"
 						/>
 						<p>In list: {listName}</p>
+						<button onClick={testClick}>Test</button>
 					</div>
 				</div>
 				<div className="description">

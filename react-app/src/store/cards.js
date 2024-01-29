@@ -123,7 +123,9 @@ const updateCard = (updatedCard) => {
 
 export const updateCardThunk =
 	(cardId, updatedCardInfo) => async (dispatch) => {
-		try {
+		console.log("UPDATED CARD INFO", updatedCardInfo);
+		console.log('JSON', JSON.stringify(updatedCardInfo))
+
 			// Request method for Editing
 			const requestMethod = {
 				method: "PUT",
@@ -140,16 +142,16 @@ export const updateCardThunk =
 			);
 
 			if (res.ok) {
+				console.log('Hi', await res.clone().text())
 				const editedCard = await res.json();
-				console.log(editedCard, "edited card")
+				console.log("EDITED CARD", editedCard
+				);
 				dispatch(updateCard(editedCard));
 				return editedCard;
+			} else {
+				console.log('HTTP error', res.status);
+				console.log('Response text:', await res.text());
 			}
-		} catch (error) {
-			const res = await error.json();
-			console.log(res, "error")
-			throw res;
-		}
 	};
 
 //! Delete an Existing Card

@@ -23,3 +23,7 @@
 .spotify-modal button:hover {
   cursor: pointer;
 }
+
+.fa-circle-play {
+  margin-right: 15px;
+}

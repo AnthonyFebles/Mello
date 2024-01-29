@@ -1,38 +1,40 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
-import UpdateList from "./update";
+
 import "./Lists.css";
+
 import { useParams } from "react-router-dom";
-import Card from "../Cards";
+
 import ListForm from "./create";
-import DeleteIt from "./delete";
+
 import { readLists } from "../../store/lists";
-import { getCardsThunk } from "../../store/cards";
+
 import CommentModal from "../CommentModal/CommentModal";
 import UpdateDelete from "../DeleteUpdate";
-import AddCards from "../AddCards";
-import './Cards.css'
+import "./Cards.css";
 import Cards from "./Cards";
+import AddCards from "../AddCards/AddCards";
 
 const List = (boardColor) => {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const { id } = useParams();
 	const [isLoading, setIsLoading] = useState(true);
 	const [showMenu, setShowMenu] = useState(false);
 	const lists = useSelector((state) => state.lists);
 	const listsArr = Object.values(lists);
-    const color  = boardColor.boardColor;
+	const color = boardColor.boardColor;
+	//console.log(boardColor.boardColor);
 
-    //! Color stuff
-    let nameColor;
-    let listImage;
-    let listHeadColor;
-    let listNameColor;
-    let listGroup;
-    let listColor;
-  
-    switch (color) {
+	//! Color stuff
+	let nameColor;
+	let listImage;
+	let listHeadColor;
+	let listNameColor;
+	let listGroup;
+	let listColor;
+
+	switch (color) {
         case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
 			listImage = "imageOne__image"
 			 nameColor = "imageOne__Component_name_color"
@@ -51,7 +53,7 @@ const List = (boardColor) => {
 			listGroup = "imageTwo__list__group"
 			listColor = "imageTwo__lists"
             break;
-                
+
         case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
 			listImage = 'imageSix__image'
 			nameColor = "imageThree__Component_name_color"
@@ -68,20 +70,20 @@ const List = (boardColor) => {
 			listNameColor = "imageFour__list__name"
 			listGroup = "imageFour__list__group"
 			listColor = "imageFour__lists"
-            
+
             break;
-        
+
         case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
-    
+
 			listImage = 'imageThree__image'
 			nameColor = "imageFive__list__Component_name_color"
 			listHeadColor = "imageFive__list__head"
 			listNameColor = "imageFive__list__name"
 			listGroup = "imageFive__list__group"
 			listColor = "imageFive__lists"
-        
+
             break;
-        
+
         case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
 			listImage = 'imageFive__image'
 			nameColor = "imageSix__list__Component_name_color"
@@ -89,7 +91,7 @@ const List = (boardColor) => {
 			listNameColor = "imageSix__list__name"
 			listGroup = "imageSix__list__group"
 			listColor = "imageSix__lists"
-			
+
             break;
         default:
             listImage = 'default_image';
@@ -98,14 +100,12 @@ const List = (boardColor) => {
            listNameColor = 'default_list__name';
             listColor = 'default_lists'
             listGroup = 'default_list__group'
-            
+
     }
 
-	
-	if (Object.values(listsArr[0]).length > 1) {
+	if (listsArr.length > 1) {
 		listsArr.pop();
 	}
-	
 
 	useEffect(() => {
 		dispatch(readLists(parseInt(id))).then(() => setIsLoading(false));
@@ -125,15 +125,13 @@ const List = (boardColor) => {
 	if (isLoading)
 		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
-	
-
 	if (Object.values(listsArr[0]).length < 1)
 		return (
 			<div className={`lists__container ${listImage}`}>
-				<h1> Lists</h1>
-                <OpenModalButton
-                    className={"create_list_button"}
-					buttonText="Create A List"
+				<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
+				<OpenModalButton
+					className={"create_list_button"}
+					buttonText="Add another list"
 					onButtonClick={closeMenu}
 					modalComponent={<ListForm board_id={id} />}
 				/>
@@ -142,71 +140,32 @@ const List = (boardColor) => {
 		);
 	return (
 		<div className={`lists__container ${listImage}`}>
-			<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
+			{/* <h1 className={`list__head ${listHeadColor}`}> Lists</h1> */}
 			<OpenModalButton
-				buttonText="Create A List"
 				className={'create_list_button'}
+				buttonText={
+					<div className="new-list-container">
+						<div className="new-list">
+							<i class="fa-regular fa-plus"></i>
+							<p>Add another list</p>
+						</div>
+					</div>
+				}
 				onButtonClick={closeMenu}
 				modalComponent={<ListForm board_id={id} />}
 			/>
 			<div className={`lists__group ${listGroup}`}>
-				{listsArr.toReversed().map((list) => (
+				{listsArr.map((list) => (
 					<div className={`list ${listColor}`} key={list.id}>
-						{/* <NavLink to={`/boards/${parseInt(id)}/lists/${parseInt(id)}`}>Edit List</NavLink> */}
-						{/* <OpenModalButton
-							buttonText="Edit List"
-							onButtonClick={closeMenu}
-							modalComponent={
-								<UpdateList
-									info={{
-										board_id: id,
-										list_id: list.id,
-										list_name: list.name,
-									}}
-								/>
-							}
-						/>
-
-						<OpenModalButton
-							buttonText="Delete List"
-							onButtonClick={closeMenu}
-							modalComponent={
-								<DeleteIt
-									info={{
-										board_id: id,
-										list_id: list.id,
-										list_name: list.name,
-									}}
-								/>
-							}
-                        /> */}
-                        <div>
-                            <h2 className={listNameColor}>{list.name}</h2>
-                        </div>
-
-
+						<div>
+							<h2 className={listNameColor}>{list.name}</h2>
+						</div>
 
 						<div className="cards">
 							<h3>
 								{list.cards ? (
-									list.cards.toReversed().map((card) => {
-										return (
-											<div className="card__container" key={card.id}>
-												<OpenModalButton
-													buttonText={card.name}
-													modalComponent={
-														<CommentModal
-															cardName={card.name}
-															listName={list.name}
-															boardId={id}
-															cardId={card.id}
-															cardDesc={card.description}
-															cardComments={card.comments}
-														/>
-													}
-												></OpenModalButton>
-											</div>
-										);
+									list.cards.map((card) => {
+										return <AddCards card={card} list={list} id={id} />;
 									})
 								) : (
 									<div></div>
@@ -214,16 +173,13 @@ const List = (boardColor) => {
 							</h3>
 						</div>
 						<Cards listId={list.id} boardId={id} />
-							<OpenModalButton
-								buttonText={<i class="fa-solid fa-plus"></i>}
-								className={"new__card__modal-button icon"}
-								modalComponent={<AddCards listId={list.id} boardId={id} />}
-							/>
-							<UpdateDelete info={{
+						<UpdateDelete
+							info={{
 								board_id: id,
 								list_id: list.id,
 								list_name: list.name,
-							}} />
+							}}
+						/>
 					</div>
 				))}
 			</div>

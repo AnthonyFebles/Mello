@@ -1,0 +1,34 @@
+.card-cover {
+  width: 96%;
+  height: 20px;
+  border: 1px solid black;
+  margin: 0 auto 0 auto;
+  border-radius: 5px 5px 0 0;
+}
+
+.card_container button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 36px;
+  width: 96%;
+  padding: 8px 12px 4px;
+  background-color: #845c71;
+  border-radius: 9px;
+  border: none;
+  color: #e6e6fa;
+  margin: 0px auto 10px auto;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card_container button:hover {
+  background-color: #e6e6fa;
+  box-shadow: 0px 0px 8px 1px#b9809e;
+  color: #845c71;
+}
+
+.fa-message {
+  margin-right: 5px;
+}

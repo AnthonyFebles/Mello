@@ -40,7 +40,7 @@
 }
 
 .signup-form-container input {
-    width: calc(100% - 1rem);
+    width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
@@ -88,8 +88,8 @@
 /*! Sign Up Image */
 
 .cozy-img img {
-    max-width: 550px; 
-    max-height: 550px; 
+    max-width: 580px; 
+    max-height: 580px; 
     object-fit: contain; 
     border-radius: 30%;
     margin-left: 100px;

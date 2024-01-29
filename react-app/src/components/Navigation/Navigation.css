@@ -15,7 +15,7 @@ header {
   align-items: center;
 }
 
-.nav-bar button {
+.nav-bar .create {
   margin-left: 20px;
   width: 68px;
   height: 32px;
@@ -26,6 +26,14 @@ header {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.mello {
+  border: none;
+  font-weight: bold;
+  font-size: 22px;
+  color: #e6e6fa;
+  background: none;
 }
 
 .nav-bar .Submit {

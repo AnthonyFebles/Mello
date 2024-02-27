@@ -37,7 +37,7 @@ const UpdateDelete = (info) => {
 	return (
 		<>
 			<button onClick={openMenu} className={"icon"}>
-				<i class="fa-solid fa-bars"></i>
+			<i class="fa-solid fa-ellipsis"></i>
 			</button>
 
 			<div ref={ulRef} className={`${className} list-modal-container`}>

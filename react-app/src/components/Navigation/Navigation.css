@@ -26,6 +26,11 @@ header {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-bar .create:hover {
+  background-color: #1a628f;
 }
 
 .mello {

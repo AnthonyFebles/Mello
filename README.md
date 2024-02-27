@@ -26,3 +26,12 @@ Mello, a Trello clone, is a web-based, kanban-style, list-making application wit
 * [API Backend Routes](https://github.com/AnthonyFebles/Mello/wiki/API-Backend-Routes)
 * [Schema](https://github.com/AnthonyFebles/Mello/wiki/Schema)
 * [User Stories](https://github.com/AnthonyFebles/Mello/wiki/User-Stories)
+* [Run The App Locally](https://github.com/AnthonyFebles/Mello/wiki/Run-The-App-Locally)
+
+# ScreenShots 
+<img src="https://i.imgur.com/AdmOmCe.png" />
+<img src="https://i.imgur.com/oRAa45p.gif" />
+<img src="https://i.imgur.com/cZKYSaR.png" />
+<img src="https://i.imgur.com/E08o8Lz.png" />
+<img src="https://i.imgur.com/VsRquDM.png" />
+<img src="https://i.imgur.com/rDf2GLy.gif" />

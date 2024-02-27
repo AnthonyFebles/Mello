@@ -4,22 +4,61 @@ from sqlalchemy.sql import text
 
 def seed_cards():
     first = Card(
-        listId="1", name="first", description="1 card"
+        listId="1", name="Pass group project", description="1 card"
     )
     second = Card(
-        listId="1", name="second", description="1 card part 2"
+        listId="1", name="Graduate", description="1 card part 2"
     )
     third = Card(
-        listId="2", name="third", description="2 card"
+        listId="1", name="Get a job", description="This is a card description"
     )
     fourth = Card(
-        listId="2", name="fourth", description="2 card the second coming"
+        listId="1", name="Become rich!", description="$$$$$$$$$"
     )
     fifth = Card(
-        listId="3", name="fifth", description="3 card"
+        listId="2", name="Why is Render being dumb?", description="2 card"
     )
-    six = Card(
-        listId="3", name="sixth", description="3 card electric kazoo"
+    sixth = Card(
+        listId="2", name="What about second breakfast?", description="2 card the second coming"
+    )
+    seventh = Card(
+        listId="3", name="People", description="3 card"
+    )
+    eighth = Card(
+        listId="3", name="Information", description="3 card electric kazoo"
+    )
+    ninth = Card(
+        listId="3", name="Tools", description="3 card"
+    )
+    tenth = Card(
+        listId="4", name="Airbnb", description="4 card"
+    )
+    eleventh = Card(
+        listId="11", name="Clean Litter Box", description="Somebody's gotta do it"
+    )
+    card12 = Card(
+        listId="11", name="Take Out The Trash", description="Somebody's gotta do it"
+    )
+    card13 = Card(
+        listId="11", name="Fold Laundry", description="Somebody's gotta do it"
+    )
+    card14 = Card(
+        listId="12", name="Put the Trash Out", description="Somebody's gotta do it"
+    )
+    card15 = Card(
+        listId="12", name="Mow The Lawn", description="Somebody's gotta do it"
+    )
+    card16 = Card(
+        listId="12", name="Touch Grass", description="Good for you"
+    )
+    card17 = Card(
+        listId="11", name="Mop The Floor", description="Somebody's gotta do it"
+    )
+    card18 = Card(
+        listId="13", name="Watch Lord of The Rings Trilogy", description="Director's Cut"
+    )
+    card19 = Card(
+        listId="13", name="Wash Clothes", description="Somebody's gotta do it"
     )
 
     db.session.add(first)
@@ -27,7 +66,20 @@ def seed_cards():
     db.session.add(third)
     db.session.add(fourth)
     db.session.add(fifth)
-    db.session.add(six)
+    db.session.add(sixth)
+    db.session.add(seventh)
+    db.session.add(eighth)
+    db.session.add(ninth)
+    db.session.add(tenth)
+    db.session.add(eleventh)
+    db.session.add(card12)
+    db.session.add(card13)
+    db.session.add(card14)
+    db.session.add(card15)
+    db.session.add(card16)
+    db.session.add(card17)
+    db.session.add(card18)
+    db.session.add(card19)
     db.session.commit()
 
 

@@ -1,8 +1,8 @@
 #modal-content {
   position: absolute;
   top: 50px;
-  width: 768px;
-  background: linear-gradient(to right, #0a162c, rgb(104, 154, 171));
+  width: 636px;
+  background: linear-gradient(to right, #0a162c, rgb(0 84 113));
   border-radius: 15px;
   padding: 20px;
 }
@@ -16,8 +16,8 @@
 .title-input {
   font-size: 25px;
   width: fit-content;
-  margin-left: 14px;
   height: 28px;
+  color: #e6e6fa;
 }
 
 .title-input:hover {
@@ -48,13 +48,6 @@
   position: relative;
   top: 16px;
 }
-
-/* .title-information h3 {
-  color: #e6e6fa;
-  font-size: 23px;
-  font-weight: 600;
-  margin: 0;
-} */
 
 .title-information p {
   color: #e6e6fa;
@@ -274,4 +267,109 @@ hr {
   background-color: transparent;
   color: #e6e6fa;
   border: none;
+}
+
+.comment-btn-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin-top: 7px;
+}
+
+.comment-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 33px;
+  width: 120px;
+  border: 1px solid black;
+}
+
+.comment-btn i {
+  margin-right: 8px;
+}
+
+.delete-card {
+  border-radius: 5px;
+  background-color: #dc3939;
+  color: #252525;
+  text-align: center;
+}
+
+.delete-card:hover {
+  background-color: #b82b2b;
+  cursor: pointer;
+  box-shadow: 0 0 5px #ff0000;
+}
+
+.move-card {
+  border-radius: 5px;
+  background-color: #5c05ad;
+  color: #ede1e1;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.move-card:hover {
+  background-color: #450680;
+  cursor: pointer;
+  box-shadow: 0 0 5px #6608bf;
+}
+
+.move-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.destination {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.destination p {
+  color: #e6e6fa;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.list-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.move-list__container {
+  justify-content: center;
+  max-width: 600px;
+  justify-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.move-lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 121px;
+  border-radius: 5px;
+  background-color: #ad8305;
+  color: #ede1e1;
+  margin: 5px 5px;
+  text-align: center;
+}
+
+.move-lists:hover {
+  background-color: #806806;
+  cursor: pointer;
+  box-shadow: 0 0 5px #bfa008;
 }

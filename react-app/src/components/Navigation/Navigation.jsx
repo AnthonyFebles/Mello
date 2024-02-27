@@ -95,15 +95,15 @@ function Navigation({ isLoaded }) {
 				/>
 			</nav>
 			<div className="right_side_nav">
-				<span className="search-container">
+				{/* <span className="search-container">
 					<input type="search" name="search" id="search" placeholder="Search" />
 					<i
 						className="fa-sharp fa-solid fa-magnifying-glass search-icon"
 						style={{ color: "#e6e6fa71" }}
 					></i>
-				</span>
+				</span> */}
 				<SpotifyPlayer />
-				<i
+				{/* <i
 					onClick={() => alert("Feature coming soon...")}
 					class="fa-regular fa-bell fa-lg"
 					style={{ color: "#e6e6fa71" }}
@@ -112,7 +112,7 @@ function Navigation({ isLoaded }) {
 					onClick={() => alert("Feature coming soon...")}
 					class="fa-regular fa-circle-question fa-lg"
 					style={{ color: "#e6e6fa71" }}
-				></i>
+				></i> */}
 				{isLoaded && <ProfileButton user={sessionUser} />}
 			</div>
 		</header>

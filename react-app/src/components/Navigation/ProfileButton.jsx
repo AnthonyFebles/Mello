@@ -63,13 +63,13 @@ function ProfileButton({ user }) {
 								<p>{user.email}</p>
 							</div>
 						</div>
-						<li onClick={() => alert("Feature coming soon...")}>
+						{/* <li onClick={() => alert("Feature coming soon...")}>
 							Switch accounts
 						</li>
 						<li onClick={() => alert("Feature coming soon...")}>
 							Manage account
 						</li>
-						<hr />
+						<hr /> */}
 						<li onClick={handleLogout}>Logout</li>
 					</>
 				) : (

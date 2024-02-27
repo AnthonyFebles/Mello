@@ -36,7 +36,7 @@ function SpotifyPlayer() {
 			</Modal>
 			<i
 				onClick={handleClick}
-				class="fa-regular fa-circle-play fa-lg"
+				class="fa-regular fa-circle-play fa-xl"
 				style={{ color: "#e6e6fa71" }}
 			></i>
 		</>

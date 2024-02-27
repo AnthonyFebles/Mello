@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
 import "./CommentModal.css";
@@ -15,50 +15,86 @@ import { readLists } from "../../store/lists";
 export default function CommentModal({
 	boardId,
 	cardId,
+	listId,
 	listName,
 	cardName,
 	cardDesc,
 	cardComments,
+	cards,
 }) {
-	const card = cardId;
-	const id = boardId;
-
-	const { closeModal } = useModal();
-
 	const dispatch = useDispatch();
+	const { closeModal } = useModal();
 	const [name, setName] = useState(cardName);
 	const [description, setDescription] = useState(cardDesc);
+	const [list, setList] = useState(listId);
+	const [showMenu, setShowMenu] = useState(false);
 	const [clicked, setClicked] = useState(false);
 	const [clicked2, setClicked2] = useState(false);
+	const [hidden, setHidden] = useState(false);
 	const [editorState, setEditorState] = useState(() =>
 		EditorState.createEmpty()
-	);
-	const [editorState2, setEditorState2] = useState(() =>
+		);
+		const [editorState2, setEditorState2] = useState(() =>
 		EditorState.createEmpty()
-	);
+		);
 
+	const lists = useSelector((state) => {
+		return Object.values(state.lists);
+	});
+
+	const card = cardId;
+	const id = boardId;
 	const comments = useSelector((state) => state.comments) || cardComments;
 	const userId = useSelector((state) => state.session.user.id);
 
 	const payload = {
 		name,
 		description,
+		listId: list,
+	};
+
+	const ulRef = useRef();
+
+	const closeMenu = () => setShowMenu(false);
+
+	const openMenu = () => {
+		if (showMenu) return;
+		setShowMenu(true);
 	};
 
 	const handleDelete = async (e) => {
 		e.preventDefault();
 		try {
-			await dispatch(deleteCardThunk(card)).then(() => closeModal());
+			await dispatch(deleteCardThunk(card));
+			closeModal();
 			await dispatch(readLists(id));
 		} catch (error) {
+			console.log("hi");
 			alert(error);
-		} finally {
 		}
 	};
 
 	const handleNameChange = (e) => {
 		e.preventDefault();
 		setName(e.target.value);
+	};
+	
+	const handleListUpdate = async (listId) => {
+		setList(listId);
+		closeMenu();
+
+		const payload = {
+			name,
+			description,
+			listId: listId,
+		};
+
+		try {
+			await dispatch(updateCardThunk(cardId, payload));
+			dispatch(readLists(id));
+		} catch (error) {
+			alert(error);
+		}
 	};
 
 	const handleNameUpdate = async (e) => {
@@ -109,8 +145,6 @@ export default function CommentModal({
 		await dispatch(readLists(id));
 	};
 
-	function showDetails() {}
-
 	const onBoldClick = () => {
 		setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"));
 	};
@@ -142,6 +176,8 @@ export default function CommentModal({
 		setEditorState2(RichUtils.toggleInlineStyle(editorState2, "HIGHLIGHT"));
 	};
 
+	const className = showMenu ? "" : " hidden";
+
 	useEffect(() => {
 		dispatch(readLists(parseInt(id)));
 		dispatch(getCommentsByCardThunk(cardId));
@@ -153,7 +189,7 @@ export default function CommentModal({
 				<div className="cardTitle">
 					<i class="fa-solid fa-table fa-xl" style={{ color: "#e6e6fa" }}></i>
 					<div className="title-information">
-						<i class="fa-regular fa-pen-to-square"></i>
+						{/* <i class="fa-regular fa-pen-to-square"></i> */}
 						<input
 							type="text"
 							value={name}
@@ -206,7 +242,7 @@ export default function CommentModal({
 							editorState={editorState}
 							onChange={setEditorState}
 							onBlur={handleDescriptionUpdate}
-							placeholder={description}
+							placeholder={description ? description : "Add a description..."}
 							customStyleMap={{
 								BOLD: { fontWeight: "bold" },
 								ITALIC: { fontStyle: "italic" },
@@ -236,7 +272,7 @@ export default function CommentModal({
 							></i>
 							<p>Comments</p>
 						</div>
-						<button onClick={showDetails}>Show Details</button>
+						{/* <button onClick={showDetails}>Show Details</button> */}
 					</div>
 				</div>
 				<div className="comment-container">
@@ -308,8 +344,49 @@ export default function CommentModal({
 					.map((comment) => (
 						<UserComment key={comment.id} comment={comment} />
 					))}
+					<div className="comment-btn-container">
+						<div className="delete-card comment-btn" onClick={handleDelete}>
+							<i class="fa-regular fa-trash-alt"></i>
+							Delete card
+						</div>
+						<div className={`move-card comment-btn`} onClick={() => { openMenu(); setHidden(!hidden); }}>
+							<i class="fa-solid fa-arrow-right"></i>
+							Move
+						</div>
+					</div>
+					<div ref={ulRef} className={`${className}`}>
+						<div className="move-list__container">
+							<>
+							{hidden && (
+								<div className="destination">
+									<p>Move to list...</p>
+									<div className="list-options">
+										{lists.map((list) => {
+											if (hidden && list.id) {
+												return (
+													<div
+														className={`move-lists`}
+														onClick={() => handleListUpdate(list.id)}
+													>
+														{list.name}
+													</div>
+												);
+											} else {
+												return null;
+											}
+										})}
+									</div>
+								</div>
+							)}
+							</>
+						</div>
+					</div>
 			</div>
-			<div className="additions">
+			{/* <div className="additions">
+				<div onClick={handleDelete}>
+					<i class="fa-solid fa-archive" style={{ color: "#2c2a31" }}></i>
+					Delete
+				</div>
 				<p>Add to card</p>
 				<div className="additions-container">
 					<div onClick={() => alert("Feature coming soon")}>
@@ -355,16 +432,12 @@ export default function CommentModal({
 						<i class="fa-solid fa-columns" style={{ color: "#2c2a31" }}></i>
 						Make Template
 					</div>
-					<div onClick={handleDelete}>
-						<i class="fa-solid fa-archive" style={{ color: "#2c2a31" }}></i>
-						Delete
-					</div>
 					<div onClick={() => alert("Feature coming soon")}>
 						<i class="fa-solid fa-share" style={{ color: "#2c2a31" }}></i>
 						Share
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

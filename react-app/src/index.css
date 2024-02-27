@@ -20,24 +20,30 @@
 
 @keyframes colors {
 	25% {
-		border-top: 16px solid #e48a35;
+		border-top: 10px solid #e48a35;
+		
 	}
 	50% {
-		border-top: 16px solid #eaa82e;
+		border-top: 20px solid #eaa82e;
+		
 	}
 	75% {
-		border-top: 16px solid #3417aa;
+		border-top: 25px solid #3417aa;
+		
 	}
 	100% {
 		border-top: 16px solid #4b50ca;
+		
 	}
 }
 
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
+    
 	}
 	100% {
 		transform: rotate(360deg);
+    
 	}
 }

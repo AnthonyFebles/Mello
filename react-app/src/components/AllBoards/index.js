@@ -63,7 +63,7 @@ const AllBoards = () => {
 	if (boards.length > 0)
 		return (
 			<>
-				
+				{/* <div class="loader"></div> */}
 				<div className="outer__boards__container">
 					<div className="boards__container">
 						<NewBoard />

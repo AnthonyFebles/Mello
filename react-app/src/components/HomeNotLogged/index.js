@@ -45,6 +45,7 @@ function HomeNotLogged() {
 
 	return (
 		<>
+			
 			<div className="container">
 				<div className="mello-image ld ld-swim">
 					<img src="/melloimage.png" alt="mello img" />

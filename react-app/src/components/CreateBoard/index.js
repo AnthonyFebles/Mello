@@ -63,7 +63,11 @@ const NewBoard = () => {
 	}, [dispatch, showMenu]);
 	//////////////////////////////
 	if (isLoading)
-		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+		return (
+			<div className="outer__boards__container">
+				<div class="loader"></div>
+			</div>
+		);
 	return (
 		<Testing
 			ulClassName={ulClassName}

@@ -37,7 +37,9 @@ const DeleteIt = (info) => {
 	}, [dispatch]);
 
 	if (isLoading) {
-		<img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+		<div className="outer__boards__container">
+			<div class="loader"></div>
+		</div>;
 	}
 	return (
 		<div className="deleteContainer">

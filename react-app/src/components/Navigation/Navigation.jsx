@@ -66,8 +66,8 @@ function Navigation({ isLoaded }) {
 		return () => document.removeEventListener("click", closeMenu);
 	}, [dispatch, color, showMenu]);
 
-	if (isLoading)
-		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+	// if (isLoading)
+	// 	return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
 	return (
 		<header>

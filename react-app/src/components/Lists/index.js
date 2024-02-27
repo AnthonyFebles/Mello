@@ -123,7 +123,11 @@ const List = (boardColor) => {
 	const closeMenu = () => setShowMenu(false);
 
 	if (isLoading)
-		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+		return (
+			<div className="outer__boards__container">
+				<div class="loader"></div>
+			</div>
+		);
 
 	if (Object.values(listsArr[0]).length < 1)
 		return (

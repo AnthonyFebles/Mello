@@ -54,11 +54,16 @@ const AllBoards = () => {
 	};
 
 	if (isLoading)
-		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+		return (
+			<div className="outer__boards__container">
+				<div class="loader"></div>
+			</div>
+		);
 
 	if (boards.length > 0)
 		return (
 			<>
+				
 				<div className="outer__boards__container">
 					<div className="boards__container">
 						<NewBoard />

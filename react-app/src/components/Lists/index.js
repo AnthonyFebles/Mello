@@ -153,10 +153,13 @@ const List = (boardColor) => {
 							<h2 className={listNameColor}>{list.name}</h2>
 						</div>
 
+							{console.log('BEGIN')}
 						<div className="cards">
 							{list.cards ? (
 								list.cards.map((card) => {
-									return <AddCards card={card} list={list} id={id} />;
+									console.log('CARD FROM MAP', card);
+									console.log('ID FROM MAP', id);
+									return <AddCards card={card} list={list} boardId={id} cardId={card.id} />;
 								})
 							) : (
 								<div></div>
@@ -173,19 +176,19 @@ const List = (boardColor) => {
 						/>
 					</div>
 				))}
-			<OpenModalButton
-				className={'create_list_button'}
-				buttonText={
-					<div className="new-list-container">
-						<div className="new-list">
-							<i class="fa-regular fa-plus"></i>
-							<p>Add another list</p>
+				<OpenModalButton
+					className={'create_list_button'}
+					buttonText={
+						<div className="new-list-container">
+							<div className="new-list">
+								<i class="fa-regular fa-plus"></i>
+								<p>Add another list</p>
+							</div>
 						</div>
-					</div>
-				}
-				onButtonClick={closeMenu}
-				modalComponent={<ListForm board_id={id} />}
-			/>
+					}
+					onButtonClick={closeMenu}
+					modalComponent={<ListForm board_id={id} />}
+				/>
 			</div>
 		</div>
 	);

@@ -20,7 +20,8 @@ export default function CommentModal({
 	cardName,
 	cardDesc,
 	cardComments,
-	cards,
+	coverColor,
+	setCoverColor,
 }) {
 	const dispatch = useDispatch();
 	const { closeModal } = useModal();
@@ -78,7 +79,7 @@ export default function CommentModal({
 		e.preventDefault();
 		setName(e.target.value);
 	};
-	
+
 	const handleListUpdate = async (listId) => {
 		setList(listId);
 		closeMenu();
@@ -353,6 +354,10 @@ export default function CommentModal({
 							<i class="fa-solid fa-arrow-right"></i>
 							Move
 						</div>
+						<button onClick={() => {
+							setCoverColor('white')
+							dispatch(updateCardThunk(boardId, listId, cardId, { cover: `${coverColor}` }))
+						}}>Change Color</button>
 					</div>
 					<div ref={ulRef} className={`${className}`}>
 						<div className="move-list__container">

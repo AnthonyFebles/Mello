@@ -50,6 +50,7 @@ def update_card(boardId, listId, cardId):
         card.name = request.json.get("name", card.name)
         card.description = request.json.get("description", card.description)
         card.listId = request.json.get("listId", card.listId)
+        card.cover = request.json.get("cover", card.cover)
 
         db.session.commit()
 

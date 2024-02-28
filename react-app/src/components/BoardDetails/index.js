@@ -22,9 +22,12 @@ const CurrentBoard = () => {
 
 	return (
 		<div className="header">
-			<h1>{name}</h1>
+			{/* <h1>{name}</h1> */}
 			<List boardColor={color} />
 		</div>
+		// <>
+		// 	<List boardColor={color} />
+		// </>
 	);
 };
 export default CurrentBoard;

@@ -75,7 +75,14 @@
 .imageTwo__lists{ border: 3px solid #BE5EAD;
     background-color: rgba(188, 97, 128, 0.5);}
 
-
+/* !image 3 */
+.imageThree__image {  background-image: url('../../resources/images/colorThree.svg');}
+.imageThree__component_name_color{color: #3D3789 ; }
+.imageThree__list__head{color: #443797;}
+.imageThree__list__name{color: #122768  ;}
+/* .imageThree__list__group{border: 4px solid #122768 ;} */
+.imageThree__lists{ border: 10px solid #BE5EAD;
+    background-color: rgba(188, 97, 128, 0.5);}
 
 /* !image 4 */
 .imageFour__image {background-image: url('../../resources/images/colorFour.svg');}
@@ -118,11 +125,9 @@ height: 100vh;
     margin-left: 5px
 }
 .list__head{
-
    margin-left: 18px;
    margin-bottom: 15px;
    padding-top: -15px;
-
 }
 
 .lists__group {

@@ -95,6 +95,7 @@ function Navigation({ isLoaded }) {
 					errors={errors}
 				/>
 			</nav>
+			
 			<div className="right_side_nav">
 				{/* <span className="search-container">
 					<input type="search" name="search" id="search" placeholder="Search" />

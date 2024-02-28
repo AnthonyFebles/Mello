@@ -37,15 +37,14 @@ const List = (boardColor) => {
 	switch (color) {
         case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
 			listImage = "imageOne__image"
-			 nameColor = "imageOne__Component_name_color"
-			 listHeadColor = "imageOne__head"
-			 listNameColor = "imageOne__list__name"
-			 listGroup = "imageOne__list__group"
-			 listColor = "imageOne__lists"
+			nameColor = "imageOne__Component_name_color"
+			listHeadColor = "imageOne__head"
+			listNameColor = "imageOne__list__name"
+			listGroup = "imageOne__list__group"
+			listColor = "imageOne__lists"
             break;
 
-            case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
-
+    	case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
 			listImage = 'imageTwo__image'
 			nameColor = "imageTwo__Component_name_color"
 			listHeadColor = "imageTwo__list__head"
@@ -93,11 +92,12 @@ const List = (boardColor) => {
 			listColor = "imageSix__lists"
 
             break;
+
         default:
             listImage = 'default_image';
             nameColor = 'default_component_name_color';
-           listHeadColor = 'default_list__head';
-           listNameColor = 'default_list__name';
+			listHeadColor = 'default_list__head';
+			listNameColor = 'default_list__name';
             listColor = 'default_lists'
             listGroup = 'default_list__group'
 
@@ -144,7 +144,7 @@ const List = (boardColor) => {
 		);
 	return (
 		<div className={`lists__container ${listImage}`}>
-			{/* <h1 className={`list__head ${listHeadColor}`}> Lists</h1> */}
+			<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
 			<OpenModalButton
 				className={'create_list_button'}
 				buttonText={

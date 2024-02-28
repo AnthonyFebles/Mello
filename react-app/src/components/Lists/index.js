@@ -140,54 +140,37 @@ const List = (boardColor) => {
 					modalComponent={<ListForm board_id={id} />}
 				/>
 				<div className="lists__group"></div>
-				
-					
-						
-							
+
+
+
+
 							<h1 style={{ color: "white", textAlign: "center" }}>
 								You don't have any lists yet...you can create one by clicking
 								the "Add another list" button on the top left!
 							</h1>
-							
-					
-				
-				
-				
+
+
+
+
+
 			</div>
 		);
 	return (
 		<div className={`lists__container ${listImage}`}>
-			<h1 className={`list__head ${listHeadColor}`}> Lists</h1>
-			<OpenModalButton
-				className={'create_list_button'}
-				buttonText={
-					<div className="new-list-container">
-						<div className="new-list">
-							<i class="fa-regular fa-plus"></i>
-							<p>Add another list</p>
-						</div>
-					</div>
-				}
-				onButtonClick={closeMenu}
-				modalComponent={<ListForm board_id={id} />}
-			/>
+			{/* <h1 className={`list__head ${listHeadColor}`}> Lists</h1> */}
+
 			<div className={`lists__group ${listGroup}`}>
 				{listsArr.map((list) => (
 					<div className={`list ${listColor}`} key={list.id}>
 						<div>
 							<h2 className={listNameColor}>{list.name}</h2>
 						</div>
-
 						<div className="cards">
-							<h3>
-								{list.cards ? (
-									list.cards.map((card) => {
-										return <AddCards card={card} list={list} id={id} />;
-									})
-								) : (
-									<div></div>
-								)}
-							</h3>
+							<>
+								{list?.cards && Object.values(list?.cards).map((card) => {
+									return <AddCards key={card.id} list={list} boardId={id} cardId={card.id} />;
+								})}
+							</>
 						</div>
 						<Cards listId={list.id} boardId={id} />
 						<UpdateDelete
@@ -199,6 +182,19 @@ const List = (boardColor) => {
 						/>
 					</div>
 				))}
+				<OpenModalButton
+					className={'create_list_button'}
+					buttonText={
+						<div className="new-list-container">
+							<div className="new-list">
+								<i class="fa-regular fa-plus"></i>
+								<p>Add another list</p>
+							</div>
+						</div>
+					}
+					onButtonClick={closeMenu}
+					modalComponent={<ListForm board_id={id} />}
+				/>
 			</div>
 		</div>
 	);

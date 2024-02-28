@@ -208,7 +208,7 @@
 .name_date {
   display: flex;
   flex-direction: row;
-  align-items:flex-end;
+  align-items: flex-end;
   margin: 5px;
 }
 
@@ -260,7 +260,7 @@ hr {
 }
 
 .edit-delete-btn span {
-  color : #e6e6fa;
+  color: #e6e6fa;
 }
 
 .title-input {
@@ -270,6 +270,7 @@ hr {
 }
 
 .comment-btn-container {
+  position: relative;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -316,6 +317,48 @@ hr {
   background-color: #450680;
   cursor: pointer;
   box-shadow: 0 0 5px #6608bf;
+}
+
+.add-cover-btn {
+  border-radius: 5px;
+  background-color: #ad8305;
+  color: #ede1e1;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.add-cover-btn:hover {
+  background-color: #806806;
+  cursor: pointer;
+  box-shadow: 0 0 5px #bfa008;
+}
+
+.color-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -265px;
+  right: 0px;
+  width: 192px;
+  background-color: #282e34;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.color-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.color-option:hover {
+  /* cursor: pointer; */
+  filter: brightness(1.2);
 }
 
 .move-options {

@@ -140,6 +140,19 @@ const List = (boardColor) => {
 					modalComponent={<ListForm board_id={id} />}
 				/>
 				<div className="lists__group"></div>
+				
+					
+						
+							
+							<h1 style={{ color: "white", textAlign: "center" }}>
+								You don't have any lists yet...you can create one by clicking
+								the "Add another list" button on the top left!
+							</h1>
+							
+					
+				
+				
+				
 			</div>
 		);
 	return (

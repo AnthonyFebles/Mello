@@ -4,12 +4,12 @@ import CommentModal from '../CommentModal/CommentModal'
 import './AddCards.css'
 
 export default function AddCards({ card, list, id }) {
-  const [cover, setCover] = useState(false)
+  console.log('CARD', card);
 
   return (
     <>
-      { cover && <div className="card-cover" />}
-      <div className="card_container" key={card.id}>
+      { card.cover && <div className="card-cover" style={{ backgroundColor: `${card.cover}`}} />}
+      <div className={`card_container ${card.cover ? 'cover' : ''}`} key={card.id}>
         <OpenModalButton
           buttonText={
             <>
@@ -32,6 +32,7 @@ export default function AddCards({ card, list, id }) {
               cards={card}
             />
           }
+          style={card.cover ? {borderTopLeftRadius: 0, borderTopRightRadius: 0} : {} }
         />
       </div>
     </>

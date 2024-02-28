@@ -145,6 +145,34 @@ const List = (boardColor) => {
 	return (
 		<div className={`lists__container ${listImage}`}>
 			{/* <h1 className={`list__head ${listHeadColor}`}> Lists</h1> */}
+
+			<div className={`lists__group ${listGroup}`}>
+				{listsArr.map((list) => (
+					<div className={`list ${listColor}`} key={list.id}>
+						<div>
+							<h2 className={listNameColor}>{list.name}</h2>
+						</div>
+
+						<div className="cards">
+							{list.cards ? (
+								list.cards.map((card) => {
+									return <AddCards card={card} list={list} id={id} />;
+								})
+							) : (
+								<div></div>
+							)}
+
+						</div>
+						<Cards listId={list.id} boardId={id} />
+						<UpdateDelete
+							info={{
+								board_id: id,
+								list_id: list.id,
+								list_name: list.name,
+							}}
+						/>
+					</div>
+				))}
 			<OpenModalButton
 				className={'create_list_button'}
 				buttonText={
@@ -158,34 +186,6 @@ const List = (boardColor) => {
 				onButtonClick={closeMenu}
 				modalComponent={<ListForm board_id={id} />}
 			/>
-			<div className={`lists__group ${listGroup}`}>
-				{listsArr.map((list) => (
-					<div className={`list ${listColor}`} key={list.id}>
-						<div>
-							<h2 className={listNameColor}>{list.name}</h2>
-						</div>
-
-						<div className="cards">
-							<h3>
-								{list.cards ? (
-									list.cards.map((card) => {
-										return <AddCards card={card} list={list} id={id} />;
-									})
-								) : (
-									<div></div>
-								)}
-							</h3>
-						</div>
-						<Cards listId={list.id} boardId={id} />
-						<UpdateDelete
-							info={{
-								board_id: id,
-								list_id: list.id,
-								list_name: list.name,
-							}}
-						/>
-					</div>
-				))}
 			</div>
 		</div>
 	);

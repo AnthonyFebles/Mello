@@ -154,7 +154,7 @@ const List = (boardColor) => {
 						</div>
 						<div className="cards">
 							<>
-								{Object.values(list?.cards).map((card) => {
+								{list?.cards && Object.values(list?.cards).map((card) => {
 									return <AddCards key={card.id} list={list} boardId={id} cardId={card.id} />;
 								})}
 							</>

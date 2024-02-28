@@ -4,16 +4,16 @@ from sqlalchemy.sql import text
 
 def seed_cards():
     first = Card(
-        listId="1", name="Pass group project", description="1 card", cover='blue'
+        listId="1", name="Pass group project", description="1 card", cover='#226e4f'
     )
     second = Card(
-        listId="1", name="Graduate", description="1 card part 2", cover='red'
+        listId="1", name="Graduate", description="1 card part 2", cover='#7f5f01'
     )
     third = Card(
-        listId="1", name="Get a job", description="This is a card description", cover='green'
+        listId="1", name="Get a job", description="This is a card description", cover='#a64800'
     )
     fourth = Card(
-        listId="1", name="Become rich!", description="$$$$$$$$$", cover='yellow'
+        listId="1", name="Become rich!", description="$$$$$$$$$", cover='#ae2f24'
     )
     fifth = Card(
         listId="2", name="Why is Render being dumb?", description="2 card"

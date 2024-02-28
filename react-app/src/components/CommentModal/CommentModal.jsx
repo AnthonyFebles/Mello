@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
-import "draft-js/dist/Draft.css";
-import "./CommentModal.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	createCommentThunk,
-	getCommentsByCardThunk,
-} from "../../store/comments";
+import { createCommentThunk, getCommentsByCardThunk } from "../../store/comments";
 import UserComment from "../UserComment/UserComment";
 import { deleteCardThunk, updateCardThunk } from "../../store/cards";
 import { useModal } from "../../context/Modal";
 import { readLists } from "../../store/lists";
+import "draft-js/dist/Draft.css";
+import "./CommentModal.css";
 
 export default function CommentModal({
 	boardId,
@@ -32,6 +29,8 @@ export default function CommentModal({
 	const [clicked, setClicked] = useState(false);
 	const [clicked2, setClicked2] = useState(false);
 	const [hidden, setHidden] = useState(false);
+	const [dropdownOpen, setDropdownOpen] = useState(false);
+	const colorOptions = ['#226e4f', '#7f5f01', '#a64800', '#ae2f24', '#5e4db2', '#0056cc', '#206a84', '#4d6b1f', '#953d73', '#596773' ]
 	const [editorState, setEditorState] = useState(() =>
 		EditorState.createEmpty()
 		);
@@ -354,10 +353,26 @@ export default function CommentModal({
 							<i class="fa-solid fa-arrow-right"></i>
 							Move
 						</div>
-						<button onClick={() => {
-							setCoverColor('white')
-							dispatch(updateCardThunk(boardId, listId, cardId, { cover: `${coverColor}` }))
-						}}>Change Color</button>
+						<button className="add-cover-btn comment-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
+							<i class="fa-solid fa-image" style={{ color: "#e6e6fa" }}></i>
+							Cover
+						</button>
+						{dropdownOpen && (
+							<div className="color-dropdown">
+								{colorOptions.map(color => (
+									<div
+										key={color}
+										className="color-option"
+										style={{ backgroundColor: color }}
+										onClick={() => {
+											setCoverColor(color);
+											dispatch(updateCardThunk(boardId, listId, cardId, { cover: color }));
+											setDropdownOpen(false);
+										}}
+									/>
+								))}
+							</div>
+						)}
 					</div>
 					<div ref={ulRef} className={`${className}`}>
 						<div className="move-list__container">

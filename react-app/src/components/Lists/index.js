@@ -152,19 +152,12 @@ const List = (boardColor) => {
 						<div>
 							<h2 className={listNameColor}>{list.name}</h2>
 						</div>
-
-							{console.log('BEGIN')}
 						<div className="cards">
-							{list.cards ? (
-								list.cards.map((card) => {
-									console.log('CARD FROM MAP', card);
-									console.log('ID FROM MAP', id);
-									return <AddCards card={card} list={list} boardId={id} cardId={card.id} />;
-								})
-							) : (
-								<div></div>
-							)}
-
+							<>
+								{Object.values(list?.cards).map((card) => {
+									return <AddCards key={card.id} list={list} boardId={id} cardId={card.id} />;
+								})}
+							</>
 						</div>
 						<Cards listId={list.id} boardId={id} />
 						<UpdateDelete

@@ -94,6 +94,24 @@ const ListsReducer = (state = initState, action) => {
 			newObj.lists[id] = action.payload;
 			return newObj;
 
+		//! Original
+		// case READ:
+		// 	const allLists = {};
+		// 	if (action.list) {
+		// 		const list = action.list.lists;
+		// 		//Return an empty state(instead of the current state) if there are no lists to load
+		// 		if (!list) return { ...initState };
+		// 		list.forEach((list) => {
+		// 			allLists[list.id] = list;
+		// 		});
+		// 		return {
+		// 			...allLists,
+		// 			...initState,
+		// 		};
+		// 	} else {
+		// 		return { ...initState, lists: { ...allLists } };
+		// 	}
+
 		case READ:
 			const allLists = {};
 			if (action.list) {
@@ -101,7 +119,11 @@ const ListsReducer = (state = initState, action) => {
 				//Return an empty state(instead of the current state) if there are no lists to load
 				if (!list) return { ...initState };
 				list.forEach((list) => {
-					allLists[list.id] = list;
+					const normalizedCards = {};
+					list.cards.forEach(card => {
+						normalizedCards[card.id] = card;
+					});
+					allLists[list.id] = { ...list, cards: normalizedCards };
 				});
 				return {
 					...allLists,
@@ -110,7 +132,6 @@ const ListsReducer = (state = initState, action) => {
 			} else {
 				return { ...initState, lists: { ...allLists } };
 			}
-
 		case UPDATE:
 			const list_id = action.list.id;
 			const new_state = { ...state };

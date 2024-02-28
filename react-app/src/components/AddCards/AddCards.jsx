@@ -7,32 +7,29 @@ import { updateCardThunk } from '../../store/cards'
 
 export default function AddCards({ list, boardId, cardId }) {
   const currentCard = useSelector(
-    (state) => state.lists[boardId].cards[cardId -1],
+    (state) => state.lists[list.id].cards[cardId],
     shallowEqual
   )
 
-  console.log('CURRENT CARE', currentCard, 'CURRENT CARD');
-
   const dispatch = useDispatch()
   const [coverColor, setCoverColor] = useState(currentCard?.cover || '')
-
+  
   useEffect(() => {
     const updateCoverColor = async () => {
       if (coverColor !== currentCard?.cover) {
-        await dispatch(updateCardThunk(boardId, currentCard?.listId, currentCard?.id, { cover: coverColor }))
+        await dispatch(
+          updateCardThunk(boardId, currentCard?.listId, currentCard?.id, {
+            cover: coverColor,
+          })
+        )
       }
     }
 
     updateCoverColor()
   }, [coverColor, dispatch])
 
-
   return (
     <>
-      {/* <button onClick={() => {
-        setCoverColor('purple')
-        dispatch(updateCardThunk(boardId, currentCard?.listId, currentCard?.id, { cover: `${coverColor}` }))
-      }}>Change Color</button> */}
       {coverColor && (
         <div
           className="card-cover"
@@ -40,7 +37,7 @@ export default function AddCards({ list, boardId, cardId }) {
         />
       )}
       <div
-        className={`card_container ${currentCard?.cover ? 'cover' : ''}`}
+        className={`card_container ${coverColor ? 'cover' : ''}`}
         key={currentCard?.id}
       >
         <OpenModalButton

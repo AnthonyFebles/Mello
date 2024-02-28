@@ -152,7 +152,7 @@ const AllBoards = () => {
 					<div className="boards__container">
 						<NewBoard />
 						<h1 style={{ color: "white" }}>
-							You don't have any boards...you should create one the top left
+							You don't have any boards yet...you can create one by clicking the button on the top left!
 						</h1>
 						<div className="boards__group"></div>
 					</div>

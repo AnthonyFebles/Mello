@@ -25,7 +25,7 @@ const List = (boardColor) => {
   const listsArr = Object.values(lists)
   const color = boardColor.boardColor
   const board = useSelector((state) => state.boardDetail)
-	console.log('BOARD', board);
+  const [clicked, setClicked] = useState(false)
 
   //! Color stuff
   let nameColor
@@ -182,7 +182,7 @@ const List = (boardColor) => {
             />
           </div>
         ))}
-        <OpenModalButton
+        <button
           className={'create_list_button'}
           buttonText={
             <div className="new-list-container">
@@ -193,8 +193,15 @@ const List = (boardColor) => {
             </div>
           }
           onButtonClick={closeMenu}
-          modalComponent={<ListForm board_id={id} />}
-        />
+        >
+          {!clicked && (
+            <div className="new-list" onClick={() => setClicked(true)}>
+              <i class="fa-regular fa-plus"></i>
+              <p>Add another list</p>
+            </div>
+          )}
+          {clicked && <ListForm boardId={id} setClicked={setClicked} />}
+        </button>
       </div>
     </div>
   )

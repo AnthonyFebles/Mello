@@ -7,14 +7,15 @@
 } */
 
 .create_list_button {
-  background-color: #13618d40;
+  background-color: #439779a8;
   border-radius: 9px;
   color: white;
   border: none;
   cursor: pointer;
   margin: 10px 0;
   min-width: 266px;
-  height: 44px;
+  height: fit-content;
+  padding: 10px;
 }
 
 #list-modal-container {
@@ -40,9 +41,9 @@
   background-color: #0e4a6c;
 }
 
-.create_list_button:hover {
+/* .create_list_button:hover {
   background-color: #656565;
-}
+} */
 
 /* ? Color classes  */
 /* !default  */
@@ -225,7 +226,7 @@
 }
 
 .list:hover {
-  animation: shake 0.1s;
+  animation: shake 0.08s;
   animation-iteration-count: 1;
 }
 
@@ -306,14 +307,16 @@
 
 .list_form_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .list_form_input {
-  /* border: 1px solid red; */
-  width: 70%;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .submitButton {
@@ -325,6 +328,11 @@
   border-radius: 5px;
   width: 80px;
   font-size: 14px;
+  margin: 0 10px 0 0;
+}
+
+.submitButton:hover {
+  background-color: #ff7c58;
 }
 
 .submitButton2 {
@@ -337,10 +345,6 @@
   width: 120px;
   font-size: 14px;
   margin-left: 10px;
-}
-
-.submitButton:hover {
-  background-color: #656565;
 }
 
 .deleteContainer {
@@ -383,4 +387,20 @@
 
 .no-btn:hover {
   background-color: #a63b3b;
+}
+
+.new-list-btns {
+  display: flex;
+  margin-top: 10px;
+}
+
+.x {
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.x:hover {
+  background-color: #c84242;
 }

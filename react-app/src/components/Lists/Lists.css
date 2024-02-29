@@ -2,12 +2,8 @@
   font-family: 'Coiny', system-ui;
 }
 
-/* .cardClass{
-    overflow: hidden;
-} */
-
 .create_list_button {
-  background-color: #439779a8;
+  background: linear-gradient(to bottom right, #444bd2, #d88c52, #fc5b80);
   border-radius: 9px;
   color: white;
   border: none;
@@ -16,11 +12,45 @@
   min-width: 266px;
   height: fit-content;
   padding: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-.create_list_button:hover {
-  background-color: #3a7e6f;
+.create_list_button::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: inherit;
+  background-color: #010029;
+  z-index: -2;
 }
+
+.create_list_button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 9px;
+  background: linear-gradient(to bottom right, #444bd2, #d88c52, #fc5b80);
+  z-index: -1;
+  transition: 0.1s;
+  transform: scale(0);
+}
+
+.create_list_button:hover::after {
+  z-index: -1;
+  box-shadow: 25px 0 100px #444bd2, -25px 0 100px #fc5b80;
+  transform: scale(1);
+}
+
+/* .create_list_button:hover {
+  background-color: #3a7e6f;
+} */
 
 #list-modal-container {
   display: flex;
@@ -326,7 +356,7 @@
 .submitButton {
   border: none;
   cursor: pointer;
-  background-color: #e16f4e;
+  background-color: #fd5c80;
   color: white;
   height: 27px;
   border-radius: 5px;
@@ -336,7 +366,7 @@
 }
 
 .submitButton:hover {
-  background-color: #ff7c58;
+  background-color: #c44762;
 }
 
 .submitButton2 {
@@ -403,6 +433,7 @@
   background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
+  color: white;
 }
 
 .x:hover {

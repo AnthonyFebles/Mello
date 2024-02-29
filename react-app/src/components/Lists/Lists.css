@@ -12,10 +12,14 @@
   color: white;
   border: none;
   cursor: pointer;
-  margin: 10px 0;
+  margin: 10px 20px 10px 8px;
   min-width: 266px;
   height: fit-content;
   padding: 10px;
+}
+
+.create_list_button:hover {
+  background-color: #3a7e6f;
 }
 
 #list-modal-container {

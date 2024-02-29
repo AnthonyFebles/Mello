@@ -90,10 +90,10 @@
   background-color: #58b968;
   border: none;
   cursor: pointer;
-  color: #433434;
+  color: #2e2424;
   width: 84px;
   height: 32px;
-  border-radius: 12px;
+  border-radius: 5px;
 }
 
 .new-card-btn:hover {

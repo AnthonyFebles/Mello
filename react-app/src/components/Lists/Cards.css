@@ -38,8 +38,9 @@
 .card-form {
   width: 100%;
   border-radius: 15px;
-  background-color: #402c434d;
+  background-color: #22272b;
   padding: 5px 8px;
+  border: 1px solid #6a6a6a;
 }
 
 .card-form-button {
@@ -71,7 +72,7 @@
 }
 .new-card-name::placeholder,
 .new-card-description::placeholder {
-  color: #3a3a3a;
+  color: #3a3a3a80;
   font-size: 14px;
 }
 

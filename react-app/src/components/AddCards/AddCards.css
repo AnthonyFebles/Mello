@@ -11,7 +11,6 @@
 } */
 
 .card_container button {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +18,7 @@
   min-height: 36px;
   width: 96%;
   padding: 8px 12px 4px;
-  background-color: #845c71;
+  background-color: #22272b;
   border-radius: 9px;
   border: none;
   color: #e6e6fa;
@@ -28,15 +27,21 @@
   cursor: pointer;
 }
 
+.card_container button:hover {
+  color: #add8e6;
+  background-color: #33383b;
+}
+
+
 .card_container.cover button {
   border-radius: 0px 0px 9px 9px;
 }
 
-.card_container button:hover {
+/* .card_container button:hover {
   background-color: #e6e6fa;
   box-shadow: 0px 0px 8px 1px#b9809e;
   color: #845c71;
-}
+} */
 
 .fa-message {
   margin-right: 5px;

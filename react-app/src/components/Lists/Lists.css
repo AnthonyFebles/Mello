@@ -219,7 +219,8 @@
 .imageSix__lists {
   /* border: 3px solid #161515; */
   padding: 3px;
-  background-color: rgba(131, 42, 47, 0.5);
+  background-color: #101204;
+  ;
 }
 
 .lists__container {
@@ -259,6 +260,7 @@
   height: -moz-fit-content;
   height: fit-content;
   box-shadow: 0px 0px 8px 0px rgb(255 255 255 / 76%), 0px 0px 20px 0px rgb(255 255 255 / 22%);
+  background-color: #101204;
 }
 
 .preloader {

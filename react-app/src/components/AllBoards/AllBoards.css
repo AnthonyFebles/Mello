@@ -7,14 +7,13 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	background-image: url('../../resources/images/default.svg');
+	background-image: url("../../resources/images/default.svg");
 	border-radius: 8px;
 	background-attachment: absolute;
 	background-size: cover;
-	height: 100vh; 
+	height: 100vh;
 	width: 100vw;
 	overflow-y: auto;
-
 }
 
 .outer__boards__container {
@@ -24,7 +23,7 @@
 }
 
 .boards__board {
-  min-width: 200px;	
+	min-width: 200px;
 	border-radius: 3px;
 	box-sizing: border-box;
 	font-weight: bold;
@@ -38,10 +37,10 @@
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
+	overflow: hidden;
 }
 .boards__board:hover{
-	transform: scale(1.1);
-	box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.01);
+	overflow: hidden;
 }
 
 .boards__group {
@@ -49,8 +48,6 @@
 	flex-wrap: wrap;
 	width: 80%;
 	height: 60%;
-	
-  
 }
 
 .boards__sidebar {
@@ -123,9 +120,14 @@ body {
 	/* background-color: transparent; */
 }
 
-
+.boards__img__navlink {
+	transform: scale(1);
+	border-radius: 4px;
+	transition: transform 0.2s;
+}
 
 .boards__img__navlink:hover {
+	transform: scale(1.1);
 	border-radius: 4px;
 	opacity: 0.9;
 	box-shadow: #000000 0px 0px 20px 0px;
@@ -133,45 +135,43 @@ body {
 
 .fa-ellipsis {
 	padding: 5px;
-  text-align: end;
-  justify-content: end;
-  justify-self: end;
-  align-items: end;
-  color: #dfe1e6;
+	text-align: end;
+	justify-content: end;
+	justify-self: end;
+	align-items: end;
+	color: #dfe1e6;
 }
 
 .fa-ellipsis:hover {
-  background-color: #172b4db3;
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
+	background-color: #172b4db3;
+	width: 100%;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .board-options__button {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 20px;
+	background-color: transparent;
+	border: none;
+	position: absolute;
+	right: 15px;
+	top: 10px;
+	font-size: 20px;
 }
 
 .boards__img__navlink:not(:hover) .board-options__button {
-  display: none;
+	display: none;
 }
 
 .board__options {
-  /* display: none; */
-  z-index: 4;
-  position: absolute;
-  right: -100px;
+	/* display: none; */
+	z-index: 4;
+	position: absolute;
+	right: -100px;
 }
-
-
 
 .board__name {
 	background-color: #6c547b;
-	font-family: 'Silkscreen', sans-serif;
+	font-family: "Silkscreen", sans-serif;
 	position: absolute;
 	color: rgb(255, 255, 255);
 	font-size: 20px;
@@ -188,71 +188,71 @@ a {
 }
 
 .boards__options {
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
 .update__board-dropdown {
-    position: absolute;
-    display: flex;
-    color: white;
-    z-index: 5;
-    background-color: #6c547b;
-    border-radius: 3px;
-    border: solid black 2px;
-    padding: 20px 20px 32px 20px;
-    max-width: 180px;
-    min-width: 180px;
-    width: 20%;
-    flex-shrink: 0;
-    flex-grow: 0;
-    flex-basis: 220px;
-    text-align: center;
-    justify-content: space-around;
+	position: absolute;
+	display: flex;
+	color: white;
+	z-index: 5;
+	background-color: #6c547b;
+	border-radius: 3px;
+	border: solid black 2px;
+	padding: 20px 20px 32px 20px;
+	max-width: 180px;
+	min-width: 180px;
+	width: 20%;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 220px;
+	text-align: center;
+	justify-content: space-around;
 }
 
 /* ! Board Options Styling */
 
 .board__options ul {
-    background-color: #333;
-    border-radius: 4px;
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #333;
+	border-radius: 4px;
+	padding: 0;
+	list-style: none;
+	margin: 0;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .board__options li {
-    color: white;
-    padding: 8px 12px; 
-    font-size: 14px;
-    cursor: pointer;
-    background: none; 
+	color: white;
+	padding: 8px 12px;
+	font-size: 14px;
+	cursor: pointer;
+	background: none;
 }
 
 .board__options li:hover {
-    background-color: #444;
+	background-color: #444;
 }
 
 .board__options li:not(:last-child) {
-    border-bottom: 1px solid #555; 
+	border-bottom: 1px solid #555;
 }
 
 .update__board-button,
 .delete__board-button {
-    display: block;
-    width: 100%; 
-    text-align: left;
-    border: none;
-    color: white; 
-    padding: 8px 12px; 
-    background: none; 
-    cursor: pointer; 
+	display: block;
+	width: 100%;
+	text-align: left;
+	border: none;
+	color: white;
+	padding: 8px 12px;
+	background: none;
+	cursor: pointer;
 }
 
 .update__board-button:hover,
 .delete__board-button:hover {
-    background-color: #444; 
+	background-color: #444;
 }

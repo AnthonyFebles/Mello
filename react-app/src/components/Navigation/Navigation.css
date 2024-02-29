@@ -1,12 +1,12 @@
 header {
   justify-content: space-between;
-  background: radial-gradient(circle, #532545, #0e001d);
-  border-bottom: 1px solid #53254581;
+  background: linear-gradient(to right, #444bd2, #d88c52, #fc5b80);
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0 20px;
   height: 48px !important;
+  border-bottom: 1px solid rgba(230, 230, 250, 0.443);
 }
 
 .nav-bar {
@@ -22,7 +22,7 @@ header {
   border: none;
   border-radius: 5px;
   color: #e6e6fa;
-  background-color: #0f4163;
+  background-color: #fc5c80;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -30,7 +30,7 @@ header {
 }
 
 .nav-bar .create:hover {
-  background-color: #1a628f;
+  background-color: #c94967;
 }
 
 .mello {

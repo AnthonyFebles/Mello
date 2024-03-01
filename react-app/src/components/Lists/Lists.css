@@ -44,7 +44,7 @@
 
 .create_list_button:hover::after {
   z-index: -1;
-  box-shadow: 25px 0 100px #444bd2, -25px 0 100px #fc5b80;
+  box-shadow: 15px 0 30px #444bd2, -15px 0 30px #fc5b80;
   transform: scale(1);
 }
 
@@ -220,7 +220,6 @@
   /* border: 3px solid #161515; */
   padding: 3px;
   background-color: #101204;
-  ;
 }
 
 .lists__container {
@@ -259,7 +258,8 @@
   margin: 10px;
   height: -moz-fit-content;
   height: fit-content;
-  box-shadow: 0px 0px 8px 0px rgb(255 255 255 / 76%), 0px 0px 20px 0px rgb(255 255 255 / 22%);
+  box-shadow: 0px 0px 8px 0px rgb(255 255 255 / 76%),
+    0px 0px 20px 0px rgb(255 255 255 / 22%);
   background-color: #101204;
 }
 

@@ -371,6 +371,7 @@ export default function CommentModal({
 										}}
 									/>
 								))}
+								<button onClick={() => setCoverColor(null)} className="remove-cover">Remove Cover</button>
 							</div>
 						)}
 					</div>

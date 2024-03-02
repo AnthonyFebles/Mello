@@ -317,34 +317,6 @@ hr {
   transform: translateY(-1px);
 }
 
-/* .move-card {
-  border-radius: 5px;
-  background-color: #5c05ad;
-  color: #ede1e1;
-  margin-left: 20px;
-  text-align: center;
-}
-
-.move-card:hover {
-  background-color: #450680;
-  cursor: pointer;
-  box-shadow: 0 0 5px #6608bf;
-} */
-
-/* .add-cover-btn {
-  border-radius: 5px;
-  background-color: #ad8305;
-  color: #ede1e1;
-  margin-left: 20px;
-  text-align: center;
-}
-
-.add-cover-btn:hover {
-  background-color: #806806;
-  cursor: pointer;
-  box-shadow: 0 0 5px #bfa008;
-} */
-
 .color-dropdown {
   display: flex;
   flex-direction: column;
@@ -415,7 +387,6 @@ hr {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 90%;
 }
 
 .move-list__container {

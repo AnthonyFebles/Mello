@@ -184,6 +184,13 @@ export default function CommentModal({
 	}, [dispatch, cardId, id]);
 
 	return (
+		<>
+		{coverColor && (
+			<div
+				className="card-cover-modal"
+				style={{ backgroundColor: `${coverColor}` }}
+			/>
+		)}
 		<div className="commentModal">
 			<div className="commentModal-body">
 				<div className="cardTitle">
@@ -460,5 +467,6 @@ export default function CommentModal({
 				</div>
 			</div> */}
 		</div>
+		</>
 	);
 }

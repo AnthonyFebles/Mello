@@ -6,6 +6,14 @@
   border-radius: 9px 9px 0 0;
 }
 
+.card-cover-modal {
+  width: 634px;
+  height: 75px;
+  margin: -20px -20px 16px -20px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
 /* .card_container {
   border: 1px solid red;
 } */

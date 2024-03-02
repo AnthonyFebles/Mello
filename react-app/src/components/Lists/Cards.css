@@ -22,6 +22,11 @@
   color: #e6e6fa;
 }
 
+.add-card-button:hover {
+  background-color: #e6e6fa;
+  color: #2e2424;
+}
+
 .add-card-button .fa-plus {
   margin: 7px;
 }
@@ -29,10 +34,6 @@
 .add-card-button p {
   margin: 0;
   font-size: 15px;
-}
-
-.add-card-button:hover {
-  box-shadow: 0 0 15px 1px #845c71;
 }
 
 .card-form {

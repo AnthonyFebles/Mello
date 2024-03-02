@@ -22,6 +22,11 @@
   color: #e6e6fa;
 }
 
+.add-card-button:hover {
+  background-color: #e6e6fa;
+  color: #2e2424;
+}
+
 .add-card-button .fa-plus {
   margin: 7px;
 }
@@ -29,17 +34,15 @@
 .add-card-button p {
   margin: 0;
   font-size: 15px;
-}
-
-.add-card-button:hover {
-  box-shadow: 0 0 15px 1px #845c71;
+  color: #aaa;
 }
 
 .card-form {
   width: 100%;
   border-radius: 15px;
-  background-color: #402c434d;
+  background-color: #22272b;
   padding: 5px 8px;
+  border: 1px solid #6a6a6a;
 }
 
 .card-form-button {
@@ -71,7 +74,7 @@
 }
 .new-card-name::placeholder,
 .new-card-description::placeholder {
-  color: #3a3a3a;
+  color: #3a3a3a80;
   font-size: 14px;
 }
 

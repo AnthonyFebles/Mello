@@ -5,6 +5,7 @@
   background: linear-gradient(to right, #0a162c, rgb(0 84 113));
   border-radius: 15px;
   padding: 20px;
+  border: 1px solid #9fd8ff;
 }
 
 .commentModal {
@@ -18,6 +19,7 @@
   width: fit-content;
   height: 28px;
   color: #e6e6fa;
+  width: 100%;
 }
 
 .title-input:hover {
@@ -47,6 +49,7 @@
 .title-information {
   position: relative;
   top: 16px;
+  width: 100%;
 }
 
 .title-information p {
@@ -275,7 +278,7 @@ hr {
   flex-direction: row;
   width: 100%;
   justify-content: center;
-  margin-top: 7px;
+  margin-top: 10px;
 }
 
 .comment-btn {
@@ -292,58 +295,40 @@ hr {
   margin-right: 8px;
 }
 
+.add-cover-btn,
+.move-card,
 .delete-card {
   border-radius: 5px;
-  background-color: #dc3939;
-  color: #252525;
+  background-color: #3080b7;
+  color: #ede1e1;
   text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-right: 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
+.add-cover-btn:hover,
+.move-card:hover,
 .delete-card:hover {
-  background-color: #b82b2b;
-  cursor: pointer;
-  box-shadow: 0 0 5px #ff0000;
-}
-
-.move-card {
-  border-radius: 5px;
-  background-color: #5c05ad;
-  color: #ede1e1;
-  margin-left: 20px;
-  text-align: center;
-}
-
-.move-card:hover {
-  background-color: #450680;
-  cursor: pointer;
-  box-shadow: 0 0 5px #6608bf;
-}
-
-.add-cover-btn {
-  border-radius: 5px;
-  background-color: #ad8305;
-  color: #ede1e1;
-  margin-left: 20px;
-  text-align: center;
-}
-
-.add-cover-btn:hover {
-  background-color: #806806;
-  cursor: pointer;
-  box-shadow: 0 0 5px #bfa008;
+  background-color: #0d4e6e;
+  box-shadow: 0 0 5px #0d4e6e;
+  transform: translateY(-1px);
 }
 
 .color-dropdown {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: -265px;
-  right: 0px;
+  bottom: 0px;
+  right: -121px;
   width: 192px;
   background-color: #282e34;
   border-radius: 5px;
   cursor: pointer;
   z-index: 1;
+  border: 1px solid #9fd8ff96;
 }
 
 .color-option {
@@ -359,6 +344,21 @@ hr {
 .color-option:hover {
   /* cursor: pointer; */
   filter: brightness(1.2);
+}
+
+.remove-cover {
+  margin: 10px auto;
+  background-color: #d5d5d5;
+  width: 95%;
+  border: none;
+  height: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d45848;
+    color: #d5d5d5;
+  }
 }
 
 .move-options {
@@ -383,8 +383,9 @@ hr {
 
 .list-options {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -405,14 +406,17 @@ hr {
   height: 44px;
   width: 121px;
   border-radius: 5px;
-  background-color: #ad8305;
-  color: #ede1e1;
+  background-color: #278453;
+  color: #083900;
   margin: 5px 5px;
   text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .move-lists:hover {
-  background-color: #806806;
+  background-color: #216d44;
+  box-shadow: 0 0 5px #216d44;
+  transform: translateY(-1px);
   cursor: pointer;
-  box-shadow: 0 0 5px #bfa008;
 }

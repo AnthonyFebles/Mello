@@ -31,6 +31,7 @@ export default function CommentModal({
 	const [hidden, setHidden] = useState(false);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const colorOptions = ['#226e4f', '#7f5f01', '#a64800', '#ae2f24', '#5e4db2', '#0056cc', '#206a84', '#4d6b1f', '#953d73', '#596773' ]
+	const [localCoverColor, setLocalCoverColor] = useState(coverColor)
 	const [editorState, setEditorState] = useState(() =>
 		EditorState.createEmpty()
 		);
@@ -56,6 +57,10 @@ export default function CommentModal({
 	const ulRef = useRef();
 
 	const closeMenu = () => setShowMenu(false);
+
+	// useEffect(() => {
+	// 	setLocalCoverColor(coverColor)
+	// }, [coverColor])
 
 	const openMenu = () => {
 		if (showMenu) return;
@@ -185,10 +190,10 @@ export default function CommentModal({
 
 	return (
 		<>
-		{coverColor && (
+		{localCoverColor && (
 			<div
 				className="card-cover-modal"
-				style={{ backgroundColor: `${coverColor}` }}
+				style={{ backgroundColor: `${localCoverColor}` }}
 			/>
 		)}
 		<div className="commentModal">
@@ -373,12 +378,13 @@ export default function CommentModal({
 										style={{ backgroundColor: color }}
 										onClick={() => {
 											setCoverColor(color);
+											setLocalCoverColor(color)
 											dispatch(updateCardThunk(boardId, listId, cardId, { cover: color }));
 											setDropdownOpen(false);
 										}}
 									/>
 								))}
-								<button onClick={() => setCoverColor(null)} className="remove-cover">Remove Cover</button>
+								<button onClick={() => {setCoverColor(null); setLocalCoverColor(null)}} className="remove-cover">Remove Cover</button>
 							</div>
 						)}
 					</div>

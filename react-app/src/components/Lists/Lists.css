@@ -5,7 +5,7 @@
 .create_list_button {
   background: linear-gradient(to top left, #444bd2, #d88c52, #fc5b80);
   border-radius: 9px;
-  color: white;
+  color: #d9d9d9;
   border: none;
   cursor: pointer;
   margin: 10px 20px 10px 16px;
@@ -31,6 +31,7 @@
 .create_list_button::after {
   content: '';
   position: absolute;
+  color: white;
   top: 0;
   right: 0;
   left: 0;
@@ -114,7 +115,6 @@
 .imageSix__list__head,
 .imageFour__list__head {
   color: #fd5c81;
-
 }
 
 .default_list__name,
@@ -257,6 +257,11 @@
 .new-list p {
   margin: 0 0 0 5px;
   font-size: 14px;
+  /* color: #aaa; */
+}
+
+.fa-plus {
+  color: #aaa;
 }
 
 .submitButton {

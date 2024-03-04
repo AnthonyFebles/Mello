@@ -36,83 +36,95 @@ function SignupFormPage() {
 	return (
 		<>
 			<div className="signup-page-container">
+
 				<div className="cozy-img">
 					<img src="/signup.png" alt="sign up img" />
 				</div>
 
-				<div className="signup-form-container">
-					<h1>Sign Up</h1>
-					<form onSubmit={handleSubmit}>
-						<ul>
-							{errors.map((error, idx) => (
-								<li key={idx}>{error}</li>
-							))}
-						</ul>
+				<div className = "signup-container-new">
 
-						<div className="form-row">
-							<label className="form-group">
-								First Name
+					<div className="signup-title">
+						<h1>Sign Up</h1>
+					</div>
+
+					<div className="signup-form-container">
+						<form onSubmit={handleSubmit}>
+							<ul>
+								{errors.map((error, idx) => (
+									<li key={idx}>{error}</li>
+								))}
+							</ul>
+
+							<div className="form-row">
+								<label className="form-group">
+									First Name
+									<input
+										type="text"
+										value={firstName}
+										onChange={(e) => setFirstName(e.target.value)}
+										required
+									/>
+								</label>
+
+								<label className="form-group">
+									Last Name
+									<input
+										type="text"
+										value={lastName}
+										onChange={(e) => setLastName(e.target.value)}
+										required
+									/>
+								</label>
+							</div>
+
+							<label>
+								Email
 								<input
 									type="text"
-									value={firstName}
-									onChange={(e) => setFirstName(e.target.value)}
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
 									required
 								/>
 							</label>
 
-							<label className="form-group">
-								Last Name
+							<label>
+								Username
 								<input
 									type="text"
-									value={lastName}
-									onChange={(e) => setLastName(e.target.value)}
+									value={username}
+									onChange={(e) => setUsername(e.target.value)}
 									required
 								/>
 							</label>
-						</div>
 
-						<label>
-							Email
-							<input
-								type="text"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								required
-							/>
-						</label>
+							<label>
+								Password
+								<input
+									type="password"
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									required
+								/>
+							</label>
 
-						<label>
-							Username
-							<input
-								type="text"
-								value={username}
-								onChange={(e) => setUsername(e.target.value)}
-								required
-							/>
-						</label>
+							<label>
+								Confirm Password
+								<input
+									type="password"
+									value={confirmPassword}
+									onChange={(e) => setConfirmPassword(e.target.value)}
+									required
+								/>
+							</label>
 
-						<label>
-							Password
-							<input
-								type="password"
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								required
-							/>
-						</label>
+							<button type="submit">Sign Up</button>
 
-						<label>
-							Confirm Password
-							<input
-								type="password"
-								value={confirmPassword}
-								onChange={(e) => setConfirmPassword(e.target.value)}
-								required
-							/>
-						</label>
-
-						<button type="submit">Sign Up</button>
-					</form>
+							<p className="login-redirect">
+								Already have an account? <a href="/">Login Instead!</a>
+							</p>
+							
+						</form>
+					</div>
 				</div>
 			</div>
 		</>

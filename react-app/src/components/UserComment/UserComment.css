@@ -1,0 +1,23 @@
+.comment-edit-input {
+  margin-top: 0;
+    width: 510px;
+    padding: 6px;
+    border: 1px solid #db7093;
+    background-color: #2c2a31;
+    color: #e6e6fa;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.comment-edit-input:focus {
+  outline: none;
+  border: 1px solid #db7093;
+  background-color: #2c2a31;
+  color: #e6e6fa;
+}
+
+.edit-delete-btn button:hover {
+  text-decoration: underline;
+}

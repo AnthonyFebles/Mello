@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { Editor, EditorState, RichUtils, ContentState } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk, getCommentsByCardThunk } from "../../store/comments";
 import UserComment from "../UserComment/UserComment";
@@ -32,12 +32,13 @@ export default function CommentModal({
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const colorOptions = ['#226e4f', '#7f5f01', '#a64800', '#ae2f24', '#5e4db2', '#0056cc', '#206a84', '#4d6b1f', '#953d73', '#596773' ]
 	const [localCoverColor, setLocalCoverColor] = useState(coverColor)
-	const [editorState, setEditorState] = useState(() =>
+	const content = ContentState.createFromText(description ? description : '')
+	const editorStateWithDescription = EditorState.createWithContent(content)
+	const [editorState, setEditorState] = useState(editorStateWithDescription)
+	const [editorState2, setEditorState2] = useState(() =>
 		EditorState.createEmpty()
-		);
-		const [editorState2, setEditorState2] = useState(() =>
-		EditorState.createEmpty()
-		);
+	);
+
 
 	const lists = useSelector((state) => {
 		return Object.values(state.lists);
@@ -256,7 +257,7 @@ export default function CommentModal({
 							editorState={editorState}
 							onChange={setEditorState}
 							onBlur={handleDescriptionUpdate}
-							placeholder={description ? description : "Add a description..."}
+							placeholder="Add a description..."
 							customStyleMap={{
 								BOLD: { fontWeight: "bold" },
 								ITALIC: { fontStyle: "italic" },

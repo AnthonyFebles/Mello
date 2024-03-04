@@ -44,6 +44,7 @@ export default function CommentModal({
 	});
 
 	const card = cardId;
+	// console.log('CARDID', card);
 	const id = boardId;
 	const comments = useSelector((state) => state.comments) || cardComments;
 	const userId = useSelector((state) => state.session.user.id);
@@ -105,13 +106,14 @@ export default function CommentModal({
 	const handleNameUpdate = async (e) => {
 		e.preventDefault();
 		try {
-			await dispatch(updateCardThunk(cardId, payload));
+			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			await dispatch(readLists(id));
 		} catch (error) {
 			alert(error);
 		}
 	};
 
+	console.log('description', description);
 	const handleDescriptionUpdate = async (e) => {
 		e.preventDefault();
 
@@ -121,7 +123,9 @@ export default function CommentModal({
 		}
 		try {
 			setDescription(editorState.getCurrentContent().getPlainText("\u0001"));
-			await dispatch(updateCardThunk(cardId, payload));
+			console.log('CARDID', cardId);
+			console.log('PAYLOAD', payload);
+			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			await dispatch(readLists(id));
 			setClicked(false);
 		} catch (error) {

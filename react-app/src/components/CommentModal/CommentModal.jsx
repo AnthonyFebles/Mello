@@ -96,7 +96,7 @@ export default function CommentModal({
 		};
 
 		try {
-			await dispatch(updateCardThunk(cardId, payload));
+			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			dispatch(readLists(id));
 		} catch (error) {
 			alert(error);

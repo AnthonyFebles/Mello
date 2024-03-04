@@ -124,12 +124,10 @@ export default function CommentModal({
 		try {
 			await setDescription(editorState.getCurrentContent().getPlainText("\u0001"));
 			payload.description = editorState.getCurrentContent().getPlainText()
-			// console.log('PAYLOAD:', payload);
 			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			await dispatch(readLists(id));
 			setClicked(false);
 		} catch (error) {
-			// console.log(error)
 			alert(error);
 		}
 	};

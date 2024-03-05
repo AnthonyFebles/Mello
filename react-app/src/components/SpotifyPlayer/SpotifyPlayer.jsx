@@ -7,7 +7,7 @@ function SpotifyPlayer() {
 	const [modalIsVisible, setModalIsVisible] = useState(false);
 	const [playing, setPlaying] = useState(false);
 	const [source, setSource] = useState(
-		"https://www.youtube-nocookie.com/embed/fnVlN327sn0?si=lHe1YkNFnLdkUlzN&amp;start=3"
+		"https://soundcloud.com/anthony-febles-232032259/lord-of-the-rings-but-it-s-lofi-beats"
 	);
 	const [playButton, setPlayButton] = useState(
 		"fa-regular fa-circle-play fa-xl"

@@ -19,13 +19,12 @@ function SpotifyPlayer() {
 	}
 
 	function handlePlay() {
-
 		if (playing) {
-			setPlaying(false) 
+			setPlaying(false);
 			setPlayButton("fa-regular fa-circle-play fa-xl");
-		} else {;
-			setPlaying(true)
-			setPlayButton("fa-regular fa-circle-pause fa-xl")
+		} else {
+			setPlaying(true);
+			setPlayButton("fa-regular fa-circle-pause fa-xl");
 		}
 	}
 
@@ -68,17 +67,53 @@ function SpotifyPlayer() {
 				}}
 			>
 				<>
-					<p style={{ color: "whitesmoke" }}>Enter A Link For Audio</p>
-
+					<p className="media_controls_link-p">Enter A Link For Audio</p>
+					<span className="supported-audio-sites">
+						<i
+							class="fa fa-youtube-play"
+							style={{ fontSize: "30px", color: "white" }}
+						></i>
+						<i
+							class="fa-brands fa-facebook"
+							style={{ fontSize: "30px", color: "white" }}
+						></i>
+						<i
+							class="fa-brands fa-soundcloud"
+							style={{ fontSize: "30px", color: "white" }}
+						></i>
+						<i
+							class="fa-brands fa-twitch"
+							style={{ fontSize: "30px", color: "white" }}
+						></i>
+						<i
+							class="fa-brands fa-dailymotion"
+							style={{ fontSize: "30px", color: "white" }}
+						></i>
+						<i
+							class="fa-brands fa-vimeo"
+							style={{ fontSize: "30px", color: "white" }}
+						></i>
+					</span>
 					<input
 						className="audio-input"
 						value={source}
 						onChange={(e) => setSource(e.target.value)}
 					></input>
-					<label style={{ color: "whitesmoke", textAlign: "center" }}>
-						Volume
-						<input type="range" onChange={(e) => setVolume(e.target.value / 100)}></input>
-					</label>
+					<div className="volume-container">
+						<label
+							style={{
+								color: "whitesmoke",
+								fontSize: "20px",
+							}}
+						>
+							Volume{" "}
+							<input
+								className="range-input"
+								type="range"
+								onChange={(e) => setVolume(e.target.value / 100)}
+							></input>
+						</label>
+					</div>
 				</>
 			</Modal>
 			<ReactPlayer

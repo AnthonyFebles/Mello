@@ -23,6 +23,7 @@ const ListForm = ({boardId, setClicked }) => {
 				.then(() => dispatch(readLists(boardId)))
 				.then(() => closeModal());
 		} catch (data) {
+			alert(data.errors);
 			setErrors({ ...data });
 		}
 
@@ -32,6 +33,10 @@ const ListForm = ({boardId, setClicked }) => {
 	useEffect(() => {
 		dispatch(readLists(boardId));
 	}, [dispatch, boardId]);
+
+	if (errors) {
+		
+	}
 
 	return (
 		<div>
@@ -48,7 +53,7 @@ const ListForm = ({boardId, setClicked }) => {
 				/>
 				<div className="new-list-btns">
 					<button type="submit" className="submitButton">Add list</button>
-					<button type='button' onClick={() => setClicked(false)} className="x">X</button>
+					<button type='button' onClick={() => handleSubmit()} className="x">X</button>
 				</div>
 			</form>
 		</div>

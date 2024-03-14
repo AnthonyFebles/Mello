@@ -5,6 +5,6 @@ from app.models import Board
 
 
 class ListForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired(), Length(max=80)])
+    name = StringField('name', validators=[DataRequired(), Length(max=20)])
     
 

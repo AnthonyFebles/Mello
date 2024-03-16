@@ -8,6 +8,7 @@
   position: absolute;
   border-radius: 50%;
   background-color: rgba(165, 62, 249, 0.532);
+  background-color: #ee706e;
   transform: scale(0);
   animation: ripple 0.5s linear;
 }

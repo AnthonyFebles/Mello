@@ -59,7 +59,7 @@ export const getEachCardThunk = (cardId) => async (dispatch) => {
 		// dispatch the getEachCard action creator
 		if (res.ok) {
 			const eachCard = await res.json();
-			dispatch(getEachCard(cardId, eachCard));
+			dispatch(getEachCard(eachCard));
 			return eachCard;
 		}
 	} catch (error) {
@@ -121,36 +121,67 @@ const updateCard = (updatedCard) => {
 	};
 };
 
+// export const updateCardThunk =
+// 	(cardId, updatedCardInfo) => async (dispatch) => {
+// 		try {
+// 			// Request method for Editing
+// 			const requestMethod = {
+// 				method: "PUT",
+// 				headers: {
+// 					"Content-Type": "application/json",
+// 				},
+// 				body: JSON.stringify(updatedCardInfo),
+// 			};
+
+// 			// fetch the api route
+// 			const res = await csrfFetch(
+// 				`/api/boards/<boardId>/lists/<listId>/cards/${cardId}`,
+// 				requestMethod
+// 			);
+
+// 			if (res.ok) {
+// 				const editedCard = await res.json();
+// 				console.log(editedCard, "edited card")
+// 				dispatch(updateCard(editedCard));
+// 				return editedCard;
+// 			}
+// 		} catch (error) {
+// 			const res = await error.json();
+// 			console.log(res, "error")
+// 			throw res;
+// 		}
+// 	};
+
 export const updateCardThunk =
-	(cardId, updatedCardInfo) => async (dispatch) => {
-		try {
-			// Request method for Editing
-			const requestMethod = {
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(updatedCardInfo),
-			};
+  (boardId, listId, cardId, updatedCardInfo) => async (dispatch) => {
+    try {
+      // Request method for Editing
+      const requestMethod = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedCardInfo),
+      };
 
-			// fetch the api route
-			const res = await csrfFetch(
-				`/api/boards/<boardId>/lists/<listId>/cards/${cardId}`,
-				requestMethod
-			);
+      // fetch the api route
+      const res = await csrfFetch(
+        `/api/boards/${boardId}/lists/${listId}/cards/${cardId}`,
+        requestMethod
+      );
 
-			if (res.ok) {
-				const editedCard = await res.json();
-				console.log(editedCard, "edited card")
-				dispatch(updateCard(editedCard));
-				return editedCard;
-			}
-		} catch (error) {
-			const res = await error.json();
-			console.log(res, "error")
-			throw res;
-		}
-	};
+      if (res.ok) {
+        const editedCard = await res.json();
+        console.log(editedCard, "edited card")
+        dispatch(updateCard(editedCard));
+        return editedCard;
+      }
+    } catch (error) {
+      const res = await error.json();
+      console.log(res, "error")
+      throw res;
+    }
+  };
 
 //! Delete an Existing Card
 
@@ -211,16 +242,16 @@ const cardsReducer = (state = initialState, action) => {
 				Cards: { ...state.Cards, [card.id]: card },
 			};
 		// case POST_CARD:
-		//     const newCard = action.payload;
-		//     return {
-		//         ...state,
-		//         cards: { ...state.Cards, [newCard.id]: newCard }
-		//     };
+		// 	const newCard = action.payload;
+		// 	return {
+		// 			...state,
+		// 			cards: { ...state.Cards, [newCard.id]: newCard }
+		// 	};
 		case UPDATE_CARD:
 			const updatedCard = action.payload;
 			return {
 				...state,
-				cards: { ...state.Cards, [updatedCard.id]: updatedCard },
+				Cards: { ...state.Cards, [updatedCard.id]: updatedCard },
 			};
 		case DELETE_CARD:
 			const newState = { ...state };

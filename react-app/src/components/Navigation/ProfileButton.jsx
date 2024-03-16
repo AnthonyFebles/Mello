@@ -28,9 +28,11 @@ function ProfileButton({ user }) {
 			}
 		};
 
+		
 		document.addEventListener("click", closeMenu);
 
 		return () => document.removeEventListener("click", closeMenu);
+
 	}, [showMenu]);
 
 	const handleLogout = (e) => {
@@ -38,12 +40,13 @@ function ProfileButton({ user }) {
 		dispatch(logout()).then(() => history.push("/"));
 	};
 
-	const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+	const ulClassName = "profile-dropdown ld ld-throw-rtl-in" + (showMenu ? "" : " hidden");
 	const closeMenu = () => setShowMenu(false);
 
 	return (
 		<>
 			<i
+				id="userIcon"
 				onClick={openMenu}
 				className="fas fa-user-circle fa-2x user-icon"
 				style={{ color: "#e6e6fa" }}

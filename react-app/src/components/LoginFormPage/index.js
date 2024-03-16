@@ -26,6 +26,7 @@ function LoginFormPage() {
 
 	return (
 		<>
+			
 			<h1>Log In</h1>
 			<form onSubmit={handleSubmit}>
 				<ul>

@@ -4,8 +4,8 @@
   align-items: center;
   width: 95%;
   height: fit-content;
-  box-shadow: 0 0 3px 1px black;
-  border-radius: 5px;
+  /* box-shadow: 0 0 3px 1px black;
+  border-radius: 5px; */
   margin: 14px auto;
   cursor: pointer;
 }
@@ -19,6 +19,12 @@
   height: 100%;
   border-radius: 5px;
   margin: 5px;
+  color: #e6e6fa;
+}
+
+.add-card-button:hover {
+  background-color: #e6e6fa;
+  color: #2e2424;
 }
 
 .add-card-button .fa-plus {
@@ -28,17 +34,15 @@
 .add-card-button p {
   margin: 0;
   font-size: 15px;
-}
-
-.add-card-button:hover {
-  box-shadow: 0 0 15px 1px #845c71;
+  color: #aaa;
 }
 
 .card-form {
   width: 100%;
-  border-radius: 5px;
-  background-color: #402c43;
+  border-radius: 15px;
+  background-color: #22272b;
   padding: 5px 8px;
+  border: 1px solid #6a6a6a;
 }
 
 .card-form-button {
@@ -70,7 +74,7 @@
 }
 .new-card-name::placeholder,
 .new-card-description::placeholder {
-  color: #3a3a3a;
+  color: #3a3a3a80;
   font-size: 14px;
 }
 
@@ -89,10 +93,10 @@
   background-color: #58b968;
   border: none;
   cursor: pointer;
-  color: #433434;
+  color: #2e2424;
   width: 84px;
   height: 32px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .new-card-btn:hover {
@@ -104,7 +108,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;;
+  align-items: center;
   background-color: #e6e6fa00;
   border: none;
   cursor: pointer;
@@ -114,7 +118,7 @@
   padding: 10px;
   font-size: 18px;
   margin-left: 5px;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 
 .cancel-new-card:hover {

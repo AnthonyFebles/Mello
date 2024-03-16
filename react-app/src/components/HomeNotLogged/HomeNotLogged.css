@@ -4,7 +4,10 @@
     margin: 0;
     padding: 0;
 } */
-
+.container{
+    background: url('../../resources/images/SeaOfClouds.svg');
+    background-repeat: no-repeat;
+}
 .mello-image img{
     max-width: 475px; 
     max-height: 475px; 

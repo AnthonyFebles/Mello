@@ -14,6 +14,8 @@ const CurrentBoard = () => {
 	const { color, name } = board;
 	const { id } = useParams();
 
+	console.log('Name', name);
+
 	useEffect(() => {
 		dispatch(loadDetails(id));
 	}, [dispatch, id]);
@@ -22,9 +24,12 @@ const CurrentBoard = () => {
 
 	return (
 		<div className="header">
-			<h1>{name}</h1>
+			{/* <h1>{name}</h1> */}
 			<List boardColor={color} />
 		</div>
+		// <>
+		// 	<List boardColor={color} />
+		// </>
 	);
 };
 export default CurrentBoard;

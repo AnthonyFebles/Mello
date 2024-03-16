@@ -1,4 +1,53 @@
 /* TODO Add site wide styles */
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+.loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000000;
+	border: 16px solid #a7a6a6;
+	border-top: 16px solid #4b50ca;
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	animation: spin 2s linear infinite, colors 6s linear infinite;
+	background-color: transparent;
+}
+
+@keyframes colors {
+	25% {
+		border-top: 10px solid #e48a35;
+		
+	}
+	50% {
+		border-top: 20px solid #eaa82e;
+		
+	}
+	75% {
+		border-top: 25px solid #3417aa;
+		
+	}
+	100% {
+		border-top: 16px solid #4b50ca;
+		
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+    
+	}
+	100% {
+		transform: rotate(360deg);
+    
+	}
 }

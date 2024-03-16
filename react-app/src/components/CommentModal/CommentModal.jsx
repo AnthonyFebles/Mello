@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
-import "draft-js/dist/Draft.css";
-import "./CommentModal.css";
+import { Editor, EditorState, RichUtils, ContentState } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	createCommentThunk,
-	getCommentsByCardThunk,
-} from "../../store/comments";
+import { createCommentThunk, getCommentsByCardThunk } from "../../store/comments";
 import UserComment from "../UserComment/UserComment";
 import { deleteCardThunk, updateCardThunk } from "../../store/cards";
 import { useModal } from "../../context/Modal";
 import { readLists } from "../../store/lists";
+import "draft-js/dist/Draft.css";
+import "./CommentModal.css";
 
 export default function CommentModal({
 	boardId,
@@ -20,7 +17,8 @@ export default function CommentModal({
 	cardName,
 	cardDesc,
 	cardComments,
-	cards,
+	coverColor,
+	setCoverColor,
 }) {
 	const dispatch = useDispatch();
 	const { closeModal } = useModal();
@@ -31,18 +29,23 @@ export default function CommentModal({
 	const [clicked, setClicked] = useState(false);
 	const [clicked2, setClicked2] = useState(false);
 	const [hidden, setHidden] = useState(false);
-	const [editorState, setEditorState] = useState(() =>
+	const [dropdownOpen, setDropdownOpen] = useState(false);
+	const colorOptions = ['#226e4f', '#7f5f01', '#a64800', '#ae2f24', '#5e4db2', '#0056cc', '#206a84', '#4d6b1f', '#953d73', '#596773' ]
+	const [localCoverColor, setLocalCoverColor] = useState(coverColor)
+	const content = ContentState.createFromText(description ? description : '')
+	const editorStateWithDescription = EditorState.createWithContent(content)
+	const [editorState, setEditorState] = useState(editorStateWithDescription)
+	const [editorState2, setEditorState2] = useState(() =>
 		EditorState.createEmpty()
-		);
-		const [editorState2, setEditorState2] = useState(() =>
-		EditorState.createEmpty()
-		);
+	);
+
 
 	const lists = useSelector((state) => {
 		return Object.values(state.lists);
 	});
 
 	const card = cardId;
+	// console.log('CARDID', card);
 	const id = boardId;
 	const comments = useSelector((state) => state.comments) || cardComments;
 	const userId = useSelector((state) => state.session.user.id);
@@ -56,6 +59,10 @@ export default function CommentModal({
 	const ulRef = useRef();
 
 	const closeMenu = () => setShowMenu(false);
+
+	// useEffect(() => {
+	// 	setLocalCoverColor(coverColor)
+	// }, [coverColor])
 
 	const openMenu = () => {
 		if (showMenu) return;
@@ -78,7 +85,7 @@ export default function CommentModal({
 		e.preventDefault();
 		setName(e.target.value);
 	};
-	
+
 	const handleListUpdate = async (listId) => {
 		setList(listId);
 		closeMenu();
@@ -90,7 +97,7 @@ export default function CommentModal({
 		};
 
 		try {
-			await dispatch(updateCardThunk(cardId, payload));
+			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			dispatch(readLists(id));
 		} catch (error) {
 			alert(error);
@@ -100,13 +107,14 @@ export default function CommentModal({
 	const handleNameUpdate = async (e) => {
 		e.preventDefault();
 		try {
-			await dispatch(updateCardThunk(cardId, payload));
+			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			await dispatch(readLists(id));
 		} catch (error) {
 			alert(error);
 		}
 	};
 
+	console.log('description', description);
 	const handleDescriptionUpdate = async (e) => {
 		e.preventDefault();
 
@@ -115,12 +123,12 @@ export default function CommentModal({
 			return;
 		}
 		try {
-			setDescription(editorState.getCurrentContent().getPlainText("\u0001"));
-			await dispatch(updateCardThunk(cardId, payload));
+			await setDescription(editorState.getCurrentContent().getPlainText("\u0001"));
+			payload.description = editorState.getCurrentContent().getPlainText()
+			await dispatch(updateCardThunk(boardId, listId, cardId, payload));
 			await dispatch(readLists(id));
 			setClicked(false);
 		} catch (error) {
-			// console.log(error)
 			alert(error);
 		}
 	};
@@ -184,6 +192,13 @@ export default function CommentModal({
 	}, [dispatch, cardId, id]);
 
 	return (
+		<>
+		{localCoverColor && (
+			<div
+				className="card-cover-modal"
+				style={{ backgroundColor: `${localCoverColor}` }}
+			/>
+		)}
 		<div className="commentModal">
 			<div className="commentModal-body">
 				<div className="cardTitle">
@@ -242,7 +257,7 @@ export default function CommentModal({
 							editorState={editorState}
 							onChange={setEditorState}
 							onBlur={handleDescriptionUpdate}
-							placeholder={description ? description : "Add a description..."}
+							placeholder="Add a description..."
 							customStyleMap={{
 								BOLD: { fontWeight: "bold" },
 								ITALIC: { fontStyle: "italic" },
@@ -353,6 +368,28 @@ export default function CommentModal({
 							<i class="fa-solid fa-arrow-right"></i>
 							Move
 						</div>
+						<button className="add-cover-btn comment-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
+							<i class="fa-solid fa-image" style={{ color: "#e6e6fa" }}></i>
+							Cover
+						</button>
+						{dropdownOpen && (
+							<div className="color-dropdown">
+								{colorOptions.map(color => (
+									<div
+										key={color}
+										className="color-option"
+										style={{ backgroundColor: color }}
+										onClick={() => {
+											setCoverColor(color);
+											setLocalCoverColor(color)
+											dispatch(updateCardThunk(boardId, listId, cardId, { cover: color }));
+											setDropdownOpen(false);
+										}}
+									/>
+								))}
+								<button onClick={() => {setCoverColor(null); setLocalCoverColor(null)}} className="remove-cover">Remove Cover</button>
+							</div>
+						)}
 					</div>
 					<div ref={ulRef} className={`${className}`}>
 						<div className="move-list__container">
@@ -439,5 +476,6 @@ export default function CommentModal({
 				</div>
 			</div> */}
 		</div>
+		</>
 	);
 }

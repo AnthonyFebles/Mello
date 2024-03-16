@@ -7,19 +7,12 @@ import { readLists } from "../../store/lists";
 export default function Cards({ listId, boardId }) {
 	const dispatch = useDispatch();
 	const [clickedAdd, setClickedAdd] = useState(false);
-
 	const list = listId;
 	const board = boardId.toString();
-
 	const { closeModal } = useModal();
-
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
 	const [errors, setErrors] = useState({});
-
-	// let cards = useSelector((state) => {
-	//   return state.cards.Cards
-	// })
 
 	const payload = {
 		listId,

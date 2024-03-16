@@ -1,12 +1,12 @@
 header {
   justify-content: space-between;
-  background: radial-gradient(circle, #532545, #0e001d);
-  border-bottom: 1px solid #53254581;
+  background: linear-gradient(to right, #444bd2, #d88c52, #fc5b80);
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0 20px;
-  height: 48px;
+  height: 48px !important;
+  border-bottom: 1px solid rgba(230, 230, 250, 0.443);
 }
 
 .nav-bar {
@@ -15,17 +15,30 @@ header {
   align-items: center;
 }
 
-.nav-bar button {
+.nav-bar .create {
   margin-left: 20px;
   width: 68px;
   height: 32px;
   border: none;
   border-radius: 5px;
   color: #e6e6fa;
-  background-color: #0f4163;
+  background-color: #fc5c80;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-bar .create:hover {
+  background-color: #c94967;
+}
+
+.mello {
+  border: none;
+  font-weight: bold;
+  font-size: 22px;
+  color: #e6e6fa;
+  background: none;
 }
 
 .nav-bar .Submit {
@@ -34,6 +47,11 @@ header {
   background-color: #e16f4e;
   color: #433434;
   margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.nav-bar .Submit:hover {
+  background-color: #fd7d5a;
 }
 
 .logo-name {
@@ -71,13 +89,14 @@ header {
   top: 39px;
   width: 232px;
   padding: 10px;
-  font-size:15px;
+  font-size: 15px;
   text-align: left;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px  rgb(184, 104, 255);
-  box-shadow: 0px 0px 10px  #a84d8c;
+  box-shadow: 0px 0px 10px rgb(184, 104, 255);
+  box-shadow: 0px 0px 10px #a84d8c;
   background-color: #081222;
   list-style-type: none;
+  z-index: 5;
 }
 
 .user-info {
@@ -117,7 +136,6 @@ header {
   margin: 5px 0;
 }
 
-
 .hidden {
   display: none;
 }
@@ -152,5 +170,5 @@ header {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translate(-166px, -7px)
+  transform: translate(-166px, -7px);
 }

@@ -8,6 +8,7 @@ import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import { colors, getRandomInt } from "../Colors";
 import { createNewBoard, getBoards } from "../../store/boards";
 import Testing from "../Testing/Testing";
+import RippleButton from "../RippleButton/RippleButton";
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -65,8 +66,8 @@ function Navigation({ isLoaded }) {
 		return () => document.removeEventListener("click", closeMenu);
 	}, [dispatch, color, showMenu]);
 
-	if (isLoading)
-		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+	// if (isLoading)
+	// 	return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
 
 	return (
 		<header>
@@ -77,12 +78,12 @@ function Navigation({ isLoaded }) {
 							class="fa-brands fa-trello fa-xl"
 							style={{ color: "#e6e6fa" }}
 						></i>
-						<p>mello</p>
+						<RippleButton className='mello'>mello</RippleButton>
 					</div>
 				</NavLink>
-				<button onClick={openMenu} className="create">
+				<RippleButton onClick={openMenu} className="create">
 					Create
-				</button>
+				</RippleButton>
 				<Testing
 					ulClassName={ulClassName}
 					ulRef={ulRef}
@@ -94,6 +95,7 @@ function Navigation({ isLoaded }) {
 					errors={errors}
 				/>
 			</nav>
+			
 			<div className="right_side_nav">
 				{/* <span className="search-container">
 					<input type="search" name="search" id="search" placeholder="Search" />

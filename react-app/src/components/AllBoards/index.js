@@ -54,11 +54,16 @@ const AllBoards = () => {
 	};
 
 	if (isLoading)
-		return <img src="https://i.imgur.com/mWjbe4Q.gif" alt="...Loading"></img>;
+		return (
+			<div className="outer__boards__container">
+				<div class="loader"></div>
+			</div>
+		);
 
 	if (boards.length > 0)
 		return (
 			<>
+				{/* <div class="loader"></div> */}
 				<div className="outer__boards__container">
 					<div className="boards__container">
 						<NewBoard />
@@ -147,7 +152,7 @@ const AllBoards = () => {
 					<div className="boards__container">
 						<NewBoard />
 						<h1 style={{ color: "white" }}>
-							You don't have any boards...you should create one the top left
+							You don't have any boards yet...you can create one by clicking the button on the top left!
 						</h1>
 						<div className="boards__group"></div>
 					</div>

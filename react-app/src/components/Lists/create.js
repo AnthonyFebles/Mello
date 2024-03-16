@@ -6,36 +6,24 @@ import { createLists, readLists } from "../../store/lists";
 import { useModal } from "../../context/Modal";
 import "./Lists.css";
 
-const ListForm = (info) => {
+const ListForm = ({boardId, setClicked }) => {
 	const dispatch = useDispatch();
-
-	const { board_id } = info;
-	const boardId = parseInt(board_id);
-
-	//state
 	const [name, setName] = useState("");
 	const [errors, setErrors] = useState("");
 	const { closeModal } = useModal();
-
-	//reset
-
-	//handles
 	const handleName = (e) => setName(e.target.value);
-
-	// payload
-
-	const payload = {
-		name,
-	};
+	const payload = { name };
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setErrors({});
+		setClicked(false);
 		try {
 			await dispatch(createLists(boardId, payload))
 				.then(() => dispatch(readLists(boardId)))
 				.then(() => closeModal());
 		} catch (data) {
+			alert(data.errors);
 			setErrors({ ...data });
 		}
 
@@ -45,6 +33,10 @@ const ListForm = (info) => {
 	useEffect(() => {
 		dispatch(readLists(boardId));
 	}, [dispatch, boardId]);
+
+	if (errors) {
+		
+	}
 
 	return (
 		<div>
@@ -59,9 +51,10 @@ const ListForm = (info) => {
 					placeholder="Enter list title..."
 					required
 				/>
-				<button type="submit" className="submitButton">
-					Add list
-				</button>
+				<div className="new-list-btns">
+					<button type="submit" className="submitButton">Add list</button>
+					<button type='button' onClick={() => handleSubmit()} className="x">X</button>
+				</div>
 			</form>
 		</div>
 	);

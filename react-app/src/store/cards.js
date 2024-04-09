@@ -91,6 +91,7 @@ export const addCardThunk = (listId, boardId, payload) => async (dispatch) => {
 		};
 
 		// fetch from backend api route
+		console.log(listId, "<<<<listId")
 		const res = await csrfFetch(
 			`/api/boards/${boardId}/lists/${listId}/cards`,
 			requestMethod
@@ -165,6 +166,10 @@ export const updateCardThunk =
       };
 
       // fetch the api route
+	  console.log(boardId, "<<<<cardId")
+	  console.log(listId, "<<<<listId")
+	  console.log(cardId, "<<<<cardId")
+
       const res = await csrfFetch(
         `/api/boards/${boardId}/lists/${listId}/cards/${cardId}`,
         requestMethod

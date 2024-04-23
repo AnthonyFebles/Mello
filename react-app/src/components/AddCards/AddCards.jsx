@@ -24,7 +24,7 @@ export default function AddCards({ list, boardId, cardId }) {
 		}),
 		end(task, monitor) {
 			const dropRes = monitor.getDropResult();
-			console.log(dropRes, "dropRes drag end");
+			//console.log(dropRes, "dropRes drag end");
 		},
 	}));
 

@@ -25,8 +25,8 @@ sqlalchemy = "==1.4.46"
 werkzeug = "==2.2.2"
 wtforms = "==3.0.1"
 pylint = "*"
-greenlet = "==1.1.0"
-email-validator = "*"
+greenlet = "==2.0.1"
+email-validator = "==2.1.0"
 
 [dev-packages]
 

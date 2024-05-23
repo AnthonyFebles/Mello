@@ -64,7 +64,7 @@ const List = (boardColor) => {
 	let listColor;
 
 	switch (color) {
-		case "https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain":
+		case "https://imgur.com/XfzEQ4V.jpeg":
 			listImage = "imageOne__image";
 			nameColor = "imageOne__Component_name_color";
 			listHeadColor = "imageOne__head";
@@ -73,7 +73,7 @@ const List = (boardColor) => {
 			listColor = "imageOne__lists";
 			break;
 
-		case "https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain":
+		case "https://imgur.com/A4Y76t2.jpeg":
 			listImage = "imageTwo__image";
 			nameColor = "imageTwo__Component_name_color";
 			listHeadColor = "imageTwo__list__head";
@@ -82,7 +82,7 @@ const List = (boardColor) => {
 			listColor = "imageTwo__lists";
 			break;
 
-		case "https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn":
+		case "https://imgur.com/ek59kot.jpeg":
 			listImage = "imageSix__image";
 			nameColor = "imageThree__Component_name_color";
 			listHeadColor = "imageThree__list__head";
@@ -91,7 +91,7 @@ const List = (boardColor) => {
 			listColor = "imageThree__lists";
 			break;
 
-		case "https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn":
+		case "https://imgur.com/BdTGQmT.jpeg":
 			listImage = "imageFour__image";
 			nameColor = "imageFour__list__Component_name_color";
 			listHeadColor = "imageFour__list__head";
@@ -101,7 +101,7 @@ const List = (boardColor) => {
 
 			break;
 
-		case "https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain":
+		case "https://imgur.com/Gaf7yTG.jpeg":
 			listImage = "imageThree__image";
 			nameColor = "imageFive__list__Component_name_color";
 			listHeadColor = "imageFive__list__head";
@@ -111,7 +111,7 @@ const List = (boardColor) => {
 
 			break;
 
-		case "https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain":
+		case "https://imgur.com/LCD7Cke.jpeg":
 			listImage = "imageFive__image";
 			nameColor = "imageSix__list__Component_name_color";
 			listHeadColor = "imageSix__list__head";

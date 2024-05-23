@@ -1,13 +1,22 @@
 // Where an array of themes urls can be stored
 
 export const colors = [
-	"https://th.bing.com/th/id/OIG.OoOd9Dks6SQIeJc3lV_8?w=1024&h=1024&rs=1&pid=ImgDetMain",
-	"https://th.bing.com/th/id/OIG.Tm4j5l5hso8iB85_iqNf?w=1024&h=1024&rs=1&pid=ImgDetMain",
-	"https://th.bing.com/th/id/OIG.OGoMI4XVVcASjUF2Hb3N?pid=ImgGn",
-	"https://th.bing.com/th/id/OIG.rt3EmryUoYQKIjK86m_p?pid=ImgGn",
-	"https://th.bing.com/th/id/OIG.idCzopGsrbq9HoGGWuLq?w=1024&h=1024&rs=1&pid=ImgDetMain",
-	"https://th.bing.com/th/id/OIG.fEHxWkIYkumMxQZLmYc5?w=1024&h=1024&rs=1&pid=ImgDetMain",
+	"https://imgur.com/XfzEQ4V.jpeg",
+	"https://imgur.com/A4Y76t2.jpeg",
+	"https://imgur.com/ek59kot.jpeg",
+	"https://imgur.com/BdTGQmT.jpeg",
+	"https://imgur.com/Gaf7yTG.jpeg",
+	"https://imgur.com/LCD7Cke.jpeg",
 ];
+
+// export const colors = [
+// 	"https://imgur.com/XfzEQ4V.jpeg",
+// 	"https://imgur.com/A4Y76t2.jpeg",
+// 	"https://imgur.com/ek59kot.jpeg",
+// 	"https://imgur.com/BdTGQmT.jpeg",
+// 	"https://imgur.com/Gaf7yTG.jpeg",
+// 	"https://imgur.com/LCD7Cke.jpeg",
+// ];
 
 // ? Colors for each link in array
 

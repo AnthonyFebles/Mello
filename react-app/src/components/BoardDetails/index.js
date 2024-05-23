@@ -14,7 +14,7 @@ const CurrentBoard = () => {
 	const { color, name } = board;
 	const { id } = useParams();
 
-	console.log('Name', name);
+	//console.log('Name', name);
 
 	useEffect(() => {
 		dispatch(loadDetails(id));
